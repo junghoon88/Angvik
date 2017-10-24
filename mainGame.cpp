@@ -11,7 +11,7 @@ mainGame::~mainGame()
 {
 
 }
-
+//푸쉬테스트트트트트타ㅡㅡ아ㅣ;ㄻ날어;ㄴㅁ
 //초기화
 HRESULT mainGame::init(void)
 {
