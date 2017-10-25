@@ -2,7 +2,21 @@
 #include "DxWindow.h"
 #include "mainGame.h"
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+//Window
+LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	return DxWindow::GetDxWindow()->MessageLoop(hWnd, uMsg, wParam, lParam);
+}
+
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
+{
+	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
+	main.Create(L"DirectX");
+	main.CreateDevice();
+
+	return main.Run();
+}
 
 //DxWindow
 DxWindow* DxWindow::dxWindow = NULL;
@@ -197,19 +211,24 @@ LRESULT DxWindow::MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 	return DefWindowProc(hwnd, message, wParam, lParam);
 }
 
-
-//Window
-LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+void DxWindow::init(void)
 {
-	return DxWindow::GetDxWindow()->MessageLoop(hWnd, uMsg, wParam, lParam);
+	//singleton init
+
+}
+void DxWindow::release(void)
+{
+	//singleton release
+
+}
+void DxWindow::update(void)
+{
+
+}
+void DxWindow::render(void)
+{
+
 }
 
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
-{
-	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
-	main.Create(L"DirectX");
-	main.CreateDevice();
 
-	return main.Run();
-}
