@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MainGame">
+      <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX">
+      <UniqueIdentifier>{f1b15e2a-52cf-4f1a-9061-5810d779f795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="DxWindow.cpp">
+      <Filter>DirectX</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameMain.h">
+      <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="DxWindow.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
