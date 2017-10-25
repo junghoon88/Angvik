@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DxWindow.h"
-#include "GameMain.h"
+#include "mainGame.h"
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
@@ -207,7 +207,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
-	GameMain main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
+	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
 	main.Create(L"DirectX");
 	main.CreateDevice();
 

@@ -2,14 +2,14 @@
 #include "DxWindow.h"
 
 
-class GameMain : public DxWindow
+class mainGame : public DxWindow
 {
 private:
 
 
 public:
-	GameMain(HINSTANCE hInstance, LPCWSTR className, LPCSTR lpCmdLine, int nCmdShow);
-	~GameMain();
+	mainGame(HINSTANCE hInstance, LPCWSTR className, LPCSTR lpCmdLine, int nCmdShow);
+	~mainGame();
 
 	void init(void);
 	void release(void);

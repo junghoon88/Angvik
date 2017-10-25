@@ -147,11 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DxWindow.cpp" />
-    <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="mainGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DxWindow.h" />
-    <ClInclude Include="GameMain.h" />
+    <ClInclude Include="mainGame.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
