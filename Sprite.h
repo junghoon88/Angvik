@@ -22,7 +22,7 @@ private:
 	void AdjustTransform();
 
 public:
-	Sprite(LPDIRECT3DDEVICE9 device, TCHAR* fileName,
+	Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
 		D3DXVECTOR2 coord = D3DXVECTOR2(0, 0),
 		D3DXVECTOR2 size = D3DXVECTOR2(0, 0),
 		D3DXVECTOR2 scale = D3DXVECTOR2(1, 1)

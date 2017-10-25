@@ -14,21 +14,33 @@ mainGame::~mainGame()
 
 void mainGame::init(void)	
 {
+	DxWindow::initialize();
 
+	initScene();
+}
+
+void mainGame::initScene(void)
+{
+	SCENEMANAGER->addScene(L"±âº»¾À", new sceneInit);
+	SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
+
+	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
 }
 
 void mainGame::release(void)
 {
+	SCENEMANAGER->release();
 
+	DxWindow::releaseSingleton();
 }
 
 void mainGame::update(void)	
 {
-
+	SCENEMANAGER->update();
 }
 
 void mainGame::render(void)	
 {
-
+	SCENEMANAGER->render();
 }
 

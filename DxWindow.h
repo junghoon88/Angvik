@@ -2,6 +2,9 @@
 
 class DxWindow
 {
+private:
+	bool _managerInit;
+
 protected:
 	static DxWindow* dxWindow;
 
@@ -18,16 +21,22 @@ protected:
 	BOOL isWindow = TRUE;
 	BOOL isShowCursor = TRUE;
 
-	LPDIRECT3D9	d3d = NULL;
-	LPDIRECT3DDEVICE9 device = NULL;
+	static LPDIRECT3D9 d3d;
+	static LPDIRECT3DDEVICE9 device;
+
+	void initialize(void);
+	void releaseSingleton(void);
 
 public:
 	//按眉 积己磊
 	DxWindow(HINSTANCE hInstance, LPCWSTR lpClassName, LPCSTR lpszCmdParam, int nCmdShow);
+	DxWindow();
 	//按眉 家戈磊
-	virtual ~DxWindow();
+	~DxWindow();
 
-	static DxWindow* GetDxWindow() { return dxWindow; }
+	static DxWindow* getDxWindow(void) { return dxWindow; }
+	static LPDIRECT3D9 getD3D(void) { return d3d; }
+	static LPDIRECT3DDEVICE9 getDevice(void) { return device; }
 
 	void Create(LPCWSTR title);
 	void CreateDevice(void);
@@ -36,8 +45,8 @@ public:
 
 	LRESULT MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-	virtual void init(void);
-	virtual void release(void);
-	virtual void update(void);
-	virtual void render(void);
+	virtual void init(void) = 0;
+	virtual void release(void) = 0;
+	virtual void update(void) = 0;
+	virtual void render(void) = 0;
 };

@@ -3,7 +3,7 @@
 #include "Texture.h"
 
 
-Sprite::Sprite(LPDIRECT3DDEVICE9 device, TCHAR* fileName,
+Sprite::Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
 	D3DXVECTOR2 coord, D3DXVECTOR2 size, D3DXVECTOR2 scale, int const number)
 	: _device(device), _coord(coord), _size(size),
 	_sprite(NULL), _texture(NULL), _angleDeg(0.0f), _scale(scale), _number(number)

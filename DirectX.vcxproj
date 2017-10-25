@@ -144,19 +144,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
+    <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="sceneGame.cpp" />
+    <ClCompile Include="sceneInit.cpp" />
+    <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="timeManager.cpp" />
+    <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="commonMacroFunction.h" />
+    <ClInclude Include="database.h" />
     <ClInclude Include="DxWindow.h" />
+    <ClInclude Include="imageManager.h" />
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="sceneGame.h" />
+    <ClInclude Include="sceneInit.h" />
+    <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="timeManager.h" />
+    <ClInclude Include="timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,6 @@
 #pragma once
 
+// 공용 헤더
 // Windows 헤더 파일:
 #include <windows.h>
 //#include <iostream>
@@ -14,10 +15,12 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <time.h>
+
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -27,6 +30,18 @@
 
 using namespace std;
 
+
+// 프로젝트 헤더
+#include "commonMacroFunction.h"
+#include "utils.h"
+#include "collision.h"
+#include "imageManager.h"
+#include "timeManager.h"
+#include "sceneManager.h"
+#include "database.h"
+
+using namespace IOTA_UTIL;
+
 //#include "Keyboard.h"
 //#include "PrintText.h"
 
@@ -34,10 +49,29 @@ using namespace std;
 // ## 싱글톤 매니저
 //==================================
 
+//#define RND randomFunction::getSingleton()
+//#define KEYMANAGER keyManager::getSingleton()
+#define IMAGEMANAGER imageManager::getSingleton()
+//#define TXTDATA txtData::getSingleton()
+#define TIMEMANAGER timeManager::getSingleton() 
+//#define SOUNDMANAGER soundManager::getSingleton()
+//#define EFFECTMANAGER effectManager::getSingleton()
+#define SCENEMANAGER sceneManager::getSingleton()
+//#define KEYANIMANAGER keyAniManager::getSingleton()
+//#define INIDATA iniDataManager::getSingleton()
+#define DATABASE database::getSingleton()
+//#define MAINCAMERA camera::getSingleton()
+//#define RENDERMANAGER RenderManager::getSingleton()
+
+
+//==================================
+// ## 매크로 함수 ##
+//==================================
+
 #define WINDOWSX 800
 #define WINDOWSY 600
 
-#define PI 3.14159265f
+//#define PI 3.14159265f
 
 #define SAFE_RELEASE(p) { if ( (p) ) { (p)->Release(); (p) = NULL; } }
 #define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;

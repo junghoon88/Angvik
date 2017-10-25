@@ -5,7 +5,7 @@
 //Window
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	return DxWindow::GetDxWindow()->MessageLoop(hWnd, uMsg, wParam, lParam);
+	return DxWindow::getDxWindow()->MessageLoop(hWnd, uMsg, wParam, lParam);
 }
 
 
@@ -14,15 +14,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
 	main.Create(L"DirectX");
 	main.CreateDevice();
+	main.init();
 
-	return main.Run();
+	WPARAM wParam = main.Run();
+
+	main.release();
+
+
+	//PrintText::DeleteInstance();
+	//Keyboard::DeleteInstance();
+
+	return wParam;
 }
 
 //DxWindow
 DxWindow* DxWindow::dxWindow = NULL;
+LPDIRECT3D9 DxWindow::d3d = NULL;
+LPDIRECT3DDEVICE9 DxWindow::device = NULL;
+
 
 //按眉 积己磊
 DxWindow::DxWindow(HINSTANCE hInstance, LPCWSTR lpClassName, LPCSTR lpszCmdParam, int nCmdShow)
+	: _managerInit(false)
 {
 	dxWindow = this;
 
@@ -57,17 +70,15 @@ DxWindow::DxWindow(HINSTANCE hInstance, LPCWSTR lpClassName, LPCSTR lpszCmdParam
 	}
 }
 
+DxWindow::DxWindow()
+{
+
+}
+
 //按眉 家戈磊
 DxWindow::~DxWindow()
 {
-	SAFE_RELEASE(device);
-	SAFE_RELEASE(d3d);
 
-	if (handle != NULL)	
-		DestroyWindow(handle);
-
-	SAFE_DELETE_ARRAY(className);
-	SAFE_DELETE_ARRAY(commandLine);
 }
 
 
@@ -151,7 +162,6 @@ WPARAM DxWindow::Run(void)
 
 	//PrintText::GetInstance()->SetDevice(device);
 
-	init();
 
 	while (message.message != WM_QUIT)
 	{
@@ -162,6 +172,8 @@ WPARAM DxWindow::Run(void)
 		}
 		else
 		{
+			//TIMEMANAGER->update(60.0f);
+
 			//Keyboard::GetInstance()->update();
 
 			update();
@@ -177,10 +189,6 @@ WPARAM DxWindow::Run(void)
 		}
 	}
 
-	release();
-
-	//PrintText::DeleteInstance();
-	//Keyboard::DeleteInstance();
 
 	UnregisterClass(className, instance);
 	return message.wParam;
@@ -211,24 +219,50 @@ LRESULT DxWindow::MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 	return DefWindowProc(hwnd, message, wParam, lParam);
 }
 
-void DxWindow::init(void)
+void DxWindow::initialize(void)
 {
-	//singleton init
+	_managerInit = true;
 
+	//singleton init
+	//KEYMANAGER->init();
+	IMAGEMANAGER->init();
+	//TXTDATA->init();
+	TIMEMANAGER->init();
+	//SOUNDMANAGER->init();
+	//EFFECTMANAGER->init();
+	SCENEMANAGER->init();
+	//KEYANIMANAGER->init();
+	DATABASE->init();
+	//MAINCAMERA->init();
+	//RENDERMANAGER->init();
 }
-void DxWindow::release(void)
+
+void DxWindow::releaseSingleton(void)
 {
 	//singleton release
+	if (_managerInit)
+	{
+		//KEYMANAGER->releaseSingleton();
+		IMAGEMANAGER->releaseSingleton();
+		//TXTDATA->releaseSingleton();
+		TIMEMANAGER->releaseSingleton();
+		//SOUNDMANAGER->releaseSingleton();
+		//EFFECTMANAGER->releaseSingleton();
+		SCENEMANAGER->releaseSingleton();
+		//KEYANIMANAGER->releaseSingleton();
+		DATABASE->releaseSingleton();
+		//MAINCAMERA->releaseSingleton();
+		//RENDERMANAGER->releaseSingleton();
+	}
 
+	SAFE_RELEASE(device);
+	SAFE_RELEASE(d3d);
+
+	if (handle != NULL)
+		DestroyWindow(handle);
+
+	SAFE_DELETE_ARRAY(className);
+	SAFE_DELETE_ARRAY(commandLine);
 }
-void DxWindow::update(void)
-{
-
-}
-void DxWindow::render(void)
-{
-
-}
-
 
 

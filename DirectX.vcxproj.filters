@@ -16,6 +16,21 @@
     <Filter Include="Header">
       <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectX\Manager">
+      <UniqueIdentifier>{d7073d4e-de1c-48c3-89c9-55be9646aba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX\timer">
+      <UniqueIdentifier>{2ca86945-9a93-478c-be30-c6f3628f7837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Scenes">
+      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX\UTIL">
+      <UniqueIdentifier>{d3845d30-9038-42ba-bc64-e015cd2aa0d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\database">
+      <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -32,6 +47,27 @@
     </ClCompile>
     <ClCompile Include="mainGame.cpp">
       <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneManager.cpp">
+      <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>DirectX\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="timeManager.cpp">
+      <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneInit.cpp">
+      <Filter>mainGame\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneGame.cpp">
+      <Filter>mainGame\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>mainGame\database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +88,30 @@
     </ClInclude>
     <ClInclude Include="mainGame.h">
       <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="imageManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>DirectX\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="timeManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneInit.h">
+      <Filter>mainGame\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneGame.h">
+      <Filter>mainGame\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>mainGame\database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
