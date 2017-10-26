@@ -18,6 +18,7 @@ void sceneInit::init(void)
 
 	frameCnt = 0;
 	frameTime = 0.0f;
+	angleDeg = 0.0f;
 
 }
 
@@ -29,17 +30,22 @@ void sceneInit::release(void)
 void sceneInit::update(void) 
 {
 	frameTime += TIMEMANAGER->getElapsedTime();
-	//if (frameTime >= 0.2f)
-	//{
-	//	frameTime -= 0.2f;
-
-	//	frameCnt++;
-	//	if (frameCnt >= 6) frameCnt = 0;
-	//}
-	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+	if (frameTime >= 0.2f)
 	{
+		frameTime -= 0.2f;
+
 		frameCnt++;
 		if (frameCnt >= 6) frameCnt = 0;
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+	{
+		angleDeg += 3.0f;
+		IMAGEMANAGER->setRotate(L"더미", angleDeg);
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+	{
+		angleDeg -= 3.0f;
+		IMAGEMANAGER->setRotate(L"더미", angleDeg);
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(MK_LBUTTON) && _ptMouse.x < 100 && _ptMouse.y < 100)

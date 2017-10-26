@@ -10,6 +10,7 @@ private:
 	//debug
 	int frameCnt;
 	float frameTime;
+	float angleDeg;
 
 public:
 	sceneInit();
