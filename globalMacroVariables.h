@@ -17,7 +17,7 @@
 #define DIR_D			0x08
 
 
-typedef enum DIRECTION
+enum DIRECTION
 {
 	DIRECTION_NONE = 0,
 	DIRECTION_LF = DIR_L,

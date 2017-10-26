@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "mainGame.h"
+#include "PrintText.h"
 
 
 mainGame::mainGame(HINSTANCE hInstance, LPCWSTR className, LPCSTR lpCmdLine, int nCmdShow)
@@ -42,5 +43,15 @@ void mainGame::update(void)
 void mainGame::render(void)	
 {
 	SCENEMANAGER->render();
+
+	//TIMEMANAGER->render();
+
+	TEXTMANAGER->init(DEVICE, L"테스트");
+	TEXTMANAGER->setFont(L"테스트", 20, L"돋움체");
+	TEXTMANAGER->addText(L"테스트", L"테스트1");
+	TEXTMANAGER->addText(L"테스트", L"테스트2");
+	TEXTMANAGER->addText(L"테스트", L"테스트3");
+	TEXTMANAGER->render(L"테스트");
+
 }
 

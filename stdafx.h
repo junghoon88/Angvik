@@ -42,6 +42,7 @@ using namespace std;
 #include "sceneManager.h"
 #include "database.h"
 #include "camera.h"
+#include "textManager.h"
 
 
 #include "globalMacroVariables.h"
@@ -70,6 +71,7 @@ using namespace IOTA_UTIL;
 #define DATABASE database::getSingleton()
 #define MAINCAMERA camera::getSingleton()
 //#define RENDERMANAGER RenderManager::getSingleton()
+#define TEXTMANAGER textManager::getSingleton()
 
 
 //==================================

@@ -105,15 +105,15 @@ namespace IOTA_UTIL
 
 		void set(RECT rc)
 		{
-			left = rc.left;
-			top = rc.top;
-			right = rc.right;
-			bottom = rc.bottom;
+			left   = (float)(rc.left);
+			top    = (float)(rc.top);
+			right  = (float)(rc.right);
+			bottom = (float)(rc.bottom);
 		}
 
 		RECT toRect(void)
 		{
-			return RectMake(left, top, right - left, bottom - top);;
+			return RectMake((int)left, (int)top, (int)(right - left), (int)(bottom - top));
 		}
 
 		void setCenter(float _cx, float _cy, float _width, float _height)

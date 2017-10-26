@@ -31,6 +31,8 @@ Sprite* imageManager::addImage(LPDIRECT3DDEVICE9 device, wstring strKey, const T
 	sprite->init();
 
 	_mImageList.insert(make_pair(strKey, sprite));
+
+	return sprite;
 }
 
 Sprite* imageManager::addFrameImage(LPDIRECT3DDEVICE9 device, wstring strKey, const TCHAR* fileName, int frameX, int frameY)
@@ -43,6 +45,8 @@ Sprite* imageManager::addFrameImage(LPDIRECT3DDEVICE9 device, wstring strKey, co
 	sprite->init(frameX, frameY);
 
 	_mImageList.insert(make_pair(strKey, sprite));
+	
+	return sprite;
 }
 
 

@@ -131,6 +131,8 @@ HRESULT sceneManager::changeScene(wstring sceneName, wstring loadingSceneName)
 	_loadingScene = findLoading->second;
 	_readyScene = find->second;
 	CloseHandle(CreateThread(NULL, 0, loadingThread, NULL, 0, &_loadingThreadID));
+
+	return S_OK;
 }
 
 

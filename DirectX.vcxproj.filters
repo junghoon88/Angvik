@@ -34,6 +34,9 @@
     <Filter Include="DirectX\camera">
       <UniqueIdentifier>{87fd941a-6782-4d54-a50b-3a7e3a5aa189}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectX\PrintText">
+      <UniqueIdentifier>{fbdd00e4-87c1-4a28-899c-9e41bfc92ebf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -83,6 +86,12 @@
     </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>DirectX\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintText.cpp">
+      <Filter>DirectX\PrintText</Filter>
+    </ClCompile>
+    <ClCompile Include="textManager.cpp">
+      <Filter>DirectX\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>DirectX\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintText.h">
+      <Filter>DirectX\PrintText</Filter>
+    </ClInclude>
+    <ClInclude Include="textManager.h">
+      <Filter>DirectX\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

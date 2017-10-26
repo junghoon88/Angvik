@@ -19,8 +19,8 @@ inline void LineMake(HDC hdc, int x1, int y1, int x2, int y2)
 inline void LineMakeAngle(HDC hdc, int x1, int y1, float length, float angle)
 {
 	MoveToEx(hdc, x1, y1, NULL);
-	int x2 = x1 + length * cosf(angle);
-	int y2 = y1 + length * (-sinf(angle));
+	int x2 = (int)(x1 + length * cosf(angle));
+	int y2 = (int)(y1 + length * (-sinf(angle)));
 	LineTo(hdc, x2, y2);
 }
 

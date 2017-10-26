@@ -85,8 +85,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -151,11 +150,13 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="textManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="PrintText.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="sceneGame.h" />
@@ -178,6 +180,7 @@
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="textManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />

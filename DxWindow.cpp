@@ -201,8 +201,8 @@ LRESULT DxWindow::MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 	switch (message)
 	{
 		case WM_MOUSEMOVE:
-			_ptMouse.x = static_cast<float>LOWORD(lParam);
-			_ptMouse.y = static_cast<float>HIWORD(lParam);
+			_ptMouse.x = (LONG)(static_cast<float>LOWORD(lParam));
+			_ptMouse.y = (LONG)(static_cast<float>HIWORD(lParam));
 			break;
 
 		case WM_KEYDOWN:
@@ -260,6 +260,9 @@ void DxWindow::releaseSingleton(void)
 		DATABASE->releaseSingleton();
 		MAINCAMERA->releaseSingleton();
 		//RENDERMANAGER->releaseSingleton();
+		
+		TEXTMANAGER->release();
+		TEXTMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);

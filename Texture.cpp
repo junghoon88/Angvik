@@ -92,8 +92,8 @@ RECT Texture::getRect(int frameX, int frameY)
 		frameY = 0;
 
 	RECT rc;
-	rc.left = frameWidth * (float)frameX;
-	rc.top = frameHeight * (float)frameY;
+	rc.left = frameWidth * frameX;
+	rc.top = frameHeight * frameY;
 	rc.right = rc.left + frameWidth;
 	rc.bottom = rc.top + frameHeight;
 
