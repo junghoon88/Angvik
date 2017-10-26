@@ -31,17 +31,25 @@ void Rect::update()
 {
 
 }
-void Rect::render(bool bCamera)
+void Rect::render(int cameraOffsetX, int cameraOffsetY)
 {
 	D3DVIEWPORT9 viewport;
 	_device->GetViewport(&viewport);
 
+	D3DXVECTOR3 _lineVectorOffset[5];
+	for (int i = 0; i < 5; i++)
+	{
+		_lineVectorOffset[i].x = _lineVector[i].x - cameraOffsetX;
+		_lineVectorOffset[i].y = _lineVector[i].y - cameraOffsetY;
+		_lineVectorOffset[i].z = _lineVector[i].z;
+	}
 
 	D3DXMATRIX ortho;
 	D3DXMatrixOrthoOffCenterLH(&ortho, 0, viewport.Width, viewport.Height, 0, 0, 1);
 
 	_line->Begin();
-	_line->DrawTransform(_lineVector, 5, &ortho, _lineColor);
+	//_line->DrawTransform(_lineVector, 5, &ortho, _lineColor);
+	_line->DrawTransform(_lineVectorOffset, 5, &ortho, _lineColor);
 	_line->End();
 }
 

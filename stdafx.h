@@ -43,6 +43,8 @@ using namespace std;
 #include "database.h"
 #include "camera.h"
 #include "textManager.h"
+#include "keyAniManager.h"
+#include "rectManager.h"
 
 
 #include "globalMacroVariables.h"
@@ -66,12 +68,13 @@ using namespace IOTA_UTIL;
 //#define SOUNDMANAGER soundManager::getSingleton()
 //#define EFFECTMANAGER effectManager::getSingleton()
 #define SCENEMANAGER sceneManager::getSingleton()
-//#define KEYANIMANAGER keyAniManager::getSingleton()
+#define KEYANIMANAGER keyAniManager::getSingleton()
 //#define INIDATA iniDataManager::getSingleton()
 #define DATABASE database::getSingleton()
 #define MAINCAMERA camera::getSingleton()
 //#define RENDERMANAGER RenderManager::getSingleton()
 #define TEXTMANAGER textManager::getSingleton()
+#define RECTMANAGER rectManager::getSingleton()
 
 
 //==================================
@@ -84,6 +87,7 @@ using namespace IOTA_UTIL;
 //#define PI 3.14159265f
 
 #define SAFE_RELEASE(p) { if ( (p) ) { (p)->Release(); (p) = NULL; } }
+#define SAFE_RELEASE2(p) { if ( (p) ) { (p)->release(); (p) = NULL; } }
 #define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;
 #define SAFE_DELETE_ARRAY(a) if( (a) != NULL ) delete [] (a); (a) = NULL;
 

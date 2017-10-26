@@ -7,8 +7,8 @@
 
 #define CAMERA_SPEED		1
 
-#define MAP_WIDTH			WINSIZEX
-#define MAP_HEIGHT			WINSIZEY
+#define MAP_WIDTH			(WINSIZEX*10)
+#define MAP_HEIGHT			(WINSIZEY*10)
 
 
 #define DIR_L			0x01

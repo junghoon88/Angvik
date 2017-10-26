@@ -26,6 +26,8 @@ void sceneTest::initImage(void)
 {
 	IMAGEMANAGER->addImage(DEVICE, L"배경1", L"image/1.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"더미", L"image/dummy.png", 2, 3);
+
+	IMAGEMANAGER->setCoord(L"더미", 100, 100);
 }
 
 void sceneTest::initSound(void)
@@ -53,8 +55,15 @@ void sceneTest::update(void)
 		frameCnt++;
 		if (frameCnt >= 6) frameCnt = 0;
 	}
+
+	if (KEYMANAGER->isStayKeyDown(VK_RETURN))
+	{
+		IMAGEMANAGER->move(L"더미", 10, 0);
+	}
+
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
+		//center에 카메라 옵셋 더해야함
 		angleDeg += 3.0f;
 		IMAGEMANAGER->setRotate(L"더미", angleDeg);
 	}
@@ -70,18 +79,36 @@ void sceneTest::update(void)
 		if (frameCnt >= 6) frameCnt = 0;
 	}
 
-	IMAGEMANAGER->setCoord(L"더미", 100, 100);
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD8))
+	{
+		MAINCAMERA->moveCamera(DIRECTION_UP);
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD5))
+	{
+		MAINCAMERA->moveCamera(DIRECTION_DN);
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD4))
+	{
+		MAINCAMERA->moveCamera(DIRECTION_LF);
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD6))
+	{
+		MAINCAMERA->moveCamera(DIRECTION_RG);
+	}
+
+	
 
 
 }
 
 void sceneTest::render(void)
 {
-	IMAGEMANAGER->findImage(L"배경1")->render();
+	IMAGEMANAGER->findImage(L"배경1")->setCoord({ 100, 0 });
+	IMAGEMANAGER->findImage(L"배경1")->render(MAINCAMERA->getCameraX(), MAINCAMERA->getCameraY());
 
 	int frameX = frameCnt % 2;
 	int frameY = frameCnt / 2;
 
-	IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
+	IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY, MAINCAMERA->getCameraX(), MAINCAMERA->getCameraY());
 
 }

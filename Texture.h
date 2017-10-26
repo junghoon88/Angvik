@@ -20,8 +20,7 @@ private:
 
 
 public:
-	Texture(LPDIRECT3DDEVICE9 device, WCHAR* fileName, int const number = 0,
-		DWORD color = 0xFFFFFFFF, DWORD colorKey = 0x00FFFFFF);
+	Texture(LPDIRECT3DDEVICE9 device, WCHAR* fileName, DWORD color = 0xFFFFFFFF, DWORD colorKey = 0x00FFFFFF);
 	~Texture();
 
 	void init(void);
@@ -31,10 +30,12 @@ public:
 	RECT getRect(int frameX, int frameY);
 
 	//getter, setter
-	int getWidth(void) { return imageInfo.Width; }
-	int getHeight(void) { return imageInfo.Height; }
-	int getHalfWidth(void) { return (int)(imageInfo.Width * 0.5f); }
-	int getHalfHeight(void) { return (int)(imageInfo.Height * 0.5f); }
+	inline int getWidth(void) { return imageInfo.Width; }
+	inline int getHeight(void) { return imageInfo.Height; }
+	inline int getHalfWidth(void) { return (int)(imageInfo.Width * 0.5f); }
+	inline int getHalfHeight(void) { return (int)(imageInfo.Height * 0.5f); }
+	inline int getFrameWidth(void) { return frameWidth; }
+	inline int getFrameHeight(void) { return frameHeight; }
 
 	LPDIRECT3DTEXTURE9 getTexture() { return texture; }
 

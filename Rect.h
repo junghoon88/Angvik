@@ -26,7 +26,7 @@ public:
 	void init();
 	void release();
 	void update();
-	void render(bool bCamera = false);
+	void render(int cameraOffsetX = 0, int cameraOffsetY = 0);
 
 	//getter, setter
 	RECT getRect();

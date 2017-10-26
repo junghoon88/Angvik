@@ -39,6 +39,14 @@ inline RECT RectMakeCenter(int x, int y, int width, int height)
 	return rc;
 }
 
+inline void RectMove(RECT& rc, int moveX, int moveY)
+{
+	rc.left += moveX;
+	rc.right += moveX;
+	rc.top += moveY;
+	rc.bottom += moveY;
+}
+
 //좌표로 부터 가로, 세로가 만들어지는 사각형
 inline void RectangleMake(HDC hdc, int x, int y, int width, int height)
 {

@@ -238,10 +238,12 @@ void DxWindow::initialize(void)
 	//SOUNDMANAGER->init();
 	//EFFECTMANAGER->init();
 	SCENEMANAGER->init();
-	//KEYANIMANAGER->init();
+	KEYANIMANAGER->init();
 	DATABASE->init();
 	MAINCAMERA->init();
 	//RENDERMANAGER->init();
+	//TEXTMANAGER->init() --> 사용할때마다 초기화해서 사용한다.
+	RECTMANAGER->init();
 }
 
 void DxWindow::releaseSingleton(void)
@@ -249,20 +251,21 @@ void DxWindow::releaseSingleton(void)
 	//singleton release
 	if (_managerInit)
 	{
-		KEYMANAGER->releaseSingleton();
-		IMAGEMANAGER->releaseSingleton();
+		KEYMANAGER->release();					KEYMANAGER->releaseSingleton();
+		IMAGEMANAGER->release();				IMAGEMANAGER->releaseSingleton();
 		//TXTDATA->releaseSingleton();
-		TIMEMANAGER->releaseSingleton();
+		TIMEMANAGER->release();					TIMEMANAGER->releaseSingleton();
 		//SOUNDMANAGER->releaseSingleton();
 		//EFFECTMANAGER->releaseSingleton();
-		SCENEMANAGER->releaseSingleton();
-		//KEYANIMANAGER->releaseSingleton();
-		DATABASE->releaseSingleton();
-		MAINCAMERA->releaseSingleton();
+		SCENEMANAGER->release();				SCENEMANAGER->releaseSingleton();
+
+		KEYANIMANAGER->release();				KEYANIMANAGER->releaseSingleton();
+		DATABASE->release();					DATABASE->releaseSingleton();
+		MAINCAMERA->release();					MAINCAMERA->releaseSingleton();
 		//RENDERMANAGER->releaseSingleton();
 		
-		TEXTMANAGER->release();
-		TEXTMANAGER->releaseSingleton();
+		TEXTMANAGER->release();					TEXTMANAGER->releaseSingleton();
+		RECTMANAGER->release();					RECTMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);

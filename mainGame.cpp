@@ -35,8 +35,6 @@ void mainGame::initScene(void)
 
 void mainGame::release(void)
 {
-	SCENEMANAGER->release();
-
 	DxWindow::releaseSingleton();
 }
 

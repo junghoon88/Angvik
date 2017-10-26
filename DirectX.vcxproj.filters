@@ -52,6 +52,9 @@
     <Filter Include="mainGame\sceneGame\Interface">
       <UniqueIdentifier>{7b3ac083-b088-44db-b423-3b7c882dceb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectX\animation">
+      <UniqueIdentifier>{6acbdbb1-eae8-4d65-a370-8a0e909c9659}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -125,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>mainGame\sceneGame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>DirectX\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="keyAniManager.cpp">
+      <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="rectManager.cpp">
+      <Filter>DirectX\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +223,15 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>mainGame\sceneGame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>DirectX\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="keyAniManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="rectManager.h">
+      <Filter>DirectX\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -70,7 +70,7 @@ BOOL imageManager::deleteAll(void)
 	{
 		if (iter->second != NULL)
 		{
-			SAFE_DELETE(iter->second);
+			SAFE_RELEASE2(iter->second);
 			iter = _mImageList.erase(iter);
 		}
 		else ++iter;
@@ -128,11 +128,11 @@ void imageManager::move(wstring strKey, float moveX, float moveY)
 
 
 
-void imageManager::render(wstring strKey)
+void imageManager::render(wstring strKey, int cameraOffsetX, int cameraOffsetY)
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->render();
+	if (sprite) sprite->render(cameraOffsetX, cameraOffsetY);
 }
 
 void imageManager::frameRender(wstring strKey, int frameX, int frameY)
@@ -140,4 +140,11 @@ void imageManager::frameRender(wstring strKey, int frameX, int frameY)
 	Sprite* sprite = findImage(strKey);
 
 	if (sprite) sprite->frameRender(frameX, frameY);
+}
+
+void imageManager::aniRender(wstring strKey, animation* ani)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) sprite->aniRender(ani);
 }

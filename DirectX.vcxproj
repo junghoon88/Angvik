@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="database.cpp" />
@@ -151,12 +152,14 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="rectManager.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
     <ClCompile Include="sceneManager.cpp" />
@@ -169,6 +172,7 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="commonMacroFunction.h" />
@@ -179,6 +183,7 @@
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="Player.h" />
@@ -186,6 +191,7 @@
     <ClInclude Include="PrintText.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="rectManager.h" />
     <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />
     <ClInclude Include="sceneManager.h" />

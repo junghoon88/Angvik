@@ -38,7 +38,7 @@ public:
 	void setRotate(wstring strKey, float angleDeg);
 	void move(wstring strKey, float moveX, float moveY);
 
-	void render(wstring strKey);
+	void render(wstring strKey, int cameraOffsetX = 0, int cameraOffsetY = 0);
 	//void render(wstring strKey, HDC hdc, int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight);
 
 	void frameRender(wstring strKey, int frameX, int frameY);
@@ -53,7 +53,7 @@ public:
 	//void alphaFrameRender(wstring strKey, HDC hdc, int destX, int destY, BYTE alpha);
 	//void alphaFrameRender(wstring strKey, HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY, BYTE alpha);
 
-	//void aniRender(wstring strKey, HDC hdc, int destX, int destY, animation* ani);
+	void aniRender(wstring strKey, animation* ani);
 	//void aniAlphaRender(wstring strKey, HDC hdc, int destX, int destY, animation* ani, BYTE alpha);
 
 	//getter

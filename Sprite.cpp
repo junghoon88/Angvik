@@ -4,9 +4,9 @@
 
 
 Sprite::Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
-	D3DXVECTOR2 coord, D3DXVECTOR2 size, D3DXVECTOR2 scale, int const number)
+	D3DXVECTOR2 coord, D3DXVECTOR2 size, D3DXVECTOR2 scale)
 	: _device(device), _coord(coord), _size(size),
-	_sprite(NULL), _texture(NULL), _angleDeg(0.0f), _scale(scale), _number(number)
+	_sprite(NULL), _texture(NULL), _angleDeg(0.0f), _scale(scale)
 {
 	_tcscpy(_fileName, fileName);
 
@@ -27,7 +27,7 @@ void Sprite::init()
 	hr = D3DXCreateSprite(_device, &_sprite);
 	assert(SUCCEEDED(hr));
 
-	_texture = new Texture(_device, _fileName, _number);
+	_texture = new Texture(_device, _fileName);
 	_texture->init();
 	_size.x = (_size.x < 1) ? _texture->getWidth()  : _size.x;
 	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
@@ -41,7 +41,7 @@ void Sprite::init(int frameX, int frameY)
 	hr = D3DXCreateSprite(_device, &_sprite);
 	assert(SUCCEEDED(hr));
 
-	_texture = new Texture(_device, _fileName, _number);
+	_texture = new Texture(_device, _fileName);
 	_texture->init(frameX, frameY);
 	_size.x = (_size.x < 1) ? _texture->getWidth() : _size.x;
 	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
@@ -54,43 +54,50 @@ void Sprite::release()
 	SAFE_DELETE(_texture);
 	SAFE_RELEASE(_sprite);
 }
+
 void Sprite::update()
 {
 
 }
-void Sprite::render(bool bCamera)
+
+void Sprite::render(int cameraOffsetX, int cameraOffsetY)
 {
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	if (bCamera)
-	{
-		//camera는?
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
-	}
-	else
-	{
-		//camera는?
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
-	}
+	//camera offset
+	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
 }
 
-void Sprite::frameRender(int frameX, int frameY, bool bCamera)
+void Sprite::frameRender(int frameX, int frameY, int cameraOffsetX, int cameraOffsetY)
 {
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	if (bCamera)
-	{
-		//camera는
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
-	}
-	else
-	{
-		//camera는?
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
-	}
+	//camera offset
+	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
 }
+
+void Sprite::aniRender(animation* ani, int cameraOffsetX, int cameraOffsetY)
+{
+	_sprite->SetTransform(&_world);
+	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
+
+	//camera는
+	RECT temp = _texture->getRect();
+	temp.left += ani->getFramePos().x;
+	temp.right = temp.left + ani->getFrameWidth();
+	temp.top += ani->getFramePos().y;
+	temp.bottom = temp.top + ani->getFrameHeight();
+
+	//camera offset
+	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	_sprite->Draw(_texture->getTexture(), &temp, NULL, &offset, 0xFFFFFFFF);
+	_sprite->End();
+}
+
 
 void Sprite::AdjustTransform()
 {
