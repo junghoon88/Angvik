@@ -30,10 +30,13 @@ public:
 	~Sprite();
 
 	void init();
+	void init(int frameX, int frameY);
 	void release();
 	void update();
 	void render(bool bCamera = false);
+	void frameRender(int frameX, int frameY, bool bCamera = false);
 
+	void move(float moveX, float moveY);
 
 	//getter, setter
 	D3DXVECTOR2 getCoord(void) { return _coord; }

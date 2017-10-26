@@ -7,6 +7,10 @@ private:
 	void initImage(void);
 	void initSound(void);
 
+	//debug
+	int frameCnt;
+	float frameTime;
+
 public:
 	sceneInit();
 	~sceneInit();

@@ -28,11 +28,27 @@ void Sprite::init()
 	assert(SUCCEEDED(hr));
 
 	_texture = new Texture(_device, _fileName, _number);
+	_texture->init();
 	_size.x = (_size.x < 1) ? _texture->getWidth()  : _size.x;
 	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
 
 	AdjustTransform();
 }
+
+void Sprite::init(int frameX, int frameY)
+{
+	HRESULT hr;
+	hr = D3DXCreateSprite(_device, &_sprite);
+	assert(SUCCEEDED(hr));
+
+	_texture = new Texture(_device, _fileName, _number);
+	_texture->init(frameX, frameY);
+	_size.x = (_size.x < 1) ? _texture->getWidth() : _size.x;
+	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
+
+	AdjustTransform();
+}
+
 void Sprite::release()
 {
 	SAFE_DELETE(_texture);
@@ -55,6 +71,23 @@ void Sprite::render(bool bCamera)
 	{
 		//camera´Â?
 		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
+	}
+	_sprite->End();
+}
+
+void Sprite::frameRender(int frameX, int frameY, bool bCamera)
+{
+	_sprite->SetTransform(&_world);
+	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
+	if (bCamera)
+	{
+		//camera´Â
+		_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
+	}
+	else
+	{
+		//camera´Â?
+		_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
 	}
 	_sprite->End();
 }
@@ -106,6 +139,7 @@ void Sprite::setCoord(D3DXVECTOR2 coord)
 
 	AdjustTransform();
 }
+
 void Sprite::setScale(D3DXVECTOR2 scale)
 {
 	_scale = scale;
@@ -135,3 +169,12 @@ void Sprite::setRotate(float angleDeg)
 
 	AdjustTransform();
 }
+
+void Sprite::move(float moveX, float moveY)
+{
+	_coord.x += moveX;
+	_coord.y += moveY;
+
+	AdjustTransform();
+}
+

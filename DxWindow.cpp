@@ -2,6 +2,8 @@
 #include "DxWindow.h"
 #include "mainGame.h"
 
+POINT _ptMouse;
+
 //Window
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -172,7 +174,7 @@ WPARAM DxWindow::Run(void)
 		}
 		else
 		{
-			//TIMEMANAGER->update(60.0f);
+			TIMEMANAGER->update(60.0f);
 
 			//Keyboard::GetInstance()->update();
 
@@ -198,6 +200,11 @@ LRESULT DxWindow::MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 {
 	switch (message)
 	{
+		case WM_MOUSEMOVE:
+			_ptMouse.x = static_cast<float>LOWORD(lParam);
+			_ptMouse.y = static_cast<float>HIWORD(lParam);
+			break;
+
 		case WM_KEYDOWN:
 		{
 			if (wParam == VK_ESCAPE)
@@ -224,7 +231,7 @@ void DxWindow::initialize(void)
 	_managerInit = true;
 
 	//singleton init
-	//KEYMANAGER->init();
+	KEYMANAGER->init();
 	IMAGEMANAGER->init();
 	//TXTDATA->init();
 	TIMEMANAGER->init();
@@ -233,7 +240,7 @@ void DxWindow::initialize(void)
 	SCENEMANAGER->init();
 	//KEYANIMANAGER->init();
 	DATABASE->init();
-	//MAINCAMERA->init();
+	MAINCAMERA->init();
 	//RENDERMANAGER->init();
 }
 
@@ -242,7 +249,7 @@ void DxWindow::releaseSingleton(void)
 	//singleton release
 	if (_managerInit)
 	{
-		//KEYMANAGER->releaseSingleton();
+		KEYMANAGER->releaseSingleton();
 		IMAGEMANAGER->releaseSingleton();
 		//TXTDATA->releaseSingleton();
 		TIMEMANAGER->releaseSingleton();
@@ -251,7 +258,7 @@ void DxWindow::releaseSingleton(void)
 		SCENEMANAGER->releaseSingleton();
 		//KEYANIMANAGER->releaseSingleton();
 		DATABASE->releaseSingleton();
-		//MAINCAMERA->releaseSingleton();
+		MAINCAMERA->releaseSingleton();
 		//RENDERMANAGER->releaseSingleton();
 	}
 

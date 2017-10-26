@@ -15,7 +15,7 @@ protected:
 
 	HWND handle;
 
-	POINT winSize = { WINDOWSX, WINDOWSY };
+	POINT winSize = { WINSIZEX, WINSIZEY };
 	DWORD winStyle = WS_OVERLAPPEDWINDOW | WS_VISIBLE;
 
 	BOOL isWindow = TRUE;

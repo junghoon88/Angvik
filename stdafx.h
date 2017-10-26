@@ -33,12 +33,18 @@ using namespace std;
 
 // 프로젝트 헤더
 #include "commonMacroFunction.h"
+#include "randomFunction.h"
+#include "keyManager.h"
 #include "utils.h"
 #include "collision.h"
 #include "imageManager.h"
 #include "timeManager.h"
 #include "sceneManager.h"
 #include "database.h"
+#include "camera.h"
+
+
+#include "globalMacroVariables.h"
 
 using namespace IOTA_UTIL;
 
@@ -49,8 +55,10 @@ using namespace IOTA_UTIL;
 // ## 싱글톤 매니저
 //==================================
 
-//#define RND randomFunction::getSingleton()
-//#define KEYMANAGER keyManager::getSingleton()
+#define DEVICE getDevice()
+
+#define RND randomFunction::getSingleton()
+#define KEYMANAGER keyManager::getSingleton()
 #define IMAGEMANAGER imageManager::getSingleton()
 //#define TXTDATA txtData::getSingleton()
 #define TIMEMANAGER timeManager::getSingleton() 
@@ -60,7 +68,7 @@ using namespace IOTA_UTIL;
 //#define KEYANIMANAGER keyAniManager::getSingleton()
 //#define INIDATA iniDataManager::getSingleton()
 #define DATABASE database::getSingleton()
-//#define MAINCAMERA camera::getSingleton()
+#define MAINCAMERA camera::getSingleton()
 //#define RENDERMANAGER RenderManager::getSingleton()
 
 
@@ -68,8 +76,8 @@ using namespace IOTA_UTIL;
 // ## 매크로 함수 ##
 //==================================
 
-#define WINDOWSX 800
-#define WINDOWSY 600
+#define WINSIZEX 800
+#define WINSIZEY 600
 
 //#define PI 3.14159265f
 
@@ -169,3 +177,10 @@ using namespace IOTA_UTIL;
 
 #define VK_OEM4 0xDB //[
 #define VK_OEM6 0xDD //]
+
+
+//===================================
+// ## 전역 변수 ## 17.08.07 ##
+//===================================
+
+extern POINT _ptMouse;

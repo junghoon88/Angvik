@@ -24,7 +24,7 @@ void mainGame::initScene(void)
 	SCENEMANAGER->addScene(L"±âº»¾À", new sceneInit);
 	SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
 
-	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	SCENEMANAGER->changeScene(L"±âº»¾À");
 }
 
 void mainGame::release(void)

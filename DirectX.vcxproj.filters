@@ -31,6 +31,9 @@
     <Filter Include="mainGame\database">
       <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectX\camera">
+      <UniqueIdentifier>{87fd941a-6782-4d54-a50b-3a7e3a5aa189}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -68,6 +71,18 @@
     </ClCompile>
     <ClCompile Include="database.cpp">
       <Filter>mainGame\database</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>DirectX\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="keyManager.cpp">
+      <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>DirectX\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>DirectX\UTIL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +127,24 @@
     </ClInclude>
     <ClInclude Include="database.h">
       <Filter>mainGame\database</Filter>
+    </ClInclude>
+    <ClInclude Include="globalMacroVariables.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>DirectX\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFunction.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="keyManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>DirectX\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>DirectX\UTIL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

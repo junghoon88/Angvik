@@ -33,7 +33,7 @@ void sceneGame::render(void)
 
 void sceneGame::initImage(void)
 {
-
+	IMAGEMANAGER->addImage(DEVICE, L"¹è°æ2", L"image/2.png");
 }
 
 void sceneGame::initSound(void)

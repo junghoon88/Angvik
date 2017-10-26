@@ -42,6 +42,27 @@ Texture::~Texture()
 	SAFE_RELEASE(texture);
 }
 
+void Texture::init(void)
+{
+	curFrameX = 0;
+	curFrameY = 0;
+	maxFrameX = 0;
+	maxFrameY = 0;
+	frameWidth = imageInfo.Width;
+	frameHeight = imageInfo.Height;
+}
+
+void Texture::init(int frameX, int frameY)
+{
+	curFrameX = 0;
+	curFrameY = 0;
+	maxFrameX = frameX - 1;
+	maxFrameY = frameY - 1;
+	frameWidth = imageInfo.Width / frameX;
+	frameHeight = imageInfo.Height / frameY;
+}
+
+
 RECT Texture::getRect(void)
 {
 	RECT rc;
@@ -50,5 +71,31 @@ RECT Texture::getRect(void)
 	rc.right = imageInfo.Width;
 	rc.bottom = imageInfo.Height;
 	
+	return rc;
+}
+
+RECT Texture::getRect(int frameX, int frameY)
+{
+	if (maxFrameX == 0 || maxFrameY == 0)
+	{
+		return getRect();
+	}
+
+	if (frameX > maxFrameX) 
+		frameX = maxFrameX;
+	if (frameX < 0) 
+		frameX = 0;
+
+	if (frameY > maxFrameY)
+		frameY = maxFrameY;
+	if (frameY < 0) 
+		frameY = 0;
+
+	RECT rc;
+	rc.left = frameWidth * (float)frameX;
+	rc.top = frameHeight * (float)frameY;
+	rc.right = rc.left + frameWidth;
+	rc.bottom = rc.top + frameHeight;
+
 	return rc;
 }
