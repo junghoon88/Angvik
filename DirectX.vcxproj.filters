@@ -22,9 +22,6 @@
     <Filter Include="DirectX\timer">
       <UniqueIdentifier>{2ca86945-9a93-478c-be30-c6f3628f7837}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\Scenes">
-      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DirectX\UTIL">
       <UniqueIdentifier>{d3845d30-9038-42ba-bc64-e015cd2aa0d3}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,24 @@
     </Filter>
     <Filter Include="DirectX\PrintText">
       <UniqueIdentifier>{fbdd00e4-87c1-4a28-899c-9e41bfc92ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneInit">
+      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame">
+      <UniqueIdentifier>{43eabde1-1190-4171-b89e-1d0668eac50e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\Player">
+      <UniqueIdentifier>{1493faf0-859f-406d-a5cd-96cf8a9a7656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\Enemy">
+      <UniqueIdentifier>{20731369-cc1e-4245-89de-48278fc765a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\Item">
+      <UniqueIdentifier>{2f577a16-3814-40bd-aeb2-aee925ee82f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\Interface">
+      <UniqueIdentifier>{7b3ac083-b088-44db-b423-3b7c882dceb6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +81,6 @@
     <ClCompile Include="timeManager.cpp">
       <Filter>DirectX\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="sceneInit.cpp">
-      <Filter>mainGame\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneGame.cpp">
-      <Filter>mainGame\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="database.cpp">
       <Filter>mainGame\database</Filter>
     </ClCompile>
@@ -93,6 +102,28 @@
     <ClCompile Include="textManager.cpp">
       <Filter>DirectX\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="sceneTest.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneInit.cpp">
+      <Filter>mainGame\sceneInit</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneGame.cpp">
+      <Filter>mainGame\sceneGame</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>mainGame\sceneGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <Filter>mainGame\sceneGame\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -125,12 +156,6 @@
     <ClInclude Include="timeManager.h">
       <Filter>DirectX\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="sceneInit.h">
-      <Filter>mainGame\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneGame.h">
-      <Filter>mainGame\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="commonMacroFunction.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -161,5 +186,27 @@
     <ClInclude Include="textManager.h">
       <Filter>DirectX\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="sceneTest.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneInit.h">
+      <Filter>mainGame\sceneInit</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneGame.h">
+      <Filter>mainGame\sceneGame</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>mainGame\sceneGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>mainGame\sceneGame\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h" />
   </ItemGroup>
 </Project>

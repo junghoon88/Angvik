@@ -76,11 +76,6 @@ RECT Texture::getRect(void)
 
 RECT Texture::getRect(int frameX, int frameY)
 {
-	if (maxFrameX == 0 || maxFrameY == 0)
-	{
-		return getRect();
-	}
-
 	if (frameX > maxFrameX) 
 		frameX = maxFrameX;
 	if (frameX < 0) 

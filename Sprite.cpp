@@ -10,8 +10,8 @@ Sprite::Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
 {
 	_tcscpy(_fileName, fileName);
 
-	_center.x = _size.x * 0.5f;
-	_center.y = _size.y * 0.5f;
+	_center.x = 0.0f;
+	_center.y = 0.0f;
 
 	//4D Matrix ..?
 	D3DXMatrixIdentity(&_world);

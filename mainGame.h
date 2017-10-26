@@ -2,6 +2,7 @@
 #include "DxWindow.h"
 #include "sceneInit.h"
 #include "sceneGame.h"
+#include "sceneTest.h"
 
 
 class mainGame : public DxWindow

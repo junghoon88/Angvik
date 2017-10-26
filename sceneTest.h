@@ -1,18 +1,21 @@
 #pragma once
 #include "DxWindow.h"
 
-class sceneGame : public DxWindow
+class sceneTest : public DxWindow
 {
-private:
-
 private:
 	void initImage(void);
 	void initSound(void);
 	void initText(void);
 
+	//debug
+	int frameCnt;
+	float frameTime;
+	float angleDeg;
+
 public:
-	sceneGame();
-	~sceneGame();
+	sceneTest();
+	~sceneTest();
 
 	void init(void);
 	void release(void);

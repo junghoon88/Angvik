@@ -14,6 +14,7 @@ void sceneGame::init(void)
 {
 	initImage();
 	initSound();
+	initText();
 }
 
 void sceneGame::release(void)
@@ -37,6 +38,11 @@ void sceneGame::initImage(void)
 }
 
 void sceneGame::initSound(void)
+{
+
+}
+
+void sceneGame::initText(void)
 {
 
 }

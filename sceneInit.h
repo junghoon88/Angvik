@@ -4,13 +4,11 @@
 class sceneInit : public DxWindow
 {
 private:
+
+private:
 	void initImage(void);
 	void initSound(void);
-
-	//debug
-	int frameCnt;
-	float frameTime;
-	float angleDeg;
+	void initText(void);
 
 public:
 	sceneInit();
