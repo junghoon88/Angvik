@@ -123,7 +123,9 @@
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\sceneGame\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Item.cpp">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -207,6 +209,8 @@
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\sceneGame\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h" />
+    <ClInclude Include="Item.h">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
