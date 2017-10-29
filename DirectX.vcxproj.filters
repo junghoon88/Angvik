@@ -55,6 +55,12 @@
     <Filter Include="DirectX\animation">
       <UniqueIdentifier>{6acbdbb1-eae8-4d65-a370-8a0e909c9659}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\sceneSelect">
+      <UniqueIdentifier>{8899bc48-b293-40d1-a580-86eeedab7b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\stage">
+      <UniqueIdentifier>{c7891f07-a4f5-45c3-854f-eda2dea270e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -137,6 +143,21 @@
     </ClCompile>
     <ClCompile Include="rectManager.cpp">
       <Filter>DirectX\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneSelect.cpp">
+      <Filter>mainGame\sceneSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="itemManager.cpp">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="stageManager.cpp">
+      <Filter>mainGame\sceneGame\stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +253,21 @@
     </ClInclude>
     <ClInclude Include="rectManager.h">
       <Filter>DirectX\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\sceneSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="itemManager.h">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="stageManager.h">
+      <Filter>mainGame\sceneGame\stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
