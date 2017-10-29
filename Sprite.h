@@ -38,6 +38,8 @@ public:
 
 	void move(float moveX, float moveY);
 
+	void getPixel(void);
+
 	//getter, setter
 	D3DXVECTOR2 getCoord(void) { return _coord; }
 	D3DXVECTOR2 getSize(void) { return _size; }

@@ -37,7 +37,8 @@ void sceneTest::initSound(void)
 
 void sceneTest::initText(void)
 {
-
+	TEXTMANAGER->init(DEVICE, L"테스트");
+	TEXTMANAGER->setFont(L"테스트", 20, L"돋움체");
 }
 
 void sceneTest::release(void)
@@ -59,6 +60,13 @@ void sceneTest::update(void)
 	if (KEYMANAGER->isStayKeyDown(VK_RETURN))
 	{
 		IMAGEMANAGER->move(L"더미", 10, 0);
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	{
+		static int dir = 1;
+		dir *= -1;
+		IMAGEMANAGER->setScale(L"더미", dir, 1);
 	}
 
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
@@ -96,9 +104,18 @@ void sceneTest::update(void)
 		MAINCAMERA->moveCamera(DIRECTION_RG);
 	}
 
+	if (KEYMANAGER->isOnceKeyDown('T'))
+	{
+		Sprite* sprite = IMAGEMANAGER->findImage(L"배경1");
+		sprite->getPixel();
+	}
+
+
 	
 
-
+	TEXTMANAGER->addText(L"테스트", L"테스트1");
+	TEXTMANAGER->addText(L"테스트", L"테스트2");
+	TEXTMANAGER->addText(L"테스트", L"테스트3");
 }
 
 void sceneTest::render(void)
@@ -110,5 +127,7 @@ void sceneTest::render(void)
 	int frameY = frameCnt / 2;
 
 	IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
+
+	TEXTMANAGER->render(L"테스트");
 
 }

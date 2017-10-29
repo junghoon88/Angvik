@@ -1,6 +1,7 @@
 #pragma once
 #include "DxWindow.h"
 #include "sceneInit.h"
+#include "sceneSelect.h"
 #include "sceneGame.h"
 #include "sceneTest.h"
 

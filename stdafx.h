@@ -81,8 +81,8 @@ using namespace IOTA_UTIL;
 // ## 매크로 함수 ##
 //==================================
 
-#define WINSIZEX 800
-#define WINSIZEY 600
+#define WINSIZEX 960
+#define WINSIZEY 540
 
 //#define PI 3.14159265f
 

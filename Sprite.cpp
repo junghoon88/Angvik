@@ -68,7 +68,17 @@ void Sprite::render(bool cameraOffset)
 	D3DXVECTOR3 offset = {0.0f, 0.0f, 0.0f};
 	if (cameraOffset)
 	{
-		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+		int cameraX = _mainCamera.x;
+		int cameraY = _mainCamera.y;
+
+		if (_scale.x < 0) cameraX *= -1;
+		if (_scale.y < 0) cameraY *= -1;
+
+		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
+
+		if (_scale.x < 0) offset.x += _size.x / 2;
+		if (_scale.y < 0) offset.y += _size.y / 2;
+
 	}
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
@@ -82,7 +92,17 @@ void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
 	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
 	if (cameraOffset)
 	{
-		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+		int cameraX = _mainCamera.x;
+		int cameraY = _mainCamera.y;
+
+		if (_scale.x < 0) cameraX *= -1;
+		if (_scale.y < 0) cameraY *= -1;
+
+		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
+
+		if (_scale.x < 0) offset.x += _size.x / 2;
+		if (_scale.y < 0) offset.y += _size.y / 2;
+
 	}
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
@@ -104,7 +124,17 @@ void Sprite::aniRender(animation* ani, bool cameraOffset)
 	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
 	if (cameraOffset)
 	{
-		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+		int cameraX = _mainCamera.x;
+		int cameraY = _mainCamera.y;
+
+		if (_scale.x < 0) cameraX *= -1;
+		if (_scale.y < 0) cameraY *= -1;
+
+		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
+
+		if (_scale.x < 0) offset.x += _size.x / 2;
+		if (_scale.y < 0) offset.y += _size.y / 2;
+
 	}
 	_sprite->Draw(_texture->getTexture(), &temp, NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
@@ -166,6 +196,15 @@ void Sprite::setScale(D3DXVECTOR2 scale)
 	_size.x = _texture->getWidth() * _scale.x;
 	_size.y = _texture->getHeight() * _scale.y;
 
+	//if (_scale.x < 0)
+	//{
+	//	_coord.x -= fabs(_texture->getWidth() * _scale.x);
+	//}
+	//if (_scale.y < 0)
+	//{
+	//	_coord.y -= fabs(_texture->getHeight() * _scale.y);
+	//}
+
 	AdjustTransform();
 }
 void Sprite::setCenterPer(D3DXVECTOR2 centerPer)
@@ -197,3 +236,10 @@ void Sprite::move(float moveX, float moveY)
 	AdjustTransform();
 }
 
+void Sprite::getPixel(void)
+{
+	//LPCSTR ss = D3DXGetPixelShaderProfile(_device);
+	//IDirect3DPixelShader9** pixelshader = (_device);
+	//_device->GetPixelShader(pixelshader);
+	printf("");
+}

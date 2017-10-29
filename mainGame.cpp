@@ -19,14 +19,12 @@ void mainGame::init(void)
 
 	initScene();
 
-	TEXTMANAGER->init(DEVICE, L"테스트");
-	TEXTMANAGER->setFont(L"테스트", 20, L"돋움체");
-
 }
 
 void mainGame::initScene(void)
 {
 	SCENEMANAGER->addScene(L"기본씬", new sceneInit);
+	SCENEMANAGER->addScene(L"셀렉씬", new sceneSelect);
 	SCENEMANAGER->addScene(L"게임씬", new sceneGame);
 	SCENEMANAGER->addScene(L"테스트씬", new sceneTest);
 
@@ -42,9 +40,7 @@ void mainGame::update(void)
 {
 	SCENEMANAGER->update();
 
-	TEXTMANAGER->addText(L"테스트", L"테스트1");
-	TEXTMANAGER->addText(L"테스트", L"테스트2");
-	TEXTMANAGER->addText(L"테스트", L"테스트3");
+
 }
 
 void mainGame::render(void)	
@@ -54,7 +50,6 @@ void mainGame::render(void)
 	//TIMEMANAGER->render();
 
 
-	TEXTMANAGER->render(L"테스트");
 
 }
 
