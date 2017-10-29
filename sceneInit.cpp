@@ -17,20 +17,6 @@ void sceneInit::init(void)
 	initText();
 }
 
-void sceneInit::release(void)
-{
-
-}
-
-void sceneInit::update(void) 
-{
-
-}
-
-void sceneInit::render(void) 
-{
-
-}
 
 void sceneInit::initImage(void)
 {
@@ -43,6 +29,21 @@ void sceneInit::initSound(void)
 }
 
 void sceneInit::initText(void)
+{
+
+}
+
+void sceneInit::release(void)
+{
+
+}
+
+void sceneInit::update(void) 
+{
+
+}
+
+void sceneInit::render(void) 
 {
 
 }

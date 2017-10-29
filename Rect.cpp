@@ -166,3 +166,12 @@ void Rect::setCenterPos(D3DXVECTOR2 centerPos)
 	AdjustTransform();
 }
 
+
+void Rect::move(float moveX, float moveY)
+{
+	_coord.x += moveX;
+	_coord.y += moveY;
+
+	AdjustTransform();
+}
+

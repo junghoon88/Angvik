@@ -1,21 +1,18 @@
 #pragma once
 #include "DxWindow.h"
 
-class sceneInit : public DxWindow
+class sceneSelect : public DxWindow
 {
 private:
-	void initImage(void);
-	void initSound(void);
-	void initText(void);
-
 
 public:
-	sceneInit();
-	~sceneInit();
+	sceneSelect();
+	~sceneSelect();
 
 	void init(void);
 	void release(void);
 	void update(void);
 	void render(void);
+
 };
 
