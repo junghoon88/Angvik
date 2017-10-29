@@ -190,3 +190,4 @@ using namespace IOTA_UTIL;
 //===================================
 
 extern POINT _ptMouse;
+extern POINT _mainCamera;

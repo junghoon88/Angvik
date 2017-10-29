@@ -38,10 +38,10 @@ public:
 	void setRotate(wstring strKey, float angleDeg);
 	void move(wstring strKey, float moveX, float moveY);
 
-	void render(wstring strKey, int cameraOffsetX = 0, int cameraOffsetY = 0);
+	void render(wstring strKey, bool cameraOffset = true);
 	//void render(wstring strKey, HDC hdc, int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight);
 
-	void frameRender(wstring strKey, int frameX, int frameY);
+	void frameRender(wstring strKey, int frameX, int frameY, bool cameraOffset = true);
 	//void frameRender(wstring strKey, HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY);
 
 	//void loopRender(wstring strKey, HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);
@@ -53,7 +53,7 @@ public:
 	//void alphaFrameRender(wstring strKey, HDC hdc, int destX, int destY, BYTE alpha);
 	//void alphaFrameRender(wstring strKey, HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY, BYTE alpha);
 
-	void aniRender(wstring strKey, animation* ani);
+	void aniRender(wstring strKey, animation* ani, bool cameraOffset = true);
 	//void aniAlphaRender(wstring strKey, HDC hdc, int destX, int destY, animation* ani, BYTE alpha);
 
 	//getter

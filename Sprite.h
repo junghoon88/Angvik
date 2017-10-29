@@ -31,9 +31,9 @@ public:
 	void init(int frameX, int frameY);
 	void release();
 	void update();
-	void render(int cameraOffsetX = 0, int cameraOffsetY = 0);
-	void frameRender(int frameX, int frameY, int cameraOffsetX = 0, int cameraOffsetY = 0);
-	void aniRender(animation* ani, int cameraOffsetX = 0, int cameraOffsetY = 0);
+	void render(bool cameraOffset = true);
+	void frameRender(int frameX, int frameY, bool cameraOffset = true);
+	void aniRender(animation* ani, bool cameraOffset = true);
 
 
 	void move(float moveX, float moveY);

@@ -12,8 +12,8 @@ camera::~camera()
 
 HRESULT camera::init(void)
 {
-	_cameraX = 0;
-	_cameraY = 0;
+	//_cameraX = 0;
+	//_cameraY = 0;
 
 	_minX = 0;
 	_minY = 0;
@@ -40,32 +40,20 @@ void camera::update(void)
 	if (_targetY < _minY)	_targetY = _minY;
 	if (_targetY > _maxY)	_targetY = _maxY;
 
-	if (_targetX != _cameraX)
+	if (_targetX != _mainCamera.x)
 	{
-		int speed = (abs(_targetX - _cameraX)*0.2 + 1) > CAMERA_SPEED ? CAMERA_SPEED : (abs(_targetX - _cameraX)*0.2 + 1);
+		int speed = (abs(_targetX - _mainCamera.x)*0.2 + 1) > CAMERA_SPEED ? CAMERA_SPEED : (abs(_targetX - _mainCamera.x)*0.2 + 1);
 
-		if (_targetX > _cameraX)	_cameraX += speed;
-		if (_targetX < _cameraX)	_cameraX -= speed;
+		if (_targetX > _mainCamera.x)	_mainCamera.x += speed;
+		if (_targetX < _mainCamera.x)	_mainCamera.x -= speed;
 	}
-	if (_targetY != _cameraY)
+	if (_targetY != _mainCamera.y)
 	{
-		int speed = (abs(_targetY - _cameraY)*0.2 + 1) > CAMERA_SPEED ? CAMERA_SPEED : (abs(_targetY - _cameraY)*0.2 + 1);
+		int speed = (abs(_targetY - _mainCamera.y)*0.2 + 1) > CAMERA_SPEED ? CAMERA_SPEED : (abs(_targetY - _mainCamera.y)*0.2 + 1);
 
-		if (_targetY > _cameraY)	_cameraY += speed;
-		if (_targetY < _cameraY)	_cameraY -= speed;
+		if (_targetY > _mainCamera.y)	_mainCamera.y += speed;
+		if (_targetY < _mainCamera.y)	_mainCamera.y -= speed;
 	}
-
-
-	//if (_cameraX < WINSIZEX / 2)				_cameraX = WINSIZEX / 2;
-	//if (_cameraX > MAP_WIDTH - WINSIZEX / 2)	_cameraX = MAP_WIDTH - WINSIZEX / 2;
-	//if (_cameraY < WINSIZEY / 2)				_cameraY = WINSIZEY / 2;
-	//if (_cameraY > MAP_WIDTH - WINSIZEY / 2)	_cameraY = MAP_WIDTH - WINSIZEY / 2;
-
-	//if (_cameraX < 0)						_cameraX = 0;
-	//if (_cameraX > MAP_WIDTH - WINSIZEX)	_cameraX = MAP_WIDTH - WINSIZEX;
-	//if (_cameraY < MAP_SKY)								_cameraY = MAP_SKY;
-	//if (_cameraY > MAP_SKY + MAP_HEIGHT - WINSIZEY)		_cameraY = MAP_SKY + MAP_HEIGHT - WINSIZEY;
-
 }
 
 
@@ -74,29 +62,29 @@ void camera::moveCamera(DIRECTION dir)
 	switch (dir)
 	{
 	case DIRECTION_LF:
-		_cameraX -= CAMERA_SPEED;
+		_mainCamera.x -= CAMERA_SPEED;
 		break;
 	case DIRECTION_RG:
-		_cameraX += CAMERA_SPEED;
+		_mainCamera.x += CAMERA_SPEED;
 		break;
 	case DIRECTION_UP:
-		_cameraY -= CAMERA_SPEED;
+		_mainCamera.y -= CAMERA_SPEED;
 		break;
 	case DIRECTION_DN:
-		_cameraY += CAMERA_SPEED;
+		_mainCamera.y += CAMERA_SPEED;
 		break;
 	}
 
-	if (_cameraX < _minX)	_cameraX = _minX;
-	if (_cameraX > _maxX)	_cameraX = _maxX;
+	if (_mainCamera.x < _minX)	_mainCamera.x = _minX;
+	if (_mainCamera.x > _maxX)	_mainCamera.x = _maxX;
 
-	if (_cameraY < _minY)	_cameraY = _minY;
-	if (_cameraY > _maxY)	_cameraY = _maxY;
+	if (_mainCamera.y < _minY)	_mainCamera.y = _minY;
+	if (_mainCamera.y > _maxY)	_mainCamera.y = _maxY;
 }
 
 
 void camera::earthquake(float power)
 {
-	_cameraX += RND->getFromFloatTo(-power, power);
-	_cameraY += RND->getFromFloatTo(-power, power);
+	_mainCamera.x += RND->getFromFloatTo(-power, power);
+	_mainCamera.y += RND->getFromFloatTo(-power, power);
 }

@@ -60,27 +60,35 @@ void Sprite::update()
 
 }
 
-void Sprite::render(int cameraOffsetX, int cameraOffsetY)
+void Sprite::render(bool cameraOffset)
 {
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	//camera offset
-	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	D3DXVECTOR3 offset = {0.0f, 0.0f, 0.0f};
+	if (cameraOffset)
+	{
+		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+	}
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
 }
 
-void Sprite::frameRender(int frameX, int frameY, int cameraOffsetX, int cameraOffsetY)
+void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
 {
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	//camera offset
-	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
+	if (cameraOffset)
+	{
+		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+	}
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
 }
 
-void Sprite::aniRender(animation* ani, int cameraOffsetX, int cameraOffsetY)
+void Sprite::aniRender(animation* ani, bool cameraOffset)
 {
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
@@ -93,7 +101,11 @@ void Sprite::aniRender(animation* ani, int cameraOffsetX, int cameraOffsetY)
 	temp.bottom = temp.top + ani->getFrameHeight();
 
 	//camera offset
-	D3DXVECTOR3 offset = { (float)-cameraOffsetX, (float)-cameraOffsetY , 0.0f };
+	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
+	if (cameraOffset)
+	{
+		offset = { (float)-_mainCamera.x, (float)-_mainCamera.y, 0.0f };
+	}
 	_sprite->Draw(_texture->getTexture(), &temp, NULL, &offset, 0xFFFFFFFF);
 	_sprite->End();
 }

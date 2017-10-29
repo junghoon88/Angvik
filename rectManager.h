@@ -23,7 +23,7 @@ public:
 	Rect* findRect(wstring strKey);
 
 
-	void render(wstring strKey, int cameraOffsetX = 0, int cameraOffsetY = 0);
+	void render(wstring strKey, bool cameraOffset = true);
 	RECT getRect(wstring strKey);
 
 	void setCoord(wstring strKey, float x, float y);

@@ -128,23 +128,23 @@ void imageManager::move(wstring strKey, float moveX, float moveY)
 
 
 
-void imageManager::render(wstring strKey, int cameraOffsetX, int cameraOffsetY)
+void imageManager::render(wstring strKey, bool cameraOffset)
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->render(cameraOffsetX, cameraOffsetY);
+	if (sprite) sprite->render(cameraOffset);
 }
 
-void imageManager::frameRender(wstring strKey, int frameX, int frameY)
+void imageManager::frameRender(wstring strKey, int frameX, int frameY, bool cameraOffset)
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->frameRender(frameX, frameY);
+	if (sprite) sprite->frameRender(frameX, frameY, cameraOffset);
 }
 
-void imageManager::aniRender(wstring strKey, animation* ani)
+void imageManager::aniRender(wstring strKey, animation* ani, bool cameraOffset)
 {
 	Sprite * sprite = findImage(strKey);
 
-	if (sprite) sprite->aniRender(ani);
+	if (sprite) sprite->aniRender(ani, cameraOffset);
 }

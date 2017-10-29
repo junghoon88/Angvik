@@ -5,8 +5,8 @@
 class camera : public singletonBase<camera>
 {
 private:
-	int _cameraX;		//카메라 현재 위치
-	int _cameraY;		//
+	//int _cameraX;		//카메라 현재 위치
+	//int _cameraY;		//
 						
 	int _targetX;		//카메라가 가야할 위치
 	int _targetY;		//
@@ -25,11 +25,11 @@ public:
 	void earthquake(float power);
 
 	//getter, setter
-	inline int getCameraX(void) { return _cameraX; }
-	inline int getCameraY(void) { return _cameraY; }
-	inline void setCameraPos(int x, int y) { _cameraX = x; _cameraY = y; }
-	inline void setCameraX(int x) { _cameraX = x; }
-	inline void setCameraY(int y) { _cameraY = y; }
+	//inline int getCameraX(void) { return _cameraX; }
+	//inline int getCameraY(void) { return _cameraY; }
+	//inline void setCameraPos(int x, int y) { _cameraX = x; _cameraY = y; }
+	//inline void setCameraX(int x) { _cameraX = x; }
+	//inline void setCameraY(int y) { _cameraY = y; }
 	inline void setTargetPos(int x, int y) { _targetX = x; _targetY = y; }
 	inline void setTargetX(int x) { _targetX = x; }
 	inline void setTargetY(int y) { _targetY = y; }

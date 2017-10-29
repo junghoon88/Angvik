@@ -3,6 +3,7 @@
 #include "mainGame.h"
 
 POINT _ptMouse;
+POINT _mainCamera = { 0, 0 };
 
 //Window
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

@@ -62,11 +62,11 @@ Rect* rectManager::findRect(wstring strKey)
 }
 
 
-void rectManager::render(wstring strKey, int cameraOffsetX, int cameraOffsetY)
+void rectManager::render(wstring strKey, bool cameraOffset)
 {
 	Rect* rc = findRect(strKey);
 
-	if (rc) rc->render(cameraOffsetX, cameraOffsetY);
+	if (rc) rc->render(cameraOffset);
 }
 
 RECT rectManager::getRect(wstring strKey)

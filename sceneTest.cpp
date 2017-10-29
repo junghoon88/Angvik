@@ -104,11 +104,11 @@ void sceneTest::update(void)
 void sceneTest::render(void)
 {
 	IMAGEMANAGER->findImage(L"배경1")->setCoord({ 100, 0 });
-	IMAGEMANAGER->findImage(L"배경1")->render(MAINCAMERA->getCameraX(), MAINCAMERA->getCameraY());
+	IMAGEMANAGER->findImage(L"배경1")->render();
 
 	int frameX = frameCnt % 2;
 	int frameY = frameCnt / 2;
 
-	IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY, MAINCAMERA->getCameraX(), MAINCAMERA->getCameraY());
+	IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
 
 }
