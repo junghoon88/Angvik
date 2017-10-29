@@ -7,7 +7,7 @@ private:
 	LPD3DXLINE _line;
 	DWORD _lineColor;
 	D3DXVECTOR3 _lineVector[5];
-	
+
 	D3DXVECTOR2 _coord;
 	D3DXVECTOR2 _size;
 	D3DXVECTOR2 _scale;
@@ -32,6 +32,8 @@ public:
 	RECT getRect();
 	inline D3DXVECTOR2 getCoord() { return _coord; }
 	inline DWORD getcolor() { return _lineColor; }
+	inline D3DXVECTOR2 getCenter(void) { return _center; }
+	inline float getAngle(void) { return _angleDeg; }
 
 	void setCoord(D3DXVECTOR2 coord);
 	void setSize(D3DXVECTOR2 size);

@@ -9,7 +9,7 @@ class itemManager;
 class stageManager : public DxWindow
 {
 private:
-
+	int _stage;
 
 
 	PlayerManager* _pm;

@@ -65,6 +65,8 @@ void Sprite::render(bool cameraOffset)
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	//camera offset
+	D3DXVECTOR3 center = _center;
+
 	D3DXVECTOR3 offset = {0.0f, 0.0f, 0.0f};
 	if (cameraOffset)
 	{
@@ -75,6 +77,9 @@ void Sprite::render(bool cameraOffset)
 		if (_scale.y < 0) cameraY *= -1;
 
 		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
+
+		//center.x -= cameraX / 5;
+		//center.y -= cameraY / 5;
 
 		if (_scale.x < 0) offset.x += _size.x / 2;
 		if (_scale.y < 0) offset.y += _size.y / 2;
