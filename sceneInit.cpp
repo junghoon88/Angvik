@@ -20,7 +20,7 @@ void sceneInit::init(void)
 
 void sceneInit::initImage(void)
 {
-
+	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png", WINSIZEX, WINSIZEY);
 }
 
 void sceneInit::initSound(void)

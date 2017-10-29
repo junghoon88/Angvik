@@ -24,7 +24,7 @@ void sceneTest::init(void)
 
 void sceneTest::initImage(void)
 {
-	IMAGEMANAGER->addImage(DEVICE, L"배경1", L"image/1.png");
+	IMAGEMANAGER->addImage(DEVICE, L"배경1", L"image/Character/1.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"더미", L"image/dummy.png", 2, 3);
 
 	IMAGEMANAGER->setCoord(L"더미", 100, 100);
