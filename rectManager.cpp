@@ -131,3 +131,9 @@ void rectManager::setColor(wstring strKey, COLORREF color, BYTE alpha)
 	if (rc) rc->setColor(colorARGB);
 }
 
+void rectManager::move(wstring strKey, float moveX, float moveY)
+{
+	Rect* rc = findRect(strKey);
+
+	if (rc) rc->move(moveX, moveY);
+}

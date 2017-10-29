@@ -33,6 +33,7 @@ public:
 	void setCenterPer(wstring strKey, float x, float y); //size 기준 배율로
 	void setCenterPos(wstring strKey, float x, float y); //position
 	void setColor(wstring strKey, COLORREF color, BYTE alpha);
+	void move(wstring strKey, float moveX, float moveY);
 
 };
 

@@ -40,6 +40,7 @@ public:
 	void setCenterPer(D3DXVECTOR2 centerPer); //size 기준 배율로
 	void setCenterPos(D3DXVECTOR2 centerPos); //position
 	inline void setColor(DWORD color) { _lineColor = color; }
+	void move(float moveX, float moveY);
 	
 
 };

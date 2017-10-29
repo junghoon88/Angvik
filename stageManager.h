@@ -3,21 +3,22 @@
 
 //전방선언
 class PlayerManager;
-class stageManager;
+class EnemyManager;
 class itemManager;
 
-class EnemyManager : public DxWindow
+class stageManager : public DxWindow
 {
 private:
 
 
+
 	PlayerManager* _pm;
-	stageManager* _sm;
+	EnemyManager* _em;
 	itemManager* _im;
 
 public:
-	EnemyManager();
-	~EnemyManager();
+	stageManager();
+	~stageManager();
 
 	void init(void);
 	void release(void);
@@ -25,9 +26,10 @@ public:
 	void render(void);
 
 
+
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }
-	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
+	inline void setLinkAdressEnemyManager(EnemyManager*   em) { _em = em; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 
 };
