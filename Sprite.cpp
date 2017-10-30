@@ -84,9 +84,21 @@ void Sprite::render(bool cameraOffset)
 		if (_scale.x < 0) offset.x += _size.x / 2;
 		if (_scale.y < 0) offset.y += _size.y / 2;
 
+		//D3DXVECTOR3 vEyePt(0.0f, 0.0f, -5.0f);							//1. 눈의 위치
+		//D3DXVECTOR3 vLookatPt(-cameraX, -cameraY, 0.0f);						//2. 눈이 바라보는 위치
+		//D3DXVECTOR3 vUpVec(0.0f, 1.0f, 0.0f);							//3. 천정방향을 나타내는 상방벡터
+		//D3DXMATRIXA16 matView;											//
+		//D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);		//뷰 행렬 생성
+		//_sprite->SetWorldViewLH(&_world, &matView);
+
+		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
+		_sprite->End();
 	}
-	_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
-	_sprite->End();
+	else
+	{
+		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
+		_sprite->End();
+	}
 }
 
 void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
@@ -248,3 +260,11 @@ void Sprite::getPixel(void)
 	//_device->GetPixelShader(pixelshader);
 	printf("");
 }
+
+
+int Sprite::getCurFrameX(void) { if (_texture) return _texture->getCurFrameX(); }
+int Sprite::getCurFrameY(void) { if (_texture) return _texture->getCurFrameY(); }
+void Sprite::setCurFrameX(int frameX) { if (_texture) _texture->setCurFrameX(frameX); }
+void Sprite::setCurFrameY(int frameY) { if (_texture) _texture->setCurFrameY(frameY); }
+int Sprite::getMaxFrameX(void) { if (_texture) return _texture->getMaxFrameX(); }
+int Sprite::getMaxFrameY(void) { if (_texture) return _texture->getMaxFrameY(); }

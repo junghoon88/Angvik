@@ -37,6 +37,13 @@ public:
 	inline int getFrameWidth(void) { return frameWidth; }
 	inline int getFrameHeight(void) { return frameHeight; }
 
+	inline int getCurFrameX(void) { return curFrameX; }
+	inline int getCurFrameY(void) { return curFrameY; }
+	inline void setCurFrameX(int frameX) { curFrameX = frameX; }
+	inline void setCurFrameY(int frameY) { curFrameY = frameY; }
+	inline int getMaxFrameX(void) { return maxFrameX; }
+	inline int getMaxFrameY(void) { return maxFrameY; }
+
 	LPDIRECT3DTEXTURE9 getTexture() { return texture; }
 
 

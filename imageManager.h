@@ -56,6 +56,14 @@ public:
 	void aniRender(wstring strKey, animation* ani, bool cameraOffset = true);
 	//void aniAlphaRender(wstring strKey, HDC hdc, int destX, int destY, animation* ani, BYTE alpha);
 
+	int getCurFrameX(wstring strKey);
+	int getCurFrameY(wstring strKey);
+	void setCurFrameX(wstring strKey, int frameX);
+	void setCurFrameY(wstring strKey, int frameY);
+	void setCurFrame(wstring strKey, int frameX, int frameY);
+	int getMaxFrameX(wstring strKey);
+	int getMaxFrameY(wstring strKey);
+
 	//getter
 	//wstring FindKeyByImage(Sprite* img);
 };

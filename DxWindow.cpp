@@ -158,13 +158,37 @@ void DxWindow::CreateDevice(void)
 	ShowCursor(isShowCursor); //커서 설정
 }
 
+
+/**-----------------------------------------------------------------------------
+* 행렬 설정
+*------------------------------------------------------------------------------
+*/
+void DxWindow::SetupMatrices()
+{
+	/// 월드행렬
+	D3DXMATRIXA16 matWorld;
+	D3DXMatrixIdentity(&matWorld);
+	D3DXMatrixRotationX(&matWorld, timeGetTime() / 1000.0f);
+	device->SetTransform(D3DTS_WORLD, &matWorld);
+
+	/// 뷰행렬을 설정
+	D3DXVECTOR3 vEyePt(0.0f, 0.0f, -5.0f);
+	D3DXVECTOR3 vLookatPt((float)_mainCamera.x, (float)_mainCamera.y, 0.0f);
+	D3DXVECTOR3 vUpVec(0.0f, 1.0f, 0.0f);
+	D3DXMATRIXA16 matView;
+	D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);
+	device->SetTransform(D3DTS_VIEW, &matView);
+
+	/// 프로젝션 행렬 설정
+	D3DXMATRIXA16 matProj;
+	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
+	device->SetTransform(D3DTS_PROJECTION, &matProj);
+}
+
 WPARAM DxWindow::Run(void)
 {
 	MSG message;
 	ZeroMemory(&message, sizeof(message));
-
-	//PrintText::GetInstance()->SetDevice(device);
-
 
 	while (message.message != WM_QUIT)
 	{
@@ -177,15 +201,17 @@ WPARAM DxWindow::Run(void)
 		{
 			TIMEMANAGER->update(60.0f);
 
-			//Keyboard::GetInstance()->update();
 
 			update();
+
 
 			device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xFFFFFFFF, 1.0f, 0);
 			device->BeginScene();
 
+			//SetupMatrices();
+
+
 			render();
-			//PrintText::GetInstance()->render();
 
 			device->EndScene();
 			device->Present(0, 0, 0, 0);

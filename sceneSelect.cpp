@@ -31,7 +31,7 @@ void sceneSelect::update(void)
 		_frameX++;
 		_countTime = 0;
 	}
-	if (_frameX == 9) _frameX = 0;
+	if (_frameX == IMAGEMANAGER->findImage(L"선택")->getPixel) _frameX = 0;
 	IMAGEMANAGER->findImage(L"선택")->setCoord({ 0,0 });
 }
 
