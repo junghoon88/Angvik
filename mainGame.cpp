@@ -30,8 +30,9 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"ев╫╨ф╝╬ю", new sceneTest);
 	scene->init();
-
-	SCENEMANAGER->changeScene(L"╪©╥╨╬ю");
+	scene = SCENEMANAGER->addScene(L"╬фюлешев╫╨ф╝╬ю", new sceneitemTest);
+	scene->init();
+	SCENEMANAGER->changeScene(L"╬фюлешев╫╨ф╝╬ю");
 }
 
 void mainGame::release(void)
