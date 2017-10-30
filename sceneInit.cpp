@@ -19,11 +19,26 @@ void sceneInit::init(void)
 
 void sceneInit::release(void)
 {
-<<<<<<< HEAD
+
+}
+
+void sceneInit::update(void) 
+{
+
+}
+
+void sceneInit::render(void) 
+{
+
+}
+
+void sceneInit::initImage(void)
+{
+	playerInitImage();	//	플레이어의 이미지 초기화 함수
+
+
 	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
-=======
-	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
 
 	//아이템 무기 & 오일
 	IMAGEMANAGER->addImage(device, L"흰색칼", L"image/item/흰색칼.png");
@@ -56,23 +71,6 @@ void sceneInit::release(void)
 	IMAGEMANAGER->addFrameImage(device, L"흰새", L"image/item/흰새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"황금새", L"image/item/황금새.png", 8, 1);
 
-	
->>>>>>> 7c30778d2b66290f0409b76110f523eea236564b
-}
-
-void sceneInit::update(void) 
-{
-
-}
-
-void sceneInit::render(void) 
-{
-
-}
-
-void sceneInit::initImage(void)
-{
-	playerInitImage();	//	플레이어의 이미지 초기화 함수
 }
 
 void sceneInit::initSound(void)
