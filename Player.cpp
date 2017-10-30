@@ -40,8 +40,8 @@ void Player::init(void)
 	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
 
 	//========== 키 애니메이션 초기화 ==========
-	KEYANIMANAGER->addDefaultFrameAnimation(L"rightMove", L"bodyRightwalk", 10, false, true);
-	KEYANIMANAGER->addDefaultFrameAnimation(L"leftMove", L"bodyLeftwalk", 10, false, true);
+	KEYANIMANAGER->addDefaultFrameAnimation(L"rightMove", L"bodyRightWalk", 10, false, true);
+	KEYANIMANAGER->addDefaultFrameAnimation(L"leftMove", L"bodyLeftWalk", 10, false, true);
 
 	//========== 각 부위 포지션 세팅 ==========
 	IMAGEMANAGER->setCenterPos(L"head0", _x - 1, _y - 40);
