@@ -31,7 +31,11 @@ void mainGame::initScene(void)
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneTest);
 	scene->init();
 
+<<<<<<< HEAD
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
+=======
+	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+>>>>>>> 383a20fe0a84cf08da9b913d89fe5e28246e1215
 }
 
 void mainGame::release(void)

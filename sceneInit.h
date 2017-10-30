@@ -8,6 +8,8 @@ private:
 	void initSound(void);
 	void initText(void);
 
+	void playerInitImage(void);
+
 
 public:
 	sceneInit();

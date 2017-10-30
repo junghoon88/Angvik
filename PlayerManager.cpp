@@ -26,11 +26,11 @@ void PlayerManager::release(void)
 
 void PlayerManager::update(void) 
 {
-
+	_player->update();
 }
 
 void PlayerManager::render(void) 
 {
-
+	_player->render();
 }
 
