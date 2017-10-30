@@ -37,7 +37,7 @@ void sceneInit::initImage(void)
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 
 
-	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
+	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
 
 	//아이템 무기 & 오일
@@ -70,7 +70,6 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addFrameImage(device, L"검은새", L"image/item/검은새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"흰새", L"image/item/흰새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"황금새", L"image/item/황금새.png", 8, 1);
-
 }
 
 void sceneInit::initSound(void)
