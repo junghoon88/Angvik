@@ -143,6 +143,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>mainGame\sceneGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyMother.cpp">
+      <Filter>mainGame\sceneGame\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -243,5 +246,8 @@
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="stageManager.h" />
+    <ClInclude Include="EnemyMother.h">
+      <Filter>mainGame\sceneGame\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
