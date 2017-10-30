@@ -56,6 +56,14 @@ public:
 	void setCenterPos(D3DXVECTOR2 centerPos); //position
 	void setRotate(float angleDeg);
 
+	int getCurFrameX(void);
+	int getCurFrameY(void);
+	void setCurFrameX(int frameX);
+	void setCurFrameY(int frameY);
+	int getMaxFrameX(void);
+	int getMaxFrameY(void);
+
+
 	inline Texture* getTexture(void) { return _texture; }
 };
 

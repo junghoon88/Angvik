@@ -148,3 +148,61 @@ void imageManager::aniRender(wstring strKey, animation* ani, bool cameraOffset)
 
 	if (sprite) sprite->aniRender(ani, cameraOffset);
 }
+
+
+int imageManager::getCurFrameX(wstring strKey)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) return sprite->getCurFrameX();
+
+	return 0;
+}
+int imageManager::getCurFrameY(wstring strKey)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) return sprite->getCurFrameY();
+
+	return 0;
+}
+
+void imageManager::setCurFrameX(wstring strKey, int frameX)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) sprite->setCurFrameX(frameX);
+}
+
+void imageManager::setCurFrameY(wstring strKey, int frameY)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) sprite->setCurFrameY(frameY);
+}
+
+void imageManager::setCurFrame(wstring strKey, int frameX, int frameY)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) sprite->setCurFrameX(frameX);
+	if (sprite) sprite->setCurFrameY(frameY);
+}
+int imageManager::getMaxFrameX(wstring strKey)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) return sprite->getMaxFrameX();
+
+	return 0;
+}
+
+int imageManager::getMaxFrameY(wstring strKey)
+{
+	Sprite * sprite = findImage(strKey);
+
+	if (sprite) return sprite->getCurFrameY();
+
+	return 0;
+}
+
