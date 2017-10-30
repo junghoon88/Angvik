@@ -95,19 +95,19 @@ void sceneTest::update(void)
 		if (frameCnt >= 6) frameCnt = 0;
 	}
 
-	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD8))
+	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_UP);
 	}
-	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD5))
+	if (KEYMANAGER->isStayKeyDown('S'))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_DN);
 	}
-	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD4))
+	if (KEYMANAGER->isStayKeyDown('A'))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_LF);
 	}
-	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD6))
+	if (KEYMANAGER->isStayKeyDown('D'))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_RG);
 	}
