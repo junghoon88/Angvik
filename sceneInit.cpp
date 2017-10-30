@@ -20,7 +20,8 @@ void sceneInit::init(void)
 
 void sceneInit::initImage(void)
 {
-	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
+	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
+	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
 }
 
 void sceneInit::initSound(void)
