@@ -14,14 +14,14 @@ enum enemyState
 class EnemyMother
 {
 protected:
+	image* img;
 	RECT rc;
 	float ptX;
 	float ptY;
 	float speed;
 	float jumpPower;
 	int life;
-
-	image* img;
+		
 	enemyDirection dir;
 	enemyState state;
 
