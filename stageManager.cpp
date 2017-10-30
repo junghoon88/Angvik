@@ -14,7 +14,8 @@ stageManager::~stageManager()
 
 void stageManager::init(void)
 {
-
+	_stage = 1;
+	
 }
 
 void stageManager::release(void)

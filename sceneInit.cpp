@@ -19,7 +19,7 @@ void sceneInit::init(void)
 
 void sceneInit::release(void)
 {
-
+	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
 }
 
 void sceneInit::update(void) 
