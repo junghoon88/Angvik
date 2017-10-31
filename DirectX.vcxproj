@@ -77,7 +77,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -151,6 +151,8 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="EnemyMother.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="invenBird.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="PBGManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
@@ -189,7 +192,9 @@
     <ClInclude Include="database.h" />
     <ClInclude Include="DxWindow.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="EnemyMother.h" />
     <ClInclude Include="globalMacroVariables.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="invenBird.h" />
@@ -199,6 +204,7 @@
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="PBGManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="PrintText.h" />

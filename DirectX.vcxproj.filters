@@ -1,253 +1,305 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="DirectX">
-      <UniqueIdentifier>{f1b15e2a-52cf-4f1a-9061-5810d779f795}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame">
-      <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Sprite">
-      <UniqueIdentifier>{b583f49a-cce0-4ead-8ffe-222493d4146e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Rect">
-      <UniqueIdentifier>{d62e47d4-eae8-4383-b1e3-e570cf157065}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Manager">
-      <UniqueIdentifier>{d7073d4e-de1c-48c3-89c9-55be9646aba7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\timer">
-      <UniqueIdentifier>{2ca86945-9a93-478c-be30-c6f3628f7837}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\UTIL">
-      <UniqueIdentifier>{d3845d30-9038-42ba-bc64-e015cd2aa0d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\database">
-      <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\camera">
-      <UniqueIdentifier>{87fd941a-6782-4d54-a50b-3a7e3a5aa189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\PrintText">
-      <UniqueIdentifier>{fbdd00e4-87c1-4a28-899c-9e41bfc92ebf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneInit">
-      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame">
-      <UniqueIdentifier>{43eabde1-1190-4171-b89e-1d0668eac50e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Player">
-      <UniqueIdentifier>{1493faf0-859f-406d-a5cd-96cf8a9a7656}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Enemy">
-      <UniqueIdentifier>{20731369-cc1e-4245-89de-48278fc765a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Item">
-      <UniqueIdentifier>{2f577a16-3814-40bd-aeb2-aee925ee82f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Interface">
-      <UniqueIdentifier>{7b3ac083-b088-44db-b423-3b7c882dceb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\animation">
-      <UniqueIdentifier>{6acbdbb1-eae8-4d65-a370-8a0e909c9659}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>DirectX\Sprite</Filter>
+    <ClCompile Include="animation.cpp">
+      <Filter>DxWindow\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>DirectX\Sprite</Filter>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>mainGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMother.cpp">
+      <Filter>mainGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="keyAniManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="keyManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PBGManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="timeManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="textManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="rectManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>mainGame</Filter>
     </ClCompile>
     <ClCompile Include="DxWindow.cpp">
-      <Filter>DirectX</Filter>
+      <Filter>DxWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>DxWindow\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>DxWindow\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>DxWindow\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
-      <Filter>DirectX\Rect</Filter>
+      <Filter>DxWindow\Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>DxWindow\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>DxWindow\UTIL</Filter>
     </ClCompile>
     <ClCompile Include="mainGame.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
+    <ClCompile Include="sceneGame.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneInit.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
     <ClCompile Include="sceneManager.cpp">
-      <Filter>DirectX\Manager</Filter>
+      <Filter>mainGame</Filter>
     </ClCompile>
-    <ClCompile Include="imageManager.cpp">
-      <Filter>DirectX\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="timer.cpp">
-      <Filter>DirectX\timer</Filter>
-    </ClCompile>
-    <ClCompile Include="timeManager.cpp">
-      <Filter>DirectX\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="database.cpp">
-      <Filter>mainGame\database</Filter>
-    </ClCompile>
-    <ClCompile Include="camera.cpp">
-      <Filter>DirectX\camera</Filter>
-    </ClCompile>
-    <ClCompile Include="keyManager.cpp">
-      <Filter>DirectX\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="collision.cpp">
-      <Filter>DirectX\UTIL</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>DirectX\UTIL</Filter>
-    </ClCompile>
-    <ClCompile Include="PrintText.cpp">
-      <Filter>DirectX\PrintText</Filter>
-    </ClCompile>
-    <ClCompile Include="textManager.cpp">
-      <Filter>DirectX\Manager</Filter>
+    <ClCompile Include="sceneSelect.cpp">
+      <Filter>mainGame</Filter>
     </ClCompile>
     <ClCompile Include="sceneTest.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
-    <ClCompile Include="sceneInit.cpp">
-      <Filter>mainGame\sceneInit</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneGame.cpp">
-      <Filter>mainGame\sceneGame</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>mainGame\sceneGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Interface.cpp">
-      <Filter>mainGame\sceneGame\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerManager.cpp">
-      <Filter>mainGame\sceneGame\Player</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>mainGame\Player</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>mainGame\sceneGame\Item</Filter>
+      <Filter>mainGame\item</Filter>
     </ClCompile>
-    <ClCompile Include="animation.cpp">
-      <Filter>DirectX\animation</Filter>
+    <ClCompile Include="itemManager.cpp">
+      <Filter>mainGame\item</Filter>
     </ClCompile>
-    <ClCompile Include="keyAniManager.cpp">
-      <Filter>DirectX\Manager</Filter>
+    <ClCompile Include="Interface.cpp">
+      <Filter>mainGame\interface</Filter>
     </ClCompile>
-    <ClCompile Include="rectManager.cpp">
-      <Filter>DirectX\Manager</Filter>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\Player</Filter>
     </ClCompile>
-    <ClCompile Include="invenBird.cpp" />
-    <ClCompile Include="inventory.cpp" />
-    <ClCompile Include="itemManager.cpp" />
-    <ClCompile Include="sceneSelect.cpp" />
-    <ClCompile Include="stageManager.cpp" />
-    <ClCompile Include="Player.cpp">
-      <Filter>mainGame\sceneGame\Player</Filter>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="stageManager.cpp">
+      <Filter>mainGame\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>DxWindow\image</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintText.cpp">
+      <Filter>DxWindow\PrintText</Filter>
+    </ClCompile>
+    <ClCompile Include="playerSceneTest.cpp">
+      <Filter>mainGame</Filter>
     </ClCompile>
     <ClCompile Include="sceneitemTest.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sprite.h">
-      <Filter>DirectX\Sprite</Filter>
+    <ClInclude Include="animation.h">
+      <Filter>DxWindow\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>DirectX\Sprite</Filter>
+    <ClInclude Include="EnemyMother.h">
+      <Filter>mainGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>mainGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="imageManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="keyAniManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="keyManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PBGManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="timeManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="textManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="rectManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>mainGame</Filter>
     </ClInclude>
     <ClInclude Include="DxWindow.h">
-      <Filter>DirectX</Filter>
+      <Filter>DxWindow</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="camera.h">
+      <Filter>DxWindow\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>DxWindow\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>DxWindow\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="Rect.h">
-      <Filter>DirectX\Rect</Filter>
+      <Filter>DxWindow\Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>DxWindow\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>DxWindow\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="globalMacroVariables.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFunction.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="mainGame.h">
       <Filter>mainGame</Filter>
     </ClInclude>
+    <ClInclude Include="sceneGame.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneInit.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
     <ClInclude Include="sceneManager.h">
-      <Filter>DirectX\Manager</Filter>
+      <Filter>mainGame</Filter>
     </ClInclude>
-    <ClInclude Include="imageManager.h">
-      <Filter>DirectX\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>DirectX\timer</Filter>
-    </ClInclude>
-    <ClInclude Include="timeManager.h">
-      <Filter>DirectX\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="commonMacroFunction.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="database.h">
-      <Filter>mainGame\database</Filter>
-    </ClInclude>
-    <ClInclude Include="globalMacroVariables.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>DirectX\camera</Filter>
-    </ClInclude>
-    <ClInclude Include="randomFunction.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="keyManager.h">
-      <Filter>DirectX\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>DirectX\UTIL</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>DirectX\UTIL</Filter>
-    </ClInclude>
-    <ClInclude Include="PrintText.h">
-      <Filter>DirectX\PrintText</Filter>
-    </ClInclude>
-    <ClInclude Include="textManager.h">
-      <Filter>DirectX\Manager</Filter>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame</Filter>
     </ClInclude>
     <ClInclude Include="sceneTest.h">
       <Filter>mainGame</Filter>
     </ClInclude>
-    <ClInclude Include="sceneInit.h">
-      <Filter>mainGame\sceneInit</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneGame.h">
-      <Filter>mainGame\sceneGame</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>mainGame\sceneGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>mainGame\sceneGame\Interface</Filter>
+    <ClInclude Include="stdafx.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>mainGame\sceneGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerManager.h">
-      <Filter>mainGame\sceneGame\Player</Filter>
+      <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>mainGame\sceneGame\Item</Filter>
+      <Filter>mainGame\item</Filter>
     </ClInclude>
-    <ClInclude Include="animation.h">
-      <Filter>DirectX\animation</Filter>
+    <ClInclude Include="itemManager.h">
+      <Filter>mainGame\item</Filter>
     </ClInclude>
-    <ClInclude Include="keyAniManager.h">
-      <Filter>DirectX\Manager</Filter>
+    <ClInclude Include="Interface.h">
+      <Filter>mainGame\interface</Filter>
     </ClInclude>
-    <ClInclude Include="rectManager.h">
-      <Filter>DirectX\Manager</Filter>
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\Player</Filter>
     </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="stageManager.h">
+      <Filter>mainGame\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>DxWindow\image</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintText.h">
+      <Filter>DxWindow\PrintText</Filter>
+    </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="invenBird.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="stageManager.h" />
+<<<<<<< HEAD
     <ClInclude Include="sceneitemTest.h">
       <Filter>mainGame</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="playerSceneTest.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+=======
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="mainGame">
+      <UniqueIdentifier>{a077d8d1-66fe-4e56-9de2-837633154462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow">
+      <UniqueIdentifier>{b6c5733b-b097-4081-8985-2fe3d39566de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\animation">
+      <UniqueIdentifier>{8abb4b56-d243-4ef6-ac1c-a4942cdb58f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\camera">
+      <UniqueIdentifier>{0db8bc6f-a912-4fc7-8a0c-c5fcf23fb82e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\UTIL">
+      <UniqueIdentifier>{ac7385d2-9d86-4a30-89cb-5490c9cd3e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{90c486fc-c3f7-44c4-8a53-3dea85ca33af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Player">
+      <UniqueIdentifier>{1cece4e4-8589-44da-a142-8492f2908f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Enemy">
+      <UniqueIdentifier>{c7e7ad95-de06-479a-a726-7afd1db2c7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Stage">
+      <UniqueIdentifier>{8afe326f-db41-4547-a037-d7ca9820b315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Manager">
+      <UniqueIdentifier>{36ba96d6-d009-407b-92bf-cbe0eb1a6984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Sprite">
+      <UniqueIdentifier>{7f9fc6e6-897c-48fa-b80d-81a6767d02bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Rect">
+      <UniqueIdentifier>{cca6865b-9b73-4dc3-8ae0-91ca6520a374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\timer">
+      <UniqueIdentifier>{2a88910e-99d3-471c-8755-a560835f270c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\item">
+      <UniqueIdentifier>{ec35e1aa-8da5-400e-a77b-2d59e4da7358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\interface">
+      <UniqueIdentifier>{44b19c39-2c86-4612-ad24-cdd6983d6ac7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\image">
+      <UniqueIdentifier>{7cf44f52-3401-4e21-9b3e-c8c496763cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\PrintText">
+      <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
+    </Filter>
+>>>>>>> 0948da7545577301f043485afe74e4d67d4ffdb4
+>>>>>>> origin/master
   </ItemGroup>
 </Project>
