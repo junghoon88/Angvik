@@ -13,13 +13,8 @@
     <Filter Include="mainGame\scene">
       <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="mainGame\Enemy\1st">
-      <UniqueIdentifier>{dd519525-f16a-441c-a0e3-3b46ddb14b3b}</UniqueIdentifier>
-=======
     <Filter Include="mainGame\Enemy\st1">
       <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
->>>>>>> 0b9979bfc1dbdc7dafd5842f650ecf7427e33e1c
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +75,9 @@
     <ClCompile Include="utils.cpp">
       <Filter>DxWindow\UTIL</Filter>
     </ClCompile>
+    <ClCompile Include="mainGame.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>mainGame\item</Filter>
     </ClCompile>
@@ -130,17 +128,13 @@
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
     <ClCompile Include="monkkey.cpp">
-<<<<<<< HEAD
-      <Filter>mainGame\Enemy\1st</Filter>
-    </ClCompile>
-    <ClCompile Include="mainGame.cpp">
-      <Filter>mainGame</Filter>
-=======
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
->>>>>>> 0b9979bfc1dbdc7dafd5842f650ecf7427e33e1c
+    </ClCompile>
+    <ClCompile Include="Ent.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,14 +262,13 @@
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="monkkey.h">
-<<<<<<< HEAD
-      <Filter>mainGame\Enemy\1st</Filter>
-=======
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
->>>>>>> 0b9979bfc1dbdc7dafd5842f650ecf7427e33e1c
+    </ClInclude>
+    <ClInclude Include="Ent.h">
+      <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
