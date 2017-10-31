@@ -1,6 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="mainGame">
+      <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\database">
+      <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\scene">
+      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="animation.cpp">
       <Filter>DxWindow\animation</Filter>
     </ClCompile>
@@ -34,9 +48,6 @@
     <ClCompile Include="rectManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="database.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
     <ClCompile Include="DxWindow.cpp">
       <Filter>DxWindow</Filter>
     </ClCompile>
@@ -64,24 +75,6 @@
     <ClCompile Include="mainGame.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
-    <ClCompile Include="sceneGame.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneInit.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneManager.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneSelect.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneTest.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>mainGame\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>mainGame\item</Filter>
     </ClCompile>
@@ -91,12 +84,6 @@
     <ClCompile Include="Interface.cpp">
       <Filter>mainGame\interface</Filter>
     </ClCompile>
-    <ClCompile Include="invenBird.cpp">
-      <Filter>mainGame\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="inventory.cpp">
-      <Filter>mainGame\Player</Filter>
-    </ClCompile>
     <ClCompile Include="stageManager.cpp">
       <Filter>mainGame\Stage</Filter>
     </ClCompile>
@@ -105,6 +92,37 @@
     </ClCompile>
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneitemTest.cpp" />
+    <ClCompile Include="Sprite.cpp">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>mainGame\database</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneGame.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneInit.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneSelect.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneTest.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +158,6 @@
     </ClInclude>
     <ClInclude Include="rectManager.h">
       <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="database.h">
-      <Filter>mainGame</Filter>
     </ClInclude>
     <ClInclude Include="DxWindow.h">
       <Filter>DxWindow</Filter>
@@ -180,26 +195,8 @@
     <ClInclude Include="mainGame.h">
       <Filter>mainGame</Filter>
     </ClInclude>
-    <ClInclude Include="sceneGame.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneInit.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneManager.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneSelect.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneTest.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>mainGame\item</Filter>
@@ -210,12 +207,6 @@
     <ClInclude Include="Interface.h">
       <Filter>mainGame\interface</Filter>
     </ClInclude>
-    <ClInclude Include="invenBird.h">
-      <Filter>mainGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>mainGame\Player</Filter>
-    </ClInclude>
     <ClInclude Include="stageManager.h">
       <Filter>mainGame\Stage</Filter>
     </ClInclude>
@@ -224,6 +215,39 @@
     </ClInclude>
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
+    </ClInclude>
+    <ClInclude Include="invenBird.h" />
+    <ClInclude Include="inventory.h" />
+    <ClInclude Include="itemManager.h" />
+    <ClInclude Include="sceneSelect.h" />
+    <ClInclude Include="stageManager.h" />
+    <ClInclude Include="sceneitemTest.h" />
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>mainGame\database</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneGame.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneInit.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneTest.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneManager.h">
+      <Filter>DxWindow\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -62,13 +62,13 @@ void textManager::setFont(wstring strKey, int height, LPCWSTR fontName)
 	}
 }
 
-void textManager::render(wstring strKey, COLORREF color)
+void textManager::render(wstring strKey, RECT &rcText, COLORREF color)
 {
 	miText iter = _mText.begin();
 	iter = _mText.find(strKey);
 
 	if (iter != _mText.end())
 	{
-		iter->second->Render(color);
+		iter->second->Render(rcText, color);
 	}
 }

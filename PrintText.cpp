@@ -53,18 +53,17 @@ void PrintText::AddText(wstring value)
 	data += value + L"\n";
 }
 
-void PrintText::Render(COLORREF color)
+void PrintText::Render(RECT &rcText, COLORREF color)
 {
   	if (data.size() > 0)
 	{
 		sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
-		RECT rect = { 5, 5, 0, 0 };
 		font->DrawTextW(
 			sprite, 
 			data.c_str(), 
 			-1, 
-			&rect, 
+			&rcText,
 			DT_NOCLIP, 
 			D3DCOLOR(0xFF000000 | color)
 		);

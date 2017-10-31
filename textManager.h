@@ -18,6 +18,6 @@ public:
 	void release(void);
 	void addText(wstring strKey, wstring strText);
 	void setFont(wstring strKey, int height, LPCWSTR fontName);
-	void render(wstring strKey, COLORREF color = RGB(0, 0, 0));
+	void render(wstring strKey, RECT &rcText, COLORREF color = RGB(0, 0, 0));
 };
 

@@ -154,6 +154,7 @@ void sceneTest::render(void)
 	IMAGEMANAGER->findImage(L"더미2")->render();
 	RECTMANAGER->findRect(L"더미")->render();
 
-	TEXTMANAGER->render(L"테스트");
+	RECT rcText = { 300, 100, 500, 200 };
+	TEXTMANAGER->render(L"테스트", rcText);
 
 }
