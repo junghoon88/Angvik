@@ -35,7 +35,7 @@ void sceneInit::render(void)
 void sceneInit::initImage(void)
 {
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
-
+	enemyInitImage(); //적 이미지 ::
 
 	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
@@ -73,9 +73,14 @@ void sceneInit::initImage(void)
 
 
 
+
 	//몬스터
 	IMAGEMANAGER->addFrameImage(device, L"원숭이", L"image/monster/원숭이.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
+	IMAGEMANAGER->addFrameImage(device, L"버섯점프", L"image/monster/버섯맨점프.png", 2, 1);
+
+
+
 
 
 }
@@ -127,4 +132,15 @@ void sceneInit::playerInitImage(void)
 
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
+}
+
+void sceneInit::enemyInitImage(void)
+{
+	IMAGEMANAGER->addFrameImage(DEVICE, L"원숭이", L"image/monster/원숭이.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"거북이", L"image/monster/Turtle_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"거북이누드", L"image/monster/Turtle_crash_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_8f.png", 8, 1);
 }
