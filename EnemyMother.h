@@ -21,12 +21,13 @@ protected:
 	float speed;
 	float jumpPower;
 	int life;
-		
+	
 	enemyDirection dir;
 	enemyState state;
 
 public:
 	void init(void);
+	void init(const char* imagekey,float x,float y);
 	void release(void);
 	void update(void);
 	void render(void);

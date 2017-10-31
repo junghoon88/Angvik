@@ -15,7 +15,7 @@ void EnemyMother::release(void)
 }
 void EnemyMother::update(void) 
 {
-
+	move();
 }
 void EnemyMother::render(void) 
 {

@@ -36,45 +36,38 @@ void sceneInit::initImage(void)
 {
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 	uiInitImage();		//	UI 이미지 초기화
+	enemyInitImage(); //적 이미지 ::
 
 	//아이템 무기 & 오일
-	IMAGEMANAGER->addImage(device, L"흰색칼", L"image/item/흰색칼.png");
-	IMAGEMANAGER->addImage(device, L"흰색랜스", L"image/item/흰색랜스.png");
-	IMAGEMANAGER->addImage(device, L"흰색부메랑", L"image/item/흰색부메랑.png");
-	IMAGEMANAGER->addImage(device, L"흰색지팡이", L"image/item/흰색지팡이.png");
-	IMAGEMANAGER->addImage(device, L"흰색오일", L"image/item/흰색오일.png");
-	IMAGEMANAGER->addImage(device, L"블랙칼", L"image/item/블랙칼.png");
-	IMAGEMANAGER->addImage(device, L"블랙랜스", L"image/item/블랙랜스.png");
-	IMAGEMANAGER->addImage(device, L"블랙부메랑", L"image/item/블랙부메랑.png");
-	IMAGEMANAGER->addImage(device, L"블랙지팡이", L"image/item/블랙지팡이.png");
-	IMAGEMANAGER->addImage(device, L"블랙오일", L"image/item/블랙오일.png");
-	IMAGEMANAGER->addImage(device, L"골드칼", L"image/item/골드칼.png");
-	IMAGEMANAGER->addImage(device, L"골드랜스", L"image/item/골드랜스.png");
-	IMAGEMANAGER->addImage(device, L"골드부메랑", L"image/item/골드부메랑.png");
-	IMAGEMANAGER->addImage(device, L"골드지팡이", L"image/item/골드지팡이.png");
-	IMAGEMANAGER->addImage(device, L"골드오일", L"image/item/골드오일.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흰색칼", L"image/item/흰색칼.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흰색랜스", L"image/item/흰색랜스.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흰색부메랑", L"image/item/흰색부메랑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흰색지팡이", L"image/item/흰색지팡이.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흰색오일", L"image/item/흰색오일.png");
+	IMAGEMANAGER->addImage(DEVICE, L"블랙칼", L"image/item/블랙칼.png");
+	IMAGEMANAGER->addImage(DEVICE, L"블랙랜스", L"image/item/블랙랜스.png");
+	IMAGEMANAGER->addImage(DEVICE, L"블랙부메랑", L"image/item/블랙부메랑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"블랙지팡이", L"image/item/블랙지팡이.png");
+	IMAGEMANAGER->addImage(DEVICE, L"블랙오일", L"image/item/블랙오일.png");
+	IMAGEMANAGER->addImage(DEVICE, L"골드칼", L"image/item/골드칼.png");
+	IMAGEMANAGER->addImage(DEVICE, L"골드랜스", L"image/item/골드랜스.png");
+	IMAGEMANAGER->addImage(DEVICE, L"골드부메랑", L"image/item/골드부메랑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"골드지팡이", L"image/item/골드지팡이.png");
+	IMAGEMANAGER->addImage(DEVICE, L"골드오일", L"image/item/골드오일.png");
 	//방어구
-	IMAGEMANAGER->addImage(device, L"백갑", L"image/item/백갑.png");
-	IMAGEMANAGER->addImage(device, L"백투", L"image/item/백투.png");
-	IMAGEMANAGER->addImage(device, L"백신", L"image/item/백신.png");
-	IMAGEMANAGER->addImage(device, L"흑갑", L"image/item/흑갑.png");
-	IMAGEMANAGER->addImage(device, L"흑투", L"image/item/흑투.png");
-	IMAGEMANAGER->addImage(device, L"흑신", L"image/item/흑신.png");
-	IMAGEMANAGER->addImage(device, L"황갑", L"image/item/황갑.png");
-	IMAGEMANAGER->addImage(device, L"황투", L"image/item/황투.png");
-	IMAGEMANAGER->addImage(device, L"황신", L"image/item/황신.png");
+	IMAGEMANAGER->addImage(DEVICE, L"백갑", L"image/item/백갑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"백투", L"image/item/백투.png");
+	IMAGEMANAGER->addImage(DEVICE, L"백신", L"image/item/백신.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흑갑", L"image/item/흑갑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흑투", L"image/item/흑투.png");
+	IMAGEMANAGER->addImage(DEVICE, L"흑신", L"image/item/흑신.png");
+	IMAGEMANAGER->addImage(DEVICE, L"황갑", L"image/item/황갑.png");
+	IMAGEMANAGER->addImage(DEVICE, L"황투", L"image/item/황투.png");
+	IMAGEMANAGER->addImage(DEVICE, L"황신", L"image/item/황신.png");
 	//알
-	IMAGEMANAGER->addFrameImage(device, L"검은새", L"image/item/검은새.png", 8, 1);
-	IMAGEMANAGER->addFrameImage(device, L"흰새", L"image/item/흰새.png", 8, 1);
-	IMAGEMANAGER->addFrameImage(device, L"황금새", L"image/item/황금새.png", 8, 1);
-
-
-
-	//몬스터
-	//IMAGEMANAGER->addFrameImage(device, L"원숭이", L"image/monster/원숭이.png", 8, 1);
-	//IMAGEMANAGER->addFrameImage(device, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
-
-
+	IMAGEMANAGER->addFrameImage(DEVICE, L"검은새", L"image/item/검은새.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"흰새", L"image/item/흰새.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"황금새", L"image/item/황금새.png", 8, 1);
 }
 
 void sceneInit::initSound(void)
@@ -156,4 +149,15 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"selectMusic", L"image/etc/select.png");
 	IMAGEMANAGER->addImage(DEVICE, L"selectVolume", L"image/etc/select.png");
 
+}
+
+void sceneInit::enemyInitImage(void)
+{
+	IMAGEMANAGER->addFrameImage(DEVICE, L"원숭이", L"image/monster/원숭이.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이", L"image/monster/Turtle_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이누드", L"image/monster/Turtle_crash_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_8f.png", 8, 1);
 }
