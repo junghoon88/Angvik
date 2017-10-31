@@ -13,7 +13,7 @@ monkkey::~monkkey()
 }
 void monkkey::init(float x, float y) {
 
-	//img = IMAGEMANAGER->findImage(L"¿ø¼şÀÌ");
+	spt = IMAGEMANAGER->findImage(L"¿ø¼şÀÌ");
 
 	life = 1;
 	ptX = x;
