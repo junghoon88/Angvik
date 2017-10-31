@@ -29,15 +29,15 @@ void sceneitemTest::release(void)
 
 void sceneitemTest::update(void)
 {
-	//frameTime += TIMEMANAGER->getElapsedTime();
-	//if (frameTime >= 0.2f)
-	//{
-	//	frameTime -= 0.2f;
-	//
-	//	frameCnt++;
-	//	if (frameCnt >= 6) frameCnt = 0;
-	//}
-	//
+	frameTime += TIMEMANAGER->getElapsedTime();
+	if (frameTime >= 0.2f)
+	{
+		frameTime -= 0.2f;
+	
+		frameCnt++;
+		if (frameCnt >= 8) frameCnt = 0;
+	}
+	
 	if (KEYMANAGER->isStayKeyDown(VK_RETURN))
 	{
 		IMAGEMANAGER->move(L"Èò»öÄ®", 10, 0);
@@ -69,27 +69,27 @@ void sceneitemTest::update(void)
 	if (KEYMANAGER->isOnceKeyDown(MK_LBUTTON) && _ptMouse.x < 100 && _ptMouse.y < 100)
 	{
 		frameCnt++;
-		if (frameCnt >= 6) frameCnt = 0;
+		if (frameCnt >= 8) frameCnt = 0;
 	}
 
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
-		IMAGEMANAGER->move(L"Èò»öÄ®", 0, -10);
+		IMAGEMANAGER->move(L"°ËÀº»õ", 0, -10);
 		//MAINCAMERA->moveCamera(DIRECTION_UP);
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
-		IMAGEMANAGER->move(L"Èò»öÄ®", 0, 10);
+		IMAGEMANAGER->move(L"°ËÀº»õ", 0, 10);
 		//MAINCAMERA->moveCamera(DIRECTION_DN);
 	}
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		IMAGEMANAGER->move(L"Èò»öÄ®", -10, 0);
+		IMAGEMANAGER->move(L"°ËÀº»õ", -10, 0);
 	//	MAINCAMERA->moveCamera(DIRECTION_LF);
 	}
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		IMAGEMANAGER->move(L"Èò»öÄ®", 10, 0);
+		IMAGEMANAGER->move(L"°ËÀº»õ", 10, 0);
 		//MAINCAMERA->moveCamera(DIRECTION_RG);
 	}
 
@@ -128,8 +128,8 @@ void sceneitemTest::render(void)
 	int frameY = frameCnt / 2;
 
 	IMAGEMANAGER->findImage(L"Å×½ºÆ®¹è°æ")->render();
-	//IMAGEMANAGER->findImage(L"´õ¹Ì")->frameRender(frameX, frameY);
-	IMAGEMANAGER->findImage(L"Èò»öÄ®")->render();
+	//IMAGEMANAGER->findImage(L"´õ¹Ì")->frameRender(frameX, frameX);
+	IMAGEMANAGER->findImage(L"°ËÀº»õ")->frameRender(frameCnt, 0);
 	
 	//RECTMANAGER->findRect(L"´õ¹Ì")->render();
 	//
