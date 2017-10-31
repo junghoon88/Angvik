@@ -2,6 +2,8 @@
 #include "DxWindow.h"
 #include "mainGame.h"
 
+HINSTANCE _hInstance;		//어플 고유번호
+HWND _hWnd;
 POINT _ptMouse;
 POINT _mainCamera = { 0, 0 };
 
@@ -14,6 +16,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
+	_hInstance = hInstance; //image 에서 쓰려고 추가함
+
 	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
 	main.Create(L"DirectX");
 	main.CreateDevice();
@@ -272,6 +276,7 @@ void DxWindow::initialize(void)
 	//RENDERMANAGER->init();
 	//TEXTMANAGER->init() --> 사용할때마다 초기화해서 사용한다.
 	RECTMANAGER->init();
+	PBGMANAGER->init();
 }
 
 void DxWindow::releaseSingleton(void)
@@ -294,6 +299,7 @@ void DxWindow::releaseSingleton(void)
 		
 		TEXTMANAGER->release();					TEXTMANAGER->releaseSingleton();
 		RECTMANAGER->release();					RECTMANAGER->releaseSingleton();
+		PBGMANAGER->release();					PBGMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);

@@ -45,6 +45,7 @@ using namespace std;
 #include "textManager.h"
 #include "keyAniManager.h"
 #include "rectManager.h"
+#include "PBGManager.h"
 
 
 #include "globalMacroVariables.h"
@@ -75,6 +76,7 @@ using namespace IOTA_UTIL;
 //#define RENDERMANAGER RenderManager::getSingleton()
 #define TEXTMANAGER textManager::getSingleton()
 #define RECTMANAGER rectManager::getSingleton()
+#define PBGMANAGER PBGManager::getSingleton()
 
 
 //==================================
@@ -191,3 +193,5 @@ using namespace IOTA_UTIL;
 
 extern POINT _ptMouse;
 extern POINT _mainCamera;
+extern HWND _hWnd;
+extern HINSTANCE _hInstance;
