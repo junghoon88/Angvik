@@ -45,10 +45,10 @@ void sceneGame::release(void)
 
 void sceneGame::update(void)
 {
-
+	_pm->update();
 }
 
 void sceneGame::render(void)
 {
-
+	_pm->render();
 }

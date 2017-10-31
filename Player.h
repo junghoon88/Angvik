@@ -31,9 +31,14 @@ private:
 	PLAYERHEADSTATE _headState;
 	PLAYERBODYSTATE _bodyState;
 
-	animation* _motion;
+	animation* _bodyMotion;
+	animation* _armMotion;
 
-	image* _bodyImage;
+	Sprite* _bodyImage;
+	Sprite* _armRightFrontImage;
+	Sprite* _armRightBackImage;
+	Sprite* _armLeftFrontImage;
+	Sprite* _armLeftBackImage;
 
 	RECT _rcHead;
 	RECT _rcBody;

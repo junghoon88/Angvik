@@ -31,6 +31,9 @@ void mainGame::initScene(void)
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneTest);
 	scene->init();
 
+	//========== T E S T   S C E N E ==========
+	
+
 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
 }
 
@@ -41,6 +44,15 @@ void mainGame::release(void)
 
 void mainGame::update(void)	
 {
+	if (KEYMANAGER->isOnceKeyDown(VK_F1))
+	{
+		SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_F2))
+	{
+		SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	}
+
 	SCENEMANAGER->update();
 
 }
