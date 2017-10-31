@@ -36,7 +36,7 @@ void sceneInit::initImage(void)
 {
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 
-
+	//UI
 	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
 
@@ -90,7 +90,7 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"boneEtc", L"image/player/bone_etc.png");
 
 	//	UNARMED
-	//		RIGHTSIDE
+	//	RIGHTSIDE
 	IMAGEMANAGER->addImage(DEVICE, L"headRight0", L"image/player/unarmed/head_0.png");
 	IMAGEMANAGER->addImage(DEVICE, L"headRight1", L"image/player/unarmed/head_1.png");
 	IMAGEMANAGER->addImage(DEVICE, L"headRight2", L"image/player/unarmed/head_2.png");
@@ -105,7 +105,7 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armRightFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armRightBack", L"image/player/unarmed/arm_back.png", 16, 3);
 
-	//		LEFTSIDE
+	//	LEFTSIDE
 	IMAGEMANAGER->addImage(DEVICE, L"headLeft0", L"image/player/unarmed/head_0.png");
 	IMAGEMANAGER->addImage(DEVICE, L"headLeft1", L"image/player/unarmed/head_1.png");
 	IMAGEMANAGER->addImage(DEVICE, L"headLeft2", L"image/player/unarmed/head_2.png");

@@ -12,6 +12,10 @@ private:
 	int _frameX;
 
 	float _countTime;
+	float _volume;
+
+	bool _isOption;
+	bool _isMute;
 
 public:
 	sceneSelect();
