@@ -70,6 +70,14 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addFrameImage(device, L"°ËÀº»õ", L"image/item/°ËÀº»õ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"Èò»õ", L"image/item/Èò»õ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"È²±Ý»õ", L"image/item/È²±Ý»õ.png", 8, 1);
+
+
+
+	//¸ó½ºÅÍ
+	//IMAGEMANAGER->addFrameImage(device, L"¿ø¼þÀÌ", L"image/monster/¿ø¼þÀÌ.png", 8, 1);
+	//IMAGEMANAGER->addFrameImage(device, L"¹ö¼¸¸Ç", L"image/monster/¹ö¼¸¸Ç.png", 7, 1);
+
+
 }
 
 void sceneInit::initSound(void)
