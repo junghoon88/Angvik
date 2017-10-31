@@ -4,6 +4,14 @@
 class sceneSelect : public DxWindow
 {
 private:
+	RECT _selectRECT;
+	RECT _startRECT;
+	RECT _optionRECT;
+	RECT _exitRECT;
+	
+	int _frameX;
+
+	float _countTime;
 
 public:
 	sceneSelect();

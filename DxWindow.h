@@ -42,6 +42,7 @@ public:
 	void CreateDevice(void);
 
 	WPARAM Run(void);
+	void SetupMatrices();
 
 	LRESULT MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 

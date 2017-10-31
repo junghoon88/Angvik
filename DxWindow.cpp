@@ -2,6 +2,8 @@
 #include "DxWindow.h"
 #include "mainGame.h"
 
+HINSTANCE _hInstance;		//어플 고유번호
+HWND _hWnd;
 POINT _ptMouse;
 POINT _mainCamera = { 0, 0 };
 
@@ -14,6 +16,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
+	_hInstance = hInstance; //image 에서 쓰려고 추가함
+
 	mainGame main(hInstance, L"DxClass", lpszCmdParam, nCmdShow);
 	main.Create(L"DirectX");
 	main.CreateDevice();
@@ -158,13 +162,37 @@ void DxWindow::CreateDevice(void)
 	ShowCursor(isShowCursor); //커서 설정
 }
 
+
+/**-----------------------------------------------------------------------------
+* 행렬 설정
+*------------------------------------------------------------------------------
+*/
+void DxWindow::SetupMatrices()
+{
+	/// 월드행렬
+	D3DXMATRIXA16 matWorld;
+	D3DXMatrixIdentity(&matWorld);
+	D3DXMatrixRotationX(&matWorld, timeGetTime() / 1000.0f);
+	device->SetTransform(D3DTS_WORLD, &matWorld);
+
+	/// 뷰행렬을 설정
+	D3DXVECTOR3 vEyePt(0.0f, 0.0f, -5.0f);
+	D3DXVECTOR3 vLookatPt((float)_mainCamera.x, (float)_mainCamera.y, 0.0f);
+	D3DXVECTOR3 vUpVec(0.0f, 1.0f, 0.0f);
+	D3DXMATRIXA16 matView;
+	D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);
+	device->SetTransform(D3DTS_VIEW, &matView);
+
+	/// 프로젝션 행렬 설정
+	D3DXMATRIXA16 matProj;
+	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
+	device->SetTransform(D3DTS_PROJECTION, &matProj);
+}
+
 WPARAM DxWindow::Run(void)
 {
 	MSG message;
 	ZeroMemory(&message, sizeof(message));
-
-	//PrintText::GetInstance()->SetDevice(device);
-
 
 	while (message.message != WM_QUIT)
 	{
@@ -177,15 +205,17 @@ WPARAM DxWindow::Run(void)
 		{
 			TIMEMANAGER->update(60.0f);
 
-			//Keyboard::GetInstance()->update();
 
 			update();
+
 
 			device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xFFFFFFFF, 1.0f, 0);
 			device->BeginScene();
 
+			//SetupMatrices();
+
+
 			render();
-			//PrintText::GetInstance()->render();
 
 			device->EndScene();
 			device->Present(0, 0, 0, 0);
@@ -245,6 +275,7 @@ void DxWindow::initialize(void)
 	//RENDERMANAGER->init();
 	//TEXTMANAGER->init() --> 사용할때마다 초기화해서 사용한다.
 	RECTMANAGER->init();
+	PBGMANAGER->init();
 }
 
 void DxWindow::releaseSingleton(void)
@@ -267,6 +298,7 @@ void DxWindow::releaseSingleton(void)
 		
 		TEXTMANAGER->release();					TEXTMANAGER->releaseSingleton();
 		RECTMANAGER->release();					RECTMANAGER->releaseSingleton();
+		PBGMANAGER->release();					PBGMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);

@@ -45,7 +45,12 @@ void Player::init(void)
 	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
 
 	//========== 키 애니메이션 초기화 ==========
+
 	//	팔
+
+	KEYANIMANAGER->addDefaultFrameAnimation(L"rightMove", L"bodyRightWalk", 10, false, true);
+	KEYANIMANAGER->addDefaultFrameAnimation(L"leftMove", L"bodyLeftWalk", 10, false, true);
+
 
 	//========== 각 부위 포지션 세팅 ==========
 	IMAGEMANAGER->setCenterPos(L"head0", _x - 1, _y - 40);
@@ -147,10 +152,10 @@ void Player::render(void)
 			IMAGEMANAGER->findImage(L"bodyRightIdle")->render();
 		break;
 		case PLAYER_RIGHT_MOVE:
-			IMAGEMANAGER->findImage(L"bodyRightMove")->aniRender(;
+			//IMAGEMANAGER->findImage(L"bodyRightMove")->aniRender();
 		break;
 		case PLAYER_LEFT_MOVE:
-			IMAGEMANAGER->findImage(L"bodyLeftMove")->frameRender();
+		//	IMAGEMANAGER->findImage(L"bodyLeftMove")->frameRender();
 		break;
 		case PLAYER_RIGHT_SIT:
 			IMAGEMANAGER->findImage(L"bodyRightSit")->render();
