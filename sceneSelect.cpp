@@ -51,6 +51,7 @@ void sceneSelect::init(void)
 	IMAGEMANAGER->findImage(L"back")->setCoord({ 265, 255 });
 	IMAGEMANAGER->findImage(L"selectVolume")->setCoord(_setVolume[4]);
 	IMAGEMANAGER->findImage(L"selectMusic")->setCoord(_setMusic[1]);
+	IMAGEMANAGER->findImage(L"·Î°í")->setCoord({ 320, 150 });
 
 	_frameX = 0;
 	_countTime = 0;
