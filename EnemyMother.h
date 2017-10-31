@@ -27,7 +27,7 @@ protected:
 
 public:
 	void init(void);
-	virtual void init(const char* imagekey,float x,float y);
+	void init(const char* imagekey,float x,float y);
 	void release(void);
 	void update(void);
 	void render(void);

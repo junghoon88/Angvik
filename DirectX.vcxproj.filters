@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-
     <Filter Include="DirectX">
       <UniqueIdentifier>{f1b15e2a-52cf-4f1a-9061-5810d779f795}</UniqueIdentifier>
     </Filter>
@@ -66,7 +65,6 @@
     </ClCompile>
     <ClCompile Include="animation.cpp">
       <Filter>DxWindow\animation</Filter>
-
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
       <Filter>mainGame\Enemy</Filter>
@@ -170,14 +168,7 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-
-    <ClCompile Include="ent.cpp">
-      <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
-    </ClCompile>
-    <ClCompile Include="playerSceneTest.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-
+    <ClCompile Include="sceneitemTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -297,22 +288,12 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-
-
-    <ClInclude Include="ent.h">
-      <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
-    </ClInclude>
-
     <ClInclude Include="invenBird.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="stageManager.h" />
-    <ClInclude Include="playerSceneTest.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-
-
+    <ClInclude Include="sceneitemTest.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
@@ -366,6 +347,5 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
-
   </ItemGroup>
 </Project>
