@@ -32,6 +32,8 @@ void sceneTest::initImage(void)
 
 	IMAGEMANAGER->setCoord(L"더미", 100, 100);
 	IMAGEMANAGER->setCoord(L"더미2", 100, 100);
+
+	PBGMANAGER->addImage(L"픽셀배경1", L"image/Stage/Stage1-PBG.bmp", 6709, 1290);
 }
 
 void sceneTest::initSound(void)
@@ -114,7 +116,8 @@ void sceneTest::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown('T'))
 	{
-
+		COLORREF color = PBGMANAGER->getPixelColor(L"픽셀배경1", 580, 540);
+		printf("");
 	}
 
 	Sprite* imgdummy = IMAGEMANAGER->findImage(L"더미");

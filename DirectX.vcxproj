@@ -151,6 +151,7 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="EnemyMother.cpp" />
     <ClCompile Include="ent.cpp" />
     <ClCompile Include="imageManager.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="PBGManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
@@ -193,6 +195,7 @@
     <ClInclude Include="EnemyMother.h" />
     <ClInclude Include="ent.h" />
     <ClInclude Include="globalMacroVariables.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="invenBird.h" />
@@ -202,6 +205,7 @@
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="PBGManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="PrintText.h" />
