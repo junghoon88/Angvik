@@ -22,6 +22,9 @@ protected:
 	float jumpPower;
 	int life;
 
+	
+	int frameCnt;
+	float frameTime;
 
 	enemyDirection dir;
 	enemyState state;

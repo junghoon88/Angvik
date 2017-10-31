@@ -130,12 +130,15 @@
     <ClCompile Include="monkkey.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
     <ClCompile Include="Ent.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
+=======
+>>>>>>> 3fbdeb8ddc373bdc6e2fa77462131acb5ba48528
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -264,12 +267,15 @@
     <ClInclude Include="monkkey.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
     <ClInclude Include="Ent.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
+=======
+>>>>>>> 3fbdeb8ddc373bdc6e2fa77462131acb5ba48528
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
