@@ -35,10 +35,7 @@ void sceneInit::render(void)
 void sceneInit::initImage(void)
 {
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
-
-	//UI
-	IMAGEMANAGER->addImage(device, L"메인배경", L"image/etc/배경.png");
-	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
+	uiInitImage();		//	UI 이미지 초기화
 
 	//아이템 무기 & 오일
 	IMAGEMANAGER->addImage(device, L"흰색칼", L"image/item/흰색칼.png");
@@ -70,6 +67,14 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addFrameImage(device, L"검은새", L"image/item/검은새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"흰새", L"image/item/흰새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"황금새", L"image/item/황금새.png", 8, 1);
+
+
+
+	//몬스터
+	//IMAGEMANAGER->addFrameImage(device, L"원숭이", L"image/monster/원숭이.png", 8, 1);
+	//IMAGEMANAGER->addFrameImage(device, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
+
+
 }
 
 void sceneInit::initSound(void)
@@ -119,4 +124,36 @@ void sceneInit::playerInitImage(void)
 
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
+}
+
+void sceneInit::uiInitImage(void)
+{
+	//배경
+	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
+
+	//글자
+	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");
+	IMAGEMANAGER->addImage(DEVICE, L"25", L"image/etc/25.png");
+	IMAGEMANAGER->addImage(DEVICE, L"50", L"image/etc/50.png");
+	IMAGEMANAGER->addImage(DEVICE, L"75", L"image/etc/75.png");
+	IMAGEMANAGER->addImage(DEVICE, L"100", L"image/etc/100.png");
+	IMAGEMANAGER->addImage(DEVICE, L"exit", L"image/etc/exit.png");
+	IMAGEMANAGER->addImage(DEVICE, L"start", L"image/etc/start.png");
+	IMAGEMANAGER->addImage(DEVICE, L"music", L"image/etc/music.png");
+	IMAGEMANAGER->addImage(DEVICE, L"off", L"image/etc/off.png");
+	IMAGEMANAGER->addImage(DEVICE, L"on", L"image/etc/on.png");
+	IMAGEMANAGER->addImage(DEVICE, L"options", L"image/etc/options.png");
+	IMAGEMANAGER->addImage(DEVICE, L"start", L"image/etc/start.png");
+	IMAGEMANAGER->addImage(DEVICE, L"volume", L"image/etc/volume.png");
+	IMAGEMANAGER->addImage(DEVICE, L"back", L"image/etc/back.png");
+	IMAGEMANAGER->addImage(DEVICE, L"로고", L"image/etc/로고.png");
+	IMAGEMANAGER->addImage(DEVICE, L"승리", L"image/etc/승리.png");
+
+	//메뉴
+	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
+	IMAGEMANAGER->addImage(DEVICE, L"메뉴바", L"image/etc/메뉴바.png");
+	IMAGEMANAGER->addImage(DEVICE, L"옵션메뉴", L"image/etc/옵션메뉴.png");
+	IMAGEMANAGER->addImage(DEVICE, L"selectMusic", L"image/etc/select.png");
+	IMAGEMANAGER->addImage(DEVICE, L"selectVolume", L"image/etc/select.png");
+
 }

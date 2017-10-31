@@ -3,13 +3,15 @@
 
 class sceneSelect : public DxWindow
 {
-private:
-	RECT _selectRECT;
-	RECT _startRECT;
-	RECT _optionRECT;
-	RECT _exitRECT;
-	
+private:	
 	int _frameX;
+	int _selectNum;	
+	int _selectVolume;
+
+	D3DXVECTOR2 _setSelect[3];
+	D3DXVECTOR2 _setOptionSelect[3];
+	D3DXVECTOR2 _setVolume[5];
+	D3DXVECTOR2 _setMusic[2];
 
 	float _countTime;
 	float _volume;
