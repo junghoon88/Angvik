@@ -1,9 +1,15 @@
 #pragma once
 
-#define BTN_PLAYER_UP 		VK_UP		   //
-#define BTN_PLAYER_DOWN		VK_DOWN		   //
-#define BTN_PLAYER_LEFT		VK_LEFT		   //
-#define BTN_PLAYER_RIGHT	VK_RIGHT	   //
+#define BTN_PLAYER_UP 			VK_UP			//
+#define BTN_PLAYER_DOWN			VK_DOWN			//
+#define BTN_PLAYER_LEFT			VK_LEFT			//
+#define BTN_PLAYER_RIGHT		VK_RIGHT		//
+#define BTN_PLAYER_BACK_HAND	'D'				//
+#define BTN_PLAYER_FRONT_HAND	'A'				//
+#define BTN_PLAYER_JUMP			'S'				//
+#define BTN_PLAYER_HATCH_EGG	'W'				//
+#define BTN_PLAYER_INVENTORY	VK_SPACE		//
+
 
 #define CAMERA_SPEED		10
 
