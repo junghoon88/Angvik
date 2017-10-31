@@ -23,6 +23,11 @@ void Player::init(void)
 
 	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
 	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+
+	_armRightFrontImage = IMAGEMANAGER->findImage(L"armRightFront");
+	_armRightBackImage = IMAGEMANAGER->findImage(L"armRightBack");
+	_armLeftFrontImage = IMAGEMANAGER->findImage(L"armLeftFront");
+	_armLeftBackImage = IMAGEMANAGER->findImage(L"armLeftBack");
 	
 	//========== 이미지 왼쪽 보게 바꾸기 ==========
 	IMAGEMANAGER->findImage(L"headLeft0")->setScale({ -1,1 });
@@ -40,8 +45,7 @@ void Player::init(void)
 	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
 
 	//========== 키 애니메이션 초기화 ==========
-	KEYANIMANAGER->addDefaultFrameAnimation(L"rightMove", L"bodyRightwalk", 10, false, true);
-	KEYANIMANAGER->addDefaultFrameAnimation(L"leftMove", L"bodyLeftwalk", 10, false, true);
+	//	팔
 
 	//========== 각 부위 포지션 세팅 ==========
 	IMAGEMANAGER->setCenterPos(L"head0", _x - 1, _y - 40);
@@ -65,8 +69,8 @@ void Player::update(void)
 	if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
 	{
 		_bodyState = PLAYER_RIGHT_MOVE;
-		_motion = KEYANIMANAGER->findAnimation(L"rightMove");
-		_motion->start();
+		_bodyMotion = KEYANIMANAGER->findAnimation(L"rightMove");
+		_bodyMotion->start();
 
 	}
 	else if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
@@ -77,8 +81,8 @@ void Player::update(void)
 	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
 	{
 		_bodyState = PLAYER_LEFT_MOVE;
-		_motion = KEYANIMANAGER->findAnimation(L"leftMove");
-		_motion->start();
+		_bodyMotion = KEYANIMANAGER->findAnimation(L"leftMove");
+		_bodyMotion->start();
 
 	}
 	else if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
@@ -133,45 +137,6 @@ void Player::update(void)
 
 void Player::render(void) 
 {
-	//	머 리
-	switch (_bodyState)
-	{
-		case PLAYER_RIGHT_STOP:	case PLAYER_RIGHT_MOVE: case PLAYER_RIGHT_SIT: case PLAYER_RIGHT_JUMP:
-			switch (_headState)
-			{
-				case PLAYER_YOUNGEST:
-					IMAGEMANAGER->findImage(L"headRight0")->render();
-				break;
-				case PLAYER_YOUNG:
-					IMAGEMANAGER->findImage(L"headRight1")->render();
-				break;
-				case PLAYER_OLD:
-					IMAGEMANAGER->findImage(L"headRight2")->render();
-				break;
-				case PLAYER_ELDEST:
-					IMAGEMANAGER->findImage(L"headRight3")->render();
-				break;
-			}
-		break;
-		case PLAYER_LEFT_STOP: case PLAYER_LEFT_MOVE: case PLAYER_LEFT_SIT: case PLAYER_LEFT_JUMP:
-			switch (_headState)
-			{
-				case PLAYER_YOUNGEST:
-					IMAGEMANAGER->findImage(L"headLeft0")->render();
-				break;
-				case PLAYER_YOUNG:
-					IMAGEMANAGER->findImage(L"headLeft1")->render();
-				break;
-				case PLAYER_OLD:
-					IMAGEMANAGER->findImage(L"headLeft2")->render();
-				break;
-				case PLAYER_ELDEST:
-					IMAGEMANAGER->findImage(L"headLeft3")->render();
-				break;
-			}
-		break;
-	}
-
 	//	 몸
 	switch (_bodyState)
 	{
@@ -182,10 +147,10 @@ void Player::render(void)
 			IMAGEMANAGER->findImage(L"bodyRightIdle")->render();
 		break;
 		case PLAYER_RIGHT_MOVE:
-			IMAGEMANAGER->findImage(L"bodyRightMove")->aniRender(_motion);
+			IMAGEMANAGER->findImage(L"bodyRightMove")->aniRender(;
 		break;
 		case PLAYER_LEFT_MOVE:
-			IMAGEMANAGER->findImage(L"bodyLeftMove")->aniRender(_motion);
+			IMAGEMANAGER->findImage(L"bodyLeftMove")->frameRender();
 		break;
 		case PLAYER_RIGHT_SIT:
 			IMAGEMANAGER->findImage(L"bodyRightSit")->render();
@@ -194,6 +159,45 @@ void Player::render(void)
 			IMAGEMANAGER->findImage(L"bodyLeftIdle")->render();
 		break;
 		case PLAYER_RIGHT_JUMP: case PLAYER_LEFT_JUMP:
+		break;
+	}
+
+	//	머 리
+	switch (_bodyState)
+	{
+	case PLAYER_RIGHT_STOP:	case PLAYER_RIGHT_MOVE: case PLAYER_RIGHT_SIT: case PLAYER_RIGHT_JUMP:
+		switch (_headState)
+		{
+		case PLAYER_YOUNGEST:
+			IMAGEMANAGER->findImage(L"headRight0")->render();
+			break;
+		case PLAYER_YOUNG:
+			IMAGEMANAGER->findImage(L"headRight1")->render();
+			break;
+		case PLAYER_OLD:
+			IMAGEMANAGER->findImage(L"headRight2")->render();
+			break;
+		case PLAYER_ELDEST:
+			IMAGEMANAGER->findImage(L"headRight3")->render();
+			break;
+		}
+		break;
+	case PLAYER_LEFT_STOP: case PLAYER_LEFT_MOVE: case PLAYER_LEFT_SIT: case PLAYER_LEFT_JUMP:
+		switch (_headState)
+		{
+		case PLAYER_YOUNGEST:
+			IMAGEMANAGER->findImage(L"headLeft0")->render();
+			break;
+		case PLAYER_YOUNG:
+			IMAGEMANAGER->findImage(L"headLeft1")->render();
+			break;
+		case PLAYER_OLD:
+			IMAGEMANAGER->findImage(L"headLeft2")->render();
+			break;
+		case PLAYER_ELDEST:
+			IMAGEMANAGER->findImage(L"headLeft3")->render();
+			break;
+		}
 		break;
 	}
 }
