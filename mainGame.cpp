@@ -31,10 +31,16 @@ void mainGame::initScene(void)
 	scene = SCENEMANAGER->addScene(L"테스트씬", new sceneTest);
 	scene->init();
 
+	scene = SCENEMANAGER->addScene(L"아이템테스트씬", new sceneitemTest);
+	scene->init();
+	SCENEMANAGER->changeScene(L"아이템테스트씬");
+
+
 	//========== T E S T   S C E N E ==========
 	
 
 	SCENEMANAGER->changeScene(L"테스트씬");
+
 }
 
 void mainGame::release(void)

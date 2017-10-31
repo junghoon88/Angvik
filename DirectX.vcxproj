@@ -171,6 +171,7 @@
     <ClCompile Include="rectManager.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
+    <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
     <ClCompile Include="sceneTest.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="rectManager.h" />
     <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />
+    <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="sceneTest.h" />

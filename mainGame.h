@@ -4,7 +4,11 @@
 #include "sceneSelect.h"
 #include "sceneGame.h"
 #include "sceneTest.h"
+
+#include "sceneitemTest.h"
+
 #include "playerSceneTest.h"
+
 
 
 class mainGame : public DxWindow
