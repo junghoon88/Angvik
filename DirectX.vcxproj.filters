@@ -106,12 +106,6 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-    <ClCompile Include="playerSceneTest.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneitemTest.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -231,21 +225,6 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="invenBird.h" />
-    <ClInclude Include="inventory.h" />
-    <ClInclude Include="itemManager.h" />
-    <ClInclude Include="sceneSelect.h" />
-    <ClInclude Include="stageManager.h" />
-<<<<<<< HEAD
-    <ClInclude Include="sceneitemTest.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-=======
-    <ClInclude Include="playerSceneTest.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-=======
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
@@ -299,7 +278,5 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
->>>>>>> 0948da7545577301f043485afe74e4d67d4ffdb4
->>>>>>> origin/master
   </ItemGroup>
 </Project>
