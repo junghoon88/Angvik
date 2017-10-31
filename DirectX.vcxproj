@@ -22,7 +22,7 @@
     <ProjectGuid>{49A2D0D2-6A5C-41E6-A9F0-EAC533B5C310}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DirectX</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,6 +153,7 @@
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="EnemyMother.cpp" />
+    <ClCompile Include="ent.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="invenBird.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="DxWindow.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyMother.h" />
+    <ClInclude Include="ent.h" />
     <ClInclude Include="globalMacroVariables.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />

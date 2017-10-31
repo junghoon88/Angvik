@@ -241,6 +241,7 @@ LRESULT DxWindow::MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 			if (wParam == VK_ESCAPE)
 			{
 				SendMessage(hwnd, WM_DESTROY, 0, 0);
+				PostQuitMessage(0);
 				break;
 			}
 
