@@ -10,10 +10,7 @@ private:
 
 	void playerInitImage(void);
 	void enemyInitImage(void);
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 
 public:
 	sceneInit();
