@@ -1,5 +1,8 @@
 #pragma once
 #include "DxWindow.h"
+#include "EnemyMother.h"
+#include "monkkey.h"
+#include <vector>
 
 //전방선언
 class PlayerManager;
@@ -8,8 +11,12 @@ class itemManager;
 
 class EnemyManager : public DxWindow
 {
+	typedef vector<EnemyMother*> vEnemy;
+	typedef vector<EnemyMother*>::iterator viEnemy;
 private:
-
+	
+	vEnemy _vEnemy;
+	viEnemy _viEnemy;
 
 	PlayerManager* _pm;
 	stageManager* _sm;
@@ -24,6 +31,7 @@ public:
 	void update(void);
 	void render(void);
 
+	void setEnemy1(void);
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

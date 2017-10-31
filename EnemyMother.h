@@ -26,11 +26,10 @@ protected:
 	enemyState state;
 
 public:
-	void init(void);
-	virtual void init(const char* imagekey,float x,float y);
+	virtual void init(float x,float y);
 	void release(void);
-	void update(void);
-	void render(void);
+	virtual void update(void);
+	virtual void render(void);
 
 	virtual void move(void);
 	virtual void attack(void);

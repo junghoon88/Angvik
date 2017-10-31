@@ -1,72 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-
-    <Filter Include="DirectX">
-      <UniqueIdentifier>{f1b15e2a-52cf-4f1a-9061-5810d779f795}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame">
-      <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Sprite">
-      <UniqueIdentifier>{b583f49a-cce0-4ead-8ffe-222493d4146e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Rect">
-      <UniqueIdentifier>{d62e47d4-eae8-4383-b1e3-e570cf157065}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\Manager">
-      <UniqueIdentifier>{d7073d4e-de1c-48c3-89c9-55be9646aba7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\timer">
-      <UniqueIdentifier>{2ca86945-9a93-478c-be30-c6f3628f7837}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\UTIL">
-      <UniqueIdentifier>{d3845d30-9038-42ba-bc64-e015cd2aa0d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\database">
-      <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\camera">
-      <UniqueIdentifier>{87fd941a-6782-4d54-a50b-3a7e3a5aa189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\PrintText">
-      <UniqueIdentifier>{fbdd00e4-87c1-4a28-899c-9e41bfc92ebf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneInit">
-      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame">
-      <UniqueIdentifier>{43eabde1-1190-4171-b89e-1d0668eac50e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Player">
-      <UniqueIdentifier>{1493faf0-859f-406d-a5cd-96cf8a9a7656}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Enemy">
-      <UniqueIdentifier>{20731369-cc1e-4245-89de-48278fc765a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Item">
-      <UniqueIdentifier>{2f577a16-3814-40bd-aeb2-aee925ee82f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Interface">
-      <UniqueIdentifier>{7b3ac083-b088-44db-b423-3b7c882dceb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectX\animation">
-      <UniqueIdentifier>{6acbdbb1-eae8-4d65-a370-8a0e909c9659}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\sceneGame\Enemy\1stage">
-      <UniqueIdentifier>{2d600189-7aba-4b28-bf69-9b9add0c4ca8}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>DirectX\Sprite</Filter>
-    </ClCompile>
     <ClCompile Include="animation.cpp">
       <Filter>DxWindow\animation</Filter>
-
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
       <Filter>mainGame\Enemy</Filter>
@@ -170,14 +106,10 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-
-    <ClCompile Include="ent.cpp">
-      <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
+    <ClCompile Include="sceneitemTest.cpp" />
+    <ClCompile Include="monkkey.cpp">
+      <Filter>mainGame\Enemy\1st</Filter>
     </ClCompile>
-    <ClCompile Include="playerSceneTest.cpp">
-      <Filter>mainGame</Filter>
-    </ClCompile>
-
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -297,22 +229,10 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-
-
-    <ClInclude Include="ent.h">
-      <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
+    <ClInclude Include="sceneitemTest.h" />
+    <ClInclude Include="monkkey.h">
+      <Filter>mainGame\Enemy\1st</Filter>
     </ClInclude>
-
-    <ClInclude Include="invenBird.h" />
-    <ClInclude Include="inventory.h" />
-    <ClInclude Include="itemManager.h" />
-    <ClInclude Include="sceneSelect.h" />
-    <ClInclude Include="stageManager.h" />
-    <ClInclude Include="playerSceneTest.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-
-
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
@@ -366,6 +286,8 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
-
+    <Filter Include="mainGame\Enemy\1st">
+      <UniqueIdentifier>{916979c9-672b-464d-967b-670458c9ad23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
