@@ -3,6 +3,9 @@
 class Ent :
 	public EnemyMother
 {
+private:
+	int probeY;
+
 public:
 	Ent();
 	~Ent();
