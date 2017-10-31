@@ -151,6 +151,7 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Ent.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="EnemyMother.cpp" />
     <ClCompile Include="imageManager.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="DxWindow.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyMother.h" />
+    <ClInclude Include="Ent.h" />
     <ClInclude Include="globalMacroVariables.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />

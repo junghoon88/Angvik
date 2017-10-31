@@ -27,10 +27,7 @@ protected:
 	enemyState state;
 
 public:
-<<<<<<< HEAD
 
-=======
->>>>>>> e8a3ab6eafc3de7f28c7c2fa081d912d60f04928
 	virtual void init(float x,float y);
 	void release(void);
 	virtual void update(void);
