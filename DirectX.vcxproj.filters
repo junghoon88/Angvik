@@ -170,15 +170,14 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-<<<<<<< HEAD
+
     <ClCompile Include="ent.cpp">
       <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
     </ClCompile>
     <ClCompile Include="playerSceneTest.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
-=======
->>>>>>> origin/master
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -298,7 +297,7 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-<<<<<<< HEAD
+
 
     <ClInclude Include="ent.h">
       <Filter>mainGame\sceneGame\Enemy\1stage</Filter>
@@ -313,8 +312,7 @@
       <Filter>mainGame</Filter>
     </ClInclude>
 
-=======
->>>>>>> origin/master
+
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
@@ -368,9 +366,6 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
   </ItemGroup>
 </Project>
