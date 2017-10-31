@@ -55,6 +55,15 @@
     <Filter Include="DirectX\animation">
       <UniqueIdentifier>{6acbdbb1-eae8-4d65-a370-8a0e909c9659}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\sceneSelect">
+      <UniqueIdentifier>{9f14bd8d-ff6c-4d3e-9f83-54001906081c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\sceneGame\stage">
+      <UniqueIdentifier>{b2680b30-ce01-40d6-80b5-b10262b7e769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX\image">
+      <UniqueIdentifier>{f6cead5c-3df6-4ead-9608-fd51ce584b84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sprite.cpp">
@@ -135,13 +144,29 @@
     <ClCompile Include="rectManager.cpp">
       <Filter>DirectX\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="invenBird.cpp" />
-    <ClCompile Include="inventory.cpp" />
-    <ClCompile Include="itemManager.cpp" />
-    <ClCompile Include="sceneSelect.cpp" />
-    <ClCompile Include="stageManager.cpp" />
     <ClCompile Include="Player.cpp">
       <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="itemManager.cpp">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneSelect.cpp">
+      <Filter>mainGame\sceneSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="stageManager.cpp">
+      <Filter>mainGame\sceneGame\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>DirectX\image</Filter>
+    </ClCompile>
+    <ClCompile Include="PBGManager.cpp">
+      <Filter>DirectX\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,10 +263,26 @@
     <ClInclude Include="rectManager.h">
       <Filter>DirectX\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="invenBird.h" />
-    <ClInclude Include="inventory.h" />
-    <ClInclude Include="itemManager.h" />
-    <ClInclude Include="sceneSelect.h" />
-    <ClInclude Include="stageManager.h" />
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\sceneGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="itemManager.h">
+      <Filter>mainGame\sceneGame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\sceneSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="stageManager.h">
+      <Filter>mainGame\sceneGame\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>DirectX\image</Filter>
+    </ClInclude>
+    <ClInclude Include="PBGManager.h">
+      <Filter>DirectX\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
