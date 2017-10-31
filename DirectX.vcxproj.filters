@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Filter Include="mainGame">
       <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
     </Filter>
@@ -17,7 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
->>>>>>> 771d3423ccb67fd990ca6bda0c428064a643553d
     <ClCompile Include="animation.cpp">
       <Filter>DxWindow\animation</Filter>
     </ClCompile>
@@ -97,11 +94,6 @@
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
     <ClCompile Include="sceneitemTest.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="monkkey.cpp">
-      <Filter>mainGame\Enemy\1st</Filter>
-    </ClCompile>
-=======
     <ClCompile Include="Sprite.cpp">
       <Filter>DxWindow\Sprite</Filter>
     </ClCompile>
@@ -132,7 +124,6 @@
     <ClCompile Include="sceneManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
->>>>>>> 771d3423ccb67fd990ca6bda0c428064a643553d
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -225,11 +216,6 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="sceneitemTest.h" />
-    <ClInclude Include="monkkey.h">
-      <Filter>mainGame\Enemy\1st</Filter>
-=======
     <ClInclude Include="invenBird.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="itemManager.h" />
@@ -262,7 +248,6 @@
     </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>DxWindow\Manager</Filter>
->>>>>>> 771d3423ccb67fd990ca6bda0c428064a643553d
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -317,11 +302,5 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="mainGame\Enemy\1st">
-      <UniqueIdentifier>{916979c9-672b-464d-967b-670458c9ad23}</UniqueIdentifier>
-    </Filter>
-=======
->>>>>>> 771d3423ccb67fd990ca6bda0c428064a643553d
   </ItemGroup>
 </Project>
