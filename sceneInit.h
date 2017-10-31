@@ -9,7 +9,7 @@ private:
 	void initText(void);
 
 	void playerInitImage(void);
-
+	void enemyInitImage(void);
 
 public:
 	sceneInit();
