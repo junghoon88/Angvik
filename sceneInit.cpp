@@ -69,6 +69,14 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"»Úªı", L"image/item/»Úªı.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"»≤±›ªı", L"image/item/»≤±›ªı.png", 8, 1);
 
+<<<<<<< HEAD
+=======
+	//∏ÛΩ∫≈Õ
+	IMAGEMANAGER->addFrameImage(device, L"ø¯º˛¿Ã", L"image/monster/ø¯º˛¿Ã.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(device, L"πˆº∏∏«", L"image/monster/πˆº∏∏«.png", 7, 1);
+	IMAGEMANAGER->addFrameImage(device, L"πˆº∏¡°«¡", L"image/monster/πˆº∏∏«¡°«¡.png", 2, 1);
+
+>>>>>>> e8a3ab6eafc3de7f28c7c2fa081d912d60f04928
 }
 
 void sceneInit::initSound(void)
@@ -155,6 +163,7 @@ void sceneInit::uiInitImage(void)
 
 void sceneInit::enemyInitImage(void)	//∏ÛΩ∫≈Õ
 {
+<<<<<<< HEAD
 	IMAGEMANAGER->addFrameImage(device, L"ø¯º˛¿Ã", L"image/monster/ø¯º˛¿Ã.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"πˆº∏∏«", L"image/monster/πˆº∏∏«.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(device, L"πˆº∏¡°«¡", L"image/monster/πˆº∏∏«¡°«¡.png", 2, 1);
@@ -164,4 +173,13 @@ void sceneInit::enemyInitImage(void)	//∏ÛΩ∫≈Õ
 	IMAGEMANAGER->addFrameImage(DEVICE, L"ƒ·≥™π∞", L"image/monster/kong_idle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"ƒ·≥™π∞æÓ≈√", L"image/monster/kong_atk_8f.png", 8, 1);
 
+=======
+	IMAGEMANAGER->addFrameImage(DEVICE, L"ø¯º˛¿Ã", L"image/monster/ø¯º˛¿Ã.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"πˆº∏∏«", L"image/monster/πˆº∏∏«.png", 7, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"∞≈∫œ¿Ã", L"image/monster/Turtle_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"∞≈∫œ¿Ã¥©µÂ", L"image/monster/Turtle_crash_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"≥™π´∏«", L"image/monster/Ent_move_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"ƒ·≥™π∞", L"image/monster/kong_idle_6f.png", 6, 1);
+	//IMAGEMANAGER->addFrameImage(DEVICE, L"ƒ·≥™π∞æÓ≈√", L"image/monster/kong_atk_8f.png", 8, 1);
+>>>>>>> e8a3ab6eafc3de7f28c7c2fa081d912d60f04928
 }

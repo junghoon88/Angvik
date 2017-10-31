@@ -92,12 +92,12 @@ void sceneSelect::update(void)
 			_selectNum++;
 			if (_selectNum == 3) _selectNum = 0;
 		}
-		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown('A'))
+		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
 			_selectNum = 0;
 			_isOption = true;
 		}
-		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown('A')) PostQuitMessage(0);
+		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) PostQuitMessage(0);
 
 		IMAGEMANAGER->findImage(L"¼±ÅÃ")->setCoord(_setSelect[_selectNum]);
 	}
@@ -114,7 +114,7 @@ void sceneSelect::update(void)
 			_selectNum++;
 			if (_selectNum == 3) _selectNum = 0;
 		}
-		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown('A'))
+		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
 			_selectNum = 1;
 			_isOption = false;
