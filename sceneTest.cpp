@@ -27,8 +27,6 @@ void sceneTest::initImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"더미", L"image/dummy.png", 2, 3);
 	IMAGEMANAGER->addImage(DEVICE, L"더미2", L"image/dummy.png");
 	RECTMANAGER->addRect(DEVICE, L"더미", { 100, 100 }, { 0, 0 });
-	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
-	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
 
 	IMAGEMANAGER->setCoord(L"더미", 100, 100);
 	IMAGEMANAGER->setCoord(L"더미2", 100, 100);

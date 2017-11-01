@@ -138,7 +138,7 @@ void Player::update(void)
 
 	KEYANIMANAGER->update();
 
-	MAINCAMERA->setTargetPos(_x, _y);
+	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	MAINCAMERA->update();
 }
 

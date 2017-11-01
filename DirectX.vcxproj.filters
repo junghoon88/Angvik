@@ -133,8 +133,8 @@
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
-    <ClCompile Include="jump.cpp">
-      <Filter>mainGame\Player</Filter>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
     </ClCompile>
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\Player</Filter>
@@ -270,8 +270,8 @@
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
-    <ClInclude Include="jump.h">
-      <Filter>mainGame\Player</Filter>
+    <ClInclude Include="soundManager.h">
+      <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
