@@ -1,5 +1,7 @@
 #pragma once
 #include "DxWindow.h"
+#include "Item.h"
+
 
 //전방선언
 class PlayerManager;
@@ -9,9 +11,15 @@ class stageManager;
 class itemManager : public DxWindow
 {
 private:
+	typedef map<wstring, Item*> mItems;
+	typedef map<wstring, Item*>::iterator mItemIter;
+
+private:
+	mItems _mItems;
 
 
 
+private:
 	PlayerManager* _pm;
 	EnemyManager* _em;
 	stageManager* _sm;
