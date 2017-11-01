@@ -11,11 +11,11 @@ class stageManager;
 class itemManager : public DxWindow
 {
 private:
-	typedef map<wstring, Item*> mItems;
-	typedef map<wstring, Item*>::iterator mItemIter;
+	typedef vector<Item*> vItems;
+	typedef vector<Item*>::iterator viItems;
 
 private:
-	mItems _mItems;
+	vItems _vItems;
 
 
 
