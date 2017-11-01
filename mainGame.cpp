@@ -50,7 +50,8 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"게임씬");
 	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F3))
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{
 		SCENEMANAGER->changeScene(L"에너미테스트");
 	}
