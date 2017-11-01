@@ -46,6 +46,7 @@ using namespace std;
 #include "keyAniManager.h"
 #include "rectManager.h"
 #include "PBGManager.h"
+#include "soundManager.h"
 
 
 #include "globalMacroVariables.h"
@@ -77,6 +78,7 @@ using namespace IOTA_UTIL;
 #define TEXTMANAGER textManager::getSingleton()
 #define RECTMANAGER rectManager::getSingleton()
 #define PBGMANAGER PBGManager::getSingleton()
+#define SOUNDMANAGER soundManager::getSingleton()
 
 
 //==================================

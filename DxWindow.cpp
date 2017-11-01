@@ -205,6 +205,7 @@ WPARAM DxWindow::Run(void)
 		{
 			TIMEMANAGER->update(60.0f);
 
+			SOUNDMANAGER->update();
 
 			update();
 
@@ -277,6 +278,7 @@ void DxWindow::initialize(void)
 	//TEXTMANAGER->init() --> 사용할때마다 초기화해서 사용한다.
 	RECTMANAGER->init();
 	PBGMANAGER->init();
+	SOUNDMANAGER->init();
 }
 
 void DxWindow::releaseSingleton(void)
@@ -300,6 +302,7 @@ void DxWindow::releaseSingleton(void)
 		TEXTMANAGER->release();					TEXTMANAGER->releaseSingleton();
 		RECTMANAGER->release();					RECTMANAGER->releaseSingleton();
 		PBGMANAGER->release();					PBGMANAGER->releaseSingleton();
+		SOUNDMANAGER->release();				SOUNDMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);

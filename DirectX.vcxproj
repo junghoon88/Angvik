@@ -160,6 +160,7 @@
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="itemManager.cpp" />
+    <ClCompile Include="jump.cpp" />
     <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
     <ClCompile Include="sceneTest.cpp" />
+    <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Sprite.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -205,6 +207,7 @@
     <ClInclude Include="inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="itemManager.h" />
+    <ClInclude Include="jump.h" />
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="sceneTest.h" />
+    <ClInclude Include="soundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="stdafx.h" />
