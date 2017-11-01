@@ -178,6 +178,7 @@
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
     <ClCompile Include="sceneTest.cpp" />
+    <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Sprite.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -225,6 +226,7 @@
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="sceneTest.h" />
+    <ClInclude Include="soundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="stdafx.h" />

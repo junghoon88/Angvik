@@ -189,6 +189,30 @@ void Sprite::setCenterPos(D3DXVECTOR2 centerPos)
 
 	//AdjustTransform();
 }
+
+void Sprite::setCoord(float coordX, float corrdY)
+{
+	_coord.x = coordX;
+	_coord.y = corrdY;
+}
+void Sprite::setScale(float scaleX, float scaleY)
+{
+	_scale.x = scaleX;
+	_scale.y = scaleY;
+}
+void Sprite::setCenterPer(float centerPerX, float centerPerY)
+{
+	_center.x = _size.x * centerPerX;
+	_center.y = _size.y * centerPerY;
+}
+void Sprite::setCenterPos(float centerPosX, float centerPosY)
+{
+	_center.x = centerPosX;
+	_center.y = centerPosY;
+}
+
+
+
 void Sprite::setRotate(float angleDeg)
 {
 	_angleDeg = angleDeg;
