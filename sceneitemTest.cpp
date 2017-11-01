@@ -18,7 +18,11 @@ void sceneitemTest::init(void)
 	frameCnt = 0;
 	frameTime = 0.0f;
 	angleDeg = 0.0f;
-
+	itemState = SWORD_RIGHT_DONE;
+	itemState2 = SWORD;
+	oilState = WHITE_OIL;
+	spt = IMAGEMANAGER->findImage(L"Èò»öÄ®");
+	spt->setCoord({ 500, 200 });
 }
 
 
@@ -37,89 +41,143 @@ void sceneitemTest::update(void)
 		frameCnt++;
 		if (frameCnt >= 8) frameCnt = 0;
 	}
-	
-	if (KEYMANAGER->isStayKeyDown(VK_RETURN))
-	{
-		IMAGEMANAGER->move(L"Èò»öÄ®", 10, 0);
-		//IMAGEMANAGER->move(L"´õ¹Ì2", 10, 0);
-	}
 
+	switch (oilState)
+	{
+	case WHITE_OIL:
+		switch (itemState2)
+		{
+		case  SWORD:
+			spt = IMAGEMANAGER->findImage(L"Èò»öÄ®");
+			break;
+		case LANCE:
+			spt = IMAGEMANAGER->findImage(L"Èò»ö·£½º");
+			break;
+		case STAFF:
+			spt = IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ");
+			break;
+		case BOOMERANG:
+			spt = IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û");
+			break;
+		}
+		break;
+
+	case BLACK_OIL:
+		switch (itemState2)
+		{
+		case SWORD:
+			spt = IMAGEMANAGER->findImage(L"ºí·¢Ä®");
+			break;
+		case LANCE:
+			spt = IMAGEMANAGER->findImage(L"ºí·¢·£½º");
+			break;
+		case STAFF:
+			spt = IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ");
+			break;
+		case BOOMERANG:
+			spt = IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û");
+			break;
+		}
+		break;
+	case GOLD_OIL:
+		switch (itemState2)
+		{
+		case  SWORD:
+			spt = IMAGEMANAGER->findImage(L"°ñµåÄ®");
+			break;
+		case LANCE:
+			spt = IMAGEMANAGER->findImage(L"°ñµå·£½º");
+			break;
+		case STAFF:
+			spt = IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ");
+			break;
+		case BOOMERANG:
+			spt = IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û");
+			break;
+		}
+		break;
+	}
+////////////////////Ä® ¸ð¼Ç /////////////////////////
+	if (itemState == SWORD_RIGHT_DONE) angleDeg = 80.0f;
+	else if (itemState == SWORD_LEFT_DONE) angleDeg = 110.0f;
+
+	if (itemState == SWORD_RIGHT_ATTACK)
+	{
+			angleDeg -= 7.0f;
+		if (angleDeg <= 0.0f)
+		{
+			itemState = SWORD_RIGHT_DONE;
+		}
+	}
+	else if (itemState == SWORD_LEFT_ATTACK)
+	{
+		angleDeg += 7.0f;
+		if (angleDeg >= 180.0f)
+		{
+			itemState = SWORD_LEFT_DONE;
+		}
+	}
+	if (angleDeg >= 360.f) angleDeg -= 360.0f;
+		
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 	{
-		static int dir = 1;
-		dir *= -1;
-		IMAGEMANAGER->setScale(L"Èò»öÄ®", dir, 1);
-		IMAGEMANAGER->setScale(L"Èò»öÄ®", dir, 1);
+		if (itemState == SWORD_RIGHT_DONE)
+		{
+			itemState = SWORD_RIGHT_ATTACK;
+			angleDeg = 120.0f;
+		}
+		else if (itemState == SWORD_LEFT_DONE)
+		{
+			itemState = SWORD_LEFT_ATTACK;
+			angleDeg = 70.0f;
+		}
+	
 	}
-
+//////////////////////////////////////////////////////
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
-		//center¿¡ Ä«¸Þ¶ó ¿É¼Â ´õÇØ¾ßÇÔ
-		angleDeg += 3.0f;
-		IMAGEMANAGER->setRotate(L"Èò»öÄ®", angleDeg);
-		IMAGEMANAGER->setRotate(L"Èò»öÄ®", angleDeg);
+		itemState = SWORD_LEFT_DONE;
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 	{
-		angleDeg -= 3.0f;
-		IMAGEMANAGER->setRotate(L"Èò»öÄ®", angleDeg);
-		IMAGEMANAGER->setRotate(L"Èò»öÄ®", angleDeg);
+		itemState = SWORD_RIGHT_DONE;
 	}
-
-	if (KEYMANAGER->isOnceKeyDown(MK_LBUTTON) && _ptMouse.x < 100 && _ptMouse.y < 100)
-	{
-		frameCnt++;
-		if (frameCnt >= 8) frameCnt = 0;
-	}
-
+	
+	
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
-		IMAGEMANAGER->move(L"°ËÀº»õ", 0, -10);
+		spt->move(0, -10);
+		
 		//MAINCAMERA->moveCamera(DIRECTION_UP);
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
-		IMAGEMANAGER->move(L"°ËÀº»õ", 0, 10);
+		spt->move(0, 10);
 		//MAINCAMERA->moveCamera(DIRECTION_DN);
 	}
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		IMAGEMANAGER->move(L"°ËÀº»õ", -10, 0);
+		spt->move(-10, 0);
 	//	MAINCAMERA->moveCamera(DIRECTION_LF);
 	}
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		IMAGEMANAGER->move(L"°ËÀº»õ", 10, 0);
+		spt->move(10, 0);
 		//MAINCAMERA->moveCamera(DIRECTION_RG);
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('T'))
-	{
-
-	}
-
-	Sprite* imgdummy = IMAGEMANAGER->findImage(L"´õ¹Ì");
-	Rect* rcdummy = RECTMANAGER->findRect(L"´õ¹Ì");
-	rcdummy->setCoord(imgdummy->getCoord());
-	rcdummy->setSize(imgdummy->getSize());
-	rcdummy->setScale(&imgdummy->getScale());
-	rcdummy->setCenterPos(imgdummy->getCenter());
-	rcdummy->setRotate(imgdummy->getAngle());
-
-	float anglexx = imgdummy->getAngle();
+	if (KEYMANAGER->isStayKeyDown('Z'))oilState = WHITE_OIL;
+	if (KEYMANAGER->isStayKeyDown('X'))oilState = BLACK_OIL;
+	if (KEYMANAGER->isStayKeyDown('C'))oilState = GOLD_OIL;
+	if (KEYMANAGER->isStayKeyDown('V'))itemState2 = SWORD;
+	if (KEYMANAGER->isStayKeyDown('B'))itemState2 = LANCE;
+	if (KEYMANAGER->isStayKeyDown('N'))itemState2 = STAFF;
+	if (KEYMANAGER->isStayKeyDown('M'))itemState2 = BOOMERANG;
+	
 
 
-	TCHAR str[200];
-	_stprintf(str, L"camera X = %d, camera Y = %d", _mainCamera.x, _mainCamera.y);
-	TEXTMANAGER->addText(L"Å×½ºÆ®", str);
-	_stprintf(str, L"imgdummy center X = %d, Y = %d", imgdummy->getCenter().x, imgdummy->getCenter().y);
-	TEXTMANAGER->addText(L"Å×½ºÆ®", str);
-	_stprintf(str, L"rcdummy center X = %d, Y = %d", rcdummy->getCenter().x, rcdummy->getCenter().y);
-	TEXTMANAGER->addText(L"Å×½ºÆ®", str);
-
-	_stprintf(str, L"angle = %d, %d", (int)imgdummy->getAngle(), (int)rcdummy->getAngle());
-	TEXTMANAGER->addText(L"Å×½ºÆ®", str);
-
+	IMAGEMANAGER->setRotate(L"Èò»öÄ®", angleDeg);
+	spt->getCoord();
 }
 
 void sceneitemTest::render(void)
@@ -127,12 +185,12 @@ void sceneitemTest::render(void)
 	int frameX = frameCnt % 2;
 	int frameY = frameCnt / 2;
 
-	IMAGEMANAGER->findImage(L"Å×½ºÆ®¹è°æ")->render();
-	//IMAGEMANAGER->findImage(L"´õ¹Ì")->frameRender(frameX, frameX);
-	IMAGEMANAGER->findImage(L"°ËÀº»õ")->frameRender(frameCnt, 0);
 	
-	//RECTMANAGER->findRect(L"´õ¹Ì")->render();
-	//
-	//TEXTMANAGER->render(L"Å×½ºÆ®");
+	IMAGEMANAGER->findImage(L"Å×½ºÆ®¹è°æ")->render();
+		
+	spt->render();
+	//IMAGEMANAGER->findImage(L"°ËÀº»õ")->frameRender(frameCnt, 0);
+	
+
 
 }

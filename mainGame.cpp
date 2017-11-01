@@ -30,9 +30,17 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"테스트씬", new sceneTest);
 	scene->init();
+	scene = SCENEMANAGER->addScene(L"아이템테스트씬", new sceneitemTest);
+	scene->init();
 	scene = SCENEMANAGER->addScene(L"에너미테스트", new sceneET);
 	scene->init();
+
+	SCENEMANAGER->changeScene(L"테스트씬");
+
+
+
 	SCENEMANAGER->changeScene(L"셀렉씬");
+
 }
 
 void mainGame::release(void)
@@ -53,8 +61,15 @@ void mainGame::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{
+
+		SCENEMANAGER->changeScene(L"아이템테스트씬");
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F4))
+	{
 		SCENEMANAGER->changeScene(L"에너미테스트");
 	}
+
 	SCENEMANAGER->update();
 
 }
