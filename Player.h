@@ -1,7 +1,7 @@
 #pragma once
 #include "DxWindow.h"
 
-#define PLAYERSPEED 5.f
+#define PLAYERSPEED 2.f
 #define JUMPPOWER 10.f
 #define GRAVITY 5.f
 
@@ -32,9 +32,12 @@ private:
 	PLAYERBODYSTATE _bodyState;
 
 	animation* _bodyMotion;
-	animation* _armMotion;
+	animation* _armFrontMotion;
+	animation* _armBackMotion;
 
-	Sprite* _bodyImage;
+	Sprite* _headImage;
+	Sprite* _bodyRightImage;
+	Sprite* _bodyLeftImage;
 	Sprite* _armRightFrontImage;
 	Sprite* _armRightBackImage;
 	Sprite* _armLeftFrontImage;
@@ -47,6 +50,8 @@ private:
 	float _probeY;
 	float _jumpPower;
 
+	bool _isRight;
+
 public:
 	Player();
 	~Player();
@@ -55,5 +60,9 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	void imageReverse(void);
+	void keyAnimationInit(void);
+	void imagePosUpdate(void);
 
 };

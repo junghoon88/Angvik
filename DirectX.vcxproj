@@ -151,6 +151,7 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Ent.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="EnemyMother.cpp" />
     <ClCompile Include="imageManager.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rectManager.cpp" />
+    <ClCompile Include="sceneET.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
     <ClCompile Include="sceneitemTest.cpp" />
@@ -194,6 +196,7 @@
     <ClInclude Include="DxWindow.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyMother.h" />
+    <ClInclude Include="Ent.h" />
     <ClInclude Include="globalMacroVariables.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
@@ -213,6 +216,7 @@
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="rectManager.h" />
+    <ClInclude Include="sceneET.h" />
     <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />
     <ClInclude Include="sceneitemTest.h" />

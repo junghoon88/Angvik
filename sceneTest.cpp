@@ -63,7 +63,22 @@ void sceneTest::update(void)
 		if (frameCnt >= 6) frameCnt = 0;
 	}
 
-	if (KEYMANAGER->isStayKeyDown(VK_RETURN))
+	if (KEYMANAGER->isStayKeyDown('W'))
+	{
+		IMAGEMANAGER->move(L"더미", 0, -10);
+		IMAGEMANAGER->move(L"더미2", 0, -10);
+	}
+	if (KEYMANAGER->isStayKeyDown('S'))
+	{
+		IMAGEMANAGER->move(L"더미", 0, 10);
+		IMAGEMANAGER->move(L"더미2", 0, 10);
+	}
+	if (KEYMANAGER->isStayKeyDown('A'))
+	{
+		IMAGEMANAGER->move(L"더미", -10, 0);
+		IMAGEMANAGER->move(L"더미2", -10, 0);
+	}
+	if (KEYMANAGER->isStayKeyDown('D'))
 	{
 		IMAGEMANAGER->move(L"더미", 10, 0);
 		IMAGEMANAGER->move(L"더미2", 10, 0);
@@ -97,19 +112,19 @@ void sceneTest::update(void)
 		if (frameCnt >= 6) frameCnt = 0;
 	}
 
-	if (KEYMANAGER->isStayKeyDown('W'))
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD8))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_UP);
 	}
-	if (KEYMANAGER->isStayKeyDown('S'))
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD5))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_DN);
 	}
-	if (KEYMANAGER->isStayKeyDown('A'))
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD4))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_LF);
 	}
-	if (KEYMANAGER->isStayKeyDown('D'))
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD6))
 	{
 		MAINCAMERA->moveCamera(DIRECTION_RG);
 	}
@@ -130,13 +145,15 @@ void sceneTest::update(void)
 
 	float anglexx = imgdummy->getAngle();
 
-	
+
 	TCHAR str[200];
 	_stprintf(str, L"camera X = %d, camera Y = %d", _mainCamera.x, _mainCamera.y);
 	TEXTMANAGER->addText(L"테스트", str);
-	_stprintf(str, L"imgdummy center X = %d, Y = %d", imgdummy->getCenter().x, imgdummy->getCenter().y);
+	_stprintf(str, L"imgdummy coord X = %d, Y = %d", (int)imgdummy->getCoord().x, (int)imgdummy->getCoord().y);
 	TEXTMANAGER->addText(L"테스트", str);
-	_stprintf(str, L"rcdummy center X = %d, Y = %d", rcdummy->getCenter().x, rcdummy->getCenter().y);
+	_stprintf(str, L"imgdummy center X = %d, Y = %d", (int)imgdummy->getCenter().x, (int)imgdummy->getCenter().y);
+	TEXTMANAGER->addText(L"테스트", str);
+	_stprintf(str, L"rcdummy center X = %d, Y = %d", (int)rcdummy->getCenter().x, (int)rcdummy->getCenter().y);
 	TEXTMANAGER->addText(L"테스트", str);
 
 	_stprintf(str, L"angle = %d, %d", (int)imgdummy->getAngle(), (int)rcdummy->getAngle());
@@ -151,7 +168,7 @@ void sceneTest::render(void)
 
 	IMAGEMANAGER->findImage(L"테스트배경")->render();
 	//IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
-	IMAGEMANAGER->findImage(L"더미2")->render();
+	IMAGEMANAGER->findImage(L"더미2")->render(128);
 	RECTMANAGER->findRect(L"더미")->render();
 
 	RECT rcText = { 300, 100, 500, 200 };

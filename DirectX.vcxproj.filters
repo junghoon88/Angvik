@@ -13,6 +13,9 @@
     <Filter Include="mainGame\scene">
       <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\Enemy\st1">
+      <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp">
@@ -123,6 +126,15 @@
     </ClCompile>
     <ClCompile Include="sceneManager.cpp">
       <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="monkkey.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ent.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneET.cpp">
+      <Filter>mainGame\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +260,15 @@
     </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="monkkey.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ent.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneET.h">
+      <Filter>mainGame\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

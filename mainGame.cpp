@@ -30,8 +30,17 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneTest);
 	scene->init();
+	scene = SCENEMANAGER->addScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À", new sceneitemTest);
+	scene->init();
+	scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
+	scene->init();
+
+	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+
+
 
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
+
 }
 
 void mainGame::release(void)
@@ -48,6 +57,16 @@ void mainGame::update(void)
 	if (KEYMANAGER->isOnceKeyDown(VK_F2))
 	{
 		SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_F3))
+	{
+
+		SCENEMANAGER->changeScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À");
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F4))
+	{
+		SCENEMANAGER->changeScene(L"¿¡³Ê¹ÌÅ×½ºÆ®");
 	}
 
 	SCENEMANAGER->update();

@@ -4,10 +4,8 @@
 #include "sceneSelect.h"
 #include "sceneGame.h"
 #include "sceneTest.h"
-
+#include "sceneET.h"
 #include "sceneitemTest.h"
-
-#include "playerSceneTest.h"
 
 
 

@@ -18,6 +18,8 @@ private:
 
 	D3DXMATRIX _world;
 
+	bool _bCameraOffset;
+
 	void AdjustTransform();
 
 public:
@@ -27,18 +29,17 @@ public:
 		D3DXVECTOR2 scale = D3DXVECTOR2(1, 1));
 	~Sprite();
 
-	void init();
-	void init(int frameX, int frameY);
+	void init(bool bCameraOffset);
+	void init(int frameX, int frameY, bool bCameraOffset);
 	void release();
 	void update();
-	void render(bool cameraOffset = true);
-	void frameRender(int frameX, int frameY, bool cameraOffset = true);
-	void aniRender(animation* ani, bool cameraOffset = true);
+	void render(BYTE alpha = 255);
+	void frameRender(int frameX, int frameY, BYTE alpha = 255);
+	void aniRender(animation* ani, BYTE alpha = 255);
 
 
 	void move(float moveX, float moveY);
 
-	void getPixel(void);
 
 	//getter, setter
 	inline D3DXVECTOR2 getCoord(void) { return _coord; }
