@@ -135,7 +135,11 @@ void Player::update(void)
 	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
 
 	_playerJump->update();
+
 	KEYANIMANAGER->update();
+
+	MAINCAMERA->setTargetPos(_x, _y);
+	MAINCAMERA->update();
 }
 
 void Player::render(void) 
@@ -143,21 +147,21 @@ void Player::render(void)
 	//	B A C K ÆÈ
 	if (_isRight == TRUE)
 	{
-		_armRightBackImage->aniRender(_armBackMotion, false);
+		_armRightBackImage->aniRender(_armBackMotion);
 	}
 	else
 	{
-		_armLeftBackImage->aniRender(_armBackMotion, false);
+		_armLeftBackImage->aniRender(_armBackMotion);
 	}
 
 	//	 ¸ö
 	if (_isRight == TRUE)
 	{
-		_bodyRightImage->aniRender(_bodyMotion, false);
+		_bodyRightImage->aniRender(_bodyMotion);
 	}
 	else
 	{
-		_bodyLeftImage->aniRender(_bodyMotion, false);
+		_bodyLeftImage->aniRender(_bodyMotion);
 	}
 
 
@@ -165,11 +169,11 @@ void Player::render(void)
 
 	if (_isRight == TRUE)
 	{
-		_armRightFrontImage->aniRender(_armFrontMotion, false);
+		_armRightFrontImage->aniRender(_armFrontMotion);
 	}
 	else
 	{
-		_armLeftFrontImage->aniRender(_armFrontMotion, false);
+		_armLeftFrontImage->aniRender(_armFrontMotion);
 	}
 
 	//	¸Ó ¸®

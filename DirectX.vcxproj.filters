@@ -36,9 +36,6 @@
     <ClCompile Include="keyManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerManager.cpp">
-      <Filter>DxWindow\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="PBGManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
@@ -139,6 +136,9 @@
     <ClCompile Include="jump.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -157,9 +157,6 @@
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="keyManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerManager.h">
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PBGManager.h">
@@ -274,6 +271,9 @@
       <Filter>mainGame\scene</Filter>
     </ClInclude>
     <ClInclude Include="jump.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
   </ItemGroup>
