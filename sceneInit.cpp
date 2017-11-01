@@ -165,6 +165,7 @@ void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¿ø¼þÀÌ", L"image/monster/¿ø¼þÀÌ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸¸Ç", L"image/monster/¹ö¼¸¸Ç.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸Á¡ÇÁ", L"image/monster/¹ö¼¸¸ÇÁ¡ÇÁ.png", 2, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸°ø°Ý", L"image/monster/¹ö¼¸°ø°Ý.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ", L"image/monster/Turtle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ´©µå", L"image/monster/Turtle_crash_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"³ª¹«¸Ç", L"image/monster/Ent_move_6f.png", 6, 1);
