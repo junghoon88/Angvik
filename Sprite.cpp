@@ -21,7 +21,7 @@ Sprite::~Sprite()
 
 }
 
-void Sprite::init()
+void Sprite::init(bool bCameraOffset)
 {
 	HRESULT hr;
 	hr = D3DXCreateSprite(_device, &_sprite);
@@ -32,10 +32,12 @@ void Sprite::init()
 	_size.x = (_size.x < 1) ? _texture->getWidth()  : _size.x;
 	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
 
+	_bCameraOffset = bCameraOffset;
+
 	AdjustTransform();
 }
 
-void Sprite::init(int frameX, int frameY)
+void Sprite::init(int frameX, int frameY, bool bCameraOffset)
 {
 	HRESULT hr;
 	hr = D3DXCreateSprite(_device, &_sprite);
@@ -45,6 +47,8 @@ void Sprite::init(int frameX, int frameY)
 	_texture->init(frameX, frameY);
 	_size.x = (_size.x < 1) ? _texture->getWidth() : _size.x;
 	_size.y = (_size.y < 1) ? _texture->getHeight() : _size.y;
+
+	_bCameraOffset = bCameraOffset;
 
 	AdjustTransform();
 }
@@ -62,6 +66,8 @@ void Sprite::update()
 
 void Sprite::render(bool cameraOffset)
 {
+	AdjustTransform();
+
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	//camera offset
@@ -91,7 +97,7 @@ void Sprite::render(bool cameraOffset)
 		//D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);		//ºä Çà·Ä »ý¼º
 		//_sprite->SetWorldViewLH(&_world, &matView);
 
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, &offset, 0xFFFFFFFF);
+		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
 		_sprite->End();
 	}
 	else
@@ -103,6 +109,8 @@ void Sprite::render(bool cameraOffset)
 
 void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
 {
+	AdjustTransform();
+
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	//camera offset
@@ -121,12 +129,14 @@ void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
 		if (_scale.y < 0) offset.y += _size.y / 2;
 
 	}
-	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, &offset, 0xFFFFFFFF);
+	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
 	_sprite->End();
 }
 
 void Sprite::aniRender(animation* ani, bool cameraOffset)
 {
+	AdjustTransform();
+
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
@@ -153,7 +163,7 @@ void Sprite::aniRender(animation* ani, bool cameraOffset)
 		if (_scale.y < 0) offset.y += _size.y / 2;
 
 	}
-	_sprite->Draw(_texture->getTexture(), &temp, NULL, &offset, 0xFFFFFFFF);
+	_sprite->Draw(_texture->getTexture(), &temp, NULL, NULL, 0xFFFFFFFF);
 	_sprite->End();
 }
 
@@ -181,10 +191,19 @@ void Sprite::AdjustTransform()
 	//_center.x = _size.x * 0.5f;
 	//_center.y = _size.y * 0.5f;
 
+	D3DXVECTOR2 coord = _coord;
+	if (_bCameraOffset)
+	{
+		coord.x -= _mainCamera.x;
+		coord.y -= _mainCamera.y;
+	}
+
+
 	D3DXMatrixTranslation(&rotationInverseCenter, -_center.x, -_center.y, 0);
 	D3DXMatrixRotationZ(&rotation, -angle);
 	D3DXMatrixTranslation(&rotationCenter, _center.x, _center.y, 0);
-	D3DXMatrixTranslation(&translate, FLOAT(_coord.x), FLOAT(_coord.y), 0);
+	//D3DXMatrixTranslation(&translate, FLOAT(_coord.x), FLOAT(_coord.y), 0);
+	D3DXMatrixTranslation(&translate, FLOAT(coord.x), FLOAT(coord.y), 0);
 
 	_world = scale * rotationInverseCenter * rotation * rotationCenter * translate;
 }

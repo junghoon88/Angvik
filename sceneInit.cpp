@@ -124,7 +124,7 @@ void sceneInit::playerInitImage(void)
 void sceneInit::uiInitImage(void)
 {
 	//배경
-	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
+	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png", false);
 
 	//글자
 	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");

@@ -18,6 +18,8 @@ private:
 
 	D3DXMATRIX _world;
 
+	bool _bCameraOffset;
+
 	void AdjustTransform();
 
 public:
@@ -27,8 +29,8 @@ public:
 		D3DXVECTOR2 scale = D3DXVECTOR2(1, 1));
 	~Sprite();
 
-	void init();
-	void init(int frameX, int frameY);
+	void init(bool bCameraOffset);
+	void init(int frameX, int frameY, bool bCameraOffset);
 	void release();
 	void update();
 	void render(bool cameraOffset = true);
