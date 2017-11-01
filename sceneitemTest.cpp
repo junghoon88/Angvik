@@ -22,7 +22,7 @@ void sceneitemTest::init(void)
 	itemState2 = SWORD;
 	oilState = WHITE_OIL;
 	spt = IMAGEMANAGER->findImage(L"Èò»öÄ®");
-	//spt->setCoord({ 500, 200 });
+	spt->setCoord({ 500, 200 });
 }
 
 
