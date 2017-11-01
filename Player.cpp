@@ -13,13 +13,15 @@ Player::~Player()
 
 void Player::init(void)
 {
+	_playerJump = new jump;
+	_playerJump->init();
+
 	_headState = PLAYER_YOUNGEST;
 	_bodyState = PLAYER_RIGHT_STOP;
 
 	// ¹ß »çÀÌ ¸Ç ¹Ø
 	_x = WINSIZEX / 2;
 	_y = WINSIZEY / 2;
-	_jumpPower = JUMPPOWER;
 
 	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
 	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
@@ -35,7 +37,7 @@ void Player::init(void)
 	_armLeftBackImage = IMAGEMANAGER->findImage(L"armLeftBack");
 
 	_isRight = TRUE;
-
+	_isLive = TRUE;
 
 	//========== ÀÌ¹ÌÁö ¿ÞÂÊ º¸°Ô ¹Ù²Ù±â ==========
 
@@ -53,6 +55,8 @@ void Player::init(void)
 	_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightStop");
 	_armFrontMotion = KEYANIMANAGER->findAnimation(L"playerArmFrontRightStop");
 	_armBackMotion = KEYANIMANAGER->findAnimation(L"playerArmBackRightStop");
+	_armFrontMotion->start();
+	_armBackMotion->start();
 
 }
 
@@ -62,6 +66,211 @@ void Player::release(void)
 }
 
 void Player::update(void) 
+{
+	keyInputSettings();		//	KEY INPUT
+
+	if (_isRight == TRUE)
+	{
+		switch (_headState)
+		{
+		case PLAYER_YOUNGEST:
+			_headImage = IMAGEMANAGER->findImage(L"headRight0");
+			break;
+		case PLAYER_YOUNG:
+			_headImage = IMAGEMANAGER->findImage(L"headRight1");
+			break;
+		case PLAYER_OLD:
+			_headImage = IMAGEMANAGER->findImage(L"headRight2");
+			break;
+		case PLAYER_ELDEST:
+			_headImage = IMAGEMANAGER->findImage(L"headRight3");
+			break;
+		}
+	}
+	else
+	{
+		switch (_headState)
+		{
+		case PLAYER_YOUNGEST:
+			_headImage = IMAGEMANAGER->findImage(L"headLeft0");
+			break;
+		case PLAYER_YOUNG:
+			_headImage = IMAGEMANAGER->findImage(L"headLeft1");
+			break;
+		case PLAYER_OLD:
+			_headImage = IMAGEMANAGER->findImage(L"headLeft2");
+			break;
+		case PLAYER_ELDEST:
+			_headImage = IMAGEMANAGER->findImage(L"headLeft3");
+			break;
+		}
+	}
+
+	switch (_bodyState)
+	{
+		case PLAYER_RIGHT_STOP: case PLAYER_LEFT_STOP:
+		break;
+		case PLAYER_RIGHT_MOVE:	case PLAYER_RIGHT_MOVE_JUMP:
+			_x += PLAYERSPEED;
+			imagePosUpdate();
+			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+		break;
+		case PLAYER_LEFT_MOVE: case PLAYER_LEFT_MOVE_JUMP:
+			_x -= PLAYERSPEED;
+			imagePosUpdate();
+			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+		break;
+	}
+
+	if (_playerJump->getIsJumping() == FALSE)
+	{
+		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
+		else _bodyState = PLAYER_LEFT_STOP;
+	}
+
+	imagePosUpdate();
+	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+
+	_playerJump->update();
+	KEYANIMANAGER->update();
+}
+
+void Player::render(void) 
+{
+	//	B A C K ÆÈ
+	if (_isRight == TRUE)
+	{
+		_armRightBackImage->aniRender(_armBackMotion, false);
+	}
+	else
+	{
+		_armLeftBackImage->aniRender(_armBackMotion, false);
+	}
+
+	//	 ¸ö
+	if (_isRight == TRUE)
+	{
+		_bodyRightImage->aniRender(_bodyMotion, false);
+	}
+	else
+	{
+		_bodyLeftImage->aniRender(_bodyMotion, false);
+	}
+
+
+	//	F R O N T ÆÈ
+
+	if (_isRight == TRUE)
+	{
+		_armRightFrontImage->aniRender(_armFrontMotion, false);
+	}
+	else
+	{
+		_armLeftFrontImage->aniRender(_armFrontMotion, false);
+	}
+
+	//	¸Ó ¸®
+	_headImage->render();
+}
+
+void Player::imageReverse(void)
+{
+	IMAGEMANAGER->findImage(L"headLeft0")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"headLeft1")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"headLeft2")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"headLeft3")->setScale({ -1,1 });
+
+	//IMAGEMANAGER->findImage(L"bodyLeftIdle")->setScale({ -1,1 });
+	//IMAGEMANAGER->findImage(L"bodyLeftSit")->setScale({ -1,1 });
+	//IMAGEMANAGER->findImage(L"bodyLeftJumpUp")->setScale({ -1,1 });
+	//IMAGEMANAGER->findImage(L"bodyLeftJumpDown")->setScale({ -1,1 });
+	//IMAGEMANAGER->findImage(L"bodyLeftWalk")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"unarmedBodyLeft")->setScale({ -1,1 });
+
+	IMAGEMANAGER->findImage(L"armLeftFront")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
+}
+
+void Player::keyAnimationInit(void)
+{
+
+	//	¸ö - idle, jump0, jump1, sit, walk0 ~ walk11 ¼ø
+	//	I D L E
+	int bodyRightIdle[] = { 0 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightStop", L"unarmedBodyRight", bodyRightIdle, 1, 10, true);
+	int bodyLeftIdle[] = { 11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftStop", L"unarmedBodyLeft", bodyLeftIdle, 1, 10, true);
+
+	//	W A L K
+	int bodyRightMove[] = { 12,13,14,15,16,17,18,19,20,21,22,23 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMove", L"unarmedBodyRight", bodyRightMove, 12, 20, true);
+	int bodyLeftMove[] = { 12,13,14,15,16,17,18,19,20,21,22,23 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftMove", L"unarmedBodyLeft", bodyLeftMove, 12, 20, true);
+
+	//	S I T
+	int bodyRightSit[] = { 3 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightSit", L"unarmedBodyRight", bodyRightSit, 1, 10, true);
+	int bodyLeftSit[] = { 8 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftSit", L"unarmedBodyLeft", bodyLeftSit, 1, 10, true);
+
+	//	J U M P
+	int bodyRightJump[] = { 1,2 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, false);
+	int bodyLeftJump[] = { 1,2 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false);
+
+	//	ÆÈ - 16°³¹æÇâ * 3°¡Áö ¸ð¼Ç
+	//	F R O N T
+	//		I D L E
+	int armFrontRightIdle[] = { 12,11,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightStop", L"armRightFront", armFrontRightIdle, 4, 4, true);
+	int armFrontLeftIdle[] = { 12,11,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftStop", L"armLeftFront", armFrontLeftIdle, 4, 4, true);
+
+	//		W A L K
+	int armFrontRightMove[] = { 12,11,10,9,10,11,12,13 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightMove", L"armRightFront", armFrontRightMove, 8, 20, true);
+	int armFrontLeftMove[] = { 12,11,10,9,10,11,12,13 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftMove", L"armLeftFront", armFrontLeftMove, 8, 20, true);
+
+	//		S I T
+	//		J U M P
+
+	//	B A C K
+	//		I D L E
+	int armBackRightIdle[] = { 11,12,13,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightStop", L"armRightBack", armBackRightIdle, 4, 4, true);
+	int armBackLeftIdle[] = { 11,12,13,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftStop", L"armLeftBack", armBackLeftIdle, 4, 4, true);
+
+	//		W A L K
+	int armBackRightMove[] = { 12,13,14,13,12,11,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightMove", L"armRightBack", armBackRightMove, 8, 20, true);
+	int armBackLeftMove[] = { 12,13,14,13,12,11,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftMove", L"armLeftBack", armBackLeftMove, 8, 20, true);
+
+	//		S I T
+	//		J U M P
+
+}
+
+void Player::imagePosUpdate(void)
+{
+	_headImage->setCoord({ _x + 3, _y - 32 });
+
+	_bodyRightImage->setCoord({ _x, _y - 22 });
+	_bodyLeftImage->setCoord({ _x, _y - 22 });
+
+	_armRightFrontImage->setCoord({ _x - 3, _y - 20 });
+	_armRightBackImage->setCoord({ _x + 7, _y - 20 });
+	_armLeftFrontImage->setCoord({ _x + 3, _y - 20 });
+	_armLeftBackImage->setCoord({ _x - 7, _y - 20 });
+}
+
+void Player::keyInputSettings(void)
 {
 	// ========== ÀÌµ¿ Å° ÀÔ·Â ==========
 	if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
@@ -147,26 +356,37 @@ void Player::update(void)
 		}
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))//	MENU
-	{
-
-	}
 	if (KEYMANAGER->isOnceKeyDown('A'))		//	FRONT_WEAPON_ATTACK
 	{
-
 	}
 	if (KEYMANAGER->isOnceKeyDown('S'))		//	JUMP
 	{
-		if (_bodyState == PLAYER_RIGHT_STOP || _bodyState == PLAYER_RIGHT_MOVE)
+		_playerJump->jumping(&_x, &_y, JUMPPOWER, GRAVITY);
+
+		if (_bodyState == PLAYER_RIGHT_STOP)
 		{
 			_bodyState = PLAYER_RIGHT_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightJump");
 			_bodyMotion->start();
 		}
 
-		if (_bodyState == PLAYER_LEFT_STOP || _bodyState == PLAYER_LEFT_MOVE)
+		if (_bodyState == PLAYER_LEFT_STOP)
 		{
 			_bodyState = PLAYER_LEFT_JUMP;
+			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyLeftJump");
+			_bodyMotion->start();
+		}
+
+		if (_bodyState == PLAYER_RIGHT_MOVE)
+		{
+			_bodyState = PLAYER_RIGHT_MOVE_JUMP;
+			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightJump");
+			_bodyMotion->start();
+		}
+
+		if (_bodyState == PLAYER_LEFT_MOVE)
+		{
+			_bodyState = PLAYER_LEFT_MOVE_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyLeftJump");
 			_bodyMotion->start();
 		}
@@ -175,196 +395,4 @@ void Player::update(void)
 	{
 
 	}
-
-	switch (_bodyState)
-	{
-		case PLAYER_RIGHT_STOP: case PLAYER_LEFT_STOP:
-		break;
-		case PLAYER_RIGHT_MOVE:	case PLAYER_RIGHT_JUMP:
-			_x += PLAYERSPEED;
-			imagePosUpdate();
-			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
-		break;
-		case PLAYER_LEFT_MOVE: case PLAYER_LEFT_JUMP:
-			_x -= PLAYERSPEED;
-			imagePosUpdate();
-			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
-		break;
-	}
-	imagePosUpdate();
-	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
-
-	if (_isRight == TRUE)
-	{
-		switch (_headState)
-		{
-		case PLAYER_YOUNGEST:
-			_headImage = IMAGEMANAGER->findImage(L"headRight0");
-			break;
-		case PLAYER_YOUNG:
-			_headImage = IMAGEMANAGER->findImage(L"headRight1");
-			break;
-		case PLAYER_OLD:
-			_headImage = IMAGEMANAGER->findImage(L"headRight2");
-			break;
-		case PLAYER_ELDEST:
-			_headImage = IMAGEMANAGER->findImage(L"headRight3");
-			break;
-		}
-	}
-	else
-	{
-		switch (_headState)
-		{
-		case PLAYER_YOUNGEST:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft0");
-			break;
-		case PLAYER_YOUNG:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft1");
-			break;
-		case PLAYER_OLD:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft2");
-			break;
-		case PLAYER_ELDEST:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft3");
-			break;
-		}
-	}
-
-	KEYANIMANAGER->update();
-}
-
-void Player::render(void) 
-{
-	//	B A C K ÆÈ
-	if (_isRight == TRUE)
-	{
-		_armRightBackImage->aniRender(_armBackMotion, false);
-	}
-	else
-	{
-		_armLeftBackImage->aniRender(_armBackMotion, false);
-	}
-
-	//	 ¸ö
-	if (_isRight == TRUE)
-	{
-		_bodyRightImage->aniRender(_bodyMotion, false);
-	}
-	else
-	{
-		_bodyLeftImage->aniRender(_bodyMotion, false);
-	}
-
-
-	//	F R O N T ÆÈ
-
-	if (_isRight == TRUE)
-	{
-		_armRightFrontImage->aniRender(_armFrontMotion, false);
-	}
-	else
-	{
-		_armLeftFrontImage->aniRender(_armFrontMotion, false);
-	}
-
-	//	¸Ó ¸®
-	_headImage->render();
-}
-
-void Player::imageReverse(void)
-{
-	IMAGEMANAGER->findImage(L"headLeft0")->setScale({ -1,1 });
-	IMAGEMANAGER->findImage(L"headLeft1")->setScale({ -1,1 });
-	IMAGEMANAGER->findImage(L"headLeft2")->setScale({ -1,1 });
-	IMAGEMANAGER->findImage(L"headLeft3")->setScale({ -1,1 });
-
-	//IMAGEMANAGER->findImage(L"bodyLeftIdle")->setScale({ -1,1 });
-	//IMAGEMANAGER->findImage(L"bodyLeftSit")->setScale({ -1,1 });
-	//IMAGEMANAGER->findImage(L"bodyLeftJumpUp")->setScale({ -1,1 });
-	//IMAGEMANAGER->findImage(L"bodyLeftJumpDown")->setScale({ -1,1 });
-	//IMAGEMANAGER->findImage(L"bodyLeftWalk")->setScale({ -1,1 });
-	IMAGEMANAGER->findImage(L"unarmedBodyLeft")->setScale({ -1,1 });
-
-	IMAGEMANAGER->findImage(L"armLeftFront")->setScale({ -1,1 });
-	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
-}
-
-void Player::keyAnimationInit(void)
-{
-
-	//	¸ö - idle, jump0, jump1, sit, walk0 ~ walk11 ¼ø
-	//	I D L E
-	int bodyRightIdle[] = { 0 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightStop", L"unarmedBodyRight", bodyRightIdle, 1, 10, true);
-	int bodyLeftIdle[] = { 11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftStop", L"unarmedBodyLeft", bodyLeftIdle, 1, 10, true);
-
-	//	W A L K
-	int bodyRightMove[] = { 12,13,14,15,16,17,18,19,20,21,22,23 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMove", L"unarmedBodyRight", bodyRightMove, 12, 20, true);
-	int bodyLeftMove[] = { 12,13,14,15,16,17,18,19,20,21,22,23 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftMove", L"unarmedBodyLeft", bodyLeftMove, 12, 20, true);
-
-	//	S I T
-	int bodyRightSit[] = { 3 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightSit", L"unarmedBodyRight", bodyRightSit, 1, 10, true);
-	int bodyLeftSit[] = { 8 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftSit", L"unarmedBodyLeft", bodyLeftSit, 1, 10, true);
-
-	//	J U M P
-	int bodyRightJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 10, true);
-	int bodyLeftJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 10, true);
-
-	//	ÆÈ - 16°³¹æÇâ * 3°¡Áö ¸ð¼Ç
-	//	F R O N T
-	//		I D L E
-	int armFrontRightIdle[] = { 12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightStop", L"armRightFront", armFrontRightIdle, 4, 4, true);
-	int armFrontLeftIdle[] = { 12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftStop", L"armLeftFront", armFrontLeftIdle, 4, 4, true);
-
-	//		W A L K
-	int armFrontRightMove[] = { 12,11,10,9,10,11,12,13 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightMove", L"armRightFront", armFrontRightMove, 8, 20, true);
-	int armFrontLeftMove[] = { 12,11,10,9,10,11,12,13 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftMove", L"armLeftFront", armFrontLeftMove, 8, 20, true);
-
-	//		S I T
-	//		J U M P
-
-	//	B A C K
-	//		I D L E
-	int armBackRightIdle[] = { 11,12,13,12 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightStop", L"armRightBack", armBackRightIdle, 4, 4, true);
-	int armBackLeftIdle[] = { 11,12,13,12 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftStop", L"armLeftBack", armBackLeftIdle, 4, 4, true);
-
-	//		W A L K
-	int armBackRightMove[] = { 12,13,14,13,12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightMove", L"armRightBack", armBackRightMove, 8, 20, true);
-	int armBackLeftMove[] = { 12,13,14,13,12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftMove", L"armLeftBack", armBackLeftMove, 8, 20, true);
-
-	//		S I T
-	//		J U M P
-
-}
-
-void Player::imagePosUpdate(void)
-{
-	_headImage->setCoord({ _x + 3, _y - 32 });
-
-	_bodyRightImage->setCoord({ _x, _y - 22 });
-	_bodyLeftImage->setCoord({ _x, _y - 22 });
-
-	_armRightFrontImage->setCoord({ _x - 3, _y - 20 });
-	_armRightBackImage->setCoord({ _x + 7, _y - 20 });
-	_armLeftFrontImage->setCoord({ _x + 3, _y - 20 });
-	_armLeftBackImage->setCoord({ _x - 7, _y - 20 });
 }

@@ -136,6 +136,9 @@
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
+    <ClCompile Include="jump.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jump.h">
+      <Filter>mainGame\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
