@@ -64,106 +64,47 @@ void Sprite::update()
 
 }
 
-void Sprite::render(bool cameraOffset)
+void Sprite::render(BYTE alpha)
 {
 	AdjustTransform();
 
-	_sprite->SetTransform(&_world);
-	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	//camera offset
-	D3DXVECTOR3 center = _center;
-
-	D3DXVECTOR3 offset = {0.0f, 0.0f, 0.0f};
-	if (cameraOffset)
-	{
-		int cameraX = _mainCamera.x;
-		int cameraY = _mainCamera.y;
-
-		if (_scale.x < 0) cameraX *= -1;
-		if (_scale.y < 0) cameraY *= -1;
-
-		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
-
-		//center.x -= cameraX / 5;
-		//center.y -= cameraY / 5;
-
-		if (_scale.x < 0) offset.x += _size.x;
-		if (_scale.y < 0) offset.y += _size.y;
-
-		//D3DXVECTOR3 vEyePt(0.0f, 0.0f, -5.0f);							//1. 눈의 위치
-		//D3DXVECTOR3 vLookatPt(-cameraX, -cameraY, 0.0f);						//2. 눈이 바라보는 위치
-		//D3DXVECTOR3 vUpVec(0.0f, 1.0f, 0.0f);							//3. 천정방향을 나타내는 상방벡터
-		//D3DXMATRIXA16 matView;											//
-		//D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);		//뷰 행렬 생성
-		//_sprite->SetWorldViewLH(&_world, &matView);
-
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
-		_sprite->End();
-	}
-	else
-	{
-		_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, 0xFFFFFFFF);
-		_sprite->End();
-	}
-}
-
-void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
-{
-	AdjustTransform();
+	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
 
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	//camera offset
-	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
-	if (cameraOffset)
-	{
-		int cameraX = _mainCamera.x;
-		int cameraY = _mainCamera.y;
-
-		if (_scale.x < 0) cameraX *= -1;
-		if (_scale.y < 0) cameraY *= -1;
-
-		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
-
-		if (_scale.x < 0) offset.x += _size.x;
-		if (_scale.y < 0) offset.y += _size.y;
-
-	}
-	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
+	_sprite->Draw(_texture->getTexture(), &_texture->getRect(), NULL, NULL, color);
 	_sprite->End();
 }
 
-void Sprite::aniRender(animation* ani, bool cameraOffset)
+void Sprite::frameRender(int frameX, int frameY, BYTE alpha)
 {
 	AdjustTransform();
+
+	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
+
+	_sprite->SetTransform(&_world);
+	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
+	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, color);
+	_sprite->End();
+}
+
+void Sprite::aniRender(animation* ani, BYTE alpha)
+{
+	AdjustTransform();
+
+	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
 
 	_sprite->SetTransform(&_world);
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
-	//camera는
-	RECT temp = _texture->getRect();
-	temp.left += ani->getFramePos().x;
-	temp.right = temp.left + ani->getFrameWidth();
-	temp.top += ani->getFramePos().y;
-	temp.bottom = temp.top + ani->getFrameHeight();
+	//이미지 내에서 애니메이션의 위치정보를 담는다.
+	RECT rcAni = _texture->getRect();
+	rcAni.left += ani->getFramePos().x;
+	rcAni.right = rcAni.left + ani->getFrameWidth();
+	rcAni.top += ani->getFramePos().y;
+	rcAni.bottom = rcAni.top + ani->getFrameHeight();
 
-	//camera offset
-	D3DXVECTOR3 offset = { 0.0f, 0.0f, 0.0f };
-	if (cameraOffset)
-	{
-		int cameraX = _mainCamera.x;
-		int cameraY = _mainCamera.y;
-
-		if (_scale.x < 0) cameraX *= -1;
-		if (_scale.y < 0) cameraY *= -1;
-
-		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
-
-		if (_scale.x < 0) offset.x += _size.x;
-		if (_scale.y < 0) offset.y += _size.y;
-
-	}
-	_sprite->Draw(_texture->getTexture(), &temp, NULL, NULL, 0xFFFFFFFF);
+	_sprite->Draw(_texture->getTexture(), &rcAni, NULL, NULL, color);
 	_sprite->End();
 }
 
@@ -222,7 +163,7 @@ void Sprite::setCoord(D3DXVECTOR2 coord)
 {
 	_coord = coord;
 
-	AdjustTransform();
+	//AdjustTransform();
 }
 
 void Sprite::setScale(D3DXVECTOR2 scale)
@@ -232,36 +173,27 @@ void Sprite::setScale(D3DXVECTOR2 scale)
 	_size.x = _texture->getWidth() * _scale.x;
 	_size.y = _texture->getHeight() * _scale.y;
 
-	//if (_scale.x < 0)
-	//{
-	//	_coord.x -= fabs(_texture->getWidth() * _scale.x);
-	//}
-	//if (_scale.y < 0)
-	//{
-	//	_coord.y -= fabs(_texture->getHeight() * _scale.y);
-	//}
-
-	AdjustTransform();
+	//AdjustTransform();
 }
 void Sprite::setCenterPer(D3DXVECTOR2 centerPer)
 {
 	_center.x = _size.x * centerPer.x;
 	_center.y = _size.y * centerPer.y;
 
-	AdjustTransform();
+	//AdjustTransform();
 }
 void Sprite::setCenterPos(D3DXVECTOR2 centerPos)
 {
 	_center.x = centerPos.x;
 	_center.y = centerPos.y;
 
-	AdjustTransform();
+	//AdjustTransform();
 }
 void Sprite::setRotate(float angleDeg)
 {
 	_angleDeg = angleDeg;
 
-	AdjustTransform();
+	//AdjustTransform();
 }
 
 void Sprite::move(float moveX, float moveY)
@@ -269,16 +201,9 @@ void Sprite::move(float moveX, float moveY)
 	_coord.x += moveX;
 	_coord.y += moveY;
 
-	AdjustTransform();
+	//AdjustTransform();
 }
 
-void Sprite::getPixel(void)
-{
-	//LPCSTR ss = D3DXGetPixelShaderProfile(_device);
-	//IDirect3DPixelShader9** pixelshader = (_device);
-	//_device->GetPixelShader(pixelshader);
-	printf("");
-}
 
 
 int Sprite::getCurFrameX(void) { if (_texture) return _texture->getCurFrameX(); }

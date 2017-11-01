@@ -168,7 +168,7 @@ void sceneTest::render(void)
 
 	IMAGEMANAGER->findImage(L"테스트배경")->render();
 	//IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
-	IMAGEMANAGER->findImage(L"더미2")->render();
+	IMAGEMANAGER->findImage(L"더미2")->render(128);
 	RECTMANAGER->findRect(L"더미")->render();
 
 	RECT rcText = { 300, 100, 500, 200 };
