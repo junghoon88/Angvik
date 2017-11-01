@@ -36,9 +36,6 @@
     <ClCompile Include="keyManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerManager.cpp">
-      <Filter>DxWindow\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="PBGManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
@@ -96,7 +93,6 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-    <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="Sprite.cpp">
       <Filter>DxWindow\Sprite</Filter>
     </ClCompile>
@@ -136,6 +132,12 @@
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
+    <ClCompile Include="sceneitemTest.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -154,9 +156,6 @@
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="keyManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerManager.h">
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PBGManager.h">
@@ -233,7 +232,6 @@
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="stageManager.h" />
-    <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
@@ -269,6 +267,12 @@
     </ClInclude>
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneitemTest.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>mainGame\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

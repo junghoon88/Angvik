@@ -55,6 +55,6 @@ void sceneET::render(void)
 {
 //	_pm->render();
 	_em->render();
-	IMAGEMANAGER->findImage(L"테스트배경")->render();
+	IMAGEMANAGER->findImage(L"충돌테스트보여줘요")->render();
 
 }
