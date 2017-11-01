@@ -87,8 +87,8 @@ void Sprite::render(bool cameraOffset)
 		//center.x -= cameraX / 5;
 		//center.y -= cameraY / 5;
 
-		if (_scale.x < 0) offset.x += _size.x / 2;
-		if (_scale.y < 0) offset.y += _size.y / 2;
+		if (_scale.x < 0) offset.x += _size.x;
+		if (_scale.y < 0) offset.y += _size.y;
 
 		//D3DXVECTOR3 vEyePt(0.0f, 0.0f, -5.0f);							//1. 눈의 위치
 		//D3DXVECTOR3 vLookatPt(-cameraX, -cameraY, 0.0f);						//2. 눈이 바라보는 위치
@@ -125,8 +125,8 @@ void Sprite::frameRender(int frameX, int frameY, bool cameraOffset)
 
 		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
 
-		if (_scale.x < 0) offset.x += _size.x / 2;
-		if (_scale.y < 0) offset.y += _size.y / 2;
+		if (_scale.x < 0) offset.x += _size.x;
+		if (_scale.y < 0) offset.y += _size.y;
 
 	}
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, 0xFFFFFFFF);
@@ -159,8 +159,8 @@ void Sprite::aniRender(animation* ani, bool cameraOffset)
 
 		offset = { (float)-cameraX, (float)-cameraY, 0.0f };
 
-		if (_scale.x < 0) offset.x += _size.x / 2;
-		if (_scale.y < 0) offset.y += _size.y / 2;
+		if (_scale.x < 0) offset.x += _size.x;
+		if (_scale.y < 0) offset.y += _size.y;
 
 	}
 	_sprite->Draw(_texture->getTexture(), &temp, NULL, NULL, 0xFFFFFFFF);
