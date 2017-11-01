@@ -164,6 +164,6 @@ void sceneInit::enemyInitImage(void)	//몬스터
 	IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_f6.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_f6.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_f8.png", 8, 1);
-	PBGMANAGER->addImage(L"테스트배경", L"image/stage/test_collision.png",2950,1400);
+	PBGMANAGER->addImage(L"테스트배경", L"image/stage/test_collision.png",768,305);
 
 }
