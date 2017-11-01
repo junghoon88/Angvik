@@ -50,6 +50,8 @@ void sceneGame::release(void)
 void sceneGame::update(void)
 {
 	_pm->update();
+
+	MAINCAMERA->update();
 }
 
 void sceneGame::render(void)

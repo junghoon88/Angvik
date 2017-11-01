@@ -73,17 +73,17 @@ void Player::update(void)
 	{
 		switch (_headState)
 		{
-		case PLAYER_YOUNGEST:
-			_headImage = IMAGEMANAGER->findImage(L"headRight0");
+			case PLAYER_YOUNGEST:
+				_headImage = IMAGEMANAGER->findImage(L"headRight0");
 			break;
-		case PLAYER_YOUNG:
-			_headImage = IMAGEMANAGER->findImage(L"headRight1");
+			case PLAYER_YOUNG:
+				_headImage = IMAGEMANAGER->findImage(L"headRight1");
 			break;
-		case PLAYER_OLD:
-			_headImage = IMAGEMANAGER->findImage(L"headRight2");
+			case PLAYER_OLD:
+				_headImage = IMAGEMANAGER->findImage(L"headRight2");
 			break;
-		case PLAYER_ELDEST:
-			_headImage = IMAGEMANAGER->findImage(L"headRight3");
+			case PLAYER_ELDEST:
+				_headImage = IMAGEMANAGER->findImage(L"headRight3");
 			break;
 		}
 	}
@@ -91,17 +91,17 @@ void Player::update(void)
 	{
 		switch (_headState)
 		{
-		case PLAYER_YOUNGEST:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft0");
+			case PLAYER_YOUNGEST:
+				_headImage = IMAGEMANAGER->findImage(L"headLeft0");
 			break;
-		case PLAYER_YOUNG:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft1");
+			case PLAYER_YOUNG:
+				_headImage = IMAGEMANAGER->findImage(L"headLeft1");
 			break;
-		case PLAYER_OLD:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft2");
+			case PLAYER_OLD:
+				_headImage = IMAGEMANAGER->findImage(L"headLeft2");
 			break;
-		case PLAYER_ELDEST:
-			_headImage = IMAGEMANAGER->findImage(L"headLeft3");
+			case PLAYER_ELDEST:
+				_headImage = IMAGEMANAGER->findImage(L"headLeft3");
 			break;
 		}
 	}
@@ -139,7 +139,6 @@ void Player::update(void)
 	KEYANIMANAGER->update();
 
 	MAINCAMERA->setTargetPos(_x, _y);
-	MAINCAMERA->update();
 }
 
 void Player::render(void) 
