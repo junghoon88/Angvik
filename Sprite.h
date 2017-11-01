@@ -55,6 +55,11 @@ public:
 	void setScale(D3DXVECTOR2 scale);
 	void setCenterPer(D3DXVECTOR2 centerPer); //size 기준 배율로
 	void setCenterPos(D3DXVECTOR2 centerPos); //position
+
+	void setCoord(float coordX, float corrdY);
+	void setScale(float scaleX, float scaleY);
+	void setCenterPer(float centerPerX, float centerPerY); //size 기준 배율로
+	void setCenterPos(float centerPosX, float centerPosY); //position
 	void setRotate(float angleDeg);
 
 	int getCurFrameX(void);

@@ -136,6 +136,9 @@
     <ClCompile Include="sceneET.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="sceneET.h">
       <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>DxWindow\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
