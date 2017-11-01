@@ -10,6 +10,7 @@ private:
 
 	void playerInitImage(void);
 	void enemyInitImage(void);
+	void uiInitImage(void);
 
 
 public:

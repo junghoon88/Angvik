@@ -1,6 +1,7 @@
 #pragma once
 #include "singletonBase.h"
 #include "Sprite.h"
+#include "Texture.h"
 #include <map>
 
 class imageManager : public singletonBase<imageManager>

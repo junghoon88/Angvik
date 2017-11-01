@@ -151,6 +151,7 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="DxWindow.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Ent.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="EnemyMother.cpp" />
     <ClCompile Include="imageManager.cpp" />
@@ -162,12 +163,14 @@
     <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="monkkey.cpp" />
     <ClCompile Include="PBGManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rectManager.cpp" />
+    <ClCompile Include="sceneET.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
     <ClCompile Include="sceneitemTest.cpp" />
@@ -193,6 +196,7 @@
     <ClInclude Include="DxWindow.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyMother.h" />
+    <ClInclude Include="Ent.h" />
     <ClInclude Include="globalMacroVariables.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
@@ -204,6 +208,7 @@
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="monkkey.h" />
     <ClInclude Include="PBGManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
@@ -211,6 +216,7 @@
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="rectManager.h" />
+    <ClInclude Include="sceneET.h" />
     <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />
     <ClInclude Include="sceneitemTest.h" />

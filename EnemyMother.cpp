@@ -5,8 +5,11 @@
 EnemyMother::EnemyMother(){}
 EnemyMother::~EnemyMother(){}
 
-void EnemyMother::init(void)
+void EnemyMother::init(float x, float y)
 {
+
+
+
 
 }
 void EnemyMother::release(void)
@@ -15,7 +18,7 @@ void EnemyMother::release(void)
 }
 void EnemyMother::update(void) 
 {
-	move();
+
 }
 void EnemyMother::render(void) 
 {

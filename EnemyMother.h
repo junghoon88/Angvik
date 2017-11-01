@@ -14,23 +14,27 @@ enum enemyState
 class EnemyMother
 {
 protected:
-	image* img;
+	Sprite* spt;
 	RECT rc;
 	float ptX;
 	float ptY;
 	float speed;
 	float jumpPower;
 	int life;
+
 	
+	int frameCnt;
+	float frameTime;
+
 	enemyDirection dir;
 	enemyState state;
 
 public:
-	void init(void);
-	void init(const char* imagekey,float x,float y);
+
+	virtual void init(float x,float y);
 	void release(void);
-	void update(void);
-	void render(void);
+	virtual void update(void);
+	virtual void render(void);
 
 	virtual void move(void);
 	virtual void attack(void);
