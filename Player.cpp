@@ -124,11 +124,11 @@ void Player::update(void)
 		break;
 	}
 
-	if (_playerJump->getIsJumping() == FALSE)
-	{
-		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
-		else _bodyState = PLAYER_LEFT_STOP;
-	}
+	//if (_playerJump->getIsJumping() == FALSE)
+	//{
+	//	if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
+	//	else _bodyState = PLAYER_LEFT_STOP;
+	//}
 
 	imagePosUpdate();
 	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
