@@ -39,7 +39,21 @@ void Ent::render(void)
 }
 void Ent::move(void)  
 {
+	/*
+	for (int i = probeY - 3; i < probeY; ++i)
+	{
+		//COLORREF color = PBGMANAGER->getPixelColor("테스트배경"), ptX, i);
 
+		int r = GetRValue(color);
+		int g = GetGValue(color);
+		int b = GetBValue(color);
+
+		if ((r == 255 && g == 0 && b == 0)) // 관통형 바닥
+		{
+			ptY = i  + 1;
+			break;
+		}
+		*/
 }
 void Ent::attack(void)
 {

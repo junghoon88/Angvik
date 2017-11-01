@@ -28,7 +28,7 @@ Texture::Texture(LPDIRECT3DDEVICE9 device, WCHAR* fileName, DWORD color, DWORD c
 		, NULL
 		, &texture
 	);
-	//assert(SUCCEEDED(hr));
+	assert(SUCCEEDED(hr));
 }
 
 
