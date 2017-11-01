@@ -40,7 +40,6 @@ void Ent::update(void)
 		frameCnt++;
 		if (frameCnt >= 6) frameCnt = 0;
 	}
-
 	move();
 }
 void Ent::render(void)
@@ -56,6 +55,7 @@ void Ent::move(void)
 	}
 	else if (dir == eRIGHT)
 	{
+
 		ptX += 2;
 	}
 
