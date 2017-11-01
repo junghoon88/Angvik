@@ -2,7 +2,7 @@
 #include "DxWindow.h"
 #include "jump.h"
 
-#define PLAYERSPEED 2.5f
+#define PLAYERSPEED 4.f
 #define JUMPPOWER 8.f
 #define GRAVITY 0.4f
 
@@ -65,6 +65,17 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	static void rightJump(void* obj);
+	static void leftJump(void* obj);
+	static void rightMoveJump(void* obj);
+	static void leftMoveJump(void* obj);
+
+	PLAYERBODYSTATE getPlayerBodyState(void) { return _bodyState; }
+	void setPlayerBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
+
+	animation* getPlayerBodyMotion(void) { return _bodyMotion; }
+	void setPlayerBodyMotion(animation* ani) { _bodyMotion = ani; }
 
 	//========== I N I T ==========
 	void imageReverse(void);

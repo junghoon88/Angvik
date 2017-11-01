@@ -10,7 +10,7 @@ Item::~Item()
 {
 }
 
-void Item::init(void)
+void Item::init(ITEM_TYPE type, ITEM_KIND kind)
 {
 
 }
