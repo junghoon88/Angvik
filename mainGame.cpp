@@ -36,11 +36,6 @@ void mainGame::initScene(void)
 	scene->init();
 
 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
-
-
-
-	SCENEMANAGER->changeScene(L"¼¿·º¾À");
-
 }
 
 void mainGame::release(void)

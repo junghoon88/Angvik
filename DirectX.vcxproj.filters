@@ -133,12 +133,17 @@
       <Filter>mainGame\scene</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="sceneitemTest.cpp">
       <Filter>mainGame\scene</Filter>
 =======
     <ClCompile Include="jump.cpp">
       <Filter>mainGame\Player</Filter>
 >>>>>>> f9fd2c4be764059da47b5fb4003b4c6dfb566070
+=======
+    <ClCompile Include="soundManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+>>>>>>> 89ab3856afc4b3acf4f30a5116777367d93ed3e6
     </ClCompile>
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\Player</Filter>
@@ -274,12 +279,17 @@
       <Filter>mainGame\scene</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="sceneitemTest.h">
       <Filter>mainGame\scene</Filter>
 =======
     <ClInclude Include="jump.h">
       <Filter>mainGame\Player</Filter>
 >>>>>>> f9fd2c4be764059da47b5fb4003b4c6dfb566070
+=======
+    <ClInclude Include="soundManager.h">
+      <Filter>DxWindow\Manager</Filter>
+>>>>>>> 89ab3856afc4b3acf4f30a5116777367d93ed3e6
     </ClInclude>
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
