@@ -21,28 +21,28 @@ void imageManager::release()
 	deleteAll();
 }
 
-Sprite* imageManager::addImage(LPDIRECT3DDEVICE9 device, wstring strKey, const TCHAR* fileName)
+Sprite* imageManager::addImage(LPDIRECT3DDEVICE9 device, wstring strKey, const TCHAR* fileName, bool bCameraOffset)
 {
 	Sprite* sprite = findImage(strKey);
 
 	if (sprite) return sprite;
 
 	sprite = new Sprite(device, fileName);
-	sprite->init();
+	sprite->init(bCameraOffset);
 
 	_mImageList.insert(make_pair(strKey, sprite));
 
 	return sprite;
 }
 
-Sprite* imageManager::addFrameImage(LPDIRECT3DDEVICE9 device, wstring strKey, const TCHAR* fileName, int frameX, int frameY)
+Sprite* imageManager::addFrameImage(LPDIRECT3DDEVICE9 device, wstring strKey, const TCHAR* fileName, int frameX, int frameY, bool bCameraOffset)
 {
 	Sprite* sprite = findImage(strKey);
 
 	if (sprite) return sprite;
 
 	sprite = new Sprite(device, fileName);
-	sprite->init(frameX, frameY);
+	sprite->init(frameX, frameY, bCameraOffset);
 
 	_mImageList.insert(make_pair(strKey, sprite));
 	
@@ -128,25 +128,25 @@ void imageManager::move(wstring strKey, float moveX, float moveY)
 
 
 
-void imageManager::render(wstring strKey, bool cameraOffset)
+void imageManager::render(wstring strKey)
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->render(cameraOffset);
+	if (sprite) sprite->render();
 }
 
-void imageManager::frameRender(wstring strKey, int frameX, int frameY, bool cameraOffset)
+void imageManager::frameRender(wstring strKey, int frameX, int frameY)
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->frameRender(frameX, frameY, cameraOffset);
+	if (sprite) sprite->frameRender(frameX, frameY);
 }
 
-void imageManager::aniRender(wstring strKey, animation* ani, bool cameraOffset)
+void imageManager::aniRender(wstring strKey, animation* ani)
 {
 	Sprite * sprite = findImage(strKey);
 
-	if (sprite) sprite->aniRender(ani, cameraOffset);
+	if (sprite) sprite->aniRender(ani);
 }
 
 
