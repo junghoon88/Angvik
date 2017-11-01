@@ -161,11 +161,11 @@ void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 	IMAGEMANAGER->addFrameImage(device, L"¿ø¼þÀÌ", L"image/monster/¿ø¼þÀÌ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(device, L"¹ö¼¸¸Ç", L"image/monster/¹ö¼¸¸Ç.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(device, L"¹ö¼¸Á¡ÇÁ", L"image/monster/¹ö¼¸¸ÇÁ¡ÇÁ.png", 2, 1);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ", L"image/monster/Turtle_f6.png", 6, 1);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ´©µå", L"image/monster/Turtle_crash_f6.png", 6, 1);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"³ª¹«¸Ç", L"image/monster/Ent_move_f6.png", 6, 1);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°", L"image/monster/kong_idle_f6.png", 6, 1);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°¾îÅÃ", L"image/monster/kong_atk_f8.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ", L"image/monster/Turtle_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ´©µå", L"image/monster/Turtle_crash_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"³ª¹«¸Ç", L"image/monster/Ent_move_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°", L"image/monster/kong_idle_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°¾îÅÃ", L"image/monster/kong_atk_8f.png", 8, 1);
 	PBGMANAGER->addImage(L"Å×½ºÆ®¹è°æ", L"image/stage/test_collision.png",768,305);
 
 }
