@@ -7,8 +7,6 @@
 #include "sceneET.h"
 #include "sceneitemTest.h"
 
-#include "playerSceneTest.h"
-
 
 
 class mainGame : public DxWindow
