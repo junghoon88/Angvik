@@ -132,8 +132,31 @@ void Player::update(void)
 
 	_playerJump->update();
 
+	//jhkim 점프 수정
+	if (_playerJump->getIsJumping() == false)
+	{
+		if (_bodyState == PLAYER_RIGHT_JUMP)
+		{
+			rightJump(this);
+		}
+		if (_bodyState == PLAYER_LEFT_JUMP)
+		{
+			leftJump(this);
+		}
+		if (_bodyState == PLAYER_RIGHT_MOVE_JUMP)
+		{
+			rightMoveJump(this);
+		}
+		if (_bodyState == PLAYER_LEFT_MOVE_JUMP)
+		{
+			leftMoveJump(this);
+		}
+	}
+
+
 	KEYANIMANAGER->update();
 	
+	//debug
 	TCHAR str[100];
 	switch (_bodyState)
 	{
@@ -239,9 +262,11 @@ void Player::keyAnimationInit(void)
 
 	//	J U M P
 	int bodyRightJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, false, rightJump, this);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, true);
+	//KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, false, rightJump, this);
 	int bodyLeftJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false, leftJump, this);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, true);
+	//KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false, leftJump, this);
 	int bodyRightMoveJump[] = { 1,2 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMoveJump", L"unarmedBodyRight", bodyRightMoveJump, 2, 2, false, rightMoveJump, this);
 	int bodyLeftMoveJump[] = { 1,2 };
