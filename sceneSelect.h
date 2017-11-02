@@ -20,6 +20,8 @@ private:
 	bool _isMute;
 	bool _isStart;
 
+	bool _musicStart;
+
 public:
 	sceneSelect();
 	~sceneSelect();

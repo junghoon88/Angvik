@@ -14,6 +14,8 @@ void database::init()
 {
 	//loadDatabase(L"database.txt");
 	_isStart = false;
+	_volume = 0.5f;
+	_isMute = false;
 }
 
 void database::release()
