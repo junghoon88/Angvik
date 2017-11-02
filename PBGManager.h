@@ -11,7 +11,6 @@ private:
 private:
 	mImg _mImgBG;
 
-	image* findImage(wstring strKey);
 
 
 public:
@@ -22,6 +21,7 @@ public:
 	void release(void);
 
 	void addImage(wstring strKey, const TCHAR* fileName, int width, int height);
+	image* findImage(wstring strKey);
 	COLORREF getPixelColor(wstring strKey, int x, int y);
 
 };

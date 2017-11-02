@@ -157,7 +157,6 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="invenBird.cpp" />
-    <ClCompile Include="inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="itemManager.cpp" />
     <ClCompile Include="jump.cpp" />
@@ -166,6 +165,7 @@
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="monkkey.cpp" />
     <ClCompile Include="PBGManager.cpp" />
+    <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
@@ -207,7 +207,6 @@
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="invenBird.h" />
-    <ClInclude Include="inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="jump.h" />
@@ -216,6 +215,7 @@
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="monkkey.h" />
     <ClInclude Include="PBGManager.h" />
+    <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="PrintText.h" />

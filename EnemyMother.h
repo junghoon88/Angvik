@@ -12,7 +12,7 @@ enum enemyState
 	eFALL
 };
 
-class EnemyMother
+class EnemyMother : public DxWindow
 {
 protected:
 	Sprite* spt;

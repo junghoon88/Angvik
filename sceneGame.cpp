@@ -52,7 +52,7 @@ void sceneGame::update(void)
 	if (!_musicStart)
 	{
 		SOUNDMANAGER->play(L"stage1bgm", DATABASE->getVolume());
-		SOUNDMANAGER->setMute(DATABASE->getMute());
+		SOUNDMANAGER->setMuteAll(DATABASE->getMute());
 		_musicStart = true;
 	}
 

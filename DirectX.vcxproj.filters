@@ -146,10 +146,6 @@
       <Filter>mainGame\scene</Filter>
     </ClCompile>
     <ClCompile Include="sceneStage.cpp" />
-    <ClCompile Include="test2.cpp" />
-    <ClCompile Include="Turtle.cpp">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -297,10 +293,6 @@
       <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="sceneStage.h" />
-    <ClInclude Include="test2.h" />
-    <ClInclude Include="Turtle.h">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
