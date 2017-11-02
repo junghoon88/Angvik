@@ -97,7 +97,11 @@ void sceneSelect::update(void)
 			_selectNum = 0;
 			_isOption = true;
 		}
-		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) PostQuitMessage(0);
+
+		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		{
+			PostQuitMessage(WM_QUIT);
+		}
 
 		IMAGEMANAGER->findImage(L"¼±ÅÃ")->setCoord(_setSelect[_selectNum]);
 	}

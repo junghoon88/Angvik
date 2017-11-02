@@ -58,6 +58,8 @@ void Player::init(void)
 	_armFrontMotion->start();
 	_armBackMotion->start();
 
+	TEXTMANAGER->init(DEVICE, L"플레이어상태");
+
 }
 
 void Player::release(void)
@@ -65,7 +67,7 @@ void Player::release(void)
 
 }
 
-void Player::update(void) 
+void Player::update(void)
 {
 	keyInputSettings();		//	KEY INPUT
 
@@ -124,19 +126,54 @@ void Player::update(void)
 		break;
 	}
 
-	if (_playerJump->getIsJumping() == FALSE)
-	{
-		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
-		else _bodyState = PLAYER_LEFT_STOP;
-	}
-
 	imagePosUpdate();
 	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
 	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
 
 	_playerJump->update();
 
+	//jhkim 점프 수정
+	if (_playerJump->getIsJumping() == false)
+	{
+		if (_bodyState == PLAYER_RIGHT_JUMP)
+		{
+			rightJump(this);
+		}
+		if (_bodyState == PLAYER_LEFT_JUMP)
+		{
+			leftJump(this);
+		}
+		if (_bodyState == PLAYER_RIGHT_MOVE_JUMP)
+		{
+			rightMoveJump(this);
+		}
+		if (_bodyState == PLAYER_LEFT_MOVE_JUMP)
+		{
+			leftMoveJump(this);
+		}
+	}
+
+
 	KEYANIMANAGER->update();
+	
+	//debug
+	TCHAR str[100];
+	switch (_bodyState)
+	{
+		case PLAYER_RIGHT_STOP:			_stprintf(str, L"PLAYER_RIGHT_STOP:		");	break;
+		case PLAYER_LEFT_STOP:			_stprintf(str, L"PLAYER_LEFT_STOP:		");	break;
+		case PLAYER_RIGHT_MOVE:			_stprintf(str, L"PLAYER_RIGHT_MOVE:		");	break;
+		case PLAYER_LEFT_MOVE:			_stprintf(str, L"PLAYER_LEFT_MOVE:		");	break;
+		case PLAYER_RIGHT_SIT:			_stprintf(str, L"PLAYER_RIGHT_SIT:		");	break;
+		case PLAYER_LEFT_SIT:			_stprintf(str, L"PLAYER_LEFT_SIT:		");	break;
+		case PLAYER_RIGHT_JUMP:			_stprintf(str, L"PLAYER_RIGHT_JUMP:		");	break;
+		case PLAYER_LEFT_JUMP:			_stprintf(str, L"PLAYER_LEFT_JUMP:		");	break;
+		case PLAYER_RIGHT_MOVE_JUMP:	_stprintf(str, L"PLAYER_RIGHT_MOVE_JUMP:");	break;
+		case PLAYER_LEFT_MOVE_JUMP:		_stprintf(str, L"PLAYER_LEFT_MOVE_JUMP:	");	break;
+		default: _stprintf(str, L""); break;
+
+	}
+	TEXTMANAGER->addText(L"플레이어상태", str);
 
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	MAINCAMERA->update();
@@ -178,6 +215,9 @@ void Player::render(void)
 
 	//	머 리
 	_headImage->render();
+
+	RECT rcText = RectMake(0, 0, 100, 100);
+	TEXTMANAGER->render(L"플레이어상태", rcText);
 }
 
 void Player::imageReverse(void)
@@ -222,9 +262,15 @@ void Player::keyAnimationInit(void)
 
 	//	J U M P
 	int bodyRightJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, false);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, true);
+	//KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightJump", L"unarmedBodyRight", bodyRightJump, 2, 2, false, rightJump, this);
 	int bodyLeftJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, true);
+	//KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false, leftJump, this);
+	int bodyRightMoveJump[] = { 1,2 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMoveJump", L"unarmedBodyRight", bodyRightMoveJump, 2, 2, false, rightMoveJump, this);
+	int bodyLeftMoveJump[] = { 1,2 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftMoveJump", L"unarmedBodyLeft", bodyLeftMoveJump, 2, 2, false, leftMoveJump, this);
 
 	//	팔 - 16개방향 * 3가지 모션
 	//	F R O N T
@@ -354,8 +400,8 @@ void Player::keyInputSettings(void)
 		}
 		else if (_bodyState == PLAYER_LEFT_SIT)
 		{
-			_bodyState = PLAYER_RIGHT_STOP;
-			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightStop");
+			_bodyState = PLAYER_LEFT_STOP;
+			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyLeftStop");
 			_bodyMotion->start();
 		}
 	}
@@ -399,4 +445,37 @@ void Player::keyInputSettings(void)
 	{
 
 	}
+}
+
+void Player::rightJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerBodyState(PLAYER_RIGHT_STOP);
+	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyRightStop"));
+	p->getPlayerBodyMotion()->start();
+}
+void Player::leftJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerBodyState(PLAYER_LEFT_STOP);
+	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyLeftStop"));
+	p->getPlayerBodyMotion()->start();
+}
+void Player::rightMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerBodyState(PLAYER_RIGHT_MOVE);
+	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyRightMove"));
+	p->getPlayerBodyMotion()->start();
+}
+void Player::leftMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerBodyState(PLAYER_LEFT_MOVE);
+	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyLeftMove"));
+	p->getPlayerBodyMotion()->start();
 }

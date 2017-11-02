@@ -29,8 +29,8 @@ public:
 		D3DXVECTOR2 scale = D3DXVECTOR2(1, 1));
 	~Sprite();
 
-	void init(bool bCameraOffset);
-	void init(int frameX, int frameY, bool bCameraOffset);
+	void init(bool bCameraOffset = true);
+	void init(int frameX, int frameY, bool bCameraOffset = true);
 	void release();
 	void update();
 	void render(BYTE alpha = 255);
