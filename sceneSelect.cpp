@@ -63,9 +63,7 @@ void sceneSelect::init(void)
 
 	_isOption = false;
 	_isStart = false;
-
-	//사운드 관련
-	SOUNDMANAGER->play(L"메뉴브금", _volume);
+	_musicStart = false;
 }
 
 void sceneSelect::release(void)
@@ -75,6 +73,19 @@ void sceneSelect::release(void)
 
 void sceneSelect::update(void)
 {
+	DATABASE->setVolume(_volume);
+	DATABASE->setMute(_isMute);
+
+	_mainCamera.x = 0;
+	_mainCamera.y = 0;
+
+	if (!_musicStart)
+	{
+		SOUNDMANAGER->stop(L"stage1bgm");
+		SOUNDMANAGER->play(L"메뉴브금", _volume);
+		_musicStart = true;
+	}
+
 	_countTime += TIMEMANAGER->getElapsedTime();
 	if (_countTime >= 0.07)
 	{
@@ -103,6 +114,7 @@ void sceneSelect::update(void)
 			_isStart = true;
 			DATABASE->setGameStart(_isStart);
 			SOUNDMANAGER->stop(L"메뉴브금");
+			_musicStart = false;
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
@@ -203,9 +215,9 @@ void sceneSelect::render(void)
 	}
 	else
 	{
-		if (_selectNum == 0)		IMAGEMANAGER->findImage(L"selectMusic")->render(128);
+		if (_selectNum != 1)		IMAGEMANAGER->findImage(L"selectMusic")->render(128);
 		else						IMAGEMANAGER->findImage(L"selectMusic")->render();
-		if (_selectNum == 1)		IMAGEMANAGER->findImage(L"selectVolume")->render(128);
+		if (_selectNum != 0)		IMAGEMANAGER->findImage(L"selectVolume")->render(128);
 		else						IMAGEMANAGER->findImage(L"selectVolume")->render();
 
 		IMAGEMANAGER->findImage(L"volume")->render();

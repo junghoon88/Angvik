@@ -315,4 +315,9 @@ void DxWindow::releaseSingleton(void)
 	SAFE_DELETE_ARRAY(commandLine);
 }
 
+void DxWindow::init() {
 
+
+
+
+}

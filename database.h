@@ -22,6 +22,8 @@ private:
 	arrElement _mTotalElement;
 
 	bool _isStart;
+	bool _isMute;
+	float _volume;
 
 public:
 	database();
@@ -38,7 +40,14 @@ public:
 	//설정자
 	void setElementCharactor(wstring str, int charactor);
 
+	//게터세터
 	bool getGameStart(void) { return _isStart; }
 	void setGameStart(bool isStart) { _isStart = isStart; }
+
+	float getVolume(void) { return _volume; }
+	void setVolume(float volume) { _volume = volume; }
+
+	bool getMute(void) { return _isMute; }
+	void setMute(bool isMute) { _isMute = isMute; }
 };
 
