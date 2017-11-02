@@ -21,6 +21,7 @@ private:
 
 	arrElement _mTotalElement;
 
+	bool _isStart;
 
 public:
 	database();
@@ -37,5 +38,7 @@ public:
 	//¼³Á¤ÀÚ
 	void setElementCharactor(wstring str, int charactor);
 
+	bool getGameStart(void) { return _isStart; }
+	void setGameStart(bool isStart) { _isStart = isStart; }
 };
 

@@ -62,6 +62,7 @@ void sceneSelect::init(void)
 	_isMute = false;
 
 	_isOption = false;
+	_isStart = false;
 
 	//사운드 관련
 	SOUNDMANAGER->play(L"메뉴브금", _volume);
@@ -99,6 +100,9 @@ void sceneSelect::update(void)
 		if (_selectNum == 0 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
 			SOUNDMANAGER->play(L"메뉴선택", _volume);
+			_isStart = true;
+			DATABASE->setGameStart(_isStart);
+			SOUNDMANAGER->stop(L"메뉴브금");
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{

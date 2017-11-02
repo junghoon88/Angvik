@@ -163,6 +163,11 @@ void Player::update(void)
 
 
 	KEYANIMANAGER->update();
+
+	if (!_isLive)
+	{
+		DATABASE->setGameStart(_isLive);
+	}
 	
 	//debug
 	TCHAR str[100];
@@ -185,6 +190,8 @@ void Player::update(void)
 
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	MAINCAMERA->update();
+
+	if (KEYMANAGER->isOnceKeyDown('P')) _isLive = false;
 }
 
 void Player::render(void) 

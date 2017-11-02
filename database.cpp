@@ -13,6 +13,7 @@ database::~database()
 void database::init()
 {
 	//loadDatabase(L"database.txt");
+	_isStart = false;
 }
 
 void database::release()

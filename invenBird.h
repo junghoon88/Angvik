@@ -23,12 +23,14 @@ public:
 	invenBird();
 	~invenBird();
 
-	void init(void);
+	void init();
+	void init(float x, float y);
 	void release(void);
 	void update(void);
+	void update(float x, float y);
 	void render(void);
 
-	void move(void);
-	void birdFrame(void);
+	void move(float x, float y);
+	void birdFrame(float x, float y);
 };
 
