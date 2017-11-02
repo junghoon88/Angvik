@@ -128,7 +128,7 @@ void imageManager::setScaleOffset(wstring strKey, float scaleOffsetX, float scal
 {
 	Sprite* sprite = findImage(strKey);
 
-	if (sprite) sprite->move(scaleOffsetX, scaleOffsetY);
+	if (sprite) sprite->setScaleOffset(scaleOffsetX, scaleOffsetY);
 }
 
 
