@@ -143,11 +143,11 @@ void Sprite::AdjustTransform()
 
 	if (_scale.x < 0)
 	{
-		_coord.x += _scaleOffset.x;
+		coord.x += _scaleOffset.x;
 	}
 	if (_scale.y < 0)
 	{
-		_coord.y += _scaleOffset.y;
+		coord.y += _scaleOffset.y;
 	}
 
 

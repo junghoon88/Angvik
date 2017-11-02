@@ -241,6 +241,7 @@ void Player::imageReverse(void)
 	//IMAGEMANAGER->findImage(L"bodyLeftJumpDown")->setScale({ -1,1 });
 	//IMAGEMANAGER->findImage(L"bodyLeftWalk")->setScale({ -1,1 });
 	IMAGEMANAGER->findImage(L"unarmedBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"unarmedBodyLeft")->setScaleOffset(50.0f, 0.0f);
 
 	IMAGEMANAGER->findImage(L"armLeftFront")->setScale({ -1,1 });
 	IMAGEMANAGER->findImage(L"armLeftBack")->setScale({ -1,1 });
