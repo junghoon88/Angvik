@@ -137,19 +137,27 @@ void Player::update(void)
 	{
 		if (_bodyState == PLAYER_RIGHT_JUMP)
 		{
-			rightJump(this);
+			bodyRightJump(this);
+			armFrontRightJump(this);
+			armBackRightJump(this);
 		}
 		if (_bodyState == PLAYER_LEFT_JUMP)
 		{
-			leftJump(this);
+			bodyLeftJump(this);
+			armFrontLeftJump(this);
+			armBackLeftJump(this);
 		}
 		if (_bodyState == PLAYER_RIGHT_MOVE_JUMP)
 		{
-			rightMoveJump(this);
+			bodyRightMoveJump(this);
+			armFrontRightMoveJump(this);
+			armBackRightMoveJump(this);
 		}
 		if (_bodyState == PLAYER_LEFT_MOVE_JUMP)
 		{
-			leftMoveJump(this);
+			bodyLeftMoveJump(this);
+			armFrontLeftMoveJump(this);
+			armBackLeftMoveJump(this);
 		}
 	}
 
@@ -268,48 +276,57 @@ void Player::keyAnimationInit(void)
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, true);
 	//KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftJump", L"unarmedBodyLeft", bodyLeftJump, 2, 2, false, leftJump, this);
 	int bodyRightMoveJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMoveJump", L"unarmedBodyRight", bodyRightMoveJump, 2, 2, false, rightMoveJump, this);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyRightMoveJump", L"unarmedBodyRight", bodyRightMoveJump, 2, 2, false);// , bodyRightMoveJump, this);
 	int bodyLeftMoveJump[] = { 1,2 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftMoveJump", L"unarmedBodyLeft", bodyLeftMoveJump, 2, 2, false, leftMoveJump, this);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBodyLeftMoveJump", L"unarmedBodyLeft", bodyLeftMoveJump, 2, 2, false);// , bodyLeftMoveJump, this);
 
 	//	팔 - 16개방향 * 3가지 모션
 	//	F R O N T
 	//		I D L E
-	int armFrontRightIdle[] = { 12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightStop", L"armRightFront", armFrontRightIdle, 4, 4, true);
-	int armFrontLeftIdle[] = { 12,11,10,11 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftStop", L"armLeftFront", armFrontLeftIdle, 4, 4, true);
+	int armFrontRightIdle[] = { 11,10 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightStop", L"armRightFront", armFrontRightIdle, 2, 2, true);
+	int armFrontLeftIdle[] = { 11,10 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftStop", L"armLeftFront", armFrontLeftIdle, 2, 2, true);
 
 	//		W A L K
-	int armFrontRightMove[] = { 12,11,10,9,10,11,12,13 };
+	int armFrontRightMove[] = { 43,42,41,40,41,42,43,44 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightMove", L"armRightFront", armFrontRightMove, 8, 20, true);
-	int armFrontLeftMove[] = { 12,11,10,9,10,11,12,13 };
+	int armFrontLeftMove[] = { 43,42,41,40,41,42,43,44 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftMove", L"armLeftFront", armFrontLeftMove, 8, 20, true);
 
 	//		S I T
 	//		J U M P
+	int armFrontRightJump[] = { 12,11,10,9,8,7,7,7,7,8,9,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontRightJump", L"armRightFront", armFrontRightJump, 13, 10, true);
+	int armFrontLeftJump[] = { 12,11,10,9,8,7,7,7,7,8,9,10,11 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmFrontLeftJump", L"armLeftFront", armFrontLeftJump, 13, 10, true);
 
 	//	B A C K
 	//		I D L E
-	int armBackRightIdle[] = { 11,12,13,12 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightStop", L"armRightBack", armBackRightIdle, 4, 4, true);
-	int armBackLeftIdle[] = { 11,12,13,12 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftStop", L"armLeftBack", armBackLeftIdle, 4, 4, true);
+	int armBackRightIdle[] = { 11,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightStop", L"armRightBack", armBackRightIdle, 2, 2, true);
+	int armBackLeftIdle[] = { 11,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftStop", L"armLeftBack", armBackLeftIdle, 2, 2, true);
 
 	//		W A L K
-	int armBackRightMove[] = { 12,13,14,13,12,11,10,11 };
+	int armBackRightMove[] = { 42,43,44,43,42,41,40,41 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightMove", L"armRightBack", armBackRightMove, 8, 20, true);
-	int armBackLeftMove[] = { 12,13,14,13,12,11,10,11 };
+	int armBackLeftMove[] = { 42,43,44,43,42,41,40,41 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftMove", L"armLeftBack", armBackLeftMove, 8, 20, true);
 
 	//		S I T
 	//		J U M P
+	int armBackRightJump[] = { 11,10,11,12,13,14,14,14,14,14,14,13,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackRightJump", L"armRightBack", armBackRightJump, 13, 10, true);
+	int armBackLeftJump[] = { 11,10,11,12,13,14,14,14,14,14,14,13,12 };
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerArmBackLeftJump", L"armLeftBack", armBackLeftJump, 13, 10, true);
 
 }
 
 void Player::imagePosUpdate(void)
 {
-	_headImage->setCoord({ _x + 3, _y - 32 });
+	if (_isRight == TRUE) _headImage->setCoord({ _x + 3, _y - 32 });
+	else _headImage->setCoord({ _x - 3,_y - 32 });
 
 	_bodyRightImage->setCoord({ _x, _y - 22 });
 	_bodyLeftImage->setCoord({ _x, _y - 22 });
@@ -418,6 +435,12 @@ void Player::keyInputSettings(void)
 			_bodyState = PLAYER_RIGHT_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightJump");
 			_bodyMotion->start();
+
+			_armFrontMotion = KEYANIMANAGER->findAnimation(L"playerArmFrontRightJump");
+			_armFrontMotion->start();
+
+			_armBackMotion = KEYANIMANAGER->findAnimation(L"playerArmBackRightJump");
+			_armBackMotion->start();
 		}
 
 		if (_bodyState == PLAYER_LEFT_STOP)
@@ -425,6 +448,12 @@ void Player::keyInputSettings(void)
 			_bodyState = PLAYER_LEFT_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyLeftJump");
 			_bodyMotion->start();
+
+			_armFrontMotion = KEYANIMANAGER->findAnimation(L"playerArmFrontLeftJump");
+			_armFrontMotion->start();
+
+			_armBackMotion = KEYANIMANAGER->findAnimation(L"playerArmBackLeftJump");
+			_armBackMotion->start();
 		}
 
 		if (_bodyState == PLAYER_RIGHT_MOVE)
@@ -432,6 +461,12 @@ void Player::keyInputSettings(void)
 			_bodyState = PLAYER_RIGHT_MOVE_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightJump");
 			_bodyMotion->start();
+
+			_armFrontMotion = KEYANIMANAGER->findAnimation(L"playerArmFrontRightJump");
+			_armFrontMotion->start();
+
+			_armBackMotion = KEYANIMANAGER->findAnimation(L"playerArmBackRightJump");
+			_armBackMotion->start();
 		}
 
 		if (_bodyState == PLAYER_LEFT_MOVE)
@@ -439,6 +474,12 @@ void Player::keyInputSettings(void)
 			_bodyState = PLAYER_LEFT_MOVE_JUMP;
 			_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyLeftJump");
 			_bodyMotion->start();
+
+			_armFrontMotion = KEYANIMANAGER->findAnimation(L"playerArmFrontLeftJump");
+			_armFrontMotion->start();
+
+			_armBackMotion = KEYANIMANAGER->findAnimation(L"playerArmBackLeftJump");
+			_armBackMotion->start();
 		}
 	}
 	if (KEYMANAGER->isOnceKeyDown('D'))		//	BACK_WEAPON_ATTACK
@@ -447,7 +488,7 @@ void Player::keyInputSettings(void)
 	}
 }
 
-void Player::rightJump(void* obj)
+void Player::bodyRightJump(void* obj)
 {
 	Player* p = (Player*)obj;
 
@@ -455,7 +496,7 @@ void Player::rightJump(void* obj)
 	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyRightStop"));
 	p->getPlayerBodyMotion()->start();
 }
-void Player::leftJump(void* obj)
+void Player::bodyLeftJump(void* obj)
 {
 	Player* p = (Player*)obj;
 
@@ -463,7 +504,7 @@ void Player::leftJump(void* obj)
 	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyLeftStop"));
 	p->getPlayerBodyMotion()->start();
 }
-void Player::rightMoveJump(void* obj)
+void Player::bodyRightMoveJump(void* obj)
 {
 	Player* p = (Player*)obj;
 
@@ -471,11 +512,68 @@ void Player::rightMoveJump(void* obj)
 	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyRightMove"));
 	p->getPlayerBodyMotion()->start();
 }
-void Player::leftMoveJump(void* obj)
+void Player::bodyLeftMoveJump(void* obj)
 {
 	Player* p = (Player*)obj;
 
 	p->setPlayerBodyState(PLAYER_LEFT_MOVE);
 	p->setPlayerBodyMotion(KEYANIMANAGER->findAnimation(L"playerBodyLeftMove"));
 	p->getPlayerBodyMotion()->start();
+}
+
+void Player::armFrontRightJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmFrontMotion(KEYANIMANAGER->findAnimation(L"playerArmFrontRightStop"));
+	p->getPlayerArmFrontMotion()->start();
+}
+void Player::armFrontLeftJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmFrontMotion(KEYANIMANAGER->findAnimation(L"playerArmFrontLeftStop"));
+	p->getPlayerArmFrontMotion()->start();
+}
+void Player::armFrontRightMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmFrontMotion(KEYANIMANAGER->findAnimation(L"playerArmFrontRightMove"));
+	p->getPlayerArmFrontMotion()->start();
+}
+void Player::armFrontLeftMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmFrontMotion(KEYANIMANAGER->findAnimation(L"playerArmFrontLeftMove"));
+	p->getPlayerArmFrontMotion()->start();
+}
+
+void Player::armBackRightJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmBackMotion(KEYANIMANAGER->findAnimation(L"playerArmBackRightStop"));
+	p->getPlayerArmBackMotion()->start();
+}
+void Player::armBackLeftJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmBackMotion(KEYANIMANAGER->findAnimation(L"playerArmBackLeftStop"));
+	p->getPlayerArmBackMotion()->start();
+}
+void Player::armBackRightMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+
+	p->setPlayerArmBackMotion(KEYANIMANAGER->findAnimation(L"playerArmBackRightMove"));
+	p->getPlayerArmBackMotion()->start();
+}
+void Player::armBackLeftMoveJump(void* obj)
+{
+	Player* p = (Player*)obj;
+	p->setPlayerArmBackMotion(KEYANIMANAGER->findAnimation(L"playerArmBackLeftMove"));
+	p->getPlayerArmBackMotion()->start();
 }

@@ -66,16 +66,32 @@ public:
 	void update(void);
 	void render(void);
 
-	static void rightJump(void* obj);
-	static void leftJump(void* obj);
-	static void rightMoveJump(void* obj);
-	static void leftMoveJump(void* obj);
+	static void bodyRightJump(void* obj);
+	static void bodyLeftJump(void* obj);
+	static void bodyRightMoveJump(void* obj);
+	static void bodyLeftMoveJump(void* obj);
+
+	static void armFrontRightJump(void* obj);
+	static void armFrontLeftJump(void* obj);
+	static void armFrontRightMoveJump(void* obj);
+	static void armFrontLeftMoveJump(void* obj);
+
+	static void armBackRightJump(void* obj);
+	static void armBackLeftJump(void* obj);
+	static void armBackRightMoveJump(void* obj);
+	static void armBackLeftMoveJump(void* obj);
 
 	PLAYERBODYSTATE getPlayerBodyState(void) { return _bodyState; }
 	void setPlayerBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
 
 	animation* getPlayerBodyMotion(void) { return _bodyMotion; }
 	void setPlayerBodyMotion(animation* ani) { _bodyMotion = ani; }
+
+	animation* getPlayerArmFrontMotion(void) { return _armFrontMotion; }
+	void setPlayerArmFrontMotion(animation* ani) { _armFrontMotion = ani; }
+
+	animation* getPlayerArmBackMotion(void) { return _armBackMotion; }
+	void setPlayerArmBackMotion(animation* ani) { _armBackMotion = ani; }
 
 	//========== I N I T ==========
 	void imageReverse(void);
