@@ -6,5 +6,10 @@ class Turtle_crash :
 public:
 	Turtle_crash();
 	~Turtle_crash();
+
+	void init(float x, float y);
+	void update(void);
+	void render(void);
+	void move(void);
 };
 
