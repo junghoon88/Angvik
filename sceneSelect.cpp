@@ -109,8 +109,9 @@ void sceneSelect::update(void)
 		if (_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
 			PostQuitMessage(0);
-			SOUNDMANAGER->play(L"메뉴선택", 1.0f);
+			SOUNDMANAGER->play(L"메뉴선택", _volume);
 		}
+
 		IMAGEMANAGER->findImage(L"선택")->setCoord(_setSelect[_selectNum]);
 	}
 

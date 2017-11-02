@@ -36,6 +36,7 @@ void sceneGame::init(void)
 	_im->setLinkAdressPlayerManager(_pm);
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
+
 }
 
 void sceneGame::release(void)
@@ -46,9 +47,12 @@ void sceneGame::release(void)
 void sceneGame::update(void)
 {
 	_pm->update();
+
+	MAINCAMERA->update();
 }
 
 void sceneGame::render(void)
 {
+	IMAGEMANAGER->findImage(L"테스트배경")->render();
 	_pm->render();
 }

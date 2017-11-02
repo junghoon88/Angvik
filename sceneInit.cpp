@@ -34,6 +34,13 @@ void sceneInit::render(void)
 
 void sceneInit::initImage(void)
 {
+	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
+	PBGMANAGER->addImage(L"충돌맵1", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
+	IMAGEMANAGER->addImage(DEVICE, L"충돌맵1_렌더", L"image/Stage/Stage1-PBG.bmp");
+	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+
+
+
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 	uiInitImage();		//	UI 이미지 초기화
 	enemyInitImage(); //적 이미지 ::
@@ -132,7 +139,9 @@ void sceneInit::playerInitImage(void)
 void sceneInit::uiInitImage(void)
 {
 	//배경
-	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png", false);
+
+	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png",false);
+
 
 	//글자
 	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");
@@ -164,14 +173,17 @@ void sceneInit::uiInitImage(void)
 void sceneInit::enemyInitImage(void)	//몬스터
 {
 
-	IMAGEMANAGER->addFrameImage(device, L"원숭이", L"image/monster/원숭이.png", 8, 1);
-	IMAGEMANAGER->addFrameImage(device, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
-	IMAGEMANAGER->addFrameImage(device, L"버섯점프", L"image/monster/버섯맨점프.png", 2, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"원숭이", L"image/monster/원숭이.png", 8, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯점프", L"image/monster/버섯맨점프.png", 2, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯공격", L"image/monster/버섯공격.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이", L"image/monster/Turtle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이누드", L"image/monster/Turtle_crash_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_8f.png", 8, 1);
-	PBGMANAGER->addImage(L"테스트배경", L"image/stage/test_collision.png",768,305);
+
+	PBGMANAGER->addImage(L"충돌테스트", L"image/stage/test_bmp.bmp",768,305);
+	IMAGEMANAGER->addImage(DEVICE,L"충돌테스트보여줘요", L"image/stage/test_collision.png");
 
 }
