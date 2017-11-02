@@ -15,8 +15,10 @@ private:
 	D3DXVECTOR2 _scale;		//스케일(기본기준 몇배)
 	D3DXVECTOR2 _center;	//회전축
 	float _angleDeg;		//각도(Degree)
+	D3DXVECTOR2 _scaleOffset; //스케일이 -값으로 반전이 될때 옵셋해줌
 
 	D3DXMATRIX _world;
+
 
 	bool _bCameraOffset;
 
@@ -55,12 +57,14 @@ public:
 	void setScale(D3DXVECTOR2 scale);
 	void setCenterPer(D3DXVECTOR2 centerPer); //size 기준 배율로
 	void setCenterPos(D3DXVECTOR2 centerPos); //position
+	void setScaleOffset(D3DXVECTOR2 scaleOffset);
 
 	void setCoord(float coordX, float corrdY);
 	void setScale(float scaleX, float scaleY);
 	void setCenterPer(float centerPerX, float centerPerY); //size 기준 배율로
 	void setCenterPos(float centerPosX, float centerPosY); //position
 	void setRotate(float angleDeg);
+	void setScaleOffset(float scaleOffsetX, float scaleOffsetY);
 
 	int getCurFrameX(void);
 	int getCurFrameY(void);

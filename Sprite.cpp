@@ -13,6 +13,8 @@ Sprite::Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
 	_center.x = 0.0f;
 	_center.y = 0.0f;
 
+	_scaleOffset = { 0.0f, 0.0f };
+
 	//4D Matrix ..?
 	D3DXMatrixIdentity(&_world);
 }
@@ -139,6 +141,15 @@ void Sprite::AdjustTransform()
 		coord.y -= _mainCamera.y;
 	}
 
+	if (_scale.x < 0)
+	{
+		_coord.x += _scaleOffset.x;
+	}
+	if (_scale.y < 0)
+	{
+		_coord.y += _scaleOffset.y;
+	}
+
 
 	D3DXMatrixTranslation(&rotationInverseCenter, -_center.x, -_center.y, 0);
 	D3DXMatrixRotationZ(&rotation, -angle);
@@ -189,6 +200,10 @@ void Sprite::setCenterPos(D3DXVECTOR2 centerPos)
 
 	//AdjustTransform();
 }
+void Sprite::setScaleOffset(D3DXVECTOR2 scaleOffset)
+{
+	_scaleOffset = scaleOffset;
+}
 
 void Sprite::setCoord(float coordX, float corrdY)
 {
@@ -209,6 +224,11 @@ void Sprite::setCenterPos(float centerPosX, float centerPosY)
 {
 	_center.x = centerPosX;
 	_center.y = centerPosY;
+}
+void Sprite::setScaleOffset(float scaleOffsetX, float scaleOffsetY)
+{
+	_scaleOffset.x = scaleOffsetX;
+	_scaleOffset.y = scaleOffsetY;
 }
 
 
