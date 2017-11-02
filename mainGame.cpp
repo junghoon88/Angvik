@@ -34,6 +34,8 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"에너미테스트", new sceneET);
 	scene->init();
+	scene = SCENEMANAGER->addScene(L"인벤테스트", new invenBird);
+	scene->init();
 
 	SCENEMANAGER->changeScene(L"테스트씬");
 }
@@ -58,10 +60,13 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"아이템테스트씬");
 	}
-
 	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{
 		SCENEMANAGER->changeScene(L"에너미테스트");
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_F5))
+	{
+		SCENEMANAGER->changeScene(L"셀렉씬");
 	}
 
 	SCENEMANAGER->update();
