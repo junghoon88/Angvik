@@ -46,7 +46,7 @@ public:
 
 	LRESULT MessageLoop(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-	virtual void init(void) = 0;
+	virtual void init(void);
 	virtual void release(void) = 0;
 	virtual void update(void) = 0;
 	virtual void render(void) = 0;

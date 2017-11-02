@@ -40,5 +40,7 @@ public:
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 
+
+	
 };
 
