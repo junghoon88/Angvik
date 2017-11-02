@@ -46,7 +46,7 @@ public:
 
 	bool isPlaySound(wstring keyName);
 	bool isPauseSound(wstring keyName);
-	void setMute(bool mute);
+	void setMuteAll(bool mute);
 	bool getMute(wstring keyName);
 
 	Sound** findSound(wstring keyName);

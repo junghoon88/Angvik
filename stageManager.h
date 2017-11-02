@@ -9,10 +9,8 @@ class itemManager;
 class stageManager : public DxWindow
 {
 private:
-	int _stage;
-
 	Sprite* _imgBackground;
-	Sprite* _imgPBG;
+	image* _imgPBG;
 
 
 
@@ -41,6 +39,7 @@ public:
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 
 	inline int getStage(void) { return _stage; }
+	inline image* getCurPBG(void) { return _imgPBG; }
 
 };
 

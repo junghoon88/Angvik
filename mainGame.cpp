@@ -28,7 +28,7 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneTest);
+	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneStage);
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À", new sceneitemTest);
 	scene->init();

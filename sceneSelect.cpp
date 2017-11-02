@@ -147,6 +147,8 @@ void sceneSelect::update(void)
 				if (_selectVolume < 0) _selectVolume = 4;
 				_volume = (float)_selectVolume * 0.25;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setVolume(_volume);
 			}
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_RIGHT))
 			{
@@ -154,26 +156,31 @@ void sceneSelect::update(void)
 				if (_selectVolume == 5) _selectVolume = 0;
 				_volume = (float)_selectVolume * 0.25;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setVolume(_volume);
 			}
-			SOUNDMANAGER->setVolume(_volume);
 		}
 
 		//배경음 끄기 조절
 		if (_selectNum == 1)
 		{
+			bool oldMute = _isMute;
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_LEFT))
 			{
 				if (_isMute) _isMute = false;
 				else _isMute = true;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setMuteAll(_isMute);
 			}
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_RIGHT))
 			{
 				if (_isMute) _isMute = false;
 				else _isMute = true;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setMuteAll(_isMute);
 			}
-			SOUNDMANAGER->setMute(_isMute);
 		}
 
 		IMAGEMANAGER->findImage(L"선택")->setCoord(_setOptionSelect[_selectNum]);
