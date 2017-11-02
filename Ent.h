@@ -6,6 +6,7 @@ class Ent :
 private:
 	int probeY;
 
+
 public:
 	Ent();
 	~Ent();

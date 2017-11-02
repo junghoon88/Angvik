@@ -177,6 +177,7 @@
     <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
+    <ClCompile Include="sceneStage.cpp" />
     <ClCompile Include="sceneTest.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Sprite.cpp">
@@ -225,6 +226,7 @@
     <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
+    <ClInclude Include="sceneStage.h" />
     <ClInclude Include="sceneTest.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="Sprite.h" />

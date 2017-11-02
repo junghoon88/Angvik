@@ -33,3 +33,7 @@ void stageManager::render(void)
 
 }
 
+void stageManager::GoNextStage(void)
+{
+
+}

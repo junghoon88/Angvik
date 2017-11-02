@@ -1,21 +1,20 @@
 #include "stdafx.h"
-#include "sceneET.h"
+#include "sceneStage.h"
 
 
-sceneET::sceneET()
+sceneStage::sceneStage()
 {
 }
 
 
-sceneET::~sceneET()
+sceneStage::~sceneStage()
 {
 }
 
-
-void sceneET::init(void)
+void sceneStage::init(void)
 {
-	//_pm = new PlayerManager;
-	//_pm->init();
+	_pm = new PlayerManager;
+	_pm->init();
 	_em = new EnemyManager;
 	_em->init();
 	_sm = new stageManager;
@@ -23,9 +22,9 @@ void sceneET::init(void)
 	_im = new itemManager;
 	_im->init();
 
-//_pm->setLinkAdressEnemyManager(_em);
-//_pm->setLinkAdressStageManager(_sm);
-//_pm->setLinkAdressItemManager(_im);
+	_pm->setLinkAdressEnemyManager(_em);
+	_pm->setLinkAdressStageManager(_sm);
+	_pm->setLinkAdressItemManager(_im);
 
 	_em->setLinkAdressPlayerManager(_pm);
 	_em->setLinkAdressStageManager(_sm);
@@ -38,23 +37,23 @@ void sceneET::init(void)
 	_im->setLinkAdressPlayerManager(_pm);
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
+
 }
 
-void sceneET::release(void)
+void sceneStage::release(void)
 {
 
 }
 
-void sceneET::update(void)
+void sceneStage::update(void)
 {
-	//_pm->update();
-	_em->update();
+	_pm->update();
+
+	MAINCAMERA->update();
 }
 
-void sceneET::render(void)
+void sceneStage::render(void)
 {
-//	_pm->render();
-	
-	IMAGEMANAGER->findImage(L"Ãæµ¹¸Ê1_·»´õ")->render();
-	_em->render();
+	IMAGEMANAGER->findImage(L"Å×½ºÆ®¹è°æ")->render();
+	_pm->render();
 }
