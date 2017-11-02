@@ -54,7 +54,7 @@ void sceneET::update(void)
 void sceneET::render(void)
 {
 //	_pm->render();
+	
+	IMAGEMANAGER->findImage(L"Ãæµ¹¸Ê1_·»´õ")->render();
 	_em->render();
-	IMAGEMANAGER->findImage(L"Ãæµ¹Å×½ºÆ®º¸¿©Áà¿ä")->render();
-
 }

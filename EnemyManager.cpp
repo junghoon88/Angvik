@@ -45,7 +45,7 @@ void EnemyManager::setEnemy1(void)
 	
 	monkey1->init(600, 400);
 	monkey2->init(1250, 400);
-	ent1->init(185, 200);//테스트용 좌표임
+	ent1->init(192, 415);//테스트용 좌표임
 
 	_vEnemy.push_back(ent1);
 	_vEnemy.push_back(monkey1);

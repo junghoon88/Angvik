@@ -35,7 +35,10 @@ void sceneInit::render(void)
 void sceneInit::initImage(void)
 {
 	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
+	PBGMANAGER->addImage(L"충돌맵1", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
+	IMAGEMANAGER->addImage(DEVICE, L"충돌맵1_렌더", L"image/Stage/Stage1-PBG.bmp");
 	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+
 
 
 	playerInitImage();	//	플레이어의 이미지 초기화 함수

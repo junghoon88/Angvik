@@ -59,9 +59,9 @@ void Ent::move(void)
 		ptX += 2;
 	}
 
-	for (int i = probeY - 10; i < probeY + 10; ++i)//YÃà Å½Áö
+	for (int i = probeY - 10; i < probeY + 40; ++i)//YÃà Å½Áö
 	{
-		COLORREF color = PBGMANAGER->getPixelColor(L"Ãæµ¹Å×½ºÆ®", ptX, i);
+		COLORREF color = PBGMANAGER->getPixelColor(L"Ãæµ¹¸Ê1", ptX, i);
 
 		int r = GetRValue(color);
 		int g = GetGValue(color);
@@ -77,7 +77,7 @@ void Ent::move(void)
 
 	for (int i = ptX - 25; i < ptX + 25; ++i) // xÃà Å½Áö
 	{
-		COLORREF color = PBGMANAGER->getPixelColor(L"Ãæµ¹Å×½ºÆ®", i, ptY);
+		COLORREF color = PBGMANAGER->getPixelColor(L"Ãæµ¹¸Ê1", i, ptY);
 
 		int r = GetRValue(color);
 		int g = GetGValue(color);
