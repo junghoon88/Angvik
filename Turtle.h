@@ -1,15 +1,11 @@
 #pragma once
 #include "EnemyMother.h"
-class Ent :
+class Turtle :
 	public EnemyMother
 {
-private:
-
-
-
 public:
-	Ent();
-	~Ent();
+	Turtle();
+	~Turtle();
 
 	void init(float x, float y);
 	void update(void);

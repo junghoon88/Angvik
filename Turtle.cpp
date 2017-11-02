@@ -1,22 +1,21 @@
 #include "stdafx.h"
-#include "Ent.h"
+#include "Turtle.h"
 
 
-Ent::Ent()
+Turtle::Turtle()
 {
 }
 
 
-Ent::~Ent()
+Turtle::~Turtle()
 {
 }
 
-
-void Ent::init(float x, float y)
+void Turtle::init(float x, float y)
 {
-	spt = IMAGEMANAGER->findImage(L"나무맨");
+	spt = IMAGEMANAGER->findImage(L"거북이");   //거북이누드
 	spt->setCoord({ 0,0 });
-	//마더클래스 프로브축 추가해야함.
+
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
@@ -24,16 +23,17 @@ void Ent::init(float x, float y)
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-	rc = RectMakeCenter(x, y, 40, 70);
-	sptrc = RectMakeCenter(x, y, 50, 86);
+	rc = RectMakeCenter(x, y, 100, 60);
+	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
-void Ent::update(void)
+void Turtle::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY, 40, 70);
-	sptrc = RectMakeCenter(ptX, ptY - 3, 50, 86);
-	probeY = rc.bottom;
-	spt->setCoord(sptrc.left,sptrc.top);
+	rc = RectMakeCenter(ptX, ptY, 100, 60);
+	sptrc = RectMakeCenter(ptX, ptY , 110, 70);
+	probeY = sptrc.bottom;
+	spt->setCoord(sptrc.left, sptrc.top);
+	if (life == 1 && spt == IMAGEMANAGER->findImage(L"거북이")) spt = IMAGEMANAGER->findImage(L"거북이누드");
 
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
@@ -45,11 +45,11 @@ void Ent::update(void)
 	}
 	move();
 }
-void Ent::render(void)
+void Turtle::render(void)
 {
-	spt->frameRender(frameCnt, 0);
+	spt->frameRender(frameCnt, 0, 255);
 }
-void Ent::move(void)  
+void Turtle::move(void)
 {
 	if (dir == eLEFT && state == eIDLE)
 	{
@@ -73,7 +73,7 @@ void Ent::move(void)
 
 		if ((r == 0 && g == 0 && b == 0)) // 관통형 바닥
 		{
-			ptY = i - 40;
+			ptY = i - 35;
 			state = eIDLE;
 			break;
 		}
@@ -84,7 +84,7 @@ void Ent::move(void)
 	}
 	//Y축 탐지
 
-	for (int i = ptX - 10; i < ptX + 25; ++i) // x축 탐지
+	for (int i = ptX - 50; i < ptX + 50; ++i) // x축 탐지
 	{
 		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", i, ptY + 10);
 
@@ -96,14 +96,14 @@ void Ent::move(void)
 		{
 			if (i >= ptX)
 			{
-				ptX = i - 25;
+				ptX = i - 50;
 				dir = eLEFT;
 				spt->setScale({ -1,1 });
-				spt->setScaleOffset(68,0);
+				spt->setScaleOffset(100, 0);
 			}
 			else if (i < ptX)
 			{
-				ptX = i + 10;
+				ptX = i + 50;
 				dir = eRIGHT;
 				spt->setScale({ 1,1 });
 			}
@@ -111,9 +111,9 @@ void Ent::move(void)
 		}
 	}
 	// x축 탐지
-	
+
 }
-void Ent::attack(void)
+void Turtle::attack(void)
 {
 
 }
