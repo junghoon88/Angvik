@@ -58,8 +58,8 @@ void sceneSelect::init(void)
 	_selectNum = 0;
 	_selectVolume = 4;
 
-	_volume = 1.0f;
-	_isMute = false;
+	_volume = DATABASE->getVolume();
+	_isMute = DATABASE->getMute();
 
 	_isOption = false;
 	_isStart = false;
@@ -75,7 +75,7 @@ void sceneSelect::update(void)
 {
 	DATABASE->setVolume(_volume);
 	DATABASE->setMute(_isMute);
-
+	
 	_mainCamera.x = 0;
 	_mainCamera.y = 0;
 
