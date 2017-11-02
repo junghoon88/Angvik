@@ -16,13 +16,8 @@
     <Filter Include="mainGame\Enemy\st1">
       <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="mainGame\inventory">
-      <UniqueIdentifier>{b1e603de-f643-4e50-9a5c-9bc94aaf36be}</UniqueIdentifier>
-=======
     <Filter Include="mainGame\Common">
       <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
->>>>>>> 5f6aebfbd42e9aaf69cdf5ca60a81543e22a0e1e
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +99,12 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>DxWindow\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
@@ -137,15 +138,6 @@
     <ClCompile Include="soundManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="inventory.cpp">
-      <Filter>mainGame\inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="invenBird.cpp">
-      <Filter>mainGame\inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="test2.cpp" />
-=======
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
@@ -154,7 +146,6 @@
       <Filter>mainGame\scene</Filter>
     </ClCompile>
     <ClCompile Include="sceneStage.cpp" />
->>>>>>> 5f6aebfbd42e9aaf69cdf5ca60a81543e22a0e1e
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -285,27 +276,16 @@
     <ClInclude Include="soundManager.h">
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="invenBird.h">
-      <Filter>mainGame\inventory</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>mainGame\inventory</Filter>
-=======
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="jump.h" />
     <ClInclude Include="sceneitemTest.h">
       <Filter>mainGame\scene</Filter>
->>>>>>> 5f6aebfbd42e9aaf69cdf5ca60a81543e22a0e1e
     </ClInclude>
     <ClInclude Include="sceneSelect.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="test2.h" />
-=======
     <ClInclude Include="inventory.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
@@ -313,7 +293,6 @@
       <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="sceneStage.h" />
->>>>>>> 5f6aebfbd42e9aaf69cdf5ca60a81543e22a0e1e
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
