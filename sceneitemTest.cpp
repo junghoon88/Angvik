@@ -186,7 +186,7 @@ void sceneitemTest::render(void)
 	int frameY = frameCnt / 2;
 
 	
-	IMAGEMANAGER->findImage(L"테스트배경")->render();
+	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 		
 	spt->render();
 	//IMAGEMANAGER->findImage(L"검은새")->frameRender(frameCnt, 0);

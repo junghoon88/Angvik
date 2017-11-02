@@ -8,6 +8,7 @@ private:
 	void initSound(void);
 	void initText(void);
 
+	void stageInitImage(void);
 	void playerInitImage(void);
 	void enemyInitImage(void);
 	void uiInitImage(void);

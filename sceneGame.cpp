@@ -53,6 +53,6 @@ void sceneGame::update(void)
 
 void sceneGame::render(void)
 {
-	IMAGEMANAGER->findImage(L"테스트배경")->render();
+	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 	_pm->render();
 }

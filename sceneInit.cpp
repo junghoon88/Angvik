@@ -34,12 +34,7 @@ void sceneInit::render(void)
 
 void sceneInit::initImage(void)
 {
-	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
-	PBGMANAGER->addImage(L"충돌맵1", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
-	IMAGEMANAGER->addImage(DEVICE, L"충돌맵1_렌더", L"image/Stage/Stage1-PBG.bmp");
-	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
-
-
+	stageInitImage();	//스테이지 이미지(배경)
 
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 	uiInitImage();		//	UI 이미지 초기화
@@ -87,6 +82,19 @@ void sceneInit::initText(void)
 {
 
 }
+
+void sceneInit::stageInitImage()	//스테이지 이미지(배경)
+{
+	//백그라운드
+	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"Stage1-BG", L"image/Stage/Stage1-Background.png");
+	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+	
+	//픽셀백그라운드
+	IMAGEMANAGER->addImage(DEVICE, L"Stage1-PBG", L"image/Stage/Stage1-PBG.bmp");
+	PBGMANAGER->addImage(L"Stage1-PBG", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
+}
+
+
 
 void sceneInit::playerInitImage(void)
 {

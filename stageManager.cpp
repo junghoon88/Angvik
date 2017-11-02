@@ -16,6 +16,7 @@ void stageManager::init(void)
 {
 	_stage = 1;
 	
+	//_imgBackground = IMAGEMANAGER->findImage()
 }
 
 void stageManager::release(void)
