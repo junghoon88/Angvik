@@ -73,7 +73,11 @@ void sceneInit::initImage(void)
 
 void sceneInit::initSound(void)
 {
-
+	//UI
+	SOUNDMANAGER->addSound(L"메뉴브금", L"sound/bgm/main.wav", true, true);
+	SOUNDMANAGER->addSound(L"stage1bgm", L"sound/bgm/stage1.wav", true, true);
+	SOUNDMANAGER->addSound(L"메뉴이동", L"sound/UI/메뉴이동.wav", false, false);
+	SOUNDMANAGER->addSound(L"메뉴선택", L"sound/UI/메뉴선택.wav", false, false);
 }
 
 void sceneInit::initText(void)
@@ -121,6 +125,8 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
 
+	//inventorybird
+	IMAGEMANAGER->addFrameImage(DEVICE, L"inventoryBird", L"image/player/inventoryBird.png", 6, 4);
 }
 
 void sceneInit::uiInitImage(void)

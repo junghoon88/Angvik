@@ -6,6 +6,7 @@
 #include "sceneTest.h"
 #include "sceneET.h"
 #include "sceneitemTest.h"
+#include "invenBird.h"
 
 
 

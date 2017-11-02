@@ -182,6 +182,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stageManager.cpp" />
+    <ClCompile Include="test2.cpp" />
     <ClCompile Include="textManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="timeManager.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="test2.h" />
     <ClInclude Include="textManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="timeManager.h" />
