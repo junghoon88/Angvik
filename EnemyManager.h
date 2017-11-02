@@ -34,6 +34,8 @@ public:
 	void render(void);
 
 	void setEnemy1(void);
+	void deleteEnemy(void);
+
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

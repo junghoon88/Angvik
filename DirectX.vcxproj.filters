@@ -150,6 +150,9 @@
     <ClCompile Include="Turtle.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
+    <ClCompile Include="Turtle_crash.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -299,6 +302,9 @@
     <ClInclude Include="sceneStage.h" />
     <ClInclude Include="test2.h" />
     <ClInclude Include="Turtle.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="Turtle_crash.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
   </ItemGroup>

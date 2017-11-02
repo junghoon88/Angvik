@@ -57,3 +57,4 @@ void EnemyManager::setEnemy1(void)
 	_vEnemy.push_back(turtle1);
 
 }
+
