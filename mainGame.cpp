@@ -37,7 +37,7 @@ void mainGame::initScene(void)
 	scene = SCENEMANAGER->addScene(L"ÀÎº¥Å×½ºÆ®", new invenBird);
 	scene->init();
 
-	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+	SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::release(void)
@@ -71,6 +71,8 @@ void mainGame::update(void)
 
 	SCENEMANAGER->update();
 
+	//if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	//else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::render(void)	

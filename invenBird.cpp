@@ -11,11 +11,16 @@ invenBird::~invenBird()
 {
 }
 
-void invenBird::init(void)
+void invenBird::init()
+{
+	
+}
+
+void invenBird::init(float x, float y)
 {
 	for (int i = 0; i < 5; i++)
 	{
-		_birdPoint[i] = { (float)_ptMouse.x - 10, (float)_ptMouse.y - 10 };
+		_birdPoint[i] = { x - 40, y - 40 };
 	}
 	_birdMaxSpeed = 5.0f;
 
@@ -35,8 +40,13 @@ void invenBird::release(void)
 
 void invenBird::update(void)
 {
-	move();
-	birdFrame();
+
+}
+
+void invenBird::update(float x, float y)
+{
+	move(x, y);
+	birdFrame(x, y);
 }
 
 void invenBird::render(void)
@@ -44,7 +54,7 @@ void invenBird::render(void)
 	IMAGEMANAGER->findImage(L"inventoryBird")->frameRender(_frameX, _frameY);
 }
 
-void invenBird::move(void)
+void invenBird::move(float x, float y)
 {
 	_birdPointCount += TIMEMANAGER->getElapsedTime();
 
@@ -54,7 +64,7 @@ void invenBird::move(void)
 		if (_birdPointNum > 4) _birdPointNum = 0;
 		_birdPointCount = 0;
 
-		_birdPoint[_birdPointNum] = { (float)_ptMouse.x - 40, (float)_ptMouse.y - 40 };
+		_birdPoint[_birdPointNum] = { x - 40, y - 40 };
 	}
 
 	for (int i = 0; i < 5; i++)
@@ -76,7 +86,7 @@ void invenBird::move(void)
 	_birdX = _birdY = 0;
 }
 
-void invenBird::birdFrame(void)
+void invenBird::birdFrame(float x, float y)
 {
 	_timeCount += TIMEMANAGER->getElapsedTime();
 
@@ -91,12 +101,12 @@ void invenBird::birdFrame(void)
 
 	if (!_inInventory)
 	{
-		if (_birdXY.x > _ptMouse.x) _frameY = 1;
+		if (_birdXY.x > x) _frameY = 1;
 		else _frameY = 0;
 	}
 	else
 	{
-		if (_birdXY.x > _ptMouse.x) _frameY = 3;
+		if (_birdXY.x > x) _frameY = 3;
 		else _frameY = 2;
 	}
 }

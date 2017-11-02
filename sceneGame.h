@@ -13,6 +13,7 @@ private:
 	stageManager* _sm;
 	itemManager* _im;
 
+	bool _musicStart;
 
 public:
 	sceneGame();

@@ -100,5 +100,8 @@ public:
 
 	//========== U P D A T E ==========
 	void keyInputSettings(void);
-
+	
+	//========== GETTER && SETTER =======
+	float getX(void) { return _x; }
+	float getY(void) { return _y; }
 };

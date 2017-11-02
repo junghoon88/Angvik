@@ -27,7 +27,7 @@ public:
 	//getter, setter
 	//inline int getCameraX(void) { return _cameraX; }
 	//inline int getCameraY(void) { return _cameraY; }
-	//inline void setCameraPos(int x, int y) { _cameraX = x; _cameraY = y; }
+	//inline void setCameraPos(int x, int y) { _mainCamera.x = x; _mainCamera.y = y; }
 	//inline void setCameraX(int x) { _cameraX = x; }
 	//inline void setCameraY(int y) { _cameraY = y; }
 	inline void setTargetPos(int x, int y) { _targetX = x; _targetY = y; }

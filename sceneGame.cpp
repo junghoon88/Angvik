@@ -37,6 +37,7 @@ void sceneGame::init(void)
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
 
+	_musicStart = false;
 }
 
 void sceneGame::release(void)
@@ -47,6 +48,13 @@ void sceneGame::release(void)
 void sceneGame::update(void)
 {
 	_pm->update();
+
+	if (!_musicStart)
+	{
+		SOUNDMANAGER->play(L"stage1bgm", DATABASE->getVolume());
+		SOUNDMANAGER->setMuteAll(DATABASE->getMute());
+		_musicStart = true;
+	}
 
 	MAINCAMERA->update();
 }

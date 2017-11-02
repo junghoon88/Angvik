@@ -102,6 +102,9 @@
     <ClCompile Include="invenBird.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
@@ -138,17 +141,11 @@
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="jump.cpp" />
     <ClCompile Include="sceneitemTest.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
-    <ClCompile Include="test2.cpp" />
-    <ClCompile Include="sceneStage.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="jump.cpp">
-      <Filter>mainGame\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="pixelCollision.cpp" />
+    <ClCompile Include="sceneStage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -243,6 +240,9 @@
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
@@ -279,6 +279,7 @@
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
+    <ClInclude Include="jump.h" />
     <ClInclude Include="sceneitemTest.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
@@ -291,14 +292,7 @@
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
-    <ClInclude Include="test2.h" />
-    <ClInclude Include="sceneStage.h">
-      <Filter>mainGame\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="jump.h">
-      <Filter>mainGame\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="pixelCollision.h" />
+    <ClInclude Include="sceneStage.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">
