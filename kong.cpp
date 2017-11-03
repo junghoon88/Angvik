@@ -9,10 +9,10 @@ kong::~kong(){}
 void kong::init(int num, float x, float y)
 {
 	TCHAR strKey[100];
-	_stprintf(strKey, L"나무맨%d", num);
-	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"나무맨")->getFileName(),
-		IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameX() + 1,
-		IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameY() + 1);
+	_stprintf(strKey, L"콩나물%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"콩나물")->getFileName(),
+		IMAGEMANAGER->findImage(L"콩나물")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"콩나물")->getMaxFrameY() + 1);
 	//spt = IMAGEMANAGER->findImage(L"나무맨");
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
@@ -49,13 +49,13 @@ void kong::move(float playerx, float playery)
 	if (playerx < ptX)
 	{
 		dir = eLEFT;
-		spt->setScale({ -1,1 });
+		spt->setScale( -1,1 );
 		spt->setScaleOffset(68, 0); //조정해야함
 	}
 	else if (playerx > ptX)
 	{
 		dir = eRIGHT;
-		spt->setScale({ 1,1 });
+		spt->setScale( 1,1 );
 	}
 }
 bool kong::attack(void)

@@ -73,7 +73,6 @@ void Kong::fire(float ptx, float pty, float ang)
 	kong.frameTime = 0;
 	kong.frameX = 0;
 	kong.rc = RectMakeCenter(kong.ptX, kong.ptY,18,16);
-
 	_vBullet.push_back(kong);
 }
 void Kong::move(void)

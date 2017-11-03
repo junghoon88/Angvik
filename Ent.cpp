@@ -103,14 +103,14 @@ void Ent::move(void)
 			{
 				ptX = i - 25;
 				dir = eLEFT;
-				spt->setScale({ -1,1 });
+				spt->setScale( -0.8,0.8 );
 				spt->setScaleOffset(68,0);
 			}
 			else if (i < ptX)
 			{
 				ptX = i + 10;
 				dir = eRIGHT;
-				spt->setScale({ 1,1 });
+				spt->setScale( 0.8,0.8 );
 			}
 			break;
 		}
