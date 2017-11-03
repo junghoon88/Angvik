@@ -17,12 +17,14 @@ class EnemyMother : public DxWindow
 protected:
 	Sprite* spt;
 	Rect* rct;
+	wstring rcName;     //렉트 키네임
 	RECT rc;
 	RECT sptrc;//안쓰셔도 됨. 저는 이미지 그릴려고 추가합니다.
 	float ptX;
 	float ptY;
 	float speed;
 	float jumpPower;
+	float gravity;
 	int life;
 
 	int probeY;
@@ -37,6 +39,7 @@ protected:
 public:
 
 	virtual void init(float x,float y);
+	virtual void init(float x, float y, wstring rcKey);
 	void release(void);
 	virtual void update(void);
 	virtual void render(void);

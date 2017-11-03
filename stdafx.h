@@ -61,13 +61,14 @@ using namespace IOTA_UTIL;
 //==================================
 
 #define DEVICE getDevice()
+#define STAGE getStage()
 
 #define RND randomFunction::getSingleton()
 #define KEYMANAGER keyManager::getSingleton()
 #define IMAGEMANAGER imageManager::getSingleton()
 //#define TXTDATA txtData::getSingleton()
 #define TIMEMANAGER timeManager::getSingleton() 
-//#define SOUNDMANAGER soundManager::getSingleton()
+#define SOUNDMANAGER soundManager::getSingleton()
 //#define EFFECTMANAGER effectManager::getSingleton()
 #define SCENEMANAGER sceneManager::getSingleton()
 #define KEYANIMANAGER keyAniManager::getSingleton()
@@ -78,7 +79,6 @@ using namespace IOTA_UTIL;
 #define TEXTMANAGER textManager::getSingleton()
 #define RECTMANAGER rectManager::getSingleton()
 #define PBGMANAGER PBGManager::getSingleton()
-#define SOUNDMANAGER soundManager::getSingleton()
 
 
 //==================================

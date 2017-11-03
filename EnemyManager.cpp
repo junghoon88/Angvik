@@ -47,8 +47,9 @@ void EnemyManager::setEnemy1(void)
 	ent2 = new Ent;
 	turtle1 = new Turtle;
 	
-	monkey1->init(590,200);
-	monkey2->init(192, 400);
+	monkey1->init(590,200,L"monkeyRc1");
+//	monkey2->init(192, 400);
+
 	ent1->init(192, 415);//테스트용 좌표임
 	_vEnemy.push_back(ent1);
 	ent2->init(192, 100);

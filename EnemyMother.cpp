@@ -9,6 +9,10 @@ void EnemyMother::init(float x, float y)
 {
 
 }
+void EnemyMother::init(float x, float y, wstring rcKey) 
+{
+
+}
 void EnemyMother::release(void)
 {
 

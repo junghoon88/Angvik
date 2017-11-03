@@ -56,14 +56,17 @@ void sceneSelect::init(void)
 	_frameX = 0;
 	_countTime = 0;
 	_selectNum = 0;
-	_selectVolume = 4;
 
-	_volume = 1.0f;
-	_isMute = false;
+	_volume = DATABASE->getVolume();
+	_isMute = DATABASE->getMute();
+
+	_selectVolume = _volume * 100 / 25;
+
+	SOUNDMANAGER->setVolume(_volume);
+	SOUNDMANAGER->setMuteAll(_isMute);
 
 	_isOption = false;
 	_isStart = false;
-	_musicStart = false;
 }
 
 void sceneSelect::release(void)
@@ -75,15 +78,18 @@ void sceneSelect::update(void)
 {
 	DATABASE->setVolume(_volume);
 	DATABASE->setMute(_isMute);
-
+	
 	_mainCamera.x = 0;
 	_mainCamera.y = 0;
 
-	if (!_musicStart)
+	if (!SOUNDMANAGER->isPlaySound(L"메뉴브금"))
 	{
-		SOUNDMANAGER->stop(L"stage1bgm");
+		if(SOUNDMANAGER->isPlaySound(L"stage1bgm"))
+		{
+			SOUNDMANAGER->stop(L"stage1bgm");
+		}
 		SOUNDMANAGER->play(L"메뉴브금", _volume);
-		_musicStart = true;
+		SOUNDMANAGER->setMuteAll(_isMute);
 	}
 
 	_countTime += TIMEMANAGER->getElapsedTime();
@@ -100,12 +106,14 @@ void sceneSelect::update(void)
 		{
 			_selectNum--;
 			if (_selectNum < 0) _selectNum = 2;
+
 			SOUNDMANAGER->play(L"메뉴이동", _volume);
 		}
 		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_RIGHT))
 		{
 			_selectNum++;
 			if (_selectNum == 3) _selectNum = 0;
+
 			SOUNDMANAGER->play(L"메뉴이동", _volume);
 		}
 		if (_selectNum == 0 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
@@ -113,8 +121,6 @@ void sceneSelect::update(void)
 			SOUNDMANAGER->play(L"메뉴선택", _volume);
 			_isStart = true;
 			DATABASE->setGameStart(_isStart);
-			SOUNDMANAGER->stop(L"메뉴브금");
-			_musicStart = false;
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
@@ -163,6 +169,8 @@ void sceneSelect::update(void)
 				if (_selectVolume < 0) _selectVolume = 4;
 				_volume = (float)_selectVolume * 0.25;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setVolume(_volume);
 			}
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_RIGHT))
 			{
@@ -170,26 +178,31 @@ void sceneSelect::update(void)
 				if (_selectVolume == 5) _selectVolume = 0;
 				_volume = (float)_selectVolume * 0.25;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setVolume(_volume);
 			}
-			SOUNDMANAGER->setVolume(_volume);
 		}
 
 		//배경음 끄기 조절
 		if (_selectNum == 1)
 		{
+			bool oldMute = _isMute;
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_LEFT))
 			{
 				if (_isMute) _isMute = false;
 				else _isMute = true;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setMuteAll(_isMute);
 			}
 			if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_RIGHT))
 			{
 				if (_isMute) _isMute = false;
 				else _isMute = true;
 				SOUNDMANAGER->play(L"메뉴이동", _volume);
+
+				SOUNDMANAGER->setMuteAll(_isMute);
 			}
-			SOUNDMANAGER->setMute(_isMute);
 		}
 
 		IMAGEMANAGER->findImage(L"선택")->setCoord(_setOptionSelect[_selectNum]);

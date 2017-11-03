@@ -36,8 +36,6 @@ void sceneGame::init(void)
 	_im->setLinkAdressPlayerManager(_pm);
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
-
-	_musicStart = false;
 }
 
 void sceneGame::release(void)
@@ -49,11 +47,14 @@ void sceneGame::update(void)
 {
 	_pm->update();
 
-	if (!_musicStart)
+	if (!SOUNDMANAGER->isPlaySound(L"stage1bgm"))
 	{
+		if (SOUNDMANAGER->isPlaySound(L"메뉴브금"))
+		{
+			SOUNDMANAGER->stop(L"메뉴브금");
+		}
 		SOUNDMANAGER->play(L"stage1bgm", DATABASE->getVolume());
-		SOUNDMANAGER->setMute(DATABASE->getMute());
-		_musicStart = true;
+		SOUNDMANAGER->setMuteAll(DATABASE->getMute());
 	}
 
 	MAINCAMERA->update();
