@@ -30,7 +30,7 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"테스트씬", new sceneStage);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"아이템테스트씬", new sceneitemTest);
+	scene = SCENEMANAGER->addScene(L"아이템테스트씬", new itemManager);
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"에너미테스트", new sceneET);
 	scene->init();
