@@ -58,7 +58,7 @@ void EnemyManager::setEnemy1(void)
 
 
 	mush1 = new mush;
-	mush1->init(mushNum++, 4000, 50, L"mushRc1");
+	mush1->init(mushNum++, 1000, 50, L"mushRc1");
 	_vEnemy.push_back(mush1);
 
 

@@ -32,7 +32,7 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	ptX = x;
 	ptY = y;
 	rcName = rcKey;
-	jumpPower = 10;
+	jumpPower = 0;
 	spt->setCoord({ 0,0 });
 	atkspt->setCoord({ 0,0 });
 	jmpspt->setCoord({ 0,0 });
@@ -119,7 +119,6 @@ void mush::render(void) {
 		default: break;
 	}
 	
-
 	RECTMANAGER->render(rcName);
 
 }
@@ -162,22 +161,23 @@ void mush::move(void) {
 	}
 	for (int i = probeY - 10; i < probeY + 15; ++i)//YÃà Å½Áö
 	{
-		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", ptX, i);
+		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-TEST", ptX, i);
 
 
 		int r = GetRValue(color);
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0))
+		if ((r == 255 && g == 255 && b == 0) && state!=eJUMP)
+		{	
+			jumpPower = 6;
+			state = eJUMP;
+			break;
+		}
+		else if ((r == 0 && g == 0 && b == 0)&& (state!=eJUMP||gravity>=5))
 		{
 			ptY = i - 15;
 			state = eIDLE;
-			break;
-		}
-		else if ((r == 255 && g == 255 && b == 0)&&state!=eJUMP)
-		{	
-			state = eJUMP;
 			break;
 		}
 		else if(state!=eJUMP)
