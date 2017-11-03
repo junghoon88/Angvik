@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Ent.h"
 
-
 Ent::Ent()
 {
 }
@@ -12,9 +11,14 @@ Ent::~Ent()
 }
 
 
-void Ent::init(float x, float y)
+void Ent::init(int num, float x, float y)
 {
-	spt = IMAGEMANAGER->findImage(L"나무맨");
+	TCHAR strKey[100];
+	_stprintf(strKey, L"나무맨%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"나무맨")->getFileName(), 
+														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameX() + 1, 
+														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameY() + 1);
+	//spt = IMAGEMANAGER->findImage(L"나무맨");
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;

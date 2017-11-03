@@ -1,6 +1,7 @@
 #pragma once
 #include "DxWindow.h"
 #include "jump.h"
+#include "pixelCollision.h"
 
 #define PLAYERSPEED 4.f
 #define JUMPPOWER 8.f
@@ -50,6 +51,7 @@ private:
 	RECT _rcBody;
 
 	jump* _playerJump;
+	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
 	float _probeY;

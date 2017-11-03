@@ -21,6 +21,9 @@ private:
 	vEnemy _vEnemy;
 	viEnemy _viEnemy;
 
+	int entNum;
+
+private:
 	PlayerManager* _pm;
 	stageManager* _sm;
 	itemManager* _im;

@@ -11,6 +11,7 @@ mush::~mush()
 
 void mush::init(float x, float y, wstring rcKey) {
 
+
 	atkspt = IMAGEMANAGER->findImage(L"¹ö¼¸°ø°Ý");
 	jmpspt = IMAGEMANAGER->findImage(L"¹ö¼¸Á¡ÇÁ");
 	spt = IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç");
@@ -120,6 +121,27 @@ void mush::move(void) {
 		gravity = 0;
 		ptX += 2;
 	}
+	if (state == eJUMP)
+	{
+		if(dir==eLEFT)
+		{
+			gravity += 0.2;
+
+			ptX += cosf(1.04)*jumpPower;
+			ptY += -sinf(1.04)*jumpPower + gravity;
+
+		}
+		else if (dir == eRIGHT)
+		{
+			gravity += 0.2;
+
+			ptX += cosf(1.04)*jumpPower;
+			ptY += -sinf(1.04)*jumpPower + gravity;
+
+		}
+
+	}
+
 	if (state == eFALL)
 	{
 		gravity += 0.2;
@@ -138,6 +160,11 @@ void mush::move(void) {
 		{
 			ptY = i - 20;
 			state = eIDLE;
+			break;
+		}
+		else if ((r == 255 && g == 255 && b == 0))
+		{
+			state = eJUMP;
 			break;
 		}
 		else
