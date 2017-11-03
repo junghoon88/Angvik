@@ -11,9 +11,15 @@ monkkey::~monkkey()
 {
 
 }
-void monkkey::init(float x, float y, wstring rcKey) {
+void monkkey::init(int num, float x, float y, wstring rcKey) {
 
-	spt = IMAGEMANAGER->findImage(L"盔件捞");
+	TCHAR strKey[100];
+	_stprintf(strKey, L"盔件捞%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"盔件捞")->getFileName(),
+		IMAGEMANAGER->findImage(L"盔件捞")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"盔件捞")->getMaxFrameY() + 1);
+
+	//spt = IMAGEMANAGER->findImage(L"盔件捞");
 	gravity = 0;
 	life = 1;
 	ptX = x;

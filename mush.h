@@ -7,13 +7,14 @@ private:
 	Sprite *atkspt;
 	Sprite *jmpspt;
 
+	int startY;
 	int atkFrameCnt;
 	float atkFrameTime;
 	int jumpFrameCnt;
 	float jumpFrameTime;
 
 public:
-	void init(float x, float y, wstring rcKey);
+	void init(int num, float x, float y, wstring rcKeyy);
 	void update(void);
 	void render(void);
 	void move(void);

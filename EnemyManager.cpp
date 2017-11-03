@@ -4,6 +4,9 @@
 EnemyManager::EnemyManager()
 {
 	entNum = 0;
+	tutleNum = 0;
+	monkkeyNum = 0;
+	mushNum = 0;
 }
 
 
@@ -56,7 +59,7 @@ void EnemyManager::setEnemy1(void)
 
 	turtle1 = new Turtle;
 	
-	monkey1->init(590,200,L"monkeyRc1");
+	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
 //	monkey2->init(192, 400);
 	turtle1->init(580, 415);
 

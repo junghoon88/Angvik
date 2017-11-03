@@ -21,6 +21,9 @@ private:
 	viEnemy _viEnemy;
 
 	int entNum;
+	int monkkeyNum;
+	int mushNum;
+	int tutleNum;
 
 private:
 	PlayerManager* _pm;

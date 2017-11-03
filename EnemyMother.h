@@ -38,7 +38,7 @@ protected:
 public:
 
 	virtual void init(float x,float y);
-	virtual void init(float x, float y, wstring rcKey);
+	virtual void init(int num, float x, float y, wstring rcKey);
 	void release(void);
 	virtual void update(void);
 	virtual void render(void);

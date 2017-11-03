@@ -9,19 +9,30 @@ mush::~mush()
 {
 }
 
-void mush::init(float x, float y, wstring rcKey) {
+void mush::init(int num, float x, float y, wstring rcKey) {
 
-
-	atkspt = IMAGEMANAGER->findImage(L"¹ö¼¸°ø°Ý");
-	jmpspt = IMAGEMANAGER->findImage(L"¹ö¼¸Á¡ÇÁ");
-	spt = IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç");
+	TCHAR strKey[100];
+	_stprintf(strKey, L"¹ö¼¸¸Ç%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¿ø¼þÀÌ")->getFileName(),
+		IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç")->getMaxFrameY() + 1);
+	TCHAR strKey2[100];
+	_stprintf(strKey, L"¹ö¼¸°ø°Ý%d", num);
+	atkspt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸°ø°Ý")->getFileName(),
+		IMAGEMANAGER->findImage(L"¹ö¼¸°ø°Ý")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"¹ö¼¸°ø°Ý")->getMaxFrameY() + 1);
+	TCHAR strKey3[100];
+	_stprintf(strKey, L"¹ö¼¸Á¡ÇÁ%d", num);
+	jmpspt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸Á¡ÇÁ")->getFileName(),
+		IMAGEMANAGER->findImage(L"¹ö¼¸Á¡ÇÁ")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"¹ö¼¸Á¡ÇÁ")->getMaxFrameY() + 1);
 
 	gravity = 0;
 	life = 1;
 	ptX = x;
 	ptY = y;
 	rcName = rcKey;
-
+	jumpPower = 10;
 	spt->setCoord({ 0,0 });
 	atkspt->setCoord({ 0,0 });
 	jmpspt->setCoord({ 0,0 });
@@ -127,8 +138,8 @@ void mush::move(void) {
 		{
 			gravity += 0.2;
 
-			ptX += cosf(1.04)*jumpPower;
-			ptY += -sinf(1.04)*jumpPower + gravity;
+			ptX += cosf(2.09)*jumpPower;
+			ptY += -sinf(2.09)*jumpPower + gravity;
 
 		}
 		else if (dir == eRIGHT)
@@ -139,7 +150,6 @@ void mush::move(void) {
 			ptY += -sinf(1.04)*jumpPower + gravity;
 
 		}
-
 	}
 
 	if (state == eFALL)
@@ -162,12 +172,12 @@ void mush::move(void) {
 			state = eIDLE;
 			break;
 		}
-		else if ((r == 255 && g == 255 && b == 0))
-		{
+		else if ((r == 255 && g == 255 && b == 0)&&state!=eJUMP)
+		{	
 			state = eJUMP;
 			break;
 		}
-		else
+		else if(state!=eJUMP)
 		{
 			state = eFALL;
 		}

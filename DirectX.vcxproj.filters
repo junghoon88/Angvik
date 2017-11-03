@@ -152,6 +152,9 @@
     <ClCompile Include="pixelCollision.cpp">
       <Filter>mainGame\Common</Filter>
     </ClCompile>
+    <ClCompile Include="mush.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -288,9 +291,6 @@
     <ClInclude Include="sceneSelect.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>mainGame\Player</Filter>
-    </ClInclude>
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
@@ -304,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="pixelCollision.h">
       <Filter>mainGame\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="mush.h">
+      <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
