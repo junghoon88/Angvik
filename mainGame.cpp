@@ -64,7 +64,7 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"¿¡³Ê¹ÌÅ×½ºÆ®");
 	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F5))
+	if (KEYMANAGER->isOnceKeyDown(VK_F6))
 	{
 		SCENEMANAGER->changeScene(L"¼¿·º¾À");
 	}
