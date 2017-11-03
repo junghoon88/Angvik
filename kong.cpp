@@ -16,22 +16,24 @@ void kong::init(int num, float x, float y)
 
 	TCHAR strKey2[100];
 	_stprintf(strKey, L"콩나물어택%d", num);
-	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"콩나물어택")->getFileName(),
+	atkSpt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"콩나물어택")->getFileName(),
 		IMAGEMANAGER->findImage(L"콩나물어택")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"콩나물어택")->getMaxFrameY() + 1);
 	//spt = IMAGEMANAGER->findImage(L"나무맨");
-	spt->setCoord({ 0,0 });
+
 	dir = eRIGHT;
+	state = eIDLE;
 	life = 2;
 	ptX = x;
 	ptY = y;
+	spt->setCoord(ptX, ptY);
 	atkCnt = 0;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 40, 70);
 	sptrc = RectMakeCenter(x, y, 50, 86);
 }
-void kong::update(float playerx, float playery)
+void kong::update(void)
 {
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
@@ -42,28 +44,24 @@ void kong::update(float playerx, float playery)
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
 
-	move(playerx, playery);
-
+	if (playerX < ptX)
+	{
+		dir = eLEFT;
+		spt->setScale(-1, 1);
+		spt->setScaleOffset(68, 0); //조정해야함
+	}
+	else if (playerY > ptX)
+	{
+		dir = eRIGHT;
+		spt->setScale(1, 1);
+	}
 
 }
 void kong::render(void)
 {
+	spt->frameRender(frameCnt, 0);
+}
 
-}
-void kong::move(float playerx, float playery)
-{
-	if (playerx < ptX)
-	{
-		dir = eLEFT;
-		spt->setScale( -1,1 );
-		spt->setScaleOffset(68, 0); //조정해야함
-	}
-	else if (playerx > ptX)
-	{
-		dir = eRIGHT;
-		spt->setScale( 1,1 );
-	}
-}
 bool kong::attack(void)
 {
 	if (atkCnt >= 2)

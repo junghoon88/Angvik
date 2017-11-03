@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "EnemyManager.h"
+#include "PlayerManager.h"
 
 EnemyManager::EnemyManager()
 {
@@ -63,8 +64,11 @@ void EnemyManager::setEnemy1(void)
 	ent2->init(entNum++, 192, 200);//테스트용 좌표임
 	_vEnemy.push_back(ent2);
 
-
-
+	kong* kong1;
+	kong1 = new kong;
+	kong1->init(kongNum++, 860, 350);
+	_vEnemy.push_back(kong1);
+	//350,860 콩나물 위치
 	
 	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
 
