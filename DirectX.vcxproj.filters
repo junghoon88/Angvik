@@ -19,6 +19,9 @@
     <Filter Include="mainGame\Common">
       <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\Bullet">
+      <UniqueIdentifier>{dfff005a-0df8-4815-ad2e-2a3cae976f6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp">
@@ -153,6 +156,10 @@
     <ClCompile Include="Turtle_crash.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>mainGame\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="kong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -307,6 +314,10 @@
     <ClInclude Include="Turtle_crash.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>mainGame\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="kong.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">

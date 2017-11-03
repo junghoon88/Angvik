@@ -4,6 +4,7 @@
 #include "monkkey.h"
 #include "Ent.h"
 #include "Turtle.h"
+#include "Bullet.h"
 #include <vector>
 
 //전방선언
@@ -34,6 +35,7 @@ public:
 	void render(void);
 
 	void setEnemy1(void);
+	void enemyFire(void);
 	void deleteEnemy(void);
 
 

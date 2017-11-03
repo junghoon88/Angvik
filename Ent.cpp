@@ -16,7 +16,6 @@ void Ent::init(float x, float y)
 {
 	spt = IMAGEMANAGER->findImage(L"나무맨");
 	spt->setCoord({ 0,0 });
-	//마더클래스 프로브축 추가해야함.
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
@@ -26,15 +25,16 @@ void Ent::init(float x, float y)
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 40, 70);
 	sptrc = RectMakeCenter(x, y, 50, 86);
+	//RECTMANAGER->addRect(DEVICE, L"나무맨렉트", { (float)rc.left,(float)rc.top }, { 40, 70 });
 	probeY = rc.bottom;
 }
 void Ent::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY, 40, 70);
+	rc = RectMakeCenter(ptX + 10, ptY, 40, 70);
 	sptrc = RectMakeCenter(ptX, ptY - 3, 50, 86);
 	probeY = rc.bottom;
 	spt->setCoord(sptrc.left,sptrc.top);
-
+//	RECTMANAGER->findRect(L"나무맨렉트")->setCoord({ (float)rc.left,(float)rc.top });
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
@@ -47,6 +47,7 @@ void Ent::update(void)
 }
 void Ent::render(void)
 {
+	//RECTMANAGER->render(L"나무맨렉트");
 	spt->frameRender(frameCnt, 0);
 }
 void Ent::move(void)  
@@ -71,7 +72,7 @@ void Ent::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0)) // 관통형 바닥
+		if ((r == 0 && g == 0 && b == 0))
 		{
 			ptY = i - 40;
 			state = eIDLE;
@@ -92,7 +93,7 @@ void Ent::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255)) // 관통형 바닥
+		if ((r == 0 && g == 255 && b == 255))
 		{
 			if (i >= ptX)
 			{
@@ -112,8 +113,4 @@ void Ent::move(void)
 	}
 	// x축 탐지
 	
-}
-void Ent::attack(void)
-{
-
 }

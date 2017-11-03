@@ -33,7 +33,6 @@ void Turtle::update(void)
 	sptrc = RectMakeCenter(ptX, ptY , 110, 70);
 	probeY = sptrc.bottom;
 	spt->setCoord(sptrc.left, sptrc.top);
-	if (life == 1 && spt == IMAGEMANAGER->findImage(L"거북이")) spt = IMAGEMANAGER->findImage(L"거북이누드");
 
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
@@ -71,7 +70,7 @@ void Turtle::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0)) // 관통형 바닥
+		if ((r == 0 && g == 0 && b == 0))
 		{
 			ptY = i - 35;
 			state = eIDLE;
@@ -92,7 +91,7 @@ void Turtle::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255)) // 관통형 바닥
+		if ((r == 0 && g == 255 && b == 255)) 
 		{
 			if (i >= ptX)
 			{
@@ -111,9 +110,5 @@ void Turtle::move(void)
 		}
 	}
 	// x축 탐지
-
-}
-void Turtle::attack(void)
-{
 
 }

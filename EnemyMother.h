@@ -16,6 +16,7 @@ class EnemyMother : public DxWindow
 {
 protected:
 	Sprite* spt;
+	Rect* rct;
 	RECT rc;
 	RECT sptrc;//안쓰셔도 됨. 저는 이미지 그릴려고 추가합니다.
 	float ptX;

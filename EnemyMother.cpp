@@ -8,9 +8,6 @@ EnemyMother::~EnemyMother(){}
 void EnemyMother::init(float x, float y)
 {
 
-
-
-
 }
 void EnemyMother::release(void)
 {
