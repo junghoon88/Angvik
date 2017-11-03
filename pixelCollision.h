@@ -1,6 +1,12 @@
 #pragma once
 #include "DxWindow.h"
 
+struct tagPixelCollision
+{
+	bool detect;
+	POINT offset;
+};
+
 class pixelCollision : public DxWindow
 {
 private:
@@ -33,7 +39,13 @@ public:
 	void render(void);
 
 public:
-	bool getPixelGround(float* x, float* y, int width, int height);
+	bool getPixelGroundLT(float* lx, float* ty, int width, int height);		//x,y -> c
+	bool getPixelGroundCC(float* cx, float* cy, int width, int height);		//
+
+	bool getPixelWall(float* x, float* y, int width, int height, int dir);	//dir = 1 -> 오른쪽, -1 일때 왼쪽
+
+	tagPixelCollision getPlayerPixelGround(int cx, int cy, int width, int height);
+	tagPixelCollision getPlayerPixelWall(int cx, int cy, int width, int height, int dir);	//dir = 1 -> 오른쪽, -1 일때 왼쪽
 
 	
 
