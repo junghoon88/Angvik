@@ -28,14 +28,14 @@ void monkkey::init(float x, float y, wstring rcKey) {
 	frameTime = 0;
 
 	rc = RectMakeCenter(ptX, ptY, 45, 45);   //100,60 ÀÇ¹Ìx
-//	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, 45 });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, 45 });
 	probeY = rc.bottom;
 
 }
 void monkkey::update(void) {
 	rc = RectMakeCenter(ptX, ptY, 45, 45);
 	probeY = rc.bottom;
-//	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 	spt->setCoord({(float)rc.left,(float)rc.top });
 	
 	frameTime += TIMEMANAGER->getElapsedTime();
@@ -55,7 +55,7 @@ void monkkey::render(void) {
 
 	spt->frameRender(frameCnt, 0);
 	
-	//RECTMANAGER->render(rcName);
+	RECTMANAGER->render(rcName);
 
 }
 void monkkey::move(void) {
