@@ -1,25 +1,26 @@
 #include "stdafx.h"
-#include "Ent.h"
+#include "Turtle_crash.h"
 
-Ent::Ent()
+
+Turtle_crash::Turtle_crash()
 {
 }
 
 
-Ent::~Ent()
+Turtle_crash::~Turtle_crash()
 {
 }
 
 
-void Ent::init(int num, float x, float y)
+void Turtle_crash::init(int num, float x, float y)
 {
 	TCHAR strKey[100];
-	_stprintf(strKey, L"나무맨%d", num);
-	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"나무맨")->getFileName(), 
-														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameX() + 1, 
-														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameY() + 1);
-	//spt = IMAGEMANAGER->findImage(L"나무맨");
+	_stprintf(strKey, L"거북이%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"거북이")->getFileName(),
+		IMAGEMANAGER->findImage(L"거북이")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"거북이")->getMaxFrameY() + 1);
 	spt->setCoord({ 0,0 });
+
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
@@ -27,18 +28,17 @@ void Ent::init(int num, float x, float y)
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-	rc = RectMakeCenter(x, y, 40, 70);
-	sptrc = RectMakeCenter(x, y, 50, 86);
-	//RECTMANAGER->addRect(DEVICE, L"나무맨렉트", { (float)rc.left,(float)rc.top }, { 40, 70 });
+	rc = RectMakeCenter(x, y, 100, 60);
+	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
-void Ent::update(void)
+void Turtle_crash::update(void)
 {
-	rc = RectMakeCenter(ptX + 10, ptY, 40, 70);
-	sptrc = RectMakeCenter(ptX, ptY - 3, 50, 86);
-	probeY = rc.bottom;
-	spt->setCoord(sptrc.left,sptrc.top);
-//	RECTMANAGER->findRect(L"나무맨렉트")->setCoord({ (float)rc.left,(float)rc.top });
+	rc = RectMakeCenter(ptX, ptY, 100, 60);
+	sptrc = RectMakeCenter(ptX, ptY, 110, 70);
+	probeY = sptrc.bottom;
+	spt->setCoord(sptrc.left, sptrc.top);
+
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
@@ -49,12 +49,11 @@ void Ent::update(void)
 	}
 	move();
 }
-void Ent::render(void)
+void Turtle_crash::render(void)
 {
-	//RECTMANAGER->render(L"나무맨렉트");
-	spt->frameRender(frameCnt, 0);
+	spt->frameRender(frameCnt, 0, 255);
 }
-void Ent::move(void)  
+void Turtle_crash::move(void)
 {
 	if (dir == eLEFT && state == eIDLE)
 	{
@@ -78,7 +77,7 @@ void Ent::move(void)
 
 		if ((r == 0 && g == 0 && b == 0))
 		{
-			ptY = i - 40;
+			ptY = i - 35;
 			state = eIDLE;
 			break;
 		}
@@ -89,7 +88,7 @@ void Ent::move(void)
 	}
 	//Y축 탐지
 
-	for (int i = ptX - 10; i < ptX + 25; ++i) // x축 탐지
+	for (int i = ptX - 50; i < ptX + 50; ++i) // x축 탐지
 	{
 		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", i, ptY + 10);
 
@@ -101,14 +100,14 @@ void Ent::move(void)
 		{
 			if (i >= ptX)
 			{
-				ptX = i - 25;
+				ptX = i - 50;
 				dir = eLEFT;
 				spt->setScale({ -1,1 });
-				spt->setScaleOffset(68,0);
+				spt->setScaleOffset(100, 0);
 			}
 			else if (i < ptX)
 			{
-				ptX = i + 10;
+				ptX = i + 50;
 				dir = eRIGHT;
 				spt->setScale({ 1,1 });
 			}
@@ -116,5 +115,5 @@ void Ent::move(void)
 		}
 	}
 	// x축 탐지
-	
+
 }

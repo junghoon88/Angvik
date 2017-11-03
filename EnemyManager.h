@@ -4,6 +4,7 @@
 #include "monkkey.h"
 #include "Ent.h"
 #include "Turtle.h"
+#include "Bullet.h"
 #include <vector>
 
 //전방선언
@@ -22,6 +23,14 @@ private:
 
 	int entNum;
 
+	int monkkeyNum;
+	int mushNum;
+
+	int turtleNum;
+	int turtlecNum;
+	int kongNum;
+
+
 private:
 	PlayerManager* _pm;
 	stageManager* _sm;
@@ -37,6 +46,9 @@ public:
 	void render(void);
 
 	void setEnemy1(void);
+	void enemyFire(void);
+	void deleteEnemy(void);
+
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

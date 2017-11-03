@@ -11,9 +11,15 @@ monkkey::~monkkey()
 {
 
 }
-void monkkey::init(float x, float y, wstring rcKey) {
+void monkkey::init(int num, float x, float y, wstring rcKey) {
 
-	spt = IMAGEMANAGER->findImage(L"¿ø¼şÀÌ");
+	TCHAR strKey[100];
+	_stprintf(strKey, L"¿ø¼şÀÌ%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¿ø¼şÀÌ")->getFileName(),
+		IMAGEMANAGER->findImage(L"¿ø¼şÀÌ")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"¿ø¼şÀÌ")->getMaxFrameY() + 1);
+
+	//spt = IMAGEMANAGER->findImage(L"¿ø¼şÀÌ");
 	gravity = 0;
 	life = 1;
 	ptX = x;
@@ -124,10 +130,5 @@ void monkkey::move(void) {
 		}
 	}
 	// xÃà Å½Áö
-
-}
-void monkkey::attack(void) {
-
-
 
 }

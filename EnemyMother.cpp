@@ -8,11 +8,8 @@ EnemyMother::~EnemyMother(){}
 void EnemyMother::init(float x, float y)
 {
 
-
-
-
 }
-void EnemyMother::init(float x, float y, wstring rcKey) 
+void EnemyMother::init(int num, float x, float y, wstring rcKey)
 {
 
 }
@@ -32,7 +29,7 @@ void EnemyMother::move(void)
 {
 
 }
-void EnemyMother::attack(void)
+bool EnemyMother::attack(void)
 {
-
+	return false;
 }

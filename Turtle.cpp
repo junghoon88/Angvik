@@ -11,14 +11,19 @@ Turtle::~Turtle()
 {
 }
 
-void Turtle::init(float x, float y)
+void Turtle::init(int num, float x, float y)
 {
-	spt = IMAGEMANAGER->findImage(L"거북이");   //거북이누드
+	TCHAR strKey[100];
+	_stprintf(strKey, L"거북이%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"거북이")->getFileName(),
+		IMAGEMANAGER->findImage(L"거북이")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"거북이")->getMaxFrameY() + 1);
+
 	spt->setCoord({ 0,0 });
 
 	dir = eRIGHT;
 	state = eIDLE;
-	life = 2;
+	life = 1;
 	ptX = x;
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
@@ -33,7 +38,6 @@ void Turtle::update(void)
 	sptrc = RectMakeCenter(ptX, ptY , 110, 70);
 	probeY = sptrc.bottom;
 	spt->setCoord(sptrc.left, sptrc.top);
-	if (life == 1 && spt == IMAGEMANAGER->findImage(L"거북이")) spt = IMAGEMANAGER->findImage(L"거북이누드");
 
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
@@ -71,7 +75,7 @@ void Turtle::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0)) // 관통형 바닥
+		if ((r == 0 && g == 0 && b == 0))
 		{
 			ptY = i - 35;
 			state = eIDLE;
@@ -92,7 +96,7 @@ void Turtle::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255)) // 관통형 바닥
+		if ((r == 0 && g == 255 && b == 255)) 
 		{
 			if (i >= ptX)
 			{
@@ -111,9 +115,5 @@ void Turtle::move(void)
 		}
 	}
 	// x축 탐지
-
-}
-void Turtle::attack(void)
-{
 
 }
