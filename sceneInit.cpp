@@ -182,9 +182,7 @@ void sceneInit::uiInitImage(void)
 	//인벤토리
 	IMAGEMANAGER->addImage(DEVICE, L"inventory", L"image/etc/inventory.png");
 	IMAGEMANAGER->addImage(DEVICE, L"itemBox", L"image/etc/itemBox.png");
-	IMAGEMANAGER->addImage(DEVICE, L"blank", L"image/etc/blank.png");
-	IMAGEMANAGER->addImage(DEVICE, L"oilsTop", L"image/etc/oilsTop.png");
-	IMAGEMANAGER->addImage(DEVICE, L"oilsUnder", L"image/etc/oilsUnder.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsBox", L"image/etc/oilsBox.png");
 }
 
 void sceneInit::enemyInitImage(void)	//몬스터

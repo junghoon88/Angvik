@@ -4,7 +4,9 @@
 class inven : public DxWindow
 {
 private:
-	D3DXVECTOR2 _invenPoint;
+	bool _isMenew;
+	bool _isItem;
+	bool _isOils;
 
 public:
 	inven();
@@ -13,6 +15,7 @@ public:
 	void init(void);
 	void release(void);
 	void update(void);
+	void update(float x, float y);
 	void render(void);
 };
 

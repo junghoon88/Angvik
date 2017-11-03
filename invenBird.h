@@ -12,7 +12,6 @@ private:
 
 	float _birdX, _birdY;
 	float _birdSpeed;
-	float _birdMaxSpeed;
 	float _timeCount;
 	float _birdPointCount;
 	float _angle;
