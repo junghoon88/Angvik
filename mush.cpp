@@ -43,7 +43,7 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	frameCnt = 0;
 	atkFrameCnt = 0;
 	jumpFrameCnt = 0;
-
+	index = 1;
 	frameTime = 0;
 	atkFrameTime = 0;
 	jumpFrameTime = 0;
