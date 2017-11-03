@@ -58,7 +58,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, float x, float y)
 			_img->init();
 		}
 		break;
-	case ITEM_TYPE_LENCE:		//무기-창
+	case ITEM_TYPE_LANCE:		//무기-창
 		break;
 	case ITEM_TYPE_BOOMERANG:	//무기-부메랑
 		break;

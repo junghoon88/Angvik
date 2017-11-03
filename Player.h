@@ -1,5 +1,6 @@
 #pragma once
 #include "DxWindow.h"
+#include "Item.h"
 #include "jump.h"
 
 #define PLAYERSPEED 4.f
@@ -25,7 +26,17 @@ enum PLAYERBODYSTATE
 	PLAYER_RIGHT_JUMP,
 	PLAYER_LEFT_JUMP,
 	PLAYER_RIGHT_MOVE_JUMP,
-	PLAYER_LEFT_MOVE_JUMP
+	PLAYER_LEFT_MOVE_JUMP/*,
+	PLAYER_RIGHT_ATTACK,
+	PLAYER_LEFT_ATTACK,
+	PLAYER_RIGHT_MOVE_ATTACK,
+	PLAYER_LEFT_MOVE_ATTACK,
+	PLAYER_RIGHT_SIT_ATTACK,
+	PLAYER_LEFT_SIT_ATTACK,
+	PLAYER_RIGHT_JUMP_ATTACK,
+	PLAYER_LEFT_JUMP_ATTACK,
+	PLAYER_RIGHT_MOVE_JUMP_ATTACK,
+	PLAYER_LEFT_MOVE_JUMP_ATTACK*/
 };
 
 class Player : public DxWindow
@@ -38,6 +49,11 @@ private:
 	animation* _armFrontMotion;
 	animation* _armBackMotion;
 
+	animation* _frontArmFrontAttackMotion;
+	animation* _frontArmBackAttackMotion;
+	animation* _backArmFrontAttackMotion;
+	animation* _backArmBackAttackMotion;
+
 	Sprite* _headImage;
 	Sprite* _bodyRightImage;
 	Sprite* _bodyLeftImage;
@@ -48,13 +64,19 @@ private:
 
 	RECT _rcHead;
 	RECT _rcBody;
+	RECT _rcAttack;
 
 	jump* _playerJump;
+
+	ITEM_TYPE _weaponType;
 
 	float _x, _y;
 	float _probeY;
 
+	bool _isFrontAttack;
+	bool _isBackAttack;
 	bool _isRight;
+	bool _isSit;
 	bool _isLive;
 
 public:
@@ -65,7 +87,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-
+	
 	static void bodyRightJump(void* obj);
 	static void bodyLeftJump(void* obj);
 	static void bodyRightMoveJump(void* obj);
@@ -81,6 +103,8 @@ public:
 	static void armBackRightMoveJump(void* obj);
 	static void armBackLeftMoveJump(void* obj);
 
+	static void attackIsEnd(void* obj);
+
 	PLAYERBODYSTATE getPlayerBodyState(void) { return _bodyState; }
 	void setPlayerBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
 
@@ -93,12 +117,19 @@ public:
 	animation* getPlayerArmBackMotion(void) { return _armBackMotion; }
 	void setPlayerArmBackMotion(animation* ani) { _armBackMotion = ani; }
 
+	PLAYERBODYSTATE getBodyState(void) { return _bodyState; }
+	void setBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
+
+	void setIsFrontAttack(bool isAttack) { _isFrontAttack = isAttack; }
+	void setIsBackAttack(bool isAttack) { _isBackAttack = isAttack; }
+
 	//========== I N I T ==========
 	void imageReverse(void);
-	void keyAnimationInit(void);
 	void imagePosUpdate(void);
+	void keyAnimationInit(void);
 
 	//========== U P D A T E ==========
 	void keyInputSettings(void);
+	void attackMotions(void);
 
 };
