@@ -146,24 +146,11 @@
     <ClCompile Include="Turtle.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="jump.cpp" />
-    <ClCompile Include="pixelCollision.cpp" />
-    <ClCompile Include="sceneStage.cpp" />
-    <ClCompile Include="soundManager.cpp" />
-    <ClCompile Include="test2.cpp" />
-    <ClCompile Include="mush.cpp">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClCompile>
-    <ClCompile Include="Turtle.cpp">
-      <Filter>mainGame\Enemy\st1</Filter>
-=======
     <ClCompile Include="jump.cpp">
       <Filter>mainGame\Common</Filter>
     </ClCompile>
     <ClCompile Include="pixelCollision.cpp">
       <Filter>mainGame\Common</Filter>
->>>>>>> 3cfa2690767ef61dbc701c62e12c9ee4c98b75bd
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,10 +241,6 @@
     <ClInclude Include="PrintText.h">
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="invenBird.h" />
-=======
->>>>>>> 3cfa2690767ef61dbc701c62e12c9ee4c98b75bd
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="invenBird.h">
@@ -316,24 +299,11 @@
     <ClInclude Include="Turtle.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="jump.h" />
-    <ClInclude Include="pixelCollision.h" />
-    <ClInclude Include="sceneStage.h" />
-    <ClInclude Include="soundManager.h" />
-    <ClInclude Include="test2.h" />
-    <ClInclude Include="mush.h">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClInclude>
-    <ClInclude Include="Turtle.h">
-      <Filter>mainGame\Enemy\st1</Filter>
-=======
     <ClInclude Include="jump.h">
       <Filter>mainGame\Common</Filter>
     </ClInclude>
     <ClInclude Include="pixelCollision.h">
       <Filter>mainGame\Common</Filter>
->>>>>>> 3cfa2690767ef61dbc701c62e12c9ee4c98b75bd
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
