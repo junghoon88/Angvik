@@ -20,6 +20,9 @@ void PlayerManager::init(void)
 
 	_bird = new invenBird;
 	_bird->init(_player->getX(), _player->getY());
+
+	_inven = new inven;
+	_inven->init();
 }
 
 void PlayerManager::release(void)

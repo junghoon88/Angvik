@@ -189,7 +189,6 @@ void sceneInit::uiInitImage(void)
 
 void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 {
-
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¿ø¼þÀÌ", L"image/monster/¿ø¼þÀÌ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸¸Ç", L"image/monster/¹ö¼¸¸Ç.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸Á¡ÇÁ", L"image/monster/¹ö¼¸¸ÇÁ¡ÇÁ.png", 2, 1);
