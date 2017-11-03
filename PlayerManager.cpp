@@ -17,6 +17,9 @@ void PlayerManager::init(void)
 {
 	_player = new Player;
 	_player->init();
+
+	_bird = new invenBird;
+	_bird->init(_player->getX(), _player->getY());
 }
 
 void PlayerManager::release(void)
@@ -27,10 +30,12 @@ void PlayerManager::release(void)
 void PlayerManager::update(void) 
 {
 	_player->update();
+	_bird->update(_player->getX(), _player->getY());
 }
 
 void PlayerManager::render(void) 
 {
 	_player->render();
+	_bird->render();
 }
 

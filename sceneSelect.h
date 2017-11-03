@@ -18,6 +18,7 @@ private:
 
 	bool _isOption;
 	bool _isMute;
+	bool _isStart;
 
 public:
 	sceneSelect();

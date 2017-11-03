@@ -1,6 +1,7 @@
 #pragma once
 #include "DxWindow.h"
 #include "Player.h"
+#include "invenBird.h"
 
 //전방선언
 class EnemyManager;
@@ -11,7 +12,7 @@ class PlayerManager : public DxWindow
 {
 private:
 	Player* _player;
-
+	invenBird* _bird;
 
 
 	EnemyManager* _em;

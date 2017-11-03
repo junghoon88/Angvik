@@ -13,7 +13,6 @@ private:
 	stageManager* _sm;
 	itemManager* _im;
 
-
 public:
 	sceneGame();
 	~sceneGame();

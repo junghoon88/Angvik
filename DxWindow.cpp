@@ -39,6 +39,8 @@ DxWindow* DxWindow::dxWindow = NULL;
 LPDIRECT3D9 DxWindow::d3d = NULL;
 LPDIRECT3DDEVICE9 DxWindow::device = NULL;
 
+int DxWindow::_stage = 1;
+
 
 //객체 생성자
 DxWindow::DxWindow(HINSTANCE hInstance, LPCWSTR lpClassName, LPCSTR lpszCmdParam, int nCmdShow)
@@ -268,7 +270,7 @@ void DxWindow::initialize(void)
 	IMAGEMANAGER->init();
 	//TXTDATA->init();
 	TIMEMANAGER->init();
-	//SOUNDMANAGER->init();
+	SOUNDMANAGER->init();
 	//EFFECTMANAGER->init();
 	SCENEMANAGER->init();
 	KEYANIMANAGER->init();
@@ -278,7 +280,6 @@ void DxWindow::initialize(void)
 	//TEXTMANAGER->init() --> 사용할때마다 초기화해서 사용한다.
 	RECTMANAGER->init();
 	PBGMANAGER->init();
-	SOUNDMANAGER->init();
 }
 
 void DxWindow::releaseSingleton(void)
@@ -290,7 +291,7 @@ void DxWindow::releaseSingleton(void)
 		IMAGEMANAGER->release();				IMAGEMANAGER->releaseSingleton();
 		//TXTDATA->releaseSingleton();
 		TIMEMANAGER->release();					TIMEMANAGER->releaseSingleton();
-		//SOUNDMANAGER->releaseSingleton();
+		SOUNDMANAGER->release();				SOUNDMANAGER->releaseSingleton();
 		//EFFECTMANAGER->releaseSingleton();
 		SCENEMANAGER->release();				SCENEMANAGER->releaseSingleton();
 
@@ -302,7 +303,6 @@ void DxWindow::releaseSingleton(void)
 		TEXTMANAGER->release();					TEXTMANAGER->releaseSingleton();
 		RECTMANAGER->release();					RECTMANAGER->releaseSingleton();
 		PBGMANAGER->release();					PBGMANAGER->releaseSingleton();
-		SOUNDMANAGER->release();				SOUNDMANAGER->releaseSingleton();
 	}
 
 	SAFE_RELEASE(device);
@@ -315,4 +315,9 @@ void DxWindow::releaseSingleton(void)
 	SAFE_DELETE_ARRAY(commandLine);
 }
 
+void DxWindow::init() {
 
+
+
+
+}

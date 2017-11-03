@@ -55,6 +55,6 @@ void sceneET::render(void)
 {
 //	_pm->render();
 	
-	IMAGEMANAGER->findImage(L"Ãæµ¹¸Ê1_·»´õ")->render();
+	IMAGEMANAGER->findImage(L"Stage1-PBG")->render();
 	_em->render();
 }

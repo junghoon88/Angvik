@@ -38,6 +38,8 @@ void sceneStage::init(void)
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
 
+
+	_em->setEnemy1();
 }
 
 void sceneStage::release(void)
@@ -48,12 +50,17 @@ void sceneStage::release(void)
 void sceneStage::update(void)
 {
 	_pm->update();
+	_em->update();
+	_sm->update();
+	_im->update();
 
 	MAINCAMERA->update();
 }
 
 void sceneStage::render(void)
 {
-	IMAGEMANAGER->findImage(L"테스트배경")->render();
+	_sm->render();
+	_im->render();
+	_em->render();
 	_pm->render();
 }

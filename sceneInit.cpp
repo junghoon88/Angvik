@@ -34,12 +34,7 @@ void sceneInit::render(void)
 
 void sceneInit::initImage(void)
 {
-	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
-	PBGMANAGER->addImage(L"충돌맵1", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
-	IMAGEMANAGER->addImage(DEVICE, L"충돌맵1_렌더", L"image/Stage/Stage1-PBG.bmp");
-	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
-
-
+	stageInitImage();	//스테이지 이미지(배경)
 
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 	uiInitImage();		//	UI 이미지 초기화
@@ -61,6 +56,7 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"골드부메랑", L"image/item/골드부메랑.png");
 	IMAGEMANAGER->addImage(DEVICE, L"골드지팡이", L"image/item/골드지팡이.png");
 	IMAGEMANAGER->addImage(DEVICE, L"골드오일", L"image/item/골드오일.png");
+	
 	//방어구
 	IMAGEMANAGER->addImage(DEVICE, L"백갑", L"image/item/백갑.png");
 	IMAGEMANAGER->addImage(DEVICE, L"백투", L"image/item/백투.png");
@@ -72,21 +68,39 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"황투", L"image/item/황투.png");
 	IMAGEMANAGER->addImage(DEVICE, L"황신", L"image/item/황신.png");
 	//알
+	IMAGEMANAGER->addImage(DEVICE, L"달걀", L"image/item/알.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"검은새", L"image/item/검은새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"흰새", L"image/item/흰새.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"황금새", L"image/item/황금새.png", 8, 1);
-
+	
 }
 
 void sceneInit::initSound(void)
 {
-
+	//UI
+	SOUNDMANAGER->addSound(L"메뉴브금", L"sound/bgm/main.wav", true, true);
+	SOUNDMANAGER->addSound(L"stage1bgm", L"sound/bgm/stage1.wav", true, true);
+	SOUNDMANAGER->addSound(L"메뉴이동", L"sound/UI/메뉴이동.wav", false, false);
+	SOUNDMANAGER->addSound(L"메뉴선택", L"sound/UI/메뉴선택.wav", false, false);
 }
 
 void sceneInit::initText(void)
 {
 
 }
+
+void sceneInit::stageInitImage()	//스테이지 이미지(배경)
+{
+	//백그라운드
+	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"Stage1-BG", L"image/Stage/Stage1-Background.png");
+	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+	
+	//픽셀백그라운드
+	IMAGEMANAGER->addImage(DEVICE, L"Stage1-PBG", L"image/Stage/Stage1-PBG.bmp");
+	PBGMANAGER->addImage(L"Stage1-PBG", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
+}
+
+
 
 void sceneInit::playerInitImage(void)
 {
@@ -128,14 +142,14 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
 
+	//inventorybird
+	IMAGEMANAGER->addFrameImage(DEVICE, L"inventoryBird", L"image/player/inventoryBird.png", 6, 4);
 }
 
 void sceneInit::uiInitImage(void)
 {
 	//배경
-
 	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png",false);
-
 
 	//글자
 	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");
@@ -154,6 +168,9 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"back", L"image/etc/back.png");
 	IMAGEMANAGER->addImage(DEVICE, L"로고", L"image/etc/로고.png");
 	IMAGEMANAGER->addImage(DEVICE, L"승리", L"image/etc/승리.png");
+	IMAGEMANAGER->addImage(DEVICE, L"item", L"image/etc/item.png");
+	IMAGEMANAGER->addImage(DEVICE, L"olis", L"image/etc/oils.png");
+	IMAGEMANAGER->addImage(DEVICE, L"close", L"image/etc/close.png");
 
 	//메뉴
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
@@ -162,6 +179,12 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"selectMusic", L"image/etc/select.png");
 	IMAGEMANAGER->addImage(DEVICE, L"selectVolume", L"image/etc/select.png");
 
+	//인벤토리
+	IMAGEMANAGER->addImage(DEVICE, L"inventory", L"image/etc/inventory.png");
+	IMAGEMANAGER->addImage(DEVICE, L"itemBox", L"image/etc/itemBox.png");
+	IMAGEMANAGER->addImage(DEVICE, L"blank", L"image/etc/blank.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsTop", L"image/etc/oilsTop.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsUnder", L"image/etc/oilsUnder.png");
 }
 
 void sceneInit::enemyInitImage(void)	//몬스터

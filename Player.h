@@ -2,6 +2,7 @@
 #include "DxWindow.h"
 #include "Item.h"
 #include "jump.h"
+#include "pixelCollision.h"
 
 #define PLAYERSPEED 4.f
 #define JUMPPOWER 8.f
@@ -67,6 +68,7 @@ private:
 	RECT _rcAttack;
 
 	jump* _playerJump;
+	pixelCollision* _playerPixelCollision;
 
 	ITEM_TYPE _weaponType;
 
@@ -131,5 +133,9 @@ public:
 	//========== U P D A T E ==========
 	void keyInputSettings(void);
 	void attackMotions(void);
+		
+	//========== GETTER && SETTER =======
+	float getX(void) { return _x; }
+	float getY(void) { return _y; }
 
 };

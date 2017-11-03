@@ -88,6 +88,7 @@ void sceneTest::update(void)
 		dir *= -1;
 		IMAGEMANAGER->setScale(L"더미", dir, 1);
 		IMAGEMANAGER->setScale(L"더미2", dir, 1);
+		IMAGEMANAGER->setScaleOffset(L"더미2", 128, 0);
 	}
 
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
@@ -164,7 +165,7 @@ void sceneTest::render(void)
 	int frameX = frameCnt % 2;
 	int frameY = frameCnt / 2;
 
-	IMAGEMANAGER->findImage(L"테스트배경")->render();
+	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 	//IMAGEMANAGER->findImage(L"더미")->frameRender(frameX, frameY);
 	IMAGEMANAGER->findImage(L"더미2")->render(128);
 	RECTMANAGER->findRect(L"더미")->render();

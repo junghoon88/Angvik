@@ -10,8 +10,8 @@ enum ITEM_TYPE
 	ITEM_TYPE_HEAD,			//방어구-머리
 	ITEM_TYPE_BODY,			//방어구-갑옷
 	ITEM_TYPE_FOOT,			//방어구-신발
-	ITEM_TYPE_OIL,			//
-	ITEM_TYPE_EGG			//
+	ITEM_TYPE_OIL,			//잡템 - 오일
+	ITEM_TYPE_EGG			//잡템 - 알
 };
 
 enum ITEM_KIND
@@ -32,6 +32,7 @@ class Item : public DxWindow
 {
 private:
 	Sprite* _img;
+	
 	ITEM_TYPE _type;
 	ITEM_KIND _kind;
 	ITEM_STATE _state;
@@ -43,6 +44,7 @@ private:
 	float frameTime;
 	float angleDeg;
 
+	int probeY;
 	MYPOINT	_pt;
 	RECT _rcImg;
 	RECT _rcHit;
@@ -59,5 +61,6 @@ public:
 	void render(void);
 
 	void createItem(ITEM_TYPE type, ITEM_KIND kind, float x, float y);
+	void createEgg(ITEM_TYPE type,  float x, float y);
 };
 
