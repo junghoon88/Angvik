@@ -19,12 +19,23 @@ void monkkey::init(float x, float y) {
 	ptX = x;
 	ptY = y;
 
-	frameCnt = 0;
-	frameTime = 0.0f;
+	spt->setCoord({ 0,0 });
+
+	dir = eRIGHT;
+	state = eIDLE;
+
+	frameCnt = spt->getMaxFrameX();
+	frameTime = 0;
+
+	rc = RectMakeCenter(ptX, ptY, 100, 60);
+	RECTMANAGER->addRect(DEVICE, L"monkey1rc", { (float)rc.left,(float)rc.top }, { 70, 70 });
+	probeY = rc.bottom;
 
 }
 void monkkey::update(void) {
 	
+	spt->setCoord({(float)rc.left,(float)rc.top });
+
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.2f)
 	{
@@ -40,7 +51,8 @@ void monkkey::update(void) {
 void monkkey::render(void) {
 
 	spt->frameRender(frameCnt, 0);
-
+	
+	RECTMANAGER->render(L"monkey1rc");
 
 }
 void monkkey::move(void) {

@@ -38,6 +38,7 @@ public:
 	void setCenterPos(wstring strKey, float centerPosX, float centerPosY); //position
 	void setRotate(wstring strKey, float angleDeg);
 	void move(wstring strKey, float moveX, float moveY);
+	void setScaleOffset(wstring strKey, float scaleOffsetX, float scaleOffsetY);
 
 	void render(wstring strKey);
 	//void render(wstring strKey, HDC hdc, int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight);

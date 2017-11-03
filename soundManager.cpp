@@ -300,12 +300,18 @@ void soundManager::setVolume(float volume)
 	}
 }
 
-void soundManager::setMute(bool mute)
+void soundManager::setMuteAll(bool mute)
 {
 	arrChannelsIter iter = _mTotalChannels.begin();
 	for (iter; iter != _mTotalChannels.end(); ++iter)
 	{
 		(*iter->second)->setMute(mute);
+
+		//debug
+		bool isMute = true;
+		(*iter->second)->getMute(&isMute);
+		printf("");
+
 	}
 }
 bool soundManager::getMute(wstring keyName)

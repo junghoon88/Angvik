@@ -28,14 +28,16 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneTest);
+	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneStage);
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À", new itemManager);
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
 	scene->init();
+	scene = SCENEMANAGER->addScene(L"ÀÎº¥Å×½ºÆ®", new invenBird);
+	scene->init();
 
-	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+	SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::release(void)
@@ -53,19 +55,24 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
 	}
+
 	if (KEYMANAGER->isOnceKeyDown(VK_F3))
 	{
-
 		SCENEMANAGER->changeScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À");
 	}
-
 	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{
 		SCENEMANAGER->changeScene(L"¿¡³Ê¹ÌÅ×½ºÆ®");
 	}
+	if (KEYMANAGER->isOnceKeyDown(VK_F5))
+	{
+		SCENEMANAGER->changeScene(L"¼¿·º¾À");
+	}
 
 	SCENEMANAGER->update();
 
+	//if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	//else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::render(void)	

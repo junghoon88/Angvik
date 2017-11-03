@@ -34,9 +34,7 @@ void sceneInit::render(void)
 
 void sceneInit::initImage(void)
 {
-	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"테스트배경", L"image/Stage/Stage1-Background.png");
-	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
-
+	stageInitImage();	//스테이지 이미지(배경)
 
 	playerInitImage();	//	플레이어의 이미지 초기화 함수
 	uiInitImage();		//	UI 이미지 초기화
@@ -79,13 +77,30 @@ void sceneInit::initImage(void)
 
 void sceneInit::initSound(void)
 {
-
+	//UI
+	SOUNDMANAGER->addSound(L"메뉴브금", L"sound/bgm/main.wav", true, true);
+	SOUNDMANAGER->addSound(L"stage1bgm", L"sound/bgm/stage1.wav", true, true);
+	SOUNDMANAGER->addSound(L"메뉴이동", L"sound/UI/메뉴이동.wav", false, false);
+	SOUNDMANAGER->addSound(L"메뉴선택", L"sound/UI/메뉴선택.wav", false, false);
 }
 
 void sceneInit::initText(void)
 {
 
 }
+
+void sceneInit::stageInitImage()	//스테이지 이미지(배경)
+{
+	//백그라운드
+	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"Stage1-BG", L"image/Stage/Stage1-Background.png");
+	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+	
+	//픽셀백그라운드
+	IMAGEMANAGER->addImage(DEVICE, L"Stage1-PBG", L"image/Stage/Stage1-PBG.bmp");
+	PBGMANAGER->addImage(L"Stage1-PBG", L"image/stage/Stage1-PBG.bmp", 6709, 1290);
+}
+
+
 
 void sceneInit::playerInitImage(void)
 {
@@ -127,12 +142,16 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
 
+	//inventorybird
+	IMAGEMANAGER->addFrameImage(DEVICE, L"inventoryBird", L"image/player/inventoryBird.png", 6, 4);
 }
 
 void sceneInit::uiInitImage(void)
 {
 	//배경
-	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png");
+
+	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png",false);
+
 
 	//글자
 	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");
@@ -167,11 +186,14 @@ void sceneInit::enemyInitImage(void)	//몬스터
 	IMAGEMANAGER->addFrameImage(DEVICE, L"원숭이", L"image/monster/원숭이.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯맨", L"image/monster/버섯맨.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯점프", L"image/monster/버섯맨점프.png", 2, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"버섯공격", L"image/monster/버섯공격.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이", L"image/monster/Turtle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"거북이누드", L"image/monster/Turtle_crash_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_8f.png", 8, 1);
-	//PBGMANAGER->addImage(L"테스트배경", L"image/stage/test_collision.png",768,305);
+
+	PBGMANAGER->addImage(L"충돌테스트", L"image/stage/test_bmp.bmp",768,305);
+	IMAGEMANAGER->addImage(DEVICE,L"충돌테스트보여줘요", L"image/stage/test_collision.png");
 
 }

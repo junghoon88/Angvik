@@ -8,21 +8,25 @@ enum enemyState
 {
 	eIDLE,
 	eATK,
-	eJUMP
+	eJUMP,
+	eFALL
 };
 
-class EnemyMother
+class EnemyMother : public DxWindow
 {
 protected:
 	Sprite* spt;
 	RECT rc;
+	RECT sptrc;//안쓰셔도 됨. 저는 이미지 그릴려고 추가합니다.
 	float ptX;
 	float ptY;
 	float speed;
 	float jumpPower;
 	int life;
 
-	
+	int probeY;
+	int probeX;//딱히 필요는 없을지도?
+
 	int frameCnt;
 	float frameTime;
 
@@ -39,7 +43,10 @@ public:
 	virtual void move(void);
 	virtual void attack(void);
 
+	inline float getX(void) { return ptX; }
+	inline float getY(void) { return ptY; }
 	inline int getLife(void) { return life; }
+	void setLife(int hit) { life -= hit; } //라이프 셋팅용.피해량 만큼 라이프 감소
 	inline enemyState getState(void) { return state; }
 	inline RECT getRect(void) { return rc; }
 

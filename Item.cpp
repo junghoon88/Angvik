@@ -56,7 +56,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, float x, float y)
 			
 			_img->setCoord(x, y);
 			_img->init();
-			_rcImg = RectMake(x, y, 100, 100);
+			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
 			_durability = 4;
 		}
 		else if (_kind == ITEM_KIND_BLACK)

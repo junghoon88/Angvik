@@ -3,9 +3,11 @@
 #include "sceneInit.h"
 #include "sceneSelect.h"
 #include "sceneGame.h"
+#include "sceneStage.h"
 #include "sceneTest.h"
 #include "sceneET.h"
 #include "sceneitemTest.h"
+#include "invenBird.h"
 
 
 

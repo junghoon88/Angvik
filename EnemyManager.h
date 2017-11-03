@@ -2,6 +2,8 @@
 #include "DxWindow.h"
 #include "EnemyMother.h"
 #include "monkkey.h"
+#include "Ent.h"
+#include "Turtle.h"
 #include <vector>
 
 //전방선언
@@ -38,5 +40,7 @@ public:
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 
+
+	
 };
 

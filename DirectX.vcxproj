@@ -157,7 +157,6 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="invenBird.cpp" />
-    <ClCompile Include="inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="itemManager.cpp" />
     <ClCompile Include="jump.cpp" />
@@ -166,6 +165,7 @@
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="monkkey.cpp" />
     <ClCompile Include="PBGManager.cpp" />
+    <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
@@ -177,16 +177,19 @@
     <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
+    <ClCompile Include="sceneStage.cpp" />
     <ClCompile Include="sceneTest.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Sprite.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stageManager.cpp" />
+    <ClCompile Include="test2.cpp" />
     <ClCompile Include="textManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="Turtle.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,7 +207,6 @@
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="invenBird.h" />
-    <ClInclude Include="inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="itemManager.h" />
     <ClInclude Include="jump.h" />
@@ -213,6 +215,7 @@
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="monkkey.h" />
     <ClInclude Include="PBGManager.h" />
+    <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="PrintText.h" />
@@ -225,15 +228,18 @@
     <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
+    <ClInclude Include="sceneStage.h" />
     <ClInclude Include="sceneTest.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="test2.h" />
     <ClInclude Include="textManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="Turtle.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
