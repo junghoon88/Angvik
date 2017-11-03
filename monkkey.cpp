@@ -30,7 +30,7 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	dir = eRIGHT;
 	state = eIDLE;
 
-	frameCnt = spt->getMaxFrameX();
+	frameCnt = 0;
 	frameTime = 0;
 
 	rc = RectMakeCenter(ptX, ptY, 45, 45);   //100,60 ÀÇ¹Ìx
@@ -47,7 +47,7 @@ void monkkey::update(void) {
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
-		frameTime -= 0.1f;
+		frameTime = 0;
 
 		frameCnt++;
 		if (frameCnt >= 8) frameCnt = 0;

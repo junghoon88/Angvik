@@ -49,6 +49,18 @@ void EnemyManager::setEnemy1(void)
 {
 	monkkey* monkey1, *monkey2;
 	Turtle* turtle1;
+	mush* mush1;
+
+
+	monkey2 = new monkkey;
+	monkey2->init(monkkeyNum++, 200, 100,L"monkkeyRc2");
+	_vEnemy.push_back(monkey2);
+
+
+	mush1 = new mush;
+	mush1->init(mushNum++, 4000, 50, L"mushRc1");
+	_vEnemy.push_back(mush1);
+
 
 	monkey1 = new monkkey;
 	//monkey2 = new monkkey;

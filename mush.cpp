@@ -13,7 +13,7 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 
 	TCHAR strKey[100];
 	_stprintf(strKey, L"¹ö¼¸¸Ç%d", num);
-	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¿ø¼þÀÌ")->getFileName(),
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç")->getFileName(),
 		IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"¹ö¼¸¸Ç")->getMaxFrameY() + 1);
 	TCHAR strKey2[100];
@@ -40,9 +40,9 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	dir = eRIGHT;
 	state = eIDLE;
 
-	frameCnt = spt->getMaxFrameX();
-	atkFrameCnt = atkspt->getMaxFrameX();
-	jumpFrameCnt = jmpspt->getMaxFrameX();
+	frameCnt = 0;
+	atkFrameCnt = 0;
+	jumpFrameCnt = 0;
 
 	frameTime = 0;
 	atkFrameTime = 0;
@@ -58,14 +58,16 @@ void mush::update(void) {
 	rc = RectMakeCenter(ptX, ptY, 20, 20);
 	probeY = rc.bottom;
 	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
-	spt->setCoord({ (float)rc.left,(float)rc.top });
 
+	spt->setCoord({ (float)rc.left,(float)rc.top });
+	atkspt->setCoord({ (float)rc.left,(float)rc.top });
+	jmpspt->setCoord({ (float)rc.left,(float)rc.top });
 
 	if (state == eIDLE) {
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (frameTime >= 0.1f)
 		{
-			frameTime -= 0.1f;
+			frameTime = 0;
 
 			frameCnt++;
 			if (frameCnt >= 7) frameCnt = 0;
@@ -75,7 +77,7 @@ void mush::update(void) {
 		atkFrameTime += TIMEMANAGER->getElapsedTime();
 		if (atkFrameTime >= 0.1f)
 		{
-			atkFrameTime -= 0.1f;
+			atkFrameTime = 0;
 
 			atkFrameCnt++;
 			if (atkFrameCnt >= 6)atkFrameCnt = 0;
@@ -87,13 +89,14 @@ void mush::update(void) {
 		jumpFrameTime += TIMEMANAGER->getElapsedTime();
 		if (jumpFrameTime >= 0.1f)
 		{
-			jumpFrameTime -= 0.1f;
+			jumpFrameTime =0;
 
 			jumpFrameCnt++;
 			if (jumpFrameCnt >= 2)jumpFrameCnt = 0;
 		}
 		
 	}
+
 	move();
 
 
@@ -157,7 +160,7 @@ void mush::move(void) {
 		gravity += 0.2;
 		ptY += gravity;
 	}
-	for (int i = probeY - 10; i < probeY + 10; ++i)//YÃà Å½Áö
+	for (int i = probeY - 10; i < probeY + 15; ++i)//YÃà Å½Áö
 	{
 		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", ptX, i);
 
@@ -168,7 +171,7 @@ void mush::move(void) {
 
 		if ((r == 0 && g == 0 && b == 0))
 		{
-			ptY = i - 20;
+			ptY = i - 15;
 			state = eIDLE;
 			break;
 		}
@@ -199,7 +202,7 @@ void mush::move(void) {
 				ptX = i - 20;
 				dir = eLEFT;
 				spt->setScale({ -1,1 });
-				spt->setScaleOffset(45, 0);
+				spt->setScaleOffset(25, 0);
 			}
 			else if (i < ptX)
 			{
