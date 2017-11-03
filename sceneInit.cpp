@@ -56,6 +56,7 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµåºÎ¸Þ¶û", L"image/item/°ñµåºÎ¸Þ¶û.png");
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµåÁöÆÎÀÌ", L"image/item/°ñµåÁöÆÎÀÌ.png");
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµå¿ÀÀÏ", L"image/item/°ñµå¿ÀÀÏ.png");
+	
 	//¹æ¾î±¸
 	IMAGEMANAGER->addImage(DEVICE, L"¹é°©", L"image/item/¹é°©.png");
 	IMAGEMANAGER->addImage(DEVICE, L"¹éÅõ", L"image/item/¹éÅõ.png");
@@ -67,10 +68,11 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"È²Åõ", L"image/item/È²Åõ.png");
 	IMAGEMANAGER->addImage(DEVICE, L"È²½Å", L"image/item/È²½Å.png");
 	//¾Ë
+	IMAGEMANAGER->addImage(DEVICE, L"´Þ°¿", L"image/item/¾Ë.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ËÀº»õ", L"image/item/°ËÀº»õ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"Èò»õ", L"image/item/Èò»õ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"È²±Ý»õ", L"image/item/È²±Ý»õ.png", 8, 1);
-
+	
 }
 
 void sceneInit::initSound(void)
