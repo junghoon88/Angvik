@@ -18,7 +18,7 @@ public:
 	void update(void);
 	void render(void);
 	void move(void);
-	void attack(void);
+	
 
 	mush();
 	~mush();

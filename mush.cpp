@@ -213,8 +213,3 @@ void mush::move(void) {
 	// xÃà Å½Áö
 
 }
-void mush::attack(void) {
-
-
-
-}

@@ -22,15 +22,14 @@ private:
 	viEnemy _viEnemy;
 
 	int entNum;
-<<<<<<< HEAD
+
 	int monkkeyNum;
 	int mushNum;
-	int tutleNum;
-=======
+
 	int turtleNum;
 	int turtlecNum;
 	int kongNum;
->>>>>>> edf7b881d15513fe56d4a4a76a89b1919a850da4
+
 
 private:
 	PlayerManager* _pm;
