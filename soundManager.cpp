@@ -306,12 +306,6 @@ void soundManager::setMuteAll(bool mute)
 	for (iter; iter != _mTotalChannels.end(); ++iter)
 	{
 		(*iter->second)->setMute(mute);
-
-		//debug
-		bool isMute = true;
-		(*iter->second)->getMute(&isMute);
-		printf("");
-
 	}
 }
 bool soundManager::getMute(wstring keyName)

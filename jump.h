@@ -27,6 +27,8 @@ public:
 
 	void jumping(float* x, float* y, float jumpPower, float gravity);
 
-	bool getIsJumping() { return _isJumping; }
+	inline float getJumpPower(void) { return _jumpPower; }
+	inline bool getIsJumping(void) { return _isJumping; }
+	inline void setIsJumping(bool jump) { _isJumping = jump; }
 };
 

@@ -4,15 +4,15 @@
 class pixelCollision : public DxWindow
 {
 private:
-	image* _imgPBG;
+	TCHAR strPBG[100];
 
 	float*	_x;				//center X
 	float*	_y;				//center Y
 	int		_width;				//
 	int		_height;				//
 	int		_dir;				//X축 바라보는 방향
-	float	_probeXOffset;	//X축 바라보는 방향 옵셋(충돌체크할 픽셀)
-	float	_probeYOffset;	//Y축 땅에 닿는 옵셋(충돌체크할 픽셀)
+	float	_probeX;	//X축 바라보는 방향 옵셋(충돌체크할 픽셀)
+	float	_probeY;	//Y축 땅에 닿는 옵셋(충돌체크할 픽셀)
 
 
 	bool _isGround;		//땅위에 있는지?
@@ -33,7 +33,7 @@ public:
 	void render(void);
 
 public:
-	bool getPixelGround(float* x, float* y, int widht, int height);
+	bool getPixelGround(float* x, float* y, int width, int height);
 
 	
 

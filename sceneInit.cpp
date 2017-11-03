@@ -149,9 +149,7 @@ void sceneInit::playerInitImage(void)
 void sceneInit::uiInitImage(void)
 {
 	//배경
-
 	IMAGEMANAGER->addImage(DEVICE, L"메인배경", L"image/etc/배경.png",false);
-
 
 	//글자
 	IMAGEMANAGER->addImage(DEVICE, L"0", L"image/etc/0.png");
@@ -170,6 +168,9 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"back", L"image/etc/back.png");
 	IMAGEMANAGER->addImage(DEVICE, L"로고", L"image/etc/로고.png");
 	IMAGEMANAGER->addImage(DEVICE, L"승리", L"image/etc/승리.png");
+	IMAGEMANAGER->addImage(DEVICE, L"item", L"image/etc/item.png");
+	IMAGEMANAGER->addImage(DEVICE, L"olis", L"image/etc/oils.png");
+	IMAGEMANAGER->addImage(DEVICE, L"close", L"image/etc/close.png");
 
 	//메뉴
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
@@ -178,6 +179,12 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"selectMusic", L"image/etc/select.png");
 	IMAGEMANAGER->addImage(DEVICE, L"selectVolume", L"image/etc/select.png");
 
+	//인벤토리
+	IMAGEMANAGER->addImage(DEVICE, L"inventory", L"image/etc/inventory.png");
+	IMAGEMANAGER->addImage(DEVICE, L"itemBox", L"image/etc/itemBox.png");
+	IMAGEMANAGER->addImage(DEVICE, L"blank", L"image/etc/blank.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsTop", L"image/etc/oilsTop.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsUnder", L"image/etc/oilsUnder.png");
 }
 
 void sceneInit::enemyInitImage(void)	//몬스터

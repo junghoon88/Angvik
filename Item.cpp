@@ -101,7 +101,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_durability = 4;
 		}
 		break;
-	case ITEM_TYPE_LENCE:		//무기-창
+	case ITEM_TYPE_LANCE:		//무기-창
 		if (_kind == ITEM_KIND_WHITE)
 		{
 			_img = new Sprite(DEVICE, L"image/item/흰색랜스.png");
