@@ -13,6 +13,12 @@ void kong::init(int num, float x, float y)
 	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"Äá³ª¹°")->getFileName(),
 		IMAGEMANAGER->findImage(L"Äá³ª¹°")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"Äá³ª¹°")->getMaxFrameY() + 1);
+
+	TCHAR strKey2[100];
+	_stprintf(strKey, L"Äá³ª¹°¾îÅÃ%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"Äá³ª¹°¾îÅÃ")->getFileName(),
+		IMAGEMANAGER->findImage(L"Äá³ª¹°¾îÅÃ")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"Äá³ª¹°¾îÅÃ")->getMaxFrameY() + 1);
 	//spt = IMAGEMANAGER->findImage(L"³ª¹«¸Ç");
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
@@ -31,7 +37,7 @@ void kong::update(float playerx, float playery)
 	if (frameTime >= 0.1f)
 	{
 		frameTime = 0;
-
+		atkCnt++;
 		frameCnt--;
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
