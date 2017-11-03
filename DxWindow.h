@@ -5,6 +5,7 @@ class DxWindow
 private:
 	bool _managerInit;
 
+
 protected:
 	static DxWindow* dxWindow;
 
@@ -26,6 +27,10 @@ protected:
 
 	void initialize(void);
 	void releaseSingleton(void);
+
+	//스테이지를 전역으로 선언
+	static int _stage;
+
 
 public:
 	//객체 생성자
@@ -50,4 +55,7 @@ public:
 	virtual void release(void) = 0;
 	virtual void update(void) = 0;
 	virtual void render(void) = 0;
+
+	static int getStage(void) { return _stage; }
+	static void setStage(int stage) { _stage = stage; }
 };
