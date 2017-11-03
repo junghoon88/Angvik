@@ -152,7 +152,15 @@
     <ClCompile Include="pixelCollision.cpp">
       <Filter>mainGame\Common</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="mush.cpp">
+=======
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Turtle_crash.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="kong.cpp">
+>>>>>>> edf7b881d15513fe56d4a4a76a89b1919a850da4
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,7 +313,15 @@
     <ClInclude Include="pixelCollision.h">
       <Filter>mainGame\Common</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="mush.h">
+=======
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Turtle_crash.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="kong.h">
+>>>>>>> edf7b881d15513fe56d4a4a76a89b1919a850da4
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
   </ItemGroup>

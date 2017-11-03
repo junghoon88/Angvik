@@ -1,13 +1,11 @@
 #pragma once
 #include "EnemyMother.h"
-class Ent : public EnemyMother
+class Turtle_crash :
+	public EnemyMother
 {
-private:
-
-
 public:
-	Ent();
-	~Ent();
+	Turtle_crash();
+	~Turtle_crash();
 
 	void init(int num, float x, float y);
 	void update(void);

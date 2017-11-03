@@ -4,9 +4,15 @@
 EnemyManager::EnemyManager()
 {
 	entNum = 0;
+<<<<<<< HEAD
 	tutleNum = 0;
 	monkkeyNum = 0;
 	mushNum = 0;
+=======
+	turtleNum = 0;
+	turtlecNum = 0;
+	kongNum = 0;
+>>>>>>> edf7b881d15513fe56d4a4a76a89b1919a850da4
 }
 
 
@@ -57,14 +63,20 @@ void EnemyManager::setEnemy1(void)
 	ent2->init(entNum++, 192, 200);//테스트용 좌표임
 	_vEnemy.push_back(ent2);
 
+<<<<<<< HEAD
 	turtle1 = new Turtle;
 	
 	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
+=======
+	monkey1->init(590,200,L"monkeyRc1");
+>>>>>>> edf7b881d15513fe56d4a4a76a89b1919a850da4
 //	monkey2->init(192, 400);
-	turtle1->init(580, 415);
+
+	turtle1 = new Turtle;
+	turtle1->init(turtleNum++,580, 415);
 
 	_vEnemy.push_back(monkey1);
-	//_vEnemy.push_back(monkey2);
+//	_vEnemy.push_back(monkey2);
 	_vEnemy.push_back(turtle1);
 
 }
