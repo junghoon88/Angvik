@@ -14,8 +14,9 @@ void Item::init(void)
 {
 	_img = NULL;
 	
-	_rcImg = RectMake(300, 100, 100, 100);
-	probeY = _rcImg.bottom;
+	//_rcImg = RectMake(_pt.x, _pt.y, _img->getRealSize().x, _img->getRealSize().y);
+	itemCollision = new pixelCollision;
+	itemCollision->init();
 }
 
 void Item::release(void)
@@ -25,31 +26,15 @@ void Item::release(void)
 
 void Item::update(void)
 {
-	
-	
-	probeY = _rcImg.bottom;
 	if (_state == ITEM_STATE_IDLE)
 	{
-		for (int i = probeY - 3; i < probeY + 5; ++i)
+		if (itemCollision->getPixelGround(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
 		{
-			COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", probeY, i);
-
-			int r = GetRValue(color);
-			int g = GetGValue(color);
-			int b = GetBValue(color);
-
-			if (!(r == 0 && g == 0 && b == 0)) // °üÅëÇü ¹Ù´Ú
-			{
-				probeY = i + _rcImg.bottom;
-				break;
-			}
-			else
-			{
-				_rcImg.top += 5;
-				_rcImg.bottom += 5;
-			}
+			_pt.y += 5;
 		}
 	}
+	_img->setCoord(_pt.x, _pt.y);
+
 }
 
 void Item::render(void)	
