@@ -62,6 +62,7 @@ void sceneGame::update(void)
 
 void sceneGame::render(void)
 {
-	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
+	IMAGEMANAGER->findImage(L"Stage1-PBG")->render();
+	//IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 	_pm->render();
 }

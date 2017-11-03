@@ -164,7 +164,6 @@
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="monkkey.cpp" />
-    <ClCompile Include="mush.cpp" />
     <ClCompile Include="PBGManager.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -215,7 +214,6 @@
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="monkkey.h" />
-    <ClInclude Include="mush.h" />
     <ClInclude Include="PBGManager.h" />
     <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="Player.h" />

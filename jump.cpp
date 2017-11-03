@@ -30,11 +30,11 @@ void jump::update()
 	*_y -= _jumpPower;
 	_jumpPower -= _gravity;
 
-	if (_startY <= *_y)
-	{
-		_isJumping = FALSE;
-		*_y = _startY;
-	}
+	//if (_startY <= *_y)
+	//{
+	//	_isJumping = FALSE;
+	//	*_y = _startY;
+	//}
 }
 
 void jump::render()

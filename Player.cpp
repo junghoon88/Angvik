@@ -15,6 +15,8 @@ void Player::init(void)
 {
 	_playerJump = new jump;
 	_playerJump->init();
+	_playerPixelCollision = new pixelCollision;
+	_playerPixelCollision->init();
 
 	_headState = PLAYER_YOUNGEST;
 	_bodyState = PLAYER_RIGHT_STOP;
@@ -131,6 +133,25 @@ void Player::update(void)
 	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
 
 	_playerJump->update();
+
+	//jhkim 픽셀충돌 수정 (점프중일때는 점프파워가 0보다 작을때만 체크하고, 점프가 아닐때에는 픽셀충돌을 못하면 점프되도록 한다.)
+	if (_playerJump->getIsJumping())
+	{
+		if (_playerJump->getJumpPower() < 0)
+		{
+			if (_playerPixelCollision->getPixelGround(&_x, &_y, 33, 40))
+			{
+				_playerJump->setIsJumping(false);
+			}
+		}
+	}
+	else
+	{
+		if (!_playerPixelCollision->getPixelGround(&_x, &_y, 33, 40))
+		{
+			_playerJump->jumping(&_x, &_y, 0, GRAVITY);
+		}
+	}
 
 	//jhkim 점프 수정
 	if (_playerJump->getIsJumping() == false)
