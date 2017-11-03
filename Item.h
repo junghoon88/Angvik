@@ -1,5 +1,6 @@
 #pragma once
 #include "DxWindow.h"
+#include "pixelCollision.h"
 
 enum ITEM_TYPE
 {
@@ -47,6 +48,7 @@ private:
 	int frameCnt;
 	float frameTime;
 	float angleDeg;
+	pixelCollision* itemCollision;
 
 	int probeY;
 	MYPOINT	_pt;
