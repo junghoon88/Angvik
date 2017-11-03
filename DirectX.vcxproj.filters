@@ -16,6 +16,9 @@
     <Filter Include="mainGame\Enemy\st1">
       <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\Common">
+      <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp">
@@ -93,7 +96,6 @@
     <ClCompile Include="PrintText.cpp">
       <Filter>DxWindow\PrintText</Filter>
     </ClCompile>
-    <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="Sprite.cpp">
       <Filter>DxWindow\Sprite</Filter>
     </ClCompile>
@@ -124,12 +126,27 @@
     <ClCompile Include="monkkey.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
-    <ClCompile Include="sceneET.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
     <ClCompile Include="Ent.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
+    <ClCompile Include="sceneET.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneitemTest.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneStage.cpp" />
+    <ClCompile Include="test2.cpp" />
+    <ClCompile Include="Turtle.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="jump.cpp" />
     <ClCompile Include="mush.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
@@ -142,6 +159,13 @@
     </ClCompile>
     <ClCompile Include="inven.cpp">
       <Filter>mainGame\Player</Filter>
+=======
+    <ClCompile Include="jump.cpp">
+      <Filter>mainGame\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelCollision.cpp">
+      <Filter>mainGame\Common</Filter>
+>>>>>>> b6365865db38ffe7973e44f849ae65aad2450cdd
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,13 +257,8 @@
       <Filter>DxWindow\PrintText</Filter>
     </ClInclude>
     <ClInclude Include="itemManager.h" />
-    <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="stageManager.h" />
-    <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="invenBird.h">
-      <Filter>mainGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
@@ -266,12 +285,36 @@
     <ClInclude Include="monkkey.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
-    <ClInclude Include="sceneET.h">
-      <Filter>mainGame\scene</Filter>
-    </ClInclude>
     <ClInclude Include="Ent.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
+    <ClInclude Include="sceneET.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneitemTest.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneStage.h" />
+    <ClInclude Include="test2.h" />
+    <ClInclude Include="Turtle.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="jump.h" />
     <ClInclude Include="mush.h" />
     <ClInclude Include="pixelCollision.h" />
@@ -287,6 +330,13 @@
     </ClInclude>
     <ClInclude Include="inven.h">
       <Filter>mainGame\Player</Filter>
+=======
+    <ClInclude Include="jump.h">
+      <Filter>mainGame\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelCollision.h">
+      <Filter>mainGame\Common</Filter>
+>>>>>>> b6365865db38ffe7973e44f849ae65aad2450cdd
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -64,15 +64,15 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"¿¡³Ê¹ÌÅ×½ºÆ®");
 	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F5))
+	if (KEYMANAGER->isOnceKeyDown(VK_F6))
 	{
 		SCENEMANAGER->changeScene(L"¼¿·º¾À");
 	}
 
 	SCENEMANAGER->update();
 
-	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
-	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
+	//if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	//else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::render(void)	
