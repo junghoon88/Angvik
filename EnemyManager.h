@@ -22,6 +22,9 @@ private:
 	viEnemy _viEnemy;
 
 	int entNum;
+	int turtleNum;
+	int turtlecNum;
+	int kongNum;
 
 private:
 	PlayerManager* _pm;

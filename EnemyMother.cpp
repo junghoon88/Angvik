@@ -29,7 +29,7 @@ void EnemyMother::move(void)
 {
 
 }
-void EnemyMother::attack(void)
+bool EnemyMother::attack(void)
 {
-
+	return false;
 }

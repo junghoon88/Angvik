@@ -16,21 +16,9 @@
     <Filter Include="mainGame\Enemy\st1">
       <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Filter Include="mainGame\Common">
       <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\Bullet">
-      <UniqueIdentifier>{dfff005a-0df8-4815-ad2e-2a3cae976f6a}</UniqueIdentifier>
-    </Filter>
-=======
->>>>>>> 19e4842d3d91423c75fd7e8eeb3d11d1828bf887
-=======
-    <Filter Include="mainGame\Common">
-      <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
-    </Filter>
->>>>>>> 87fb64677be62a0f29f5cbbd04faace4d1246048
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp">
@@ -158,22 +146,19 @@
     <ClCompile Include="Turtle.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Turtle_crash.cpp">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>mainGame\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="kong.cpp" />
-=======
     <ClCompile Include="jump.cpp">
       <Filter>mainGame\Common</Filter>
     </ClCompile>
     <ClCompile Include="pixelCollision.cpp">
       <Filter>mainGame\Common</Filter>
     </ClCompile>
->>>>>>> 87fb64677be62a0f29f5cbbd04faace4d1246048
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Turtle_crash.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="kong.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -310,9 +295,6 @@
     <ClInclude Include="sceneSelect.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>mainGame\Player</Filter>
-    </ClInclude>
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
     </ClInclude>
@@ -321,22 +303,19 @@
     <ClInclude Include="Turtle.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Turtle_crash.h">
-      <Filter>mainGame\Enemy\st1</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>mainGame\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="kong.h" />
-=======
     <ClInclude Include="jump.h">
       <Filter>mainGame\Common</Filter>
     </ClInclude>
     <ClInclude Include="pixelCollision.h">
       <Filter>mainGame\Common</Filter>
     </ClInclude>
->>>>>>> 87fb64677be62a0f29f5cbbd04faace4d1246048
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Turtle_crash.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="kong.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">

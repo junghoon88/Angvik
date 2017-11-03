@@ -126,8 +126,3 @@ void monkkey::move(void) {
 	// xÃà Å½Áö
 
 }
-void monkkey::attack(void) {
-
-
-
-}

@@ -12,9 +12,13 @@ Turtle_crash::~Turtle_crash()
 }
 
 
-void Turtle_crash::init(float x, float y)
+void Turtle_crash::init(int num, float x, float y)
 {
-	spt = IMAGEMANAGER->findImage(L"°ÅºÏÀÌ´©µå");   //°ÅºÏÀÌ´©µå
+	TCHAR strKey[100];
+	_stprintf(strKey, L"°ÅºÏÀÌ%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getFileName(),
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameY() + 1);
 	spt->setCoord({ 0,0 });
 
 	dir = eRIGHT;

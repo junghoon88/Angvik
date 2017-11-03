@@ -45,7 +45,7 @@ public:
 	virtual void render(void);
 
 	virtual void move(void);
-	virtual void attack(void);
+	virtual bool attack(void);
 
 	inline float getX(void) { return ptX; }
 	inline float getY(void) { return ptY; }

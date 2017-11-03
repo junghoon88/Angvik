@@ -11,14 +11,19 @@ Turtle::~Turtle()
 {
 }
 
-void Turtle::init(float x, float y)
+void Turtle::init(int num, float x, float y)
 {
-	spt = IMAGEMANAGER->findImage(L"°ÅºÏÀÌ");   //°ÅºÏÀÌ´©µå
+	TCHAR strKey[100];
+	_stprintf(strKey, L"°ÅºÏÀÌ%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getFileName(),
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameY() + 1);
+
 	spt->setCoord({ 0,0 });
 
 	dir = eRIGHT;
 	state = eIDLE;
-	life = 2;
+	life = 1;
 	ptX = x;
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
