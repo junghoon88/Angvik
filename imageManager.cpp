@@ -206,3 +206,17 @@ int imageManager::getMaxFrameY(wstring strKey)
 	return 0;
 }
 
+wstring imageManager::FindKeyByImage(Sprite* img)
+{
+	mapImageIter iter = _mImageList.begin();
+
+	for (iter; iter != _mImageList.end(); ++iter)
+	{
+		if (img == iter->second)
+		{
+			return iter->first;
+		}
+	}
+
+	return L"";
+}

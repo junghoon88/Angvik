@@ -66,6 +66,6 @@ public:
 	int getMaxFrameY(wstring strKey);
 
 	//getter
-	//wstring FindKeyByImage(Sprite* img);
+	wstring FindKeyByImage(Sprite* img);
 };
 
