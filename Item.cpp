@@ -225,10 +225,10 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
-			_img = new Sprite(DEVICE, L"image/item/ºí·¢ÁöÆÎÀÌ.png");
+			_img = new Sprite(DEVICE, L"image/item/°ñµåÁöÆÎÀÌ.png");
 			_img->setCoord(x, y);
 			_img->init();
-			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
+			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
 			_durability = 4;
 		}
 		break;
