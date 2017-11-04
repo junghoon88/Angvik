@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="camera.cpp" />
@@ -50,6 +51,176 @@
     <ClCompile Include="Turtle.cpp" />
     <ClCompile Include="Turtle_crash.cpp" />
     <ClCompile Include="utils.cpp" />
+=======
+    <Filter Include="mainGame">
+      <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{0e5eef77-a78b-4c6f-80c1-8cfa2321868f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\database">
+      <UniqueIdentifier>{d57f84d3-a606-482e-aaa4-cf32231f4815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\scene">
+      <UniqueIdentifier>{c173c981-0a77-4a7e-8f59-271a131a35e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Enemy\st1">
+      <UniqueIdentifier>{750b9663-dd5a-482e-8819-e56f6e4a39b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Common">
+      <UniqueIdentifier>{76903e24-b18f-402d-805c-1fe2e5d88528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Bullet">
+      <UniqueIdentifier>{af7b7b77-22d9-41be-ba7e-77c50101f1da}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="animation.cpp">
+      <Filter>DxWindow\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>mainGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMother.cpp">
+      <Filter>mainGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="keyAniManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="keyManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PBGManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="timeManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="textManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="rectManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DxWindow.cpp">
+      <Filter>DxWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>DxWindow\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>DxWindow\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>DxWindow\Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>DxWindow\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>DxWindow\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="mainGame.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>mainGame\item</Filter>
+    </ClCompile>
+    <ClCompile Include="itemManager.cpp">
+      <Filter>mainGame\item</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <Filter>mainGame\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="stageManager.cpp">
+      <Filter>mainGame\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>DxWindow\image</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintText.cpp">
+      <Filter>DxWindow\PrintText</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>DxWindow\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="invenBird.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>mainGame\database</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneGame.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneInit.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneSelect.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneTest.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="monkkey.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ent.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneET.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>DxWindow\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneitemTest.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneStage.cpp" />
+    <ClCompile Include="test2.cpp" />
+    <ClCompile Include="Turtle.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="jump.cpp">
+      <Filter>mainGame\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelCollision.cpp">
+      <Filter>mainGame\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Turtle_crash.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="kong.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+    <ClCompile Include="mush.cpp">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Bullet.cpp">
+      <Filter>mainGame\Bullet</Filter>
+    </ClCompile>
+
+>>>>>>> 91848ad9514e54753094dd580fa33796b6acf9a5
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
@@ -70,6 +241,7 @@
     <ClInclude Include="invenBird.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="itemManager.h" />
+<<<<<<< HEAD
     <ClInclude Include="jump.h" />
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
@@ -105,5 +277,134 @@
     <ClInclude Include="Turtle.h" />
     <ClInclude Include="Turtle_crash.h" />
     <ClInclude Include="utils.h" />
+=======
+    <ClInclude Include="stageManager.h" />
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>mainGame\database</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneGame.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneInit.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneTest.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="monkkey.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ent.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneET.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>DxWindow\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneitemTest.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneSelect.h">
+      <Filter>mainGame\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="invenBird.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneStage.h" />
+    <ClInclude Include="test2.h" />
+    <ClInclude Include="Turtle.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="jump.h">
+      <Filter>mainGame\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="pixelCollision.h">
+      <Filter>mainGame\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Turtle_crash.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="kong.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+    <ClInclude Include="mush.h">
+      <Filter>mainGame\Enemy\st1</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Bullet.h">
+      <Filter>mainGame\Bullet</Filter>
+    </ClInclude>
+
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="mainGame">
+      <UniqueIdentifier>{a077d8d1-66fe-4e56-9de2-837633154462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow">
+      <UniqueIdentifier>{b6c5733b-b097-4081-8985-2fe3d39566de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\animation">
+      <UniqueIdentifier>{8abb4b56-d243-4ef6-ac1c-a4942cdb58f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\camera">
+      <UniqueIdentifier>{0db8bc6f-a912-4fc7-8a0c-c5fcf23fb82e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\UTIL">
+      <UniqueIdentifier>{ac7385d2-9d86-4a30-89cb-5490c9cd3e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{90c486fc-c3f7-44c4-8a53-3dea85ca33af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Player">
+      <UniqueIdentifier>{1cece4e4-8589-44da-a142-8492f2908f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Enemy">
+      <UniqueIdentifier>{c7e7ad95-de06-479a-a726-7afd1db2c7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Stage">
+      <UniqueIdentifier>{8afe326f-db41-4547-a037-d7ca9820b315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Manager">
+      <UniqueIdentifier>{36ba96d6-d009-407b-92bf-cbe0eb1a6984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Sprite">
+      <UniqueIdentifier>{7f9fc6e6-897c-48fa-b80d-81a6767d02bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\Rect">
+      <UniqueIdentifier>{cca6865b-9b73-4dc3-8ae0-91ca6520a374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\timer">
+      <UniqueIdentifier>{2a88910e-99d3-471c-8755-a560835f270c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\item">
+      <UniqueIdentifier>{ec35e1aa-8da5-400e-a77b-2d59e4da7358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\interface">
+      <UniqueIdentifier>{44b19c39-2c86-4612-ad24-cdd6983d6ac7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\image">
+      <UniqueIdentifier>{7cf44f52-3401-4e21-9b3e-c8c496763cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DxWindow\PrintText">
+      <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
+    </Filter>
+>>>>>>> 91848ad9514e54753094dd580fa33796b6acf9a5
   </ItemGroup>
 </Project>

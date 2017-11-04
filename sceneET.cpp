@@ -22,7 +22,10 @@ void sceneET::init(void)
 	_sm->init();
 	_im = new itemManager;
 	_im->init();
+	_sBMR = new sBMR;
+	_sBMR->init();
 
+	_sBMR->setLinkAdressEnemyManager(_em);
     _pm->setLinkAdressEnemyManager(_em);
     _pm->setLinkAdressStageManager(_sm);
     _pm->setLinkAdressItemManager(_im);
@@ -59,8 +62,8 @@ void sceneET::update(void)
 
 void sceneET::render(void)
 {
-	_im->render();
 	IMAGEMANAGER->findImage(L"Stage1-TEST")->render();
+	_im->render();
 	_pm->render();
 	_em->render();
 }
