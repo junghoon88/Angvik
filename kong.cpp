@@ -33,14 +33,15 @@ void kong::init(int num, float x, float y)
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 40, 70);
 	sptrc = RectMakeCenter(x, y, 50, 86);
+	isAtk = false;
 }
 void kong::update(void)
 {
 	frameTime += TIMEMANAGER->getElapsedTime();
+
 	if (frameTime >= 0.1f)
 	{
 		frameTime = 0;
-		atkCnt++;
 		frameCnt--;
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
@@ -56,18 +57,26 @@ void kong::update(void)
 		dir = eRIGHT;
 		spt->setScale(1, 1);
 	}
+	if (state == eIDLE)
+	{
+
+	}
+	else if (state == eATK)
+	{
+		
+	}
+
+	atkCnt += TIMEMANAGER->getElapsedTime();
+	if (atkCnt >= 1.2f)
+	{
+		atkCnt = 0;
+		isAtk = true;
+	}
 
 }
 void kong::render(void)
 {
-	spt->frameRender(frameCnt, 0);
-}
-
-bool kong::attack(void)
-{
-	if (atkCnt >= 2)
-	{
-		atkCnt = 0;
-		return true;
-	}
+	if(state == eIDLE) spt->frameRender(frameCnt, 0);
+	else atkSpt->frameRender(frameCnt, 0);
+	
 }

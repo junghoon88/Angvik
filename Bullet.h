@@ -14,8 +14,6 @@ struct tagBullet
 
 	int frameX;
 	float frameTime;
-
-	bool isShoot;
 };
 
 class sBMR : public DxWindow
@@ -30,11 +28,11 @@ private:
 public:
 	void init(void);
 	void release(void);
-	void update(float mushroomX, float mushroomY); //머쉬룸 위치로 되돌아가야되니까 머쉬룸 좌표를 받아야함.
+	void update(void); //머쉬룸 위치로 되돌아가야되니까 머쉬룸 좌표를 받아야함.
 	void render(void);
 
 	void fire(int num,float ptx, float pty, float ang); // 갯앵글로 ang 넣어주면 플레이어 방향으로 발싸!
-	void move(float x,float y);//업데이트에서 머쉬룸 위치 받아오는거임
+	void move();//업데이트에서 머쉬룸 위치 받아오는거임
 	void remove(int arrNum);
 	vector<tagBullet> getVBullet(void) { return _vBullet; }
 	vector<tagBullet>::iterator getVIBullet(void) { return _viBullet; }

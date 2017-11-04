@@ -59,8 +59,9 @@ void sceneET::update(void)
 
 void sceneET::render(void)
 {
-	_im->render();
+
 	IMAGEMANAGER->findImage(L"Stage1-TEST")->render();
+	_im->render();
 	_pm->render();
 	_em->render();
 }

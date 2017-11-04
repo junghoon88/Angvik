@@ -43,22 +43,31 @@ void EnemyManager::update(void)
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
 	}
+	enemyFire();
+	kongTan->update();
+	sBmr->update();
 }
 void EnemyManager::enemyFire(void)
 {
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
-		if ((*_viEnemy)->attack())
+		if ((*_viEnemy)->getAtk())
 		{
 			int type = (*_viEnemy)->getIndex();
-			
+			float emX = (*_viEnemy)->getX(); 
+			float emY = (*_viEnemy)->getY();
+			float plX = _pm->getPlayer()->getX();
+			float plY = _pm->getPlayer()->getY(); 
+			float angle = getAngle(emX, emY, plX, plY); //가독성을 위해 일케함.
+
 			if (type == 1)
 			{
-
+				
 			}
 			else if (type == 2)
 			{
-
+				kongTan->fire(bulletNum++, emX, emY, angle);
+				(*_viEnemy)->setAtk(false);
 			}
 		}
 	}
@@ -69,6 +78,8 @@ void EnemyManager::render(void)
 	{
 		(*_viEnemy)->render();
 	}
+	kongTan->render();
+	sBmr->render();
 }
 
 void EnemyManager::setEnemy1(void)

@@ -12,9 +12,9 @@ void sBMR::release(void)
 {
 
 }
-void sBMR::update(float mushroomX, float mushroomy)//헤더에 주석있음. 부메랑 돌아올때 머쉬룸쪽으로 가야해서 좌표받음.
+void sBMR::update(void)//헤더에 주석있음. 부메랑 돌아올때 머쉬룸쪽으로 가야해서 좌표받음.
 {
-	move(mushroomX, mushroomy);
+	move();
 }
 void sBMR::render(void)
 {
@@ -43,7 +43,7 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 
 	_vBullet.push_back(bullet);
 }
-void sBMR::move(float x,float y)
+void sBMR::move()
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
@@ -55,7 +55,7 @@ void sBMR::move(float x,float y)
 		}
 		if (_viBullet->speed <= 0)
 		{
-			_viBullet->angle = getAngle(x, y, _viBullet->ptX, _viBullet->ptY); // 돌아올때 버섯을 향해 돌아가므로 앵글 갱신
+//			_viBullet->angle = getAngle(x, y, _viBullet->ptX, _viBullet->ptY); // 돌아올때 버섯을 향해 돌아가므로 앵글 갱신
 			_viBullet->ptX += cos(_viBullet->angle) * _viBullet->speed;
 			_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 			_viBullet->speed -= backPower;
@@ -102,7 +102,7 @@ void Kongtan::render(void)
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
 	{
-		_viBullet->spt->frameRender(_viBullet->frameX, 1, 255);//프레임 변수 추가해야함
+		_viBullet->spt->frameRender(_viBullet->frameX, 1, 255);
 	}
 }
 void Kongtan::fire(int num,float ptx, float pty, float ang)
@@ -114,9 +114,11 @@ void Kongtan::fire(int num,float ptx, float pty, float ang)
 	Kongtan.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"콩탄")->getFileName(), //이미지는 임시 콩탄
 		IMAGEMANAGER->findImage(L"콩탄")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"콩탄")->getMaxFrameY() + 1);
+
 	Kongtan.speed = 1.2f;
 	Kongtan.ptX = Kongtan.fireX = ptx;
 	Kongtan.ptY = Kongtan.fireY = pty;
+	Kongtan.spt->setCoord(Kongtan.ptX, Kongtan.ptY);
 	Kongtan.angle = ang;
 	Kongtan.frameTime = 0;
 	Kongtan.frameX = 0;
@@ -130,21 +132,22 @@ void Kongtan::move(void)
 		_viBullet->ptX += cos(_viBullet->angle) * _viBullet->speed;
 		_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 
+		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
+
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
 
 		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
 		if (_viBullet->frameTime >= 0.1f)
 		{
 			_viBullet->frameTime = 0;
-
 			_viBullet->frameX--;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
 
-		if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
-		{
-			_viBullet = _vBullet.erase(_viBullet);
-		}
+	//	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
+	//	{
+	//		_viBullet = _vBullet.erase(_viBullet);
+	//	}
 		else ++_viBullet;
 	}
 }
