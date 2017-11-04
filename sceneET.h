@@ -3,6 +3,7 @@
 #include "EnemyManager.h"
 #include "stageManager.h"
 #include "itemManager.h"
+#include "Bullet.h"
 
 class sceneET : public DxWindow
 {
@@ -11,7 +12,7 @@ private:
 	EnemyManager* _em;
 	stageManager* _sm;
 	itemManager* _im;
-
+	sBMR* _sBMR;
 
 public:
 	void init(void);

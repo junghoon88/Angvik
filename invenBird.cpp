@@ -11,6 +11,7 @@ invenBird::~invenBird()
 {
 }
 
+
 void invenBird::init()
 {
 	
