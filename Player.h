@@ -13,7 +13,7 @@
 #define FOOT_WIDTH		30
 #define FOOT_HEIGHT		10
 
-#define PLAYERSPEED 1.f
+#define PLAYERSPEED 4.f
 #define JUMPPOWER 10.f
 #define GRAVITY 0.5f
 
