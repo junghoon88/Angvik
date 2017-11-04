@@ -17,6 +17,7 @@ void itemManager::init(void)
 	_x = 350;
 	_y = 200;
 	i = j = 0;
+	OilUse = false;
 }
 
 void itemManager::release(void)
@@ -27,7 +28,7 @@ void itemManager::release(void)
 void itemManager::update(void)
 {
 	
-	//setItem(_x,_y);
+	
 	
 	if (issetting)
 	{
@@ -48,7 +49,7 @@ void itemManager::update(void)
 	{
 		_vItems[i]->update();
 
-		if (_vItems[i]->getdurability() == 0)
+		if (KEYMANAGER->isOnceKeyDown('P'))
 		{
 			removeItem(i);
 		}
@@ -94,4 +95,16 @@ void itemManager::removeItem(int arrNum)
 {
 	_vItems[arrNum]->release();
 	_vItems.erase(_vItems.begin() + arrNum);
+}
+void itemManager::Itemcompose(int arrNum)//아이템합성
+{
+	//if(OilUse)
+	//{
+	//	if (_vItems[arrNum] == ITEM_TYPE_SWORD)
+	//	{
+	//		remove item, remove oil
+	//			and create item oil + item;
+	//		OilUse = false;
+	//	}
+	//}
 }
