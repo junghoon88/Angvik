@@ -16,7 +16,7 @@ void sBMR::update(float mushroomX, float mushroomy)//헤더에 주석있음. 부메랑 돌�
 {
 	move(mushroomX, mushroomy);
 }
-void sBMR::render(void)	
+void sBMR::render(void)
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
 	{

@@ -21,6 +21,7 @@ void kong::init(int num, float x, float y)
 		IMAGEMANAGER->findImage(L"콩나물어택")->getMaxFrameY() + 1);
 	//spt = IMAGEMANAGER->findImage(L"나무맨");
 
+	index = 2;
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
