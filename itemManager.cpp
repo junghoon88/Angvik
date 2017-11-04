@@ -28,7 +28,7 @@ void itemManager::release(void)
 void itemManager::update(void)
 {
 	
-	//setItem(_x,_y);
+	
 	
 	if (issetting)
 	{
@@ -49,7 +49,7 @@ void itemManager::update(void)
 	{
 		_vItems[i]->update();
 
-		if (_vItems[i]->getdurability() == 0)
+		if (KEYMANAGER->isOnceKeyDown('P'))
 		{
 			removeItem(i);
 		}
@@ -85,7 +85,7 @@ void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
-	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
+	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
 
 	
 
@@ -100,7 +100,7 @@ void itemManager::Itemcompose(int arrNum)//아이템합성
 {
 	//if(OilUse)
 	//{
-	//	if (_vItems[arrNum])
+	//	if (_vItems[arrNum] == ITEM_TYPE_SWORD)
 	//	{
 	//		remove item, remove oil
 	//			and create item oil + item;

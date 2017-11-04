@@ -67,11 +67,24 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-
+	
+	//아이템타입 겟셋
+	inline void setType(ITEM_TYPE type) { _type = type; }
+	inline ITEM_TYPE getType(void) { return _type; }
+	
+	//종류 겟셋
+	inline void setKind(ITEM_KIND kind) { _kind = kind; }
+	inline ITEM_KIND getKind(void) { return _kind; }
+	
+	//상태 겟셋
 	inline void setState(ITEM_STATE state) { _state = state; }
 	inline ITEM_STATE getState(void) { return _state; }
+
+	//아이템생성
 	void createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state, float x, float y);
 	
+	//아이템 충돌렉트
+	inline RECT getrcImg(void) { return _rcImg; }
 	//내구도 겟셋
 	inline void setdurability(int durability) { _durability = durability; }
 	inline int getdurability(void) { return _durability; }

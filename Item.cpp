@@ -26,6 +26,16 @@ void Item::release(void)
 
 void Item::update(void)
 {
+	if (_type == ITEM_TYPE_SWORD)
+	{
+		//if (_kind == ITEM_KIND_WHITE)
+		//{
+			if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
+			if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
+			if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
+			if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
+		//}
+	}
 	if (_state == ITEM_STATE_IDLE)
 	{
 		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
@@ -73,6 +83,7 @@ void Item::update(void)
 		{
 		case  ITEM_TYPE_SWORD:
 			{	
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
 				_img->setRotate(_img->getAngle() - 7.0f);
 				if (_img->getAngle() <= 0.0f)
 				{
