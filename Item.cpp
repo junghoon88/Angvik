@@ -38,6 +38,7 @@ void Item::update(void)
 	{
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
 			_img->setRotate(80.0f);
+			//_img->setCoord(플레이어 x. 플레이어y)
 		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			switch (_type)

@@ -28,6 +28,7 @@ enum ITEM_KIND
 
 enum ITEM_STATE
 {
+	
 	ITEM_STATE_IDLE,		//기본
 	ITEM_STATE_INPLAYER,	//플레이어 
 	ITEM_STATE_ATTACK,		//플레이어 공격

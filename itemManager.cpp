@@ -17,6 +17,7 @@ void itemManager::init(void)
 	_x = 350;
 	_y = 200;
 	i = j = 0;
+	OilUse = false;
 }
 
 void itemManager::release(void)
@@ -84,7 +85,7 @@ void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
-	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
+	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
 
 	
 
@@ -94,4 +95,16 @@ void itemManager::removeItem(int arrNum)
 {
 	_vItems[arrNum]->release();
 	_vItems.erase(_vItems.begin() + arrNum);
+}
+void itemManager::Itemcompose(int arrNum)//아이템합성
+{
+	//if(OilUse)
+	//{
+	//	if (_vItems[arrNum])
+	//	{
+	//		remove item, remove oil
+	//			and create item oil + item;
+	//		OilUse = false;
+	//	}
+	//}
 }
