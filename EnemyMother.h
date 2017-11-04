@@ -31,9 +31,11 @@ protected:
 
 	int probeY;
 	int probeX;//µüÈ÷ ÇÊ¿ä´Â ¾øÀ»Áöµµ?
-	int index;
+	int index;//1¹ø ºÎ¸Ş¶û,2¹ø Äá¾ËÅº
 	int frameCnt;
 	float frameTime;
+
+	bool isAtk;
 
 	enemyDirection dir;
 	enemyState state;
@@ -56,9 +58,10 @@ public:
 	inline enemyState getState(void) { return state; }
 	inline RECT getRect(void) { return rc; }
 	inline int getIndex(void) { return index; }
+	inline bool getAtk(void) { return isAtk; }
+	inline void setAtk(bool isatk) { isAtk = isatk; }
 	inline void setPlayerX(float x) { playerX = x; }
 	inline void setPlayerY(float y) { playerY = y; }
 	EnemyMother();
 	~EnemyMother();
 };
-
