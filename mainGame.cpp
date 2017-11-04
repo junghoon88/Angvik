@@ -58,7 +58,7 @@ void mainGame::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_F3))
 	{
-		//SCENEMANAGER->changeScene(L"아이템테스트씬");
+		SCENEMANAGER->changeScene(L"아이템테스트씬");
 	}
 	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{

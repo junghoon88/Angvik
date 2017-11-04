@@ -2,12 +2,17 @@
 #include "DxWindow.h"
 #include "Item.h"
 
+struct inven_item
+{
+	ITEM_TYPE type;
+	ITEM_KIND kind;
+	ITEM_STATE state;
+};
+
 class inven : public DxWindow
 {
 private:
-	ITEM_TYPE _itemType;
-	ITEM_KIND _itemKind;
-	ITEM_STATE _itemState;
+	inven_item _item;
 
 	bool _isMenew;
 	bool _isItem;
@@ -22,7 +27,5 @@ public:
 	void update(void);
 	void update(float x, float y);
 	void render(void);
-
-	ITEM_TYPE getItemType(void) { return _itemType; }
 };
 
