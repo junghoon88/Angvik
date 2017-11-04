@@ -33,13 +33,81 @@ void Item::update(void)
 			_pt.y += 5;
 		}
 	}
+
+	if (_state == ITEM_STATE_INPLAYER)
+	{
+		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
+			_img->setRotate(80.0f);
+	}
+	//플레이어에서 
+	//	
+	//	if (KEYMANAGER->isOnceKeyDown('A') || (KEYMANAGER->isOnceKeyDown('D')))
+	//	{
+	//		switch (_type)
+	//		{
+	//		case  ITEM_TYPE_SWORD:
+	//		{
+	//			_img->setRotate(120.0f);
+	//		}
+	//		break;
+	//		case  ITEM_TYPE_LANCE:
+	//		{
+	//			_img->setRotate(0.0f);
+	//			_state = ITEM_STATE_ATTACK;
+	//
+	//		}
+	//		break;
+	//
+	//		case  ITEM_TYPE_STAFF:
+	//			_img->setRotate(100.0f);
+	//		
+	//		break;
+	//		case  ITEM_TYPE_BOOMERANG:
+	//			_img->setRotate(0.0f);
+	//		break;
+	//		}
+	//	}
+	//}
+
+	if (_state == ITEM_STATE_ATTACK)
+	{
+		switch (_type)
+		{
+		case  ITEM_TYPE_SWORD:
+			{	
+				_img->setRotate(_img->getAngle() - 7.0f);
+				if (_img->getAngle() <= 0.0f)
+				{
+					_state = ITEM_STATE_INPLAYER;
+				}
+			}
+			break;
+		case  ITEM_TYPE_LANCE:
+				
+					_img->move(10, 0);
+				
+			break;
+		case  ITEM_TYPE_STAFF:
+			_img->setRotate(_img->getAngle() - 5.0f);
+			if (_img->getAngle() <= 70.0f)
+			{
+				_state = ITEM_STATE_INPLAYER;
+			}
+			break;
+		case  ITEM_TYPE_BOOMERANG:
+			_img->move(10, 0);
+			
+			break;
+		}
+	}
+
 	_img->setCoord(_pt.x, _pt.y);
 
 }
 
 void Item::render(void)	
 {
-	//if(KEYMANAGER->isStayKeyDown('R')) IMAGEMANAGER->findImage(L"픽셀")->render();
+	
 	
 	_img->render();
 	
