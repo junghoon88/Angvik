@@ -21,6 +21,7 @@ private:
 
 	RECT _playerRcHead;
 	RECT _playerRcBody;
+	RECT _playerRcFoot;
 
 public:
 	PlayerManager();

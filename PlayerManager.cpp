@@ -23,6 +23,7 @@ void PlayerManager::init(void)
 
 	_playerRcHead = _player->getRectHead();
 	_playerRcBody = _player->getRectBody();
+	_playerRcFoot = _player->getRectFoot();
 }
 
 void PlayerManager::release(void)

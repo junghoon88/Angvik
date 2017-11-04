@@ -15,6 +15,7 @@ void Player::init(void)
 {
 	_playerJump = new jump;
 	_playerJump->init();
+
 	_playerPixelCollision = new pixelCollision;
 	_playerPixelCollision->init();
 

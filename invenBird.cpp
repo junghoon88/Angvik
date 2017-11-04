@@ -23,7 +23,6 @@ void invenBird::init(float x, float y)
 	{
 		_birdPoint[i] = { x - 40, y - 40 };
 	}
-	_birdMaxSpeed = 5.0f;
 
 	_birdX = _birdY = 0;
 

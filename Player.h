@@ -136,6 +136,7 @@ public:
 
 	RECT getRectHead(void) { return _rcHead; }
 	RECT getRectBody(void) { return _rcBody; }
+	RECT getRectFoot(void) { return _rcFoot; }
 
 	PLAYERBODYSTATE getPlayerBodyState(void) { return _bodyState; }
 	void setPlayerBodyState(PLAYERBODYSTATE state) { _bodyState = state; }

@@ -30,7 +30,8 @@ enum ITEM_STATE
 {
 	ITEM_STATE_IDLE,		//기본
 	ITEM_STATE_INPLAYER,	//플레이어 
-	ITEM_STATE_ATTACK		//플레이어 공격
+	ITEM_STATE_ATTACK,		//플레이어 공격
+	ITEM_STATE_ININVEN
 };
 
 class Item : public DxWindow
@@ -66,7 +67,14 @@ public:
 	void update(void);
 	void render(void);
 
+	inline void setState(ITEM_STATE state) { _state = state; }
+	inline ITEM_STATE getState(void) { return _state; }
 	void createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state, float x, float y);
+	
+	//내구도 겟셋
+	inline void setdurability(int durability) { _durability = durability; }
+	inline int getdurability(void) { return _durability; }
+	
 
 };
 
