@@ -127,8 +127,8 @@ void sceneInit::playerInitImage(void)
 	//IMAGEMANAGER->addFrameImage(DEVICE, L"bodyRightWalk", L"image/player/unarmed/body_walk.png", 12, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"unarmedBodyRight", L"image/player/unarmed/body.png", 12, 2);
 
-	IMAGEMANAGER->addFrameImage(DEVICE, L"armRightFront", L"image/player/unarmed/arm_front.png", 16, 3);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"armRightBack", L"image/player/unarmed/arm_back.png", 16, 3);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"frontArmRight", L"image/player/unarmed/arm_front.png", 16, 3);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"backArmRight", L"image/player/unarmed/arm_back.png", 16, 3);
 
 	//	LEFTSIDE
 	IMAGEMANAGER->addImage(DEVICE, L"headLeft0", L"image/player/unarmed/head_0.png");
@@ -143,8 +143,8 @@ void sceneInit::playerInitImage(void)
 	//IMAGEMANAGER->addFrameImage(DEVICE, L"bodyLeftWalk", L"image/player/unarmed/body_walk.png", 12, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"unarmedBodyLeft", L"image/player/unarmed/body.png", 12, 2);
 
-	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftFront", L"image/player/unarmed/arm_front.png", 16, 3);
-	IMAGEMANAGER->addFrameImage(DEVICE, L"armLeftBack", L"image/player/unarmed/arm_back.png", 16, 3);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"frontArmLeft", L"image/player/unarmed/arm_front.png", 16, 3);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"backArmLeft", L"image/player/unarmed/arm_back.png", 16, 3);
 
 	//inventorybird
 	IMAGEMANAGER->addFrameImage(DEVICE, L"inventoryBird", L"image/player/inventoryBird.png", 6, 4);

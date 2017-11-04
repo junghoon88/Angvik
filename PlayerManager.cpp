@@ -20,6 +20,9 @@ void PlayerManager::init(void)
 
 	_bird = new invenBird;
 	_bird->init(_player->getX(), _player->getY());
+
+	_playerRcHead = _player->getRectHead();
+	_playerRcBody = _player->getRectBody();
 }
 
 void PlayerManager::release(void)
