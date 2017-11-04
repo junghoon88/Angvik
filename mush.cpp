@@ -216,3 +216,11 @@ void mush::move(void) {
 	// xÃà Å½Áö
 
 }
+bool mush::attack(void) {
+
+
+
+
+
+	return false;
+}
