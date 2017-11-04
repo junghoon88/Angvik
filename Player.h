@@ -4,12 +4,18 @@
 #include "jump.h"
 #include "pixelCollision.h"
 
-#define BODY_WIDTH		33
-#define BODY_HEIGHT		54
+#define HEAD_WIDTH		26
+#define HEAD_HEIGHT		25
 
-#define PLAYERSPEED 4.f
-#define JUMPPOWER 8.f
-#define GRAVITY 0.4f
+#define BODY_WIDTH		30
+#define BODY_HEIGHT		32
+
+#define FOOT_WIDTH		30
+#define FOOT_HEIGHT		10
+
+#define PLAYERSPEED 1.f
+#define JUMPPOWER 10.f
+#define GRAVITY 0.5f
 
 enum PLAYERHEADSTATE
 {
@@ -68,8 +74,7 @@ private:
 
 	RECT _rcHead;
 	RECT _rcBody;
-	RECT _rcAttack;
-	RECT _rcItem;
+	RECT _rcFoot;
 
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
@@ -123,7 +128,7 @@ public:
 	//========== U P D A T E ==========
 	void keyInputSettings(void);
 	void attackMotions(void);
-		
+	void rectUpdate(void);
 
 	//========== GETTER && SETTER =======
 	float getX(void) { return _x; }
@@ -147,11 +152,16 @@ public:
 	PLAYERBODYSTATE getBodyState(void) { return _bodyState; }
 	void setBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
 
+	bool getIsfrontAttack(void) { return _isFrontAttack; }
 	void setIsFrontAttack(bool isAttack)
 	{
 		_isFrontAttack = isAttack; 
 	}
-
-	void setIsBackAttack(bool isAttack) { _isBackAttack = isAttack; }
+	
+	bool getIsBackAttack(void) { return _isBackAttack; }
+	void setIsBackAttack(bool isAttack)
+	{
+		_isBackAttack = isAttack;
+	}
 
 };
