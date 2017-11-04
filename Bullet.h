@@ -43,7 +43,7 @@ public:
 	~sBMR();
 };
 
-class Kong : public DxWindow
+class Kongtan : public DxWindow
 {
 private:
 	vector<tagBullet> _vBullet;
@@ -63,6 +63,6 @@ public:
 	vector<tagBullet> getVBullet(void) { return _vBullet; }
 	vector<tagBullet>::iterator getVIBullet(void) { return _viBullet; }
 
-	Kong();
-	~Kong();
+	Kongtan();
+	~Kongtan();
 };

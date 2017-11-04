@@ -23,15 +23,18 @@ private:
 	vEnemy _vEnemy;
 	viEnemy _viEnemy;
 
-	int entNum;
+	sBMR* sBmr;
+	Kongtan* kongTan;
 
 	int monkkeyNum;
 	int mushNum;
 
+	int entNum;
 	int turtleNum;
 	int turtlecNum;
 	int kongNum;
 
+	int bulletNum;
 
 private:
 	PlayerManager* _pm;

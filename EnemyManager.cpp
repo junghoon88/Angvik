@@ -4,16 +4,15 @@
 
 EnemyManager::EnemyManager()
 {
-	entNum = 0;
-
-
 	monkkeyNum = 0;
 	mushNum = 0;
 
+	entNum = 0;
 	turtleNum = 0;
 	turtlecNum = 0;
 	kongNum = 0;
 
+	bulletNum = 0;
 }
 
 
@@ -24,6 +23,10 @@ EnemyManager::~EnemyManager()
 void EnemyManager::init(void)
 {
 	setEnemy1();
+	kongTan = new Kongtan;
+	kongTan->init();
+	sBmr = new sBMR;
+	sBmr->init();
 }
 void EnemyManager::release(void)
 {
@@ -35,13 +38,31 @@ void EnemyManager::update(void)
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
-		if ((*_viEnemy)->getIndex() == 1) {
+		if ((*_viEnemy)->getIndex() == 1 || (*_viEnemy)->getIndex() == 2) {
 			(*_viEnemy)->setPlayerX(_pm->getPlayer()->getX());
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
 	}
 }
+void EnemyManager::enemyFire(void)
+{
+	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
+	{
+		if ((*_viEnemy)->attack())
+		{
+			int type = (*_viEnemy)->getIndex();
+			
+			if (type == 1)
+			{
 
+			}
+			else if (type == 2)
+			{
+
+			}
+		}
+	}
+}
 void EnemyManager::render(void)	
 {
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
