@@ -1,6 +1,5 @@
 #pragma once
 #include "DxWindow.h"
-#include "Item.h"
 #include "jump.h"
 #include "pixelCollision.h"
 
@@ -16,7 +15,7 @@
 #define PLAYERSPEED		 4.0f
 #define JUMPPOWER		10.0f
 #define GRAVITY			 0.5f
-
+//아이템 상태
 enum PLAYERHEADSTATE
 {
 	PLAYER_YOUNGEST,
@@ -49,11 +48,43 @@ enum PLAYERBODYSTATE
 	PLAYER_LEFT_MOVE_JUMP_ATTACK*/
 };
 
+enum EQUIPARMORSTATE
+{
+	UNARMEDARMOR,
+	WHITE,
+	GOLD,
+	BLACK
+};
+
+enum EQUIPWEAPONSTATE
+{
+	UNARMEDWEAPON,
+	WHITE_SWORD,
+	WHITE_LANCE,
+	WHITE_BOOMERANG,
+	WHITE_STAFF,
+	GOLD_SWORD,
+	GOLD_LANCE,
+	GOLD_BOOMERANG,
+	GOLD_STAFF,
+	BLACK_SWORD,
+	BLACK_LANCE,
+	BLACK_BOOMERANG,
+	BLACK_STAFF
+};
+
 class Player : public DxWindow
 {
 private:
 	PLAYERHEADSTATE _headState;
 	PLAYERBODYSTATE _bodyState;
+
+	EQUIPARMORSTATE _headItem;
+	EQUIPARMORSTATE _bodyItem;
+	EQUIPARMORSTATE _footItem;
+
+	EQUIPWEAPONSTATE _frontItem;
+	EQUIPWEAPONSTATE _backItem;
 
 	animation* _bodyMotion;
 	animation* _frontArmMotion;
@@ -78,8 +109,6 @@ private:
 
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
-
-	ITEM_TYPE _weaponType;
 
 	float _x, _y;
 	float _probeY;
@@ -153,16 +182,28 @@ public:
 	PLAYERBODYSTATE getBodyState(void) { return _bodyState; }
 	void setBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
 
-	bool getIsfrontAttack(void) { return _isFrontAttack; }
 	void setIsFrontAttack(bool isAttack)
 	{
 		_isFrontAttack = isAttack; 
 	}
-	
-	bool getIsBackAttack(void) { return _isBackAttack; }
 	void setIsBackAttack(bool isAttack)
 	{
 		_isBackAttack = isAttack;
 	}
+
+	bool getIsfrontAttack(void)	{ return _isFrontAttack; }	
+	bool getIsBackAttack(void)	{ return _isBackAttack; }
+
+	bool getIsSit(void)			{ return _isSit; }
+	bool getIsJump(void)		{ return _playerJump->getIsJumping(); }
+	bool getIsLive(void)		{ return _isLive; }
+
+	EQUIPARMORSTATE getHeadItem(void) { return _headItem; }	
+	EQUIPARMORSTATE getBodyItem(void) { return _bodyItem; }	
+	EQUIPARMORSTATE getFootItem(void) { return _footItem; }
+
+	EQUIPWEAPONSTATE getFrontItem(void) { return _frontItem; }
+	EQUIPWEAPONSTATE getBackItem(void) { return _backItem; }
+
 
 };

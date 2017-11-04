@@ -2,6 +2,7 @@
 #include "DxWindow.h"
 #include "Player.h"
 #include "invenBird.h"
+#include "inven.h"
 
 //전방선언
 class EnemyManager;
@@ -11,13 +12,21 @@ class itemManager;
 class PlayerManager : public DxWindow
 {
 private:
-	Player* _player;
-	invenBird* _bird;
+	typedef vector<Item*> vItems;
+	typedef vector<Item*>::iterator viItems;
 
+private:
+	vItems _vItems;
+	viItems _viItems;
 
-	EnemyManager* _em;
-	stageManager* _sm;
-	itemManager* _im;
+private:
+	Player*			_player;
+	invenBird*		_bird;
+	
+	EnemyManager*	_em;
+	stageManager*	_sm;
+	itemManager*	_im;
+
 
 	RECT _playerRcHead;
 	RECT _playerRcBody;
