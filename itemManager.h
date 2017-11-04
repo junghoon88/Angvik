@@ -18,7 +18,9 @@ private:
 	vItems _vItems;
 	viItems _viItems;
 
-	int x, y;
+	int _x, _y;
+	int i, j;
+	bool issetting;
 	
 private:
 	PlayerManager* _pm;
@@ -32,8 +34,12 @@ public:
 	void init(void);
 	void release(void);
 	void update(void);
-	void render(void);
-	void setItem(void);
+	void render(void)
+		;
+	//¸÷´Ôµé °¡Á®°¡¼À 
+	void setItem(float x, float y);
+	void setFieldItem(int i, int j);
+	
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

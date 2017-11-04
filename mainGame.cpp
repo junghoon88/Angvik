@@ -58,7 +58,7 @@ void mainGame::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_F3))
 	{
-		//SCENEMANAGER->changeScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À");
+		SCENEMANAGER->changeScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À");
 	}
 	if (KEYMANAGER->isOnceKeyDown(VK_F4))
 	{
@@ -71,8 +71,8 @@ void mainGame::update(void)
 
 	SCENEMANAGER->update();
 
-	//if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
-	//else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
+	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
 void mainGame::render(void)	
