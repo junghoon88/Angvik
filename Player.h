@@ -8,7 +8,7 @@
 #define BODY_HEIGHT		54
 
 #define PLAYERSPEED 4.f
-#define JUMPPOWER 8.f
+#define JUMPPOWER 9.f
 #define GRAVITY 0.4f
 
 enum PLAYERHEADSTATE

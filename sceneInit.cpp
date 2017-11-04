@@ -186,14 +186,11 @@ void sceneInit::uiInitImage(void)
 	//ÀÎº¥Åä¸®
 	IMAGEMANAGER->addImage(DEVICE, L"inventory", L"image/etc/inventory.png");
 	IMAGEMANAGER->addImage(DEVICE, L"itemBox", L"image/etc/itemBox.png");
-	IMAGEMANAGER->addImage(DEVICE, L"blank", L"image/etc/blank.png");
-	IMAGEMANAGER->addImage(DEVICE, L"oilsTop", L"image/etc/oilsTop.png");
-	IMAGEMANAGER->addImage(DEVICE, L"oilsUnder", L"image/etc/oilsUnder.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oilsBox", L"image/etc/oilsBox.png");
 }
 
 void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 {
-
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¿ø¼þÀÌ", L"image/monster/¿ø¼þÀÌ.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸¸Ç", L"image/monster/¹ö¼¸¸Ç.png", 7, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"¹ö¼¸Á¡ÇÁ", L"image/monster/¹ö¼¸¸ÇÁ¡ÇÁ.png", 2, 1);
