@@ -632,14 +632,14 @@ void Player::keyAnimationInit(void)
 	int backArmLeftSwordBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmLeftSwordBackAttack", L"backArmLeft", backArmLeftSwordBackAttack, 16, 30, false, attackIsEnd, this);
 	//		BACK ATTACK - LANCE
-	int backArmRightLanceBackAttack[] = { 0 };
+	int backArmRightLanceBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightLanceBackAttack", L"backArmRight", backArmRightLanceBackAttack, 1, 10, true);
-	int backArmLeftLanceBackAttack[] = { 0 };
+	int backArmLeftLanceBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmLeftLanceBackAttack", L"backArmLeft", backArmLeftLanceBackAttack, 1, 10, true);
 	//		BACK ATTACK - BOOMERANG
-	int backArmRightBoomerangBackAttack[] = { 0 };
+	int backArmRightBoomerangBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightBoomerangBackAttack", L"backArmRight", backArmRightBoomerangBackAttack, 1, 10, true);
-	int backArmLeftBoomerangBackAttack[] = { 0 };
+	int backArmLeftBoomerangBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightBoomerangBackAttack", L"backArmLeft", backArmLeftBoomerangBackAttack, 1, 10, true);
 	//		BACK ATTACK - STAFF
 	int backArmRightStaffBackAttack[] = { 29,28,42,41,42,43,44,45,31,1,2,3 };

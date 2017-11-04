@@ -69,6 +69,7 @@ private:
 	RECT _rcHead;
 	RECT _rcBody;
 	RECT _rcAttack;
+	RECT _rcItem;
 
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
