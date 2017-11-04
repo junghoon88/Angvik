@@ -28,7 +28,7 @@ void Item::update(void)
 {
 	if (_state == ITEM_STATE_IDLE)
 	{
-		if (itemCollision->getPixelGround(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
+		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
 		{
 			_pt.y += 5;
 		}

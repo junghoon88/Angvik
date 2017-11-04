@@ -4,6 +4,8 @@
 #include "monkkey.h"
 #include "Ent.h"
 #include "Turtle.h"
+#include "mush.h"
+#include "kong.h"
 #include "Bullet.h"
 #include <vector>
 

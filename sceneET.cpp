@@ -48,13 +48,19 @@ void sceneET::release(void)
 
 void sceneET::update(void)
 {
+	
+	_im->update();
 	_pm->update();
 	_em->update();
+
+
+
 }
 
 void sceneET::render(void)
 {
-	IMAGEMANAGER->findImage(L"Stage1-PBG")->render();
+	_im->render();
+	IMAGEMANAGER->findImage(L"Stage1-TEST")->render();
 	_pm->render();
 	_em->render();
 }

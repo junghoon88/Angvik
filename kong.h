@@ -1,17 +1,24 @@
 #pragma once
 #include "EnemyMother.h"
+
 class kong : public EnemyMother
 {
 private:
 	int atkCnt;
+	Sprite* atkSpt;
+	float playerX, playerY;
+
 public:
 	kong();
 	~kong();
 
+
+
 	void init(int num, float x, float y);
-	void update(float playerx,float playery);
+	void update(void);
 	void render(void);
-	void move(float playerx, float playery);
 	bool attack(void);
+
+	void setPlayerX();
 };
 
