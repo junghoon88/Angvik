@@ -13,9 +13,9 @@
 #define FOOT_WIDTH		30
 #define FOOT_HEIGHT		10
 
-#define PLAYERSPEED		4.f
-#define JUMPPOWER		10.f
-#define GRAVITY			0.5f
+#define PLAYERSPEED		 4.0f
+#define JUMPPOWER		10.0f
+#define GRAVITY			 0.5f
 
 enum PLAYERHEADSTATE
 {
