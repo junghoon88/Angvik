@@ -25,7 +25,7 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	ptX = x;
 	ptY = y;
 	rcName = rcKey;
-
+	index = 0;
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;

@@ -66,7 +66,7 @@ void Ent::move(void)
 	}
 	if (state == eFALL)
 	{
-		ptY += 1;
+		ptY += 1.5;
 	}
 	for (int i = probeY - 10; i < probeY + 10; ++i)//YÃà Å½Áö
 	{
@@ -103,14 +103,14 @@ void Ent::move(void)
 			{
 				ptX = i - 25;
 				dir = eLEFT;
-				spt->setScale( -0.8,0.8 );
+				spt->setScale( -1,1 );
 				spt->setScaleOffset(68,0);
 			}
 			else if (i < ptX)
 			{
 				ptX = i + 10;
 				dir = eRIGHT;
-				spt->setScale( 0.8,0.8 );
+				spt->setScale( 1,1 );
 			}
 			break;
 		}

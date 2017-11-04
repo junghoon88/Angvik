@@ -48,9 +48,13 @@ void sceneET::release(void)
 
 void sceneET::update(void)
 {
+	
 	_im->update();
 	_pm->update();
 	_em->update();
+
+
+
 }
 
 void sceneET::render(void)
