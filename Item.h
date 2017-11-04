@@ -70,6 +70,11 @@ public:
 	inline void setState(ITEM_STATE state) { _state = state; }
 	inline ITEM_STATE getState(void) { return _state; }
 	void createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state, float x, float y);
+	
+	//³»±¸µµ °Ù¼Â
+	inline void setdurability(int durability) { _durability = durability; }
+	inline int getdurability(void) { return _durability; }
+	
 
 };
 

@@ -38,8 +38,9 @@ public:
 		;
 	//¸÷´Ôµé °¡Á®°¡¼À 
 	void setItem(float x, float y);
+	////////////////////////
 	void setFieldItem(int i, int j);
-	
+	void removeItem(int arrNum);
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }
