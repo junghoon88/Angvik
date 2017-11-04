@@ -7,7 +7,7 @@ sBMR::~sBMR() {}
 
 void sBMR::init(void)
 {
-
+	budegree = 0;
 }
 void sBMR::release(void)
 {
@@ -16,12 +16,15 @@ void sBMR::release(void)
 void sBMR::update(void)//Çì´õ¿¡ ÁÖ¼®ÀÖÀ½. ºÎ¸Þ¶û µ¹¾Æ¿Ã¶§ ¸Ó½¬·ëÂÊÀ¸·Î °¡¾ßÇØ¼­ ÁÂÇ¥¹ÞÀ½.
 {
 	move();
+
+	
+
 }
 void sBMR::render(void)
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
-	{
-		_viBullet->spt->frameRender(_viBullet->frameX, 1, 255);
+	{	
+		_viBullet->spt->render();
 	}
 }
 void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾î¿Í °¢µµ±¸ÇØ¼­ ³Ö¾îÁÙ°Í
@@ -29,19 +32,19 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 	tagBullet bullet;
 	ZeroMemory(&bullet, sizeof(tagBullet));
 	TCHAR strKey[100];
-	_stprintf(strKey, L"ÄáÅº%d", num);
-	bullet.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"ÄáÅº")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
-		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameX() + 1,
-		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameY() + 1);
-
+	_stprintf(strKey, L"¹ö¼¸ºÎ¸Þ¶û%d", num);
+	bullet.spt = IMAGEMANAGER->addImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸ºÎ¸Þ¶û")->getFileName());
+	
 
 	bullet.angle = ang;
-	bullet.speed = 2;// ºÎ¸Þ¶û ¼Óµµ
-	backPower = 0.15;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
+	bullet.speed = 11;// ºÎ¸Þ¶û ¼Óµµ
+	backPower = 0.3;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
 	bullet.ptX = bullet.fireX = ptx;
 	bullet.ptY = bullet.fireY = pty;
+	bullet.spt->setCoord(bullet.ptX, bullet.ptY);
+	bullet.spt->setScale(0.5,0.5);
 	bullet.rc = RectMakeCenter(bullet.ptX, bullet.ptY, 18, 16);//»çÀÌÁî´Â ³ªÁß¿¡ Á¶Àý
-
+	
 	_vBullet.push_back(bullet);
 }
 void sBMR::move(void)
@@ -53,7 +56,7 @@ void sBMR::move(void)
 				backX = _em->getvEnemy()[i]->getX();
 				backY = _em->getvEnemy()[i]->getY();
 				break;
-			}
+    		}
 			else {
 				//void
 			}
@@ -75,18 +78,18 @@ void sBMR::move(void)
 			_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 			_viBullet->speed -= backPower;
 		}
-
+		_viBullet->spt->setRotate(budegree+=20 );
+		if (budegree >= 360) {
+			budegree = 0;
+		}
+		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
 
-		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
-		if (_viBullet->frameTime >= 0.1f)
-		{
-			_viBullet->frameTime = 0;
 
-			_viBullet->frameX--;
-			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
+		if (getDistance(_viBullet->ptX, _viBullet->ptY, backX, backY) <= 10 && _viBullet->speed <= 0) {
+
+			_viBullet = _vBullet.erase(_viBullet);
 		}
-
 		else ++_viBullet;
 	}
 }
