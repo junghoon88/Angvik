@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Bullet.h"
+#include "EnemyManager.h"
 
 sBMR::sBMR() {}
 sBMR::~sBMR() {}
@@ -43,8 +44,25 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 
 	_vBullet.push_back(bullet);
 }
+<<<<<<< HEAD
 void sBMR::move()
+=======
+void sBMR::move(void)
+>>>>>>> 54bec3f0509c3d83560e975f3d19db5d525b3db3
 {
+	if (!_em->getvEnemy().empty()) {
+		for (int i = 0; i < _em->getvEnemy().size(); i++) {
+			if (_em->getvEnemy()[i]->getIndex() == 1) {      //버섯찾음
+				backX = _em->getvEnemy()[i]->getX();
+				backY = _em->getvEnemy()[i]->getY();
+				break;
+			}
+			else {
+				//void
+			}
+		}
+	}
+
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
 		if (_viBullet->speed > 0) // 앞으로 나가는 동안은 처음 받은 플레이어 방향으로만 날라감.
@@ -54,8 +72,14 @@ void sBMR::move()
 			_viBullet->speed -= backPower; // 속도를 감속도 만큼 줄여줌.
 		}
 		if (_viBullet->speed <= 0)
+<<<<<<< HEAD
 		{
 //			_viBullet->angle = getAngle(x, y, _viBullet->ptX, _viBullet->ptY); // 돌아올때 버섯을 향해 돌아가므로 앵글 갱신
+=======
+		{			
+			
+			_viBullet->angle = getAngle(backX, backY, _viBullet->ptX, _viBullet->ptY); // 돌아올때 버섯을 향해 돌아가므로 앵글 갱신
+>>>>>>> 54bec3f0509c3d83560e975f3d19db5d525b3db3
 			_viBullet->ptX += cos(_viBullet->angle) * _viBullet->speed;
 			_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 			_viBullet->speed -= backPower;

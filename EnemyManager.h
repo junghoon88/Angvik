@@ -54,13 +54,14 @@ public:
 	void enemyFire(void);
 	void deleteEnemy(void);
 
-
+	
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 
-
+	inline vEnemy getvEnemy(void) { return _vEnemy; }
+	inline viEnemy getviEnemy(void) { return _viEnemy; }
 	
 };
 
