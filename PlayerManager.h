@@ -21,6 +21,9 @@ private:
 	stageManager* _sm;
 	itemManager* _im;
 
+	RECT _playerRcHead;
+	RECT _playerRcBody;
+
 public:
 	PlayerManager();
 	~PlayerManager();

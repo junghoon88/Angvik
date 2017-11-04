@@ -50,8 +50,8 @@ private:
 	PLAYERBODYSTATE _bodyState;
 
 	animation* _bodyMotion;
-	animation* _armFrontMotion;
-	animation* _armBackMotion;
+	animation* _frontArmMotion;
+	animation* _backArmMotion;
 
 	animation* _frontArmFrontAttackMotion;
 	animation* _frontArmBackAttackMotion;
@@ -61,14 +61,15 @@ private:
 	Sprite* _headImage;
 	Sprite* _bodyRightImage;
 	Sprite* _bodyLeftImage;
-	Sprite* _armRightFrontImage;
-	Sprite* _armRightBackImage;
-	Sprite* _armLeftFrontImage;
-	Sprite* _armLeftBackImage;
+	Sprite* _frontArmRightImage;
+	Sprite* _backArmRightImage;
+	Sprite* _frontArmLeftImage;
+	Sprite* _backArmLeftImage;
 
 	RECT _rcHead;
 	RECT _rcBody;
 	RECT _rcAttack;
+	RECT _rcItem;
 
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
@@ -93,22 +94,43 @@ public:
 	void update(void);
 	void render(void);
 	
+
+	//========== CALL BACK ==========
 	static void bodyRightJump(void* obj);
 	static void bodyLeftJump(void* obj);
 	static void bodyRightMoveJump(void* obj);
 	static void bodyLeftMoveJump(void* obj);
 
-	static void armFrontRightJump(void* obj);
-	static void armFrontLeftJump(void* obj);
-	static void armFrontRightMoveJump(void* obj);
-	static void armFrontLeftMoveJump(void* obj);
+	static void frontArmRightJump(void* obj);
+	static void frontArmLeftJump(void* obj);
+	static void frontArmRightMoveJump(void* obj);
+	static void frontArmLeftMoveJump(void* obj);
 
-	static void armBackRightJump(void* obj);
-	static void armBackLeftJump(void* obj);
-	static void armBackRightMoveJump(void* obj);
-	static void armBackLeftMoveJump(void* obj);
+	static void backArmRightJump(void* obj);
+	static void backArmLeftJump(void* obj);
+	static void backArmRightMoveJump(void* obj);
+	static void backArmLeftMoveJump(void* obj);
 
 	static void attackIsEnd(void* obj);
+
+
+	//========== I N I T ==========
+	void imageReverse(void);
+	void imagePosUpdate(void);
+	void keyAnimationInit(void);
+
+
+	//========== U P D A T E ==========
+	void keyInputSettings(void);
+	void attackMotions(void);
+		
+
+	//========== GETTER && SETTER =======
+	float getX(void) { return _x; }
+	float getY(void) { return _y; }
+
+	RECT getRectHead(void) { return _rcHead; }
+	RECT getRectBody(void) { return _rcBody; }
 
 	PLAYERBODYSTATE getPlayerBodyState(void) { return _bodyState; }
 	void setPlayerBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
@@ -116,29 +138,20 @@ public:
 	animation* getPlayerBodyMotion(void) { return _bodyMotion; }
 	void setPlayerBodyMotion(animation* ani) { _bodyMotion = ani; }
 
-	animation* getPlayerArmFrontMotion(void) { return _armFrontMotion; }
-	void setPlayerArmFrontMotion(animation* ani) { _armFrontMotion = ani; }
+	animation* getPlayerFrontArmMotion(void) { return _frontArmMotion; }
+	void setPlayerFrontArmMotion(animation* ani) { _frontArmMotion = ani; }
 
-	animation* getPlayerArmBackMotion(void) { return _armBackMotion; }
-	void setPlayerArmBackMotion(animation* ani) { _armBackMotion = ani; }
+	animation* getPlayerBackArmMotion(void) { return _backArmMotion; }
+	void setPlayerBackArmMotion(animation* ani) { _backArmMotion = ani; }
 
 	PLAYERBODYSTATE getBodyState(void) { return _bodyState; }
 	void setBodyState(PLAYERBODYSTATE state) { _bodyState = state; }
 
-	void setIsFrontAttack(bool isAttack) { _isFrontAttack = isAttack; }
+	void setIsFrontAttack(bool isAttack)
+	{
+		_isFrontAttack = isAttack; 
+	}
+
 	void setIsBackAttack(bool isAttack) { _isBackAttack = isAttack; }
-
-	//========== I N I T ==========
-	void imageReverse(void);
-	void imagePosUpdate(void);
-	void keyAnimationInit(void);
-
-	//========== U P D A T E ==========
-	void keyInputSettings(void);
-	void attackMotions(void);
-		
-	//========== GETTER && SETTER =======
-	float getX(void) { return _x; }
-	float getY(void) { return _y; }
 
 };
