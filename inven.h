@@ -14,6 +14,10 @@ class inven : public DxWindow
 private:
 	inven_item _item;
 
+	int _frameX;
+
+	float _timeCount;
+
 	bool _isMenew;
 	bool _isItem;
 	bool _isOils;
@@ -27,5 +31,6 @@ public:
 	void update(void);
 	void update(float x, float y);
 	void render(void);
+	bool close(void) { return false; }
 };
 

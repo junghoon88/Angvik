@@ -187,6 +187,7 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"inventory", L"image/etc/inventory.png");
 	IMAGEMANAGER->addImage(DEVICE, L"itemBox", L"image/etc/itemBox.png");
 	IMAGEMANAGER->addImage(DEVICE, L"oilsBox", L"image/etc/oilsBox.png");
+	IMAGEMANAGER->addFrameImage(DEVICE, L"아이템선택", L"image/etc/아이템선택.png", 8, 1);
 }
 
 void sceneInit::enemyInitImage(void)	//몬스터
