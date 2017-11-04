@@ -20,7 +20,7 @@ void Turtle::init(int num, float x, float y)
 		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameY() + 1);
 
 	spt->setCoord({ 0,0 });
-
+	index = 0;
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 1;

@@ -200,7 +200,7 @@ void sceneInit::enemyInitImage(void)	//몬스터
 	IMAGEMANAGER->addFrameImage(DEVICE, L"나무맨", L"image/monster/Ent_move_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물", L"image/monster/kong_idle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩나물어택", L"image/monster/kong_atk_8f.png", 8, 1);
-
+	IMAGEMANAGER->addFrameImage(DEVICE, L"콩탄", L"image/monster/kongtan.png", 6, 1);
 	PBGMANAGER->addImage(L"충돌테스트", L"image/stage/test_bmp.bmp",768,305);
 	IMAGEMANAGER->addImage(DEVICE,L"충돌테스트보여줘요", L"image/stage/test_collision.png");
 

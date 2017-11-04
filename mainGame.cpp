@@ -71,8 +71,9 @@ void mainGame::update(void)
 
 	SCENEMANAGER->update();
 
-	//if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
-	//else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
+//	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+//	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
+
 }
 
 void mainGame::render(void)	
