@@ -4,6 +4,9 @@
 #include "jump.h"
 #include "pixelCollision.h"
 
+#define BODY_WIDTH		33
+#define BODY_HEIGHT		54
+
 #define PLAYERSPEED 4.f
 #define JUMPPOWER 8.f
 #define GRAVITY 0.4f

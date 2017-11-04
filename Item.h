@@ -1,5 +1,6 @@
 #pragma once
 #include "DxWindow.h"
+#include "pixelCollision.h"
 
 enum ITEM_TYPE
 {
@@ -11,14 +12,18 @@ enum ITEM_TYPE
 	ITEM_TYPE_BODY,			//방어구-갑옷
 	ITEM_TYPE_FOOT,			//방어구-신발
 	ITEM_TYPE_OIL,			//잡템 - 오일
-	ITEM_TYPE_EGG			//잡템 - 알
+	ITEM_TYPE_EGG,			//잡템 - 알
+
+	ITEM_TYPE_MAX
 };
 
 enum ITEM_KIND
 {
 	ITEM_KIND_WHITE,
 	ITEM_KIND_BLACK,
-	ITEM_KIND_GOLD
+	ITEM_KIND_GOLD,
+
+	ITEM_KIND_MAX
 };
 
 enum ITEM_STATE
@@ -43,6 +48,7 @@ private:
 	int frameCnt;
 	float frameTime;
 	float angleDeg;
+	pixelCollision* itemCollision;
 
 	int probeY;
 	MYPOINT	_pt;
@@ -60,7 +66,7 @@ public:
 	void update(void);
 	void render(void);
 
-	void createItem(ITEM_TYPE type, ITEM_KIND kind, float x, float y);
-	void createEgg(ITEM_TYPE type,  float x, float y);
+	void createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state, float x, float y);
+
 };
 

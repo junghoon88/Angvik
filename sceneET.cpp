@@ -14,8 +14,8 @@ sceneET::~sceneET()
 
 void sceneET::init(void)
 {
-	//_pm = new PlayerManager;
-	//_pm->init();
+	_pm = new PlayerManager;
+	_pm->init();
 	_em = new EnemyManager;
 	_em->init();
 	_sm = new stageManager;
@@ -23,9 +23,9 @@ void sceneET::init(void)
 	_im = new itemManager;
 	_im->init();
 
-//_pm->setLinkAdressEnemyManager(_em);
-//_pm->setLinkAdressStageManager(_sm);
-//_pm->setLinkAdressItemManager(_im);
+    _pm->setLinkAdressEnemyManager(_em);
+    _pm->setLinkAdressStageManager(_sm);
+    _pm->setLinkAdressItemManager(_im);
 
 	_em->setLinkAdressPlayerManager(_pm);
 	_em->setLinkAdressStageManager(_sm);
@@ -38,6 +38,7 @@ void sceneET::init(void)
 	_im->setLinkAdressPlayerManager(_pm);
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
+
 }
 
 void sceneET::release(void)
@@ -47,14 +48,19 @@ void sceneET::release(void)
 
 void sceneET::update(void)
 {
-	//_pm->update();
+	
+	_im->update();
+	_pm->update();
 	_em->update();
+
+
+
 }
 
 void sceneET::render(void)
 {
-//	_pm->render();
-	
-	IMAGEMANAGER->findImage(L"Stage1-PBG")->render();
+	_im->render();
+	IMAGEMANAGER->findImage(L"Stage1-TEST")->render();
+	_pm->render();
 	_em->render();
 }

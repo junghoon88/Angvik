@@ -11,20 +11,26 @@ monkkey::~monkkey()
 {
 
 }
-void monkkey::init(float x, float y, wstring rcKey) {
+void monkkey::init(int num, float x, float y, wstring rcKey) {
 
-	spt = IMAGEMANAGER->findImage(L"ø¯º˛¿Ã");
+	TCHAR strKey[100];
+	_stprintf(strKey, L"ø¯º˛¿Ã%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"ø¯º˛¿Ã")->getFileName(),
+		IMAGEMANAGER->findImage(L"ø¯º˛¿Ã")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"ø¯º˛¿Ã")->getMaxFrameY() + 1);
+
+	//spt = IMAGEMANAGER->findImage(L"ø¯º˛¿Ã");
 	gravity = 0;
 	life = 1;
 	ptX = x;
 	ptY = y;
 	rcName = rcKey;
-
+	index = 0;
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;
 
-	frameCnt = spt->getMaxFrameX();
+	frameCnt = 0;
 	frameTime = 0;
 
 	rc = RectMakeCenter(ptX, ptY, 45, 45);   //100,60 ¿«πÃx
@@ -41,7 +47,7 @@ void monkkey::update(void) {
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
-		frameTime -= 0.1f;
+		frameTime = 0;
 
 		frameCnt++;
 		if (frameCnt >= 8) frameCnt = 0;
@@ -124,10 +130,5 @@ void monkkey::move(void) {
 		}
 	}
 	// x√‡ ≈Ω¡ˆ
-
-}
-void monkkey::attack(void) {
-
-
 
 }

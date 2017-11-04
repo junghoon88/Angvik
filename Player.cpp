@@ -23,7 +23,7 @@ void Player::init(void)
 	_y = WINSIZEY / 2;
 
 	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+	_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);
 
 	_headImage = IMAGEMANAGER->findImage(L"headRight0");
 
@@ -70,6 +70,10 @@ void Player::init(void)
 	TEXTMANAGER->init(DEVICE, L"앞공격");
 	TEXTMANAGER->init(DEVICE, L"뒷공격");
 
+
+
+	//debug
+	RECTMANAGER->addRect(DEVICE, L"플레이어바디", { 0, 0 }, { BODY_WIDTH, BODY_HEIGHT }, RGB(255, 0, 0));
 
 }
 
@@ -124,27 +128,40 @@ void Player::update(void)
 		case PLAYER_RIGHT_STOP: case PLAYER_LEFT_STOP:
 		break;
 		case PLAYER_RIGHT_MOVE:	case PLAYER_RIGHT_MOVE_JUMP:
-			_x += PLAYERSPEED;
-			imagePosUpdate();
-			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+			{
+				_x += PLAYERSPEED;
+				tagPixelCollision res = _playerPixelCollision->getPlayerPixelWall(_x + 5 + BODY_WIDTH / 2, _y, BODY_WIDTH, BODY_HEIGHT, 1);
+				if (res.detect)
+				{
+					_x = res.offset.x /*- 5*/ - BODY_WIDTH / 2 - 10;
+					_y = res.offset.y;
+				}
+				//imagePosUpdate();
+				//_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+				//_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);
+			}
 		break;
 		case PLAYER_LEFT_MOVE: case PLAYER_LEFT_MOVE_JUMP:
-			_x -= PLAYERSPEED;
-			imagePosUpdate();
-			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+			{
+				_x -= PLAYERSPEED;
+				tagPixelCollision res = _playerPixelCollision->getPlayerPixelWall(_x + 5 + BODY_WIDTH / 2, _y, BODY_WIDTH, BODY_HEIGHT, -1);
+				if (res.detect)
+				{
+					_x = res.offset.x /*- 5*/ - BODY_WIDTH / 2 - 1;
+					_y = res.offset.y;
+				}
+				//imagePosUpdate();
+				//_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+				//_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);
+			}
 		break;
 		case PLAYER_RIGHT_SIT: case PLAYER_LEFT_SIT:
-			imagePosUpdate();
-			_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-			_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
+			//imagePosUpdate();
+			//_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+			//_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);
 		break;
 	}
 
-	imagePosUpdate();
-	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
-	_rcBody = RectMake(_x - 10, _y - 33, 20, 33);
 
 	_playerJump->update();
 
@@ -153,19 +170,30 @@ void Player::update(void)
 	{
 		if (_playerJump->getJumpPower() < 0)
 		{
-			if (_playerPixelCollision->getPixelGround(&_x, &_y, 33, 40))
+			tagPixelCollision res = _playerPixelCollision->getPlayerPixelGround(_x + 5 + BODY_WIDTH / 2, _y, BODY_WIDTH, BODY_HEIGHT);
+			if (res.detect)
 			{
 				_playerJump->setIsJumping(false);
+				_x = res.offset.x - 5 - BODY_WIDTH / 2;
+				_y = res.offset.y;
 			}
 		}
 	}
 	else
 	{
-		if (!_playerPixelCollision->getPixelGround(&_x, &_y, 33, 40))
+		tagPixelCollision res = _playerPixelCollision->getPlayerPixelGround(_x + 5 + BODY_WIDTH / 2, _y, BODY_WIDTH, BODY_HEIGHT);
+
+		if (res.detect)
+		{
+			_x = res.offset.x - 5 - BODY_WIDTH / 2;
+			_y = res.offset.y;
+		}
+		else
 		{
 			_playerJump->jumping(&_x, &_y, 0, GRAVITY);
 		}
 	}
+
 
 	//jhkim 점프 수정
 	if (_playerJump->getIsJumping() == false)
@@ -196,6 +224,9 @@ void Player::update(void)
 		}
 	}
 
+	imagePosUpdate();
+	_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
+	_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);
 
 	KEYANIMANAGER->update();
 
@@ -222,16 +253,16 @@ void Player::update(void)
 	TCHAR str[100];
 	switch (_bodyState)
 	{
-		case PLAYER_RIGHT_STOP:				_stprintf(str, L"PLAYER_RIGHT_STOP:		");	break;
-		case PLAYER_LEFT_STOP:				_stprintf(str, L"PLAYER_LEFT_STOP:		");	break;
-		case PLAYER_RIGHT_MOVE:				_stprintf(str, L"PLAYER_RIGHT_MOVE:		");	break;
-		case PLAYER_LEFT_MOVE:				_stprintf(str, L"PLAYER_LEFT_MOVE:		");	break;
-		case PLAYER_RIGHT_SIT:				_stprintf(str, L"PLAYER_RIGHT_SIT:		");	break;
-		case PLAYER_LEFT_SIT:				_stprintf(str, L"PLAYER_LEFT_SIT:		");	break;
-		case PLAYER_RIGHT_JUMP:				_stprintf(str, L"PLAYER_RIGHT_JUMP:		");	break;
-		case PLAYER_LEFT_JUMP:				_stprintf(str, L"PLAYER_LEFT_JUMP:		");	break;
-		case PLAYER_RIGHT_MOVE_JUMP:		_stprintf(str, L"PLAYER_RIGHT_MOVE_JUMP:");	break;
-		case PLAYER_LEFT_MOVE_JUMP:			_stprintf(str, L"PLAYER_LEFT_MOVE_JUMP:	");	break;
+		case PLAYER_RIGHT_STOP:				_stprintf(str, L"PLAYER_RIGHT_STOP:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_LEFT_STOP:				_stprintf(str, L"PLAYER_LEFT_STOP:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_RIGHT_MOVE:				_stprintf(str, L"PLAYER_RIGHT_MOVE:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_LEFT_MOVE:				_stprintf(str, L"PLAYER_LEFT_MOVE:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_RIGHT_SIT:				_stprintf(str, L"PLAYER_RIGHT_SIT:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_LEFT_SIT:				_stprintf(str, L"PLAYER_LEFT_SIT:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_RIGHT_JUMP:				_stprintf(str, L"PLAYER_RIGHT_JUMP:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_LEFT_JUMP:				_stprintf(str, L"PLAYER_LEFT_JUMP:		pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_RIGHT_MOVE_JUMP:		_stprintf(str, L"PLAYER_RIGHT_MOVE_JUMP:pos = %d, %d", (int)_x, (int)_y);	break;
+		case PLAYER_LEFT_MOVE_JUMP:			_stprintf(str, L"PLAYER_LEFT_MOVE_JUMP:	pos = %d, %d", (int)_x, (int)_y);	break;
 		//case PLAYER_RIGHT_ATTACK:				_stprintf(str, L"PLAYER_RIGHT_ATTACK:			"); break;
 		//case PLAYER_LEFT_ATTACK:				_stprintf(str, L"PLAYER_LEFT_ATTACK:			"); break;
 		//case PLAYER_RIGHT_MOVE_ATTACK:			_stprintf(str, L"PLAYER_RIGHT_MOVE_ATTACK:		"); break;
@@ -353,6 +384,11 @@ void Player::render(void)
 			_frontArmLeftImage->aniRender(_frontArmMotion);
 		}
 	}
+
+
+	//debug
+	RECTMANAGER->setCoord(L"플레이어바디", _x + 5, _y - BODY_HEIGHT / 2);
+	RECTMANAGER->render(L"플레이어바디");
 }
 
 void Player::imageReverse(void)
