@@ -14,6 +14,9 @@ class inven : public DxWindow
 private:
 	inven_item _item;
 
+	D3DXVECTOR2 _selectPoint[5];
+
+	int _selectNum;
 	int _frameX;
 
 	float _timeCount;

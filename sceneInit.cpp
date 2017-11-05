@@ -173,7 +173,7 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"·Î°í", L"image/etc/·Î°í.png");
 	IMAGEMANAGER->addImage(DEVICE, L"½Â¸®", L"image/etc/½Â¸®.png");
 	IMAGEMANAGER->addImage(DEVICE, L"item", L"image/etc/item.png");
-	IMAGEMANAGER->addImage(DEVICE, L"olis", L"image/etc/oils.png");
+	IMAGEMANAGER->addImage(DEVICE, L"oils", L"image/etc/oils.png");
 	IMAGEMANAGER->addImage(DEVICE, L"close", L"image/etc/close.png");
 
 	//¸Þ´º

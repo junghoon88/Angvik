@@ -2,6 +2,7 @@
 #include "DxWindow.h"
 #include "Player.h"
 #include "invenBird.h"
+#include "inven.h"
 
 //전방선언
 class EnemyManager;
@@ -13,7 +14,7 @@ class PlayerManager : public DxWindow
 private:
 	Player* _player;
 	invenBird* _bird;
-
+	inven* _inven;
 
 	EnemyManager* _em;
 	stageManager* _sm;
