@@ -35,6 +35,7 @@ void PlayerManager::update(void)
 {
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
+
 }
 
 void PlayerManager::render(void) 

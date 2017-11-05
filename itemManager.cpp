@@ -17,7 +17,8 @@ void itemManager::init(void)
 	_x = 350;
 	_y = 200;
 	i = j = 0;
-	OilUse = false;
+
+	itemNum = 0;
 }
 
 void itemManager::release(void)
@@ -71,27 +72,29 @@ void itemManager::render(void)
 
 void itemManager::setItem(float x , float y)
 {
-	
-		Item* it = new Item;
-		it->init();
-		it->createItem((ITEM_TYPE)RND->getInt(ITEM_TYPE_MAX), (ITEM_KIND)RND->getInt(ITEM_KIND_MAX), ITEM_STATE_IDLE, x, y);
+	Item* it = new Item;
+	it->init();
+	it->createItem((ITEM_TYPE)RND->getInt(ITEM_TYPE_MAX), (ITEM_KIND)RND->getInt(ITEM_KIND_MAX), ITEM_STATE_IDLE, x, y);
+	it->setNum(itemNum++);
 		
-		
-		_vItems.push_back(it);
-	
+	_vItems.push_back(it);
+}
+
+void itemManager::dropItem(int type, int kind, int state, int x, int y)
+{
 
 }
+
+
 void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
-	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
+	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
 
-	
-
-		_vItems.push_back(field);
+	_vItems.push_back(field);
 }
-void itemManager::removeItem(int arrNum)
+void itemManager::removeItem(int arrNum)//아이템제거
 {
 	_vItems[arrNum]->release();
 	_vItems.erase(_vItems.begin() + arrNum);
@@ -113,5 +116,6 @@ void itemManager::Itemcompose(int itemNum, int oilNum)//아이템합성
 	_vItems[itemNum]->setdurabilityMax();
 
 	//오일을 벡터에서 삭제한다.
+	_vItems[oilNum]->release();
 	_vItems.erase(_vItems.begin() + oilNum);
 }

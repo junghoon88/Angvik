@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyManager.h"
 #include "PlayerManager.h"
+#include "itemManager.h"
 
 EnemyManager::EnemyManager()
 {
@@ -13,6 +14,8 @@ EnemyManager::EnemyManager()
 	kongNum = 0;
 
 	bulletNum = 0;
+	
+	
 }
 
 
