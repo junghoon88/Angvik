@@ -38,7 +38,7 @@ void PlayerManager::Collision(void)
 		RECT temp2;
 
 
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) {     //플레이어 피해받음
+		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())&&_em->getvEnemy()[i]->getState()!=toDeath) {     //플레이어 피해받음
 			_player->setIsHit(true);
 
 		}
