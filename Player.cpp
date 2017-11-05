@@ -76,7 +76,7 @@ void Player::init(void)
 	_isInven = FALSE;
 	_isJumpAttack = FALSE;
 	_isHit = FALSE;
-	//_isImmortal = FALSE;
+	_isImmortal = FALSE;
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -324,7 +324,7 @@ void Player::update(void)
 		if (_elapsedImmortalTime > _maxImmortalTime)
 		{
 			_elapsedImmortalTime = 0.f;
-			_isImmortal == FALSE;
+			_isImmortal = FALSE;
 		}
 	}
 
@@ -1338,50 +1338,54 @@ void Player::itemPosUpdate(void)
 void Player::hitFeedback(float x)
 {
 	//x값 기준으로 플레이어 x축을 체크하여 왼쪽으로 튈지 오른쪽으로 튈지 결정
-	if (_headItem != UNARMEDARMOR)
+	if (!_isImmortal)
 	{
-		if (_x > x)//플레이어가 오른쪽
+		if (_headItem != UNARMEDARMOR)
 		{
-			_x + 3;
-			_headItem = UNARMEDARMOR;
-			_isImmortal = true;
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_headItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_headItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
 		}
-		else if (_x <= x)
+		else if (_bodyItem != UNARMEDARMOR)
 		{
-			_x - 3;
-			_headItem = UNARMEDARMOR;
-			_isImmortal = true;
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_bodyItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_bodyItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
 		}
+		else if (_footItem != UNARMEDARMOR)
+		{
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_footItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_footItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+		}
+		else _isLive = false;
 	}
-	else if (_bodyItem != UNARMEDARMOR)
-	{
-		if (_x > x)//플레이어가 오른쪽
-		{
-			_x + 3;
-			_bodyItem = UNARMEDARMOR;
-			_isImmortal = true;
-		}
-		else if (_x <= x)
-		{
-			_x - 3;
-			_bodyItem = UNARMEDARMOR;
-			_isImmortal = true;
-		}
-	}
-	else if (_footItem != UNARMEDARMOR)
-	{
-		if (_x > x)//플레이어가 오른쪽
-		{
-			_x + 3;
-			_footItem = UNARMEDARMOR;
-			_isImmortal = true;
-		}
-		else if (_x <= x)
-		{
-			_x - 3;
-			_footItem = UNARMEDARMOR;
-			_isImmortal = true;
-		}
-	}
-	else _isLive = false;
+	
 }
