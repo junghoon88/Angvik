@@ -22,7 +22,7 @@ private:
 
 	bool _bCameraOffset;
 
-	void AdjustTransform();
+	bool AdjustTransform();
 
 public:
 	Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,

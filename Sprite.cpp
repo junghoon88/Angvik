@@ -68,7 +68,8 @@ void Sprite::update()
 
 void Sprite::render(BYTE alpha)
 {
-	AdjustTransform();
+	if (!AdjustTransform())
+		return;
 
 	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
 
@@ -80,7 +81,8 @@ void Sprite::render(BYTE alpha)
 
 void Sprite::frameRender(int frameX, int frameY, BYTE alpha)
 {
-	AdjustTransform();
+	if (!AdjustTransform())
+		return;
 
 	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
 
@@ -92,7 +94,8 @@ void Sprite::frameRender(int frameX, int frameY, BYTE alpha)
 
 void Sprite::aniRender(animation* ani, BYTE alpha)
 {
-	AdjustTransform();
+	if (!AdjustTransform())
+		return;
 
 	LONG color = ((LONG)alpha << 24) | 0x00FFFFFF;
 
@@ -111,8 +114,32 @@ void Sprite::aniRender(animation* ani, BYTE alpha)
 }
 
 
-void Sprite::AdjustTransform()
+bool Sprite::AdjustTransform()
 {
+	D3DXVECTOR2 coord = _coord;
+	if (_bCameraOffset)
+	{
+		coord.x -= _mainCamera.x;
+		coord.y -= _mainCamera.y;
+	}
+
+	if (_scale.x < 0)
+	{
+		coord.x += _scaleOffset.x;
+	}
+	if (_scale.y < 0)
+	{
+		coord.y += _scaleOffset.y;
+	}
+
+	RECT temp;
+	RECT rcSprite = RectMake(_coord.x, _coord.y, fabs(_size.x), fabs(_size.y));
+	RECT rcCamera = RectMake(_mainCamera.x, _mainCamera.y, WINSIZEX, WINSIZEY);
+
+	if (!IntersectRect(&temp, &rcSprite, &rcCamera))
+		return false;
+
+
 	//4D Matrix ..?
 	D3DXMatrixIdentity(&_world);
 
@@ -134,21 +161,6 @@ void Sprite::AdjustTransform()
 	//_center.x = _size.x * 0.5f;
 	//_center.y = _size.y * 0.5f;
 
-	D3DXVECTOR2 coord = _coord;
-	if (_bCameraOffset)
-	{
-		coord.x -= _mainCamera.x;
-		coord.y -= _mainCamera.y;
-	}
-
-	if (_scale.x < 0)
-	{
-		coord.x += _scaleOffset.x;
-	}
-	if (_scale.y < 0)
-	{
-		coord.y += _scaleOffset.y;
-	}
 
 
 	D3DXMatrixTranslation(&rotationInverseCenter, -_center.x, -_center.y, 0);
@@ -158,6 +170,8 @@ void Sprite::AdjustTransform()
 	D3DXMatrixTranslation(&translate, FLOAT(coord.x), FLOAT(coord.y), 0);
 
 	_world = scale * rotationInverseCenter * rotation * rotationCenter * translate;
+
+	return true;
 }
 
 

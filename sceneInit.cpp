@@ -94,6 +94,7 @@ void sceneInit::stageInitImage()	//스테이지 이미지(배경)
 	//백그라운드
 	Sprite* background = IMAGEMANAGER->addImage(DEVICE, L"Stage1-BG", L"image/Stage/Stage1-Background.png");
 	MAINCAMERA->setMinMax(0, 0, background->getSize().x - WINSIZEX, background->getSize().y - WINSIZEY);
+	IMAGEMANAGER->addImage(DEVICE, L"Stage1-BG2", L"image/Stage/Stage1-Background2.png");
 	
 	//픽셀백그라운드
 	IMAGEMANAGER->addImage(DEVICE, L"Stage1-PBG", L"image/Stage/Stage1-PBG.bmp");

@@ -20,8 +20,8 @@ stageManager::~stageManager()
 
 void stageManager::init(void)
 {
-	//_imgBackground = IMAGEMANAGER->findImage(L"Stage1-BG");
-	_imgBackground = IMAGEMANAGER->findImage(L"Stage1-PBG");
+	_imgBackground = IMAGEMANAGER->findImage(L"Stage1-BG");
+	//_imgBackground = IMAGEMANAGER->findImage(L"Stage1-PBG");
 	_imgPBG = PBGMANAGER->findImage(L"Stage1-PBG");
 
 	for (int i = 0; i < TREETRAP_MAX; i++)
@@ -35,13 +35,12 @@ void stageManager::init(void)
 	_treeTrap[3].rc  = RectMake(2710, 636, 53, 15);			
 	_treeTrap[4].rc  = RectMake(2838, 479, 53, 15);	// -1
 	_treeTrap[5].rc  = RectMake(2838, 596, 53, 15);	// -1
-	_treeTrap[6].rc  = RectMake(3227, 468, 53, 15);			
-	_treeTrap[7].rc  = RectMake(3226, 638, 53, 15);			
+	_treeTrap[6].rc  = RectMake(3327, 468, 53, 15);			
+	_treeTrap[7].rc  = RectMake(3326, 638, 53, 15);			
 	_treeTrap[8].rc  = RectMake(3442, 376, 53, 15);	// -1
 	_treeTrap[9].rc  = RectMake(3444, 552, 53, 15);	// -1
 	_treeTrap[10].rc = RectMake(3448, 721, 53, 15);	// -1
 
-	//int dir[11] = { -1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1 };
 	int dir[11] = { 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1 };
 
 	for (int i = 0; i < TREETRAP_MAX; i++)
@@ -56,12 +55,14 @@ void stageManager::init(void)
 
 		_treeTrap[i].frameCnt = 0;
 		_treeTrap[i].frameTime = 0.0f;
-		_treeTrap[i].frameFPS = 5.0f;
+		_treeTrap[i].frameFPS = 10.0f;
 		_treeTrap[i].refreshTime = 1.0f;
 		
 		_treeTrap[i].show = true;
 
 		PBGMANAGER->addRect(i, _treeTrap[i].rc, RGB(0, 0, 0));
+		PBGMANAGER->setRectColor(L"Stage1-PBG", _treeTrap[i].num, RGB(0, 0, 0));
+
 	}
 
 }
@@ -86,6 +87,7 @@ void stageManager::update(void)
 
 void stageManager::render(void)
 {
+	IMAGEMANAGER->findImage(L"Stage1-BG2")->render();
 	_imgBackground->render();
 	//PBGMANAGER->render(L"Stage1-PBG");
 
@@ -125,7 +127,7 @@ void stageManager::frameUpdate(void)
 						_treeTrap[i].frameTime = 0.0f;
 						_treeTrap[i].show = false;
 
-						//PBGMANAGER->setRectColor(_treeTrap[i].num, RGB(255, 0, 255));
+						PBGMANAGER->setRectColor(L"Stage1-PBG", _treeTrap[i].num, RGB(255, 0, 255));
 					}
 				}
 			}
@@ -145,7 +147,7 @@ void stageManager::frameUpdate(void)
 				_treeTrap[i].frameCnt = 0;
 				_treeTrap[i].show = true;
 
-				//PBGMANAGER->setRectColor(_treeTrap[i].num, RGB(0, 0, 0));
+				PBGMANAGER->setRectColor(L"Stage1-PBG", _treeTrap[i].num, RGB(0, 0, 0));
 			}
 		}
 	}

@@ -40,7 +40,7 @@ public:
 
 
 	void addRect(int num, RECT rc, COLORREF color);
-	void setRectColor(int num, COLORREF color);
+	void setRectColor(wstring strKey, int num, COLORREF color);
 
 };
 

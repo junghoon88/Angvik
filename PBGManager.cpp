@@ -109,12 +109,23 @@ void PBGManager::addRect(int num, RECT rc, COLORREF color)
 	_vRectTraps.push_back(trap);
 }
 
-void PBGManager::setRectColor(int num, COLORREF color)
+void PBGManager::setRectColor(wstring strKey, int num, COLORREF color)
 {
+	mImgIter iter = _mImgBG.find(strKey);
+
+	if (iter == _mImgBG.end())
+		return;
+
 	for (int i = 0; i < _vRectTraps.size(); i++)
 	{
 		if (_vRectTraps[i].num != num) continue;
 
-		_vRectTraps[i].color = color;
+		for (int x = _vRectTraps[i].rc.left; x <= _vRectTraps[i].rc.right; x++)
+		{
+			for (int y = _vRectTraps[i].rc.top; y <= _vRectTraps[i].rc.bottom; y++)
+			{
+				SetPixel(iter->second->getMemDC(), x, y, color);
+			}
+		}
 	}
 }
