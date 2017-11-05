@@ -2,28 +2,31 @@
 #include "DxWindow.h"
 #include "Item.h"
 
-struct inven_item
-{
-	ITEM_TYPE type;
-	ITEM_KIND kind;
-	ITEM_STATE state;
-};
+class itemManager;
 
 class inven : public DxWindow
 {
 private:
-	inven_item _item;
+	typedef vector<Item*> vItems;
+	typedef vector<Item*>::iterator viItems;
+
+	vItems _vItems;
+	viItems _viItems;
+
+	itemManager* _im;
 
 	D3DXVECTOR2 _selectPoint[5];
 
 	int _selectNum;
 	int _frameX;
+	int _goldOils, _blackOils, _whiteOils;
 
 	float _timeCount;
 
 	bool _isMenew;
 	bool _isItem;
 	bool _isOils;
+	bool _isInven;
 
 public:
 	inven();
@@ -35,5 +38,8 @@ public:
 	void update(float x, float y);
 	void render(void);
 	bool close(void) { return false; }
+
+	inline bool getInven(void) { return _isInven; }
+	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 };
 

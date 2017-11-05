@@ -16,6 +16,9 @@ void inven::init(void)
 	_isMenew = false;
 	_isItem = false;
 	_isOils = false;
+	_isInven = false;
+
+	_goldOils = _blackOils = _whiteOils = 1;
 
 	_timeCount = 0;
 	_selectNum = 0;
@@ -41,8 +44,12 @@ void inven::update(float x, float y)
 		_frameX++;
 		if (_frameX >= 8) _frameX = 0;
 	}
-	if (KEYMANAGER->isStayKeyDown(BTN_PLAYER_INVENTORY) && !_isMenew) _isMenew = true;
-
+	if (KEYMANAGER->isStayKeyDown(BTN_PLAYER_INVENTORY) && !_isMenew)
+	{
+		_isInven = true;
+		_isMenew = true;
+		SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+	}
 	//상시 인벤 위치 업데이트
 	IMAGEMANAGER->findImage(L"inventory")->setCoord({ x + 40, y - IMAGEMANAGER->findImage(L"inventory")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"inventory")->getCoord().y < 0) IMAGEMANAGER->findImage(L"inventory")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x, 0 });
@@ -56,8 +63,16 @@ void inven::update(float x, float y)
 		_selectPoint[1] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 80 };
 		_selectPoint[2] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 122 };
 
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN)) _selectNum++;
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP)) _selectNum--;
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum++;
+		}
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum--;
+		}
 		if (_selectNum > 2) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 2;
 
@@ -66,17 +81,21 @@ void inven::update(float x, float y)
 			_selectNum = 0;
 			_isMenew = false;
 			_isItem = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
 			_selectNum = 0;
 			_isMenew = false;
 			_isOils = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 		if ((_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
 			_selectNum = 0;
 			_isMenew = false;
+			_isInven = false;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
 
@@ -93,16 +112,25 @@ void inven::update(float x, float y)
 		_selectPoint[3] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 155 };
 		_selectPoint[4] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 205 };
 
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN)) _selectNum++;
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP)) _selectNum--;
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum++;
+		}
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum--;
+		}
 		if (_selectNum > 4) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 4;
 
-		if (_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		if ((_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
 			_selectNum = 0;
 			_isMenew = true;
 			_isItem = false;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
 
@@ -110,6 +138,19 @@ void inven::update(float x, float y)
 	IMAGEMANAGER->findImage(L"oilsBox")->setCoord({ x + 40,  y - IMAGEMANAGER->findImage(L"oilsBox")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y < 0) IMAGEMANAGER->findImage(L"oilsBox")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x, 0 });
 	IMAGEMANAGER->findImage(L"back")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 40, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 175 });
+	
+	for (int i = 0; i < _goldOils; i++)
+	{
+		IMAGEMANAGER->findImage(L"골드오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 40 });
+	}
+	for (int i = 0; i < _blackOils; i++)
+	{
+		IMAGEMANAGER->findImage(L"블랙오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 85 });
+	}
+	for (int i = 0; i < _whiteOils; i++)
+	{
+		IMAGEMANAGER->findImage(L"흰색오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 130 });
+	}
 
 	if (_isOils)
 	{
@@ -118,16 +159,25 @@ void inven::update(float x, float y)
 		_selectPoint[2] = { IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 125 };
 		_selectPoint[3] = { IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 165 };
 
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN)) _selectNum++;
-		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP)) _selectNum--;
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum++;
+		}
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum--;
+		}
 		if (_selectNum > 3) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 3;
 
-		if (_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		if ((_selectNum == 3 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
 			_selectNum = 0;
 			_isMenew = true;
 			_isOils = false;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
 
@@ -154,5 +204,8 @@ void inven::render(void)
 	else if (_isOils)
 	{
 		IMAGEMANAGER->findImage(L"back")->render();
+		IMAGEMANAGER->findImage(L"골드오일")->render();
+		IMAGEMANAGER->findImage(L"블랙오일")->render();
+		IMAGEMANAGER->findImage(L"흰색오일")->render();
 	}
 }

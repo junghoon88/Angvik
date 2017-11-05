@@ -23,6 +23,7 @@ void PlayerManager::init(void)
 
 	_inven = new inven;
 	_inven->init();
+	_inven->setLinkAdressItemManager(_im);
 
 	_playerRcHead = _player->getRectHead();
 	_playerRcBody = _player->getRectBody();
@@ -274,6 +275,7 @@ void PlayerManager::update(void)
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 	_inven->update(_player->getX(), _player->getY());
+	_player->setIsInven(_inven->getInven());
 }
 
 void PlayerManager::render(void) 
