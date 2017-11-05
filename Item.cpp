@@ -38,8 +38,9 @@ void Item::update(void)
 
 		{
 			_pt.y += 5;
-
 		}
+		_rcImg = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+
 	}
 
 
