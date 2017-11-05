@@ -183,7 +183,6 @@ void Kongtan::move(void)
 
 			if((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0) || (r == 0 && g == 255 && b == 255))
 			{
-				//SAFE_DELETE(_viBullet->spt);
 				_viBullet->valid = false;
 				break;
 			}
