@@ -87,7 +87,7 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_SWORD);	//검은색
 						break;
-						
+						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
@@ -310,7 +310,6 @@ void PlayerManager::playerItemCollision(void)
 
 
 
-Collision();
 
 
 	//_player->update();
