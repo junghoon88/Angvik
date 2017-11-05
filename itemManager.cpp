@@ -44,7 +44,7 @@ void itemManager::update(void)
 		{
 			
 			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState() == ITEM_STATE_ATTACK)
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 			{
 				switch (_vItems[i]->getType())
 				{

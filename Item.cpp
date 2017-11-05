@@ -59,7 +59,7 @@ void Item::update(void)
 			_img->setRotate(80.0f);
 
 		
-		if (KEYMANAGER->isOnceKeyDown('A'))
+		if (KEYMANAGER->isOnceKeyDown('D'))
 		{
 			switch (_type)
 
@@ -176,7 +176,7 @@ void Item::update(void)
 		}
 	}
 	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
-	else if (_state == ITEM_STATE_INPLAYER||_state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
+	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX , targetY);
 
 	
 

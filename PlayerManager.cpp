@@ -72,27 +72,26 @@ void PlayerManager::playerItemCollision(void)
 			switch (item[i]->getState() == ITEM_STATE_IDLE)
 			{
 			case ITEM_TYPE_SWORD:
-				
+				item[i]->setState(ITEM_STATE_INPLAYER);
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
-					switch (item[i]->getKind())
-					{
-						case ITEM_KIND_WHITE:
-							_player->setBackItem(WHITE_SWORD);	//흰색
-							//item[i]->setState(ITEM_STATE_INPLAYER);
-						break;
-						case ITEM_KIND_GOLD:
-							_player->setBackItem(GOLD_SWORD);	//황금색
-						break;
-						case ITEM_KIND_BLACK:
-							_player->setBackItem(BLACK_SWORD);	//검은색
-						break;
-<<<<<<< HEAD
-						item[i]->setState(ITEM_STATE_INPLAYER);
-=======
->>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
-					}
-					item[i]->setState(ITEM_STATE_INPLAYER);
+					//switch (item[i]->getKind())
+					//{
+					//	case ITEM_KIND_WHITE:
+					//		_player->setBackItem(WHITE_SWORD);	//흰색
+					//		//item[i]->setState(ITEM_STATE_INPLAYER);
+					//	break;
+					//	case ITEM_KIND_GOLD:
+					//		_player->setBackItem(GOLD_SWORD);	//황금색
+					//	break;
+					//	case ITEM_KIND_BLACK:
+					//		_player->setBackItem(BLACK_SWORD);	//검은색
+					//	break;
+					//
+					//	
+					//
+					//}
+					//item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 				{
@@ -314,7 +313,7 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
-<<<<<<< HEAD
+
 
 
 
@@ -325,6 +324,5 @@ void PlayerManager::playerItemCollision(void)
 	//_bird->update(_player->getX(), _player->getY());
 
 
-=======
->>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
+
 }
