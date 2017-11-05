@@ -46,6 +46,11 @@ void Player::init(void)
 	_blackFootRightImage = IMAGEMANAGER->findImage(L"blackFootRight");
 	_blackFootLeftImage = IMAGEMANAGER->findImage(L"blackFootLeft");
 
+	_goldBodyRightImage = IMAGEMANAGER->findImage(L"goldBodyRight");
+	_goldBodyLeftImage = IMAGEMANAGER->findImage(L"goldBodyLeft");
+	_goldFootRightImage = IMAGEMANAGER->findImage(L"goldFootRight");
+	_goldFootLeftImage = IMAGEMANAGER->findImage(L"goldFootLeft");
+
 	_frontArmRightImage = IMAGEMANAGER->findImage(L"frontArmRight");
 	_backArmRightImage = IMAGEMANAGER->findImage(L"backArmRight");
 	_frontArmLeftImage = IMAGEMANAGER->findImage(L"frontArmLeft");
@@ -86,8 +91,8 @@ void Player::init(void)
 	_bodyState = PLAYER_RIGHT_STOP;
 
 	_headItem = UNARMEDARMOR;
-	_bodyItem = UNARMEDARMOR;
-	_footItem =	UNARMEDARMOR;
+	_bodyItem = GOLD;
+	_footItem =	GOLD;
 
 	_frontItem = UNARMEDWEAPON;
 	_backItem = UNARMEDWEAPON;
@@ -397,13 +402,18 @@ void Player::render(void)
 	}
 
 	//	발 아머
-	if (_isRight == TRUE)
+	switch (_footItem)
 	{
-		_blackFootRightImage->aniRender(_bodyMotion);
-	}
-	else
-	{
-		_blackFootLeftImage->aniRender(_bodyMotion);
+		case WHITE:
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion);
+			else					_goldFootLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackFootRightImage->aniRender(_bodyMotion);
+			else					_blackFootLeftImage->aniRender(_bodyMotion);
+		break;
 	}
 	//	몸 아머
 	if (_isRight == TRUE)
@@ -531,6 +541,11 @@ void Player::imageReverse(void)
 	IMAGEMANAGER->findImage(L"blackFootLeft")->setScale({ -1,1 });
 	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScaleOffset(offsetVal, 0.0f);
 	IMAGEMANAGER->findImage(L"blackFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	금
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScaleOffset(offsetVal, 0.0f);
 }
 
 void Player::imagePosUpdate(void)
