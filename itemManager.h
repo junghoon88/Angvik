@@ -18,10 +18,13 @@ private:
 	vItems _vItems;
 	viItems _viItems;
 
+	int itemNum;
+
 	int _x, _y;
 	int i, j;
 	bool issetting;
-	bool OilUse;
+
+	
 private:
 	PlayerManager* _pm;
 	EnemyManager* _em;
@@ -41,7 +44,10 @@ public:
 	////////////////////////
 	void setFieldItem(int i, int j);
 	void removeItem(int arrNum);
-	void Itemcompose(int itemNum, int oilNum);
+
+	
+
+	void Itemcompose(int itemNum, int oilNum);//ÇÕ¼º
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }
