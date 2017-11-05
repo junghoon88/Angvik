@@ -54,7 +54,7 @@ public:
 	inline float getX(void) { return ptX; }
 	inline float getY(void) { return ptY; }
 	inline int getLife(void) { return life; }
-	void setLife(int hit) { life -= hit; } //라이프 셋팅용.피해량 만큼 라이프 감소
+	void setLife(int lf) { life  = lf; } //라이프 셋팅용.피해량 만큼 라이프 감소
 	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
 	inline RECT getRect(void) { return rc; }

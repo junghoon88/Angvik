@@ -36,7 +36,6 @@ void EnemyManager::release(void)
 
 void EnemyManager::update(void)	
 {
-	
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
@@ -93,7 +92,9 @@ void EnemyManager::setEnemy1(void)
 	Turtle* turtle1;
 	mush* mush1;
 
-	
+	monkey1 = new monkkey;
+	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
+	_vEnemy.push_back(monkey1);
 
 	monkey2 = new monkkey;
 	monkey2->init(monkkeyNum++, 200, 100,L"monkkeyRc2");
@@ -105,9 +106,7 @@ void EnemyManager::setEnemy1(void)
 	_vEnemy.push_back(mush1);
 
 
-	monkey1 = new monkkey;
-	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
-	_vEnemy.push_back(monkey1);
+
 
 	Ent* ent1;
 	ent1 = new Ent;
@@ -129,8 +128,7 @@ void EnemyManager::setEnemy1(void)
 	turtle1->init(turtleNum++,580, 415, L"TurRc1");
 	_vEnemy.push_back(turtle1);
 
-	_vEnemy.push_back(monkey1);
-//	_vEnemy.push_back(monkey2);
+
 	
 }
 void EnemyManager::deleteEnemy(void) {

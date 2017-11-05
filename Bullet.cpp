@@ -143,6 +143,7 @@ void Kongtan::fire(int num,float ptx, float pty, float ang)
 	Kongtan.ptX = Kongtan.fireX = ptx;
 	Kongtan.ptY = Kongtan.fireY = pty;
 	Kongtan.spt->setCoord(Kongtan.ptX, Kongtan.ptY);
+	
 	Kongtan.angle = ang;
 	Kongtan.frameTime = 0;
 	Kongtan.frameX = 0;
