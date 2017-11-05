@@ -21,6 +21,11 @@ class itemManager;
 #define IMMORTALTIME	 1.5f
 #define ATTACKTIME		 0.5f
 
+#define ATTACKTIME		 0.2f
+
+#define ATTACKTIME		 0.3f
+
+
 //아이템 상태
 enum PLAYERHEADSTATE
 {
@@ -192,6 +197,8 @@ private:
 	bool _isJumpAttack;		//	점프공격중인지
 	bool _isHit;			//	피격상태인지
 	bool _isImmortal;		//	무적상태인지
+	bool _isUP;
+
 
 	float _handX, _handY;
 	float _armLen0, _armLen1, _armLen2;
@@ -309,6 +316,9 @@ public:
 
 	void setFrontItem(EQUIPWEAPONSTATE item) { _frontItem = item; }
 	void setBackItem(EQUIPWEAPONSTATE item) { _backItem = item; }
+
+	void hitFeedback(float x);
+
 
 	float getHandX(void) { return _handX; }
 	float getHandY(void) { return _handY; }

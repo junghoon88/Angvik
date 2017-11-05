@@ -44,7 +44,7 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 }
 void Turtle::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY + 10, 100, rcHeight);
+	rc = RectMakeCenter(ptX, ptY, 100, rcHeight);
 	if (life <= 0)
 	{
 		RIP();
