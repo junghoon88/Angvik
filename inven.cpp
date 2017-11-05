@@ -26,6 +26,8 @@ void inven::init(void)
 	_selectNum = 0;
 	_frameX = 0;
 
+	_goldOils = _blackOils = _whiteOils = 0;
+
 	_inventoryMax = 4;
 	_inventoryNum = 0;
 }
@@ -119,6 +121,8 @@ bool inven::insertInven(int num)
 {
 	vector<Item*> items = _im->getVItem();
 
+	_whiteOils = _goldOils = _blackOils = 0;
+
 	for (int i = 0; i < items.size(); i++)
 	{
 		if (num != items[i]->getNum()) continue;
@@ -138,12 +142,24 @@ bool inven::insertInven(int num)
 		}
 		else if (it->getType() == ITEM_TYPE_OIL)
 		{
-			if (_vInvenOils.size() >= _inventoryMax)
+			if (it->getKind() == ITEM_KIND_WHITE)
 			{
-				return false;
+				_whiteOils++;
+				if (_whiteOils == _inventoryMax) return false;
+				_vInvenOils.push_back(it);
+				return true;
 			}
-			else
+			if (it->getKind() == ITEM_KIND_GOLD)
 			{
+				_goldOils++;
+				if (_goldOils == _inventoryMax) return false;
+				_vInvenOils.push_back(it);
+				return true;
+			}
+			if (it->getKind() == ITEM_KIND_BLACK)
+			{
+				_blackOils++;
+				if (_blackOils == _inventoryMax) return false;
 				_vInvenOils.push_back(it);
 				return true;
 			}
@@ -303,37 +319,30 @@ void inven::oilsBoxUpdate(float x, float y)
 			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 
+		_goldNum = _blackNum = _whiteNum = 0;
+
 		for (int i = 0; i < _vInvenOils.size(); i++)
 		{
 			Sprite* img = _vInvenOils[i]->getImage();
-			img->setCoord(_selectPoint[i].x, _selectPoint[i].y);
-			img->setRotate(0.0f);
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_WHITE)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"흰색오일")->getSize().x * _whiteNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_whiteNum++;
+			}
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_GOLD)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _goldNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_goldNum++;
+			}
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_BLACK)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 35 + IMAGEMANAGER->findImage(L"블랙오일")->getSize().x * _blackNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_blackNum++;
+			}
 		}
-
-		//for (int i = 0; i < _vItems.size(); i++)
-		//{
-		//	if (_vItems[i]->getType() == ITEM_TYPE_OIL)
-		//	{
-		//		if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
-		//		{
-		//			_whiteOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 45 });
-		//		}
-		//		if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
-		//		{
-		//			_blackOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 90 });
-		//		}	
-		//		if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
-		//		{
-		//			_goldOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 135 });
-		//		}
-		//	}
-		//}
 	}
 }
 
@@ -365,7 +374,10 @@ void inven::equipBoxUpdate(float x, float y)
 
 		if (_selectNum == 0 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
-			
+			for (int i = 0; i < _vInvenItems.size(); i++)
+			{
+				
+			}
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{

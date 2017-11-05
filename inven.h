@@ -26,6 +26,9 @@ private:
 	int _inventoryMax;
 	int _inventoryNum;
 
+	int _goldOils, _blackOils, _whiteOils;
+	int _goldNum, _blackNum, _whiteNum;
+
 	float _timeCount;
 
 	bool _isMenew;
