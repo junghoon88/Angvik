@@ -48,7 +48,15 @@ void itemManager::update(void)
 			else {
 				_vItems[i]->setisPlayerRIGHT(false);
 			}
-			
+			if (_pm->getPlayer()->getIsfrontAttack())
+			{
+				_vItems[i]->setisPlayerAttack(true);
+			}
+			else
+			{
+				_vItems[i]->setisPlayerAttack(false);
+			}
+
 			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState()==ITEM_STATE_ATTACK)
 			{	
 				if (_pm->getPlayer()->getIsRight())

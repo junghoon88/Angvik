@@ -66,7 +66,7 @@ private:
 	float targetX;
 	float targetY;
 
-	bool isarm;
+	bool isAttack;
 	bool isPlayerRIGHT;
 public:
 	Item();
@@ -89,7 +89,8 @@ public:
 	inline ITEM_TYPE getType(void) { return _type; }
 	
 	inline void setisPlayerRIGHT(bool right) { isPlayerRIGHT = right; }
-	inline void setisPlayerARM(bool arm) { isarm = arm; }
+	
+	inline void setisPlayerAttack(bool attack) { isAttack = attack; }
 	//Á¾·ù °Ù¼Â
 	inline void setKind(ITEM_KIND kind) { _kind = kind; }
 	inline ITEM_KIND getKind(void) { return _kind; }

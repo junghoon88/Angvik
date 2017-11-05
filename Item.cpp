@@ -59,7 +59,7 @@ void Item::update(void)
 			}
 
 		
-		if (KEYMANAGER->isOnceKeyDown('D'))
+		if (isAttack)
 		{
 			switch (_type)
 
@@ -150,6 +150,7 @@ void Item::update(void)
 					if (_img->getAngle() <= 0.0f)
 					{
 						_state = ITEM_STATE_INPLAYER;
+						
 					}
 				}
 				else
@@ -158,6 +159,7 @@ void Item::update(void)
 					if (_img->getAngle() >= 180.0f)
 					{
 						_state = ITEM_STATE_INPLAYER;
+						
 					}
 				}
 			}
