@@ -88,6 +88,8 @@ void Sprite::frameRender(int frameX, int frameY, BYTE alpha)
 	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	_sprite->Draw(_texture->getTexture(), &_texture->getRect(frameX, frameY), NULL, NULL, color);
 	_sprite->End();
+
+	_texture->setFrame(frameX, frameY);
 }
 
 void Sprite::aniRender(animation* ani, BYTE alpha)

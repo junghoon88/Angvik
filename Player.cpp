@@ -23,7 +23,7 @@ void Player::init(void)
 	_x = WINSIZEX / 2;
 	_y = WINSIZEY / 2;
 
-
+	_handX = _handY = 0;
 	_frameAngle = 22.5;
 				
 
@@ -119,7 +119,7 @@ void Player::update(void)
 		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
 		else _bodyState = PLAYER_LEFT_STOP;
 	}
-
+	itemPosUpdate();
 	if (_isRight == TRUE)
 	{
 		switch (_headState)

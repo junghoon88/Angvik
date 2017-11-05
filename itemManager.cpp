@@ -37,6 +37,8 @@ void itemManager::update(void)
 	{
 		float x = _pm->getPlayer()->getX();
 		float y = _pm->getPlayer()->getY();
+		float hx = _pm->getPlayer()->getHandX();
+		float hy = _pm->getPlayer()->getHandY();
 
 		for (int i = 0; i < _vItems.size(); i++)
 		{
@@ -44,7 +46,30 @@ void itemManager::update(void)
 			
 			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState() == ITEM_STATE_ATTACK)
 			{
-				_vItems[i]->targetPlayer(x, y);
+				switch (_vItems[i]->getType())
+				{
+				case ITEM_TYPE_HEAD :
+						_vItems[i]->targetPlayer(x, y-30);
+					break;
+				case ITEM_TYPE_BODY:
+						_vItems[i]->targetPlayer(x+5, y-10);
+					break;
+				case ITEM_TYPE_FOOT:
+						_vItems[i]->targetPlayer(x+10, y+10);
+					break;
+				case ITEM_TYPE_SWORD:
+						_vItems[i]->targetPlayer(hx, hy);
+					break;
+				case ITEM_TYPE_STAFF:
+						_vItems[i]->targetPlayer(hx, hy);
+					break;
+				case ITEM_TYPE_LANCE:
+						_vItems[i]->targetPlayer(hx, hy);
+					break;
+				case ITEM_TYPE_BOOMERANG:
+						_vItems[i]->targetPlayer(hx, hy);
+					break;
+				}
 			}
 
 
@@ -106,7 +131,8 @@ void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
-	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
+	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
+
 
 	_vItems.push_back(field);
 }
