@@ -57,7 +57,11 @@ void EnemyManager::update(void)
 				cmush->init(mushNum++, (*_viEnemy)->getX()+10, (*_viEnemy)->getY()-30, L"cmushrc");
 				_vEnemy.push_back(cmush);
 			}
-			_im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+
+			int droptable = 0;
+			droptable = RND->getInt(10);//µå¶øÈ®·ü
+			if(droptable <= 3) _im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+
 			deleteEnemy(_viEnemy);
 			break;
 		}

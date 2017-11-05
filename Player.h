@@ -128,11 +128,16 @@ private:
 	RECT _rcBody;
 	RECT _rcFoot;
 
+	BYTE _alpha;
+
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
 	float _probeY;
+
+	float _elapsedTime;
+	float _immortalTime;
 
 	bool _isFrontAttack;	//	front로 공격했는지
 	bool _isBackAttack;		//	back으로 공격했는지
@@ -233,6 +238,9 @@ public:
 	
 	bool getIsHit(void)			{ return _isHit; }
 	void setIsHit(bool isHit)	{ _isHit = isHit; }
+
+	bool getIsImmortal(void) { return _isImmortal; }
+	void setIsImmortal(bool isImmortal) { _isImmortal = isImmortal; }
 
 	bool getIsInven(void)		{ return _isInven; }
 	void setIsInven(bool isInven) { _isInven = isInven; }

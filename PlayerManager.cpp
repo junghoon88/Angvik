@@ -77,7 +77,7 @@ void PlayerManager::playerItemCollision(void)
 				switch (item[i]->getType())
 				{
 				case ITEM_TYPE_SWORD:
-					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+					/*if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -95,7 +95,7 @@ void PlayerManager::playerItemCollision(void)
 						}
 
 					}
-					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+					else*/ if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -114,11 +114,14 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_LANCE:
-					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+					/*if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -134,7 +137,7 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+					else*/ if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -153,11 +156,14 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_BOOMERANG:
-					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+					/*if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -173,7 +179,7 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+					else */if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -192,11 +198,14 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_STAFF:
-					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+					/*if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -212,7 +221,7 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+					else*/ if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -231,7 +240,10 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 
@@ -255,7 +267,10 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_BODY:
@@ -278,7 +293,10 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_FOOT:
@@ -301,19 +319,23 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 
 				case ITEM_TYPE_OIL:
 				case ITEM_TYPE_EGG:		//	기타
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 					break;
 				}
 			}
 		}
-		}
-
-
 	}
+}

@@ -120,6 +120,8 @@ void kong::render(void)
 		break;
 	case eATK:atkSpt->frameRender(frameCnt, 0);
 		break;
+	default:spt->frameRender(frameCnt, 0);
+		break;
 	}
 
 	//RECTMANAGER->render(rcName);
