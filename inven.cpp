@@ -18,7 +18,7 @@ void inven::init(void)
 	_isOils = false;
 	_isInven = false;
 
-	_goldOils = _blackOils = _whiteOils = 1;
+	_goldOils = _blackOils = _whiteOils = 0;
 
 	_timeCount = 0;
 	_selectNum = 0;
@@ -50,6 +50,75 @@ void inven::update(float x, float y)
 		_isMenew = true;
 		SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 	}
+
+	//선택지 위치 업데이트
+	IMAGEMANAGER->findImage(L"아이템선택")->setCoord(_selectPoint[_selectNum]);
+
+	menewBoxUpdate(x, y);
+	itemBoxUpdate(x, y);
+	oilsBoxUpdate(x, y);
+}
+
+void inven::render(void)
+{
+	if (_isMenew)	IMAGEMANAGER->findImage(L"inventory")->render(200);
+	if (_isItem)	IMAGEMANAGER->findImage(L"itemBox")->render(200);
+	if (_isOils)	IMAGEMANAGER->findImage(L"oilsBox")->render(200);
+	if (_isMenew || _isItem || _isOils) IMAGEMANAGER->findImage(L"아이템선택")->frameRender(_frameX, 0, 255);
+	if (_isMenew)
+	{
+		IMAGEMANAGER->findImage(L"item")->render();
+		IMAGEMANAGER->findImage(L"oils")->render();
+		IMAGEMANAGER->findImage(L"close")->render();
+	}
+	else if (_isItem)
+	{
+		IMAGEMANAGER->findImage(L"back")->render();
+	}
+	else if (_isOils)
+	{
+		IMAGEMANAGER->findImage(L"back")->render();
+		for (int i = 0; i < _vItems.size(); i++)
+		{
+			if (_vItems[i]->getType() == ITEM_TYPE_OIL)
+			{
+				if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
+				{
+					_whiteOils++;
+				}
+				if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
+				{
+					_whiteOils++;
+				}
+				if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
+				{
+					_whiteOils++;
+				}
+			}
+		}
+	}
+}
+
+void inven::itemUpdate(void)
+{
+	vItems item = _im->getVItem();
+
+	for (int i = 0; i < item.size(); i++)
+	{
+		if (item[i]->getState() == ITEM_STATE_ININVEN)
+		{
+			for (int j = 0; j < _vItems.size(); j++)
+			{
+				if (_vItems[j]->getNum() == item[i]->getNum()) break;
+				
+				if (j == _vItems.size() - 1)	_vItems.push_back(item[i]);
+			}
+		}
+	}
+}
+
+void inven::menewBoxUpdate(float x, float y)
+{
 	//상시 인벤 위치 업데이트
 	IMAGEMANAGER->findImage(L"inventory")->setCoord({ x + 40, y - IMAGEMANAGER->findImage(L"inventory")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"inventory")->getCoord().y < 0) IMAGEMANAGER->findImage(L"inventory")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x, 0 });
@@ -98,7 +167,10 @@ void inven::update(float x, float y)
 			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
+}
 
+void inven::itemBoxUpdate(float x, float y)
+{
 	//상시 아이템박스 위치 업데이트
 	IMAGEMANAGER->findImage(L"itemBox")->setCoord({ x + 40,  y - IMAGEMANAGER->findImage(L"itemBox")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"itemBox")->getCoord().y < 0) IMAGEMANAGER->findImage(L"itemBox")->setCoord({ IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, 0 });
@@ -107,9 +179,9 @@ void inven::update(float x, float y)
 	if (_isItem)
 	{
 		_selectPoint[0] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 35 };
-		_selectPoint[1] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 75 };
-		_selectPoint[2] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 115 };
-		_selectPoint[3] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 155 };
+		_selectPoint[1] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 80 };
+		_selectPoint[2] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 125 };
+		_selectPoint[3] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 170 };
 		_selectPoint[4] = { IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 205 };
 
 		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
@@ -133,24 +205,14 @@ void inven::update(float x, float y)
 			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
+}
 
+void inven::oilsBoxUpdate(float x, float y)
+{
 	//상시 오일박스 위치 업데이트
 	IMAGEMANAGER->findImage(L"oilsBox")->setCoord({ x + 40,  y - IMAGEMANAGER->findImage(L"oilsBox")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y < 0) IMAGEMANAGER->findImage(L"oilsBox")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x, 0 });
 	IMAGEMANAGER->findImage(L"back")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 40, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 175 });
-	
-	for (int i = 0; i < _goldOils; i++)
-	{
-		IMAGEMANAGER->findImage(L"골드오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 40 });
-	}
-	for (int i = 0; i < _blackOils; i++)
-	{
-		IMAGEMANAGER->findImage(L"블랙오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 85 });
-	}
-	for (int i = 0; i < _whiteOils; i++)
-	{
-		IMAGEMANAGER->findImage(L"흰색오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 130 });
-	}
 
 	if (_isOils)
 	{
@@ -179,51 +241,41 @@ void inven::update(float x, float y)
 			_isOils = false;
 			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
-	}
 
-	//선택지 위치 업데이트
-	IMAGEMANAGER->findImage(L"아이템선택")->setCoord(_selectPoint[_selectNum]);
-}
+		_whiteOils = _blackOils = _goldOils = 0;
 
-void inven::render(void)
-{
-	if (_isMenew)	IMAGEMANAGER->findImage(L"inventory")->render(200);
-	if (_isItem)	IMAGEMANAGER->findImage(L"itemBox")->render(200);
-	if (_isOils)	IMAGEMANAGER->findImage(L"oilsBox")->render(200);
-	if (_isMenew || _isItem || _isOils) IMAGEMANAGER->findImage(L"아이템선택")->frameRender(_frameX, 0, 255);
-	if (_isMenew)
-	{
-		IMAGEMANAGER->findImage(L"item")->render();
-		IMAGEMANAGER->findImage(L"oils")->render();
-		IMAGEMANAGER->findImage(L"close")->render();
-	}
-	else if (_isItem)
-	{
-		IMAGEMANAGER->findImage(L"back")->render();
-	}
-	else if (_isOils)
-	{
-		IMAGEMANAGER->findImage(L"back")->render();
-		IMAGEMANAGER->findImage(L"골드오일")->render();
-		IMAGEMANAGER->findImage(L"블랙오일")->render();
-		IMAGEMANAGER->findImage(L"흰색오일")->render();
-	}
-}
-
-void inven::itemUpdate(void)
-{
-	vItems item = _im->getVItem();
-
-	for (int i = 0; i < item.size(); i++)
-	{
-		if (item[i]->getState() == ITEM_STATE_ININVEN)
+		for (int i = 0; i < _vItems.size(); i++)
 		{
-			for (int j = 0; j < _vItems.size(); j++)
+			if (_vItems[i]->getType() == ITEM_TYPE_OIL)
 			{
-				if (_vItems[j]->getNum() == item[i]->getNum()) break;
-				
-				if (j == _vItems.size() - 1)	_vItems.push_back(item[i]);
+				if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
+				{
+					_whiteOils++;
+				}
+				if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
+				{
+					_whiteOils++;
+				}	
+				if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
+				{
+					_whiteOils++;
+				}
 			}
+		}
+
+		TCHAR text[128];
+
+		for (int i = 0; i < _goldOils; i++)
+		{
+			IMAGEMANAGER->findImage(L"골드오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 40 });
+		}
+		for (int i = 0; i < _blackOils; i++)
+		{
+			IMAGEMANAGER->findImage(L"블랙오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 85 });
+		}
+		for (int i = 0; i < _whiteOils; i++)
+		{
+			IMAGEMANAGER->findImage(L"흰색오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 130 });
 		}
 	}
 }
