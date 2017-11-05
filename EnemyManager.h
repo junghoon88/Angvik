@@ -54,7 +54,7 @@ public:
 	void setEnemy1(void);
 	void enemyFire(void);
 	void deleteEnemy(int arrNum);
-
+	void deleteEnemy(viEnemy viE);
 	
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

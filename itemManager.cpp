@@ -18,7 +18,7 @@ itemManager::~itemManager()
 void itemManager::init(void)
 {
 	_x = 350;
-	_y = 200;
+	_y = 350;
 	i = j = 0;
 
 	itemNum = 0;
@@ -73,14 +73,20 @@ void itemManager::update(void)
 	
 	if (issetting)
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			for (int j = 0; j < 8; j++)
 			{
+				_x += 50;
 				setFieldItem(i, j);
+				
 			}
-			_x += 150;
+			_x += 50;
+			setFieldItem(1, 7);
+			
 		}
+		_x += 50;
+		setFieldItem(2, 7);
 		issetting = false;
 	}
 	
@@ -102,7 +108,6 @@ void itemManager::update(void)
 void itemManager::render(void)
 {
 
-	
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		_vItems[i]->render();

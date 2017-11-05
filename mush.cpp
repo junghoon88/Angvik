@@ -79,9 +79,12 @@ void mush::update(void) {
 		if (atkFrameTime >= 0.1f)
 		{
 			atkFrameTime = 0;
-
 			atkFrameCnt++;
-			if (atkFrameCnt >= 6)atkFrameCnt = 0;
+			if (atkFrameCnt >= 6) {
+				isAtk = true;
+				atkFrameCnt = 0;
+				state = eIDLE;
+			}
 		}
 
 	}
@@ -99,13 +102,13 @@ void mush::update(void) {
 	}
 
 	move();
-
-	atkCnt += TIMEMANAGER->getElapsedTime();
-	if (atkCnt >= 3.0f)
-	{
-		atkCnt = 0;
-		isAtk = true;
-		state = eATK;
+	if (state == eIDLE) {
+		atkCnt += TIMEMANAGER->getElapsedTime();
+		if (atkCnt >= 1.0f)
+		{
+			atkCnt = 0;
+			state = eATK;
+		}
 	}
 }
 void mush::render(void) {
@@ -184,7 +187,8 @@ void mush::move(void) {
 		else if ((r == 0 && g == 0 && b == 0)&& (state!=eJUMP||gravity>=5))
 		{
 			ptY = i - 15;
-			state = eIDLE;
+			if (state != eATK)
+				state = eIDLE;
 			break;
 		}
 		else if(state!=eJUMP)
@@ -208,6 +212,8 @@ void mush::move(void) {
 			{
 				ptX = i - 20;
 				dir = eLEFT;
+				jmpspt->setScale({ -1,1 });
+				jmpspt->setScaleOffset(25, 0);
 				spt->setScale({ -1,1 });
 				spt->setScaleOffset(25, 0);
 			}
@@ -215,6 +221,7 @@ void mush::move(void) {
 			{
 				ptX = i + 20;
 				dir = eRIGHT;
+				jmpspt->setScale({ 1,1 });
 				spt->setScale({ 1,1 });
 			}
 			break;

@@ -80,7 +80,7 @@ void Ent::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0)&& (r == 255 && g == 255 && b == 0))
+		if ((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0))
 		{
 			ptY = i - 40;
 			state = eIDLE;
