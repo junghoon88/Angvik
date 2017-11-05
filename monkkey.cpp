@@ -29,7 +29,7 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;
-
+	isImmune = false;
 	frameCnt = 0;
 	frameTime = 0;
 

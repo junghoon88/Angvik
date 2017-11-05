@@ -30,7 +30,7 @@ void kong::init(int num, float x, float y, wstring rcKey)
 	atkCnt = 0;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-
+	isImmune = false;
 	rcHeight = amountHeight = 40; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
 	amountX = 1;
