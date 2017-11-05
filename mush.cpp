@@ -39,7 +39,10 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 
 	dir = eRIGHT;
 	state = eIDLE;
-
+	isImmune = true;
+	immuneTime = 0;
+	isUP = true;
+	alpha = 255;
 	frameCnt = 0;
 	atkFrameCnt = 0;
 	jumpFrameCnt = 0;
@@ -70,6 +73,25 @@ void mush::update(void) {
 	}
 	else
 	{
+		if (isImmune) {    //무적시간
+			if (isUP)
+			{
+				alpha += 50;
+				if (alpha >= 255)
+					isUP = false;
+			}
+			if (!isUP)
+			{
+				alpha -= 50;
+				if (alpha <= 0)
+					isUP = true;
+			}
+			immuneTime += TIMEMANAGER->getElapsedTime();
+			if (immuneTime >= 1.5f) {
+				alpha = 255;
+				isImmune = false;
+			}
+		}
 		probeY = rc.bottom;
 		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
@@ -113,7 +135,7 @@ void mush::update(void) {
 
 		if (state == eIDLE) {
 			atkCnt += TIMEMANAGER->getElapsedTime();
-			if (atkCnt >= 1.0f)
+			if (atkCnt >= 1.5f)
 			{
 				atkCnt = 0;
 				isAtk = true;
@@ -127,19 +149,19 @@ void mush::render(void) {
 
 	switch (state) {
 		case eIDLE:
-			spt->frameRender(frameCnt, 0);
+			spt->frameRender(frameCnt, 0,alpha);
 			break;
 		case eATK:
-			atkspt->frameRender(atkFrameCnt, 0);
+			atkspt->frameRender(atkFrameCnt, 0, alpha);
 			break;
 		case eJUMP:
-			jmpspt->frameRender(jumpFrameCnt, 0);
+			jmpspt->frameRender(jumpFrameCnt, 0, alpha);
 			break;
 		case eFALL:
-			jmpspt->frameRender(jumpFrameCnt, 0);
+			jmpspt->frameRender(jumpFrameCnt, 0, alpha);
 			break;
 		default:
-			spt->frameRender(frameCnt, 0); 
+			spt->frameRender(frameCnt, 0, alpha);
 			break;
 	}
 	

@@ -18,7 +18,7 @@ class EnemyMother : public DxWindow
 {
 protected:
 	Sprite* spt;
-
+	BYTE alpha;
 	wstring rcName;     //렉트 키네임
 	RECT rc;
 	RECT sptrc;//안쓰셔도 됨. 저는 이미지 그릴려고 추가합니다.
@@ -41,8 +41,11 @@ protected:
 	int index;//1번 부메랑,2번 콩알탄
 	int frameCnt;
 	float frameTime;
+	float immuneTime;
 
 	bool isAtk;
+	bool isImmune;
+	bool isUP;
 
 	enemyDirection dir;
 	enemyState state;
@@ -65,12 +68,14 @@ public:
 	inline void setLife(int lf) { life = lf; } 
 	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
+	inline enemyDirection getDir(void) { return dir; }
 	inline RECT getRect(void) { return rc; }
 	inline int getIndex(void) { return index; }
 	inline bool getAtk(void) { return isAtk; }
 	inline void setAtk(bool isatk) { isAtk = isatk; }
 	inline void setPlayerX(float x) { playerX = x; }
 	inline void setPlayerY(float y) { playerY = y; }
+	inline bool getImmune(void) { return isImmune; }
 	EnemyMother();
 	~EnemyMother();
 };

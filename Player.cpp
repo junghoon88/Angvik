@@ -76,7 +76,10 @@ void Player::init(void)
 	_isInven = FALSE;
 	_isJumpAttack = FALSE;
 	_isHit = FALSE;
+
+	_isUP = TRUE;
 	_isImmortal = FALSE;
+
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -240,7 +243,7 @@ void Player::update(void)
 			}
 			if (res.trap)
 			{
-				_isHit = true;
+				hitFeedback(_x);
 			}
 		}
 		else
@@ -320,11 +323,24 @@ void Player::update(void)
 	//무적시간
 	if (_isImmortal == TRUE)
 	{
+		if (_isUP)
+		{
+			_alpha += 50;
+			if (_alpha >= 255)
+				_isUP = FALSE;
+		}
+		if (!_isUP)
+		{
+			_alpha -= 50;
+			if (_alpha <= 0)
+				_isUP = TRUE;
+		}
 		_elapsedImmortalTime += TIMEMANAGER->getElapsedTime();
 		if (_elapsedImmortalTime > _maxImmortalTime)
-		{
+		{	
+			_alpha = 255;
 			_elapsedImmortalTime = 0.f;
-			_isImmortal == FALSE;
+			_isImmortal = FALSE;
 		}
 	}
 
@@ -568,13 +584,13 @@ void Player::render(void)
 
 
 	//debug
-	RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
-	RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
-	RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
-	
-	RECTMANAGER->render(L"플레이어헤드");
-	RECTMANAGER->render(L"플레이어바디");
-	RECTMANAGER->render(L"플레이어발");
+	//RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
+	//RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
+	//RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
+	//
+	//RECTMANAGER->render(L"플레이어헤드");
+	//RECTMANAGER->render(L"플레이어바디");
+	//RECTMANAGER->render(L"플레이어발");
 
 	_boneHead->render();
 	_boneBody->render();
@@ -1333,4 +1349,59 @@ void Player::itemPosUpdate(void)
 			break;
 		}
 	}
+}
+
+void Player::hitFeedback(float x)
+{
+	//x값 기준으로 플레이어 x축을 체크하여 왼쪽으로 튈지 오른쪽으로 튈지 결정
+	if (!_isImmortal)
+	{
+		if (_headItem != UNARMEDARMOR)
+		{
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_headItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_headItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+		}
+		else if (_bodyItem != UNARMEDARMOR)
+		{
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_bodyItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_bodyItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+		}
+		else if (_footItem != UNARMEDARMOR)
+		{
+			if (_x > x)//플레이어가 오른쪽
+			{
+				_x + 3;
+				_footItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+			else if (_x <= x)
+			{
+				_x - 3;
+				_footItem = UNARMEDARMOR;
+				_isImmortal = true;
+			}
+		}
+		else _isLive = false;
+	}
+	
 }

@@ -18,8 +18,15 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"나무맨")->getFileName(), 
 														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameX() + 1, 
 														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameY() + 1);
+
+	TCHAR strKey2[100];
+	_stprintf(strKey, L"나무맨어택%d", num);
+	atkSpt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"나무맨어택")->getFileName(),
+		IMAGEMANAGER->findImage(L"나무맨어택")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"나무맨어택")->getMaxFrameY() + 1);
+
 	//spt = IMAGEMANAGER->findImage(L"나무맨");
-	index = 0;
+	index = 4;
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;
@@ -29,6 +36,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+	isImmune = false;
 	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
 	amountX = 1;//X축 비율
@@ -53,12 +61,40 @@ void Ent::update(void)
 		spt->setCoord(sptrc.left, sptrc.top);
 		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
-		if (frameTime >= 0.1f)
+		if (state == eIDLE)
 		{
-			frameTime = 0;
+			if (frameTime >= 0.2f)
+			{
+				frameTime = 0;
+				frameCnt--;
 
-			frameCnt--;
-			if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
+				if (frameCnt <= 0)
+				{
+					frameCnt = spt->getMaxFrameX();
+					atkCnt++;
+					if (atkCnt >= 2)
+					{
+						atkCnt = 0;
+						frameCnt = 0;
+						state = eATK;
+					}
+				}
+			}
+		}
+		else if (state == eATK)
+		{
+			if (frameTime >= 0.2f)
+			{
+				frameTime = 0;
+				frameCnt++;
+
+				if (frameCnt >= 3) isAtk = true;
+				if (frameCnt >= atkSpt->getMaxFrameX())
+				{
+					frameCnt = spt->getMaxFrameX();
+					state = eIDLE;
+				}
+			}
 		}
 		move();
 	}
@@ -66,7 +102,6 @@ void Ent::update(void)
 }
 void Ent::render(void)
 {
-	//RECTMANAGER->render(L"나무맨렉트");
 	spt->frameRender(frameCnt, 0);
 	//RECTMANAGER->render(rcName);
 }

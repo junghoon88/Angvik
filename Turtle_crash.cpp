@@ -29,32 +29,55 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-
+	isImmune = true;
+	isUP = true;
+	alpha = 255;
+	immuneTime = 0;
 	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
 	amountX = 1;
 	amountTime = 0; //Y축 감소용 시간
 
 	rcName = rcKey;
-	rc = RectMakeCenter(x, y, 100, 60);
+	rc = RectMakeCenter(x, y, 100, 58);
 	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
-	sptrc = RectMakeCenter(x, y, 110, 70);
+	sptrc = RectMakeCenter(x, y, 110, 58);
 	probeY = rc.bottom;
 }
 void Turtle_crash::update(void)
-{
-	rc = RectMakeCenter(ptX, ptY, 100, 60);
-
+{	
+	rc = RectMakeCenter(ptX, ptY, 100, 58);
+	sptrc = RectMakeCenter(ptX, ptY, 110, 58);
 	if (life <= 0)
 	{
 		RIP();
 	}
 	else
-	{
-		sptrc = RectMakeCenter(ptX, ptY, 110, 70);
+
+	{	
+		if (isImmune) { //무적시간
+			if (isUP)
+			{
+				alpha += 50;
+				if (alpha >= 255)
+					isUP = false;
+			}
+			if (!isUP)
+			{
+				alpha -= 50;
+				if (alpha <= 0)
+					isUP = true;
+			}
+			immuneTime += TIMEMANAGER->getElapsedTime();
+			if (immuneTime >= 1.5f) {
+				alpha = 255;
+				isImmune = false;
+			}
+		}
+
 		probeY = sptrc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
-		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+	//	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (frameTime >= 0.1f)
 		{
@@ -70,7 +93,7 @@ void Turtle_crash::update(void)
 }
 void Turtle_crash::render(void)
 {
-	spt->frameRender(frameCnt, 0, 255);
+	spt->frameRender(frameCnt, 0, alpha);
 	//RECTMANAGER->render(rcName);
 }
 void Turtle_crash::move(void)
@@ -97,7 +120,7 @@ void Turtle_crash::move(void)
 
 		if ((r == 0 && g == 0 && b == 0))
 		{
-			ptY = i - 35;
+			ptY = i - 28;
 			state = eIDLE;
 			break;
 		}
@@ -116,7 +139,7 @@ void Turtle_crash::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255))
+		if ((r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
 		{
 			if (i >= ptX)
 			{

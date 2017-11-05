@@ -83,6 +83,7 @@ public:
 	void update(void);
 	void render(void);
 
+	inline void setPoint(float x, float y) { _pt.set(x, y); }
 	inline void targetPlayer(float x, float y) { targetX = x; targetY = y; }
 	inline void setPt(MYPOINT pt) { _pt = pt; }
 

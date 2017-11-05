@@ -29,6 +29,7 @@ void EnemyManager::init(void)
 	sBmr = new sBMR;
 	sBmr->init();
 	sBmr->setLinkAdressEnemyManager(this);
+//	entBeam = new Entbeam;
 }
 void EnemyManager::release(void)
 {
@@ -96,6 +97,10 @@ void EnemyManager::enemyFire(void)
 				kongTan->fire(bulletNum++, emX, emY, angle);
 				(*_viEnemy)->setAtk(false);
 			}
+			else if (type == 4)
+			{
+
+			}
 		}
 	}
 }
@@ -157,7 +162,7 @@ void EnemyManager::setEnemy1(void)
 
 
 	//////////////////////////////Äá¼¼ÆÃ
-	kong* kong1, *kong2, *kong3;
+	kong* kong1, *kong2, *kong3, *kong4;
 	kong1 = new kong;
 	kong1->init(kongNum++, 2975, 553, L"kongRc1");
 	_vEnemy.push_back(kong1);
@@ -169,6 +174,10 @@ void EnemyManager::setEnemy1(void)
 	kong3 = new kong;
 	kong3->init(kongNum++, 4895, 790, L"kongRc3");
 	_vEnemy.push_back(kong3);
+
+	//kong4 = new kong;
+	//kong4->init(kongNum++, 5869, 245, L"kongRc3");
+	//_vEnemy.push_back(kong4);
 	//////////////////////////////////
 
 

@@ -77,3 +77,28 @@ public:
 	Kongtan();
 	~Kongtan();
 };
+//==================================================³ª------¹«-------------------
+class Entbeam : public DxWindow
+{
+private:
+	vector<tagBullet> _vBullet;
+	vector<tagBullet>::iterator _viBullet;
+
+	float range;
+	int probeY;
+
+public:
+	void init(void);
+	void release(void);
+	void update(void);
+	void render(void);
+
+	void fire(int num, float ptx, float pty,int dir);
+	void move(void);
+	void remove(int arrNum);
+	vector<tagBullet> getVBullet(void) { return _vBullet; }
+	vector<tagBullet>::iterator getVIBullet(void) { return _viBullet; }
+
+	Entbeam();
+	~Entbeam();
+};
