@@ -38,7 +38,6 @@ void PlayerManager::Collision(void)
 			
 
 		}
-	
 		RECT temp;
 		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect()) && _player->getIsJump()) {    //플레이어가 적밟음
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1

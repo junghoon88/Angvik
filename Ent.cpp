@@ -49,7 +49,6 @@ void Ent::update(void)
 	}
 	else
 	{
-
 		probeY = rc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
 		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
