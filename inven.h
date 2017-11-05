@@ -8,11 +8,13 @@ class invenBird;
 class inven : public DxWindow
 {
 private:
-	typedef vector<Item*> vItems;
-	typedef vector<Item*>::iterator viItems;
+	typedef vector<Item*> vInven;
+	typedef vector<Item*>::iterator vInvenIter;
 
-	vItems _vItems;
-	viItems _viItems;
+private:
+	vInven _vInvenItems;
+	vInven _vInvenOils;
+	vInven _vInvenEggs;
 
 	itemManager* _im;
 	invenBird* _ib;
@@ -21,7 +23,6 @@ private:
 
 	int _selectNum;
 	int _frameX;
-	int _goldOils, _blackOils, _whiteOils;
 	int _inventoryMax;
 	int _inventoryNum;
 
@@ -45,7 +46,8 @@ public:
 	void render(void);
 	bool close(void) { return false; }
 
-	void itemUpdate(void);
+	//void itemUpdate(void);
+	bool insertInven(int num);
 
 	void menewBoxUpdate(float x, float y);
 	void itemBoxUpdate(float x, float y);

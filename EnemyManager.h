@@ -37,6 +37,7 @@ private:
 
 	int bulletNum;
 
+
 private:
 	PlayerManager* _pm;
 	stageManager* _sm;

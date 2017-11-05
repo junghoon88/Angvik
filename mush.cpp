@@ -93,11 +93,8 @@ void mush::update(void) {
 			{
 				atkFrameTime = 0;
 				atkFrameCnt++;
-				if (atkFrameCnt >= 6) {
-					isAtk = true;
-					atkFrameCnt = 0;
-					state = eIDLE;
-				}
+				if (atkFrameCnt >= 6)  atkFrameCnt = 0;
+				
 			}
 
 		}
@@ -119,7 +116,7 @@ void mush::update(void) {
 			if (atkCnt >= 1.0f)
 			{
 				atkCnt = 0;
-				state = eATK;
+				isAtk = true;
 			}
 		}
 		move();
@@ -141,7 +138,9 @@ void mush::render(void) {
 		case eFALL:
 			jmpspt->frameRender(jumpFrameCnt, 0);
 			break;
-		default: break;
+		default:
+			spt->frameRender(frameCnt, 0); 
+			break;
 	}
 	
 	RECTMANAGER->render(rcName);
@@ -202,8 +201,7 @@ void mush::move(void) {
 		else if ((r == 0 && g == 0 && b == 0)&& (state!=eJUMP||gravity>=5))
 		{
 			ptY = i - 15;
-			if (state != eATK)
-				state = eIDLE;
+			state = eIDLE;
 			break;
 		}
 		else if(state!=eJUMP)
