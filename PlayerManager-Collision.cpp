@@ -24,7 +24,6 @@ void PlayerManager::Collision(void)
 			_player->getRectBody()))
 		{
 			_em->getSbmr()->remove(i);
-
 			//아이템에 신호 넘겨줘야함
 
 			break;

@@ -27,6 +27,7 @@ protected:
 	float speed;
 	float jumpPower;
 	float gravity;
+	//float amountY;
 	int life;
 
 	int probeY;
@@ -47,6 +48,7 @@ public:
 	void release(void);
 	virtual void update(void);
 	virtual void render(void);
+	//virtual void RIP(void);
 
 	virtual void move(void);
 	virtual bool attack(void);

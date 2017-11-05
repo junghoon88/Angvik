@@ -58,6 +58,7 @@ private:
 	vector<tagBullet>::iterator _viBullet;
 
 	float range;
+	int probeY;
 
 public:
 	void init(void);
