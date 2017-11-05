@@ -43,7 +43,7 @@ void kong::init(int num, float x, float y, wstring rcKey)
 	atkSpt->setCoord(sptrc.left, rc.bottom - 40);
 	spt->setScaleOffset(32, 0); //조정해야함
 	atkSpt->setScaleOffset(34, 0); //조정해야함
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 26, rcHeight });
+	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 26, rcHeight });
 	isAtk = false;
 }
 void kong::update(void)
@@ -55,7 +55,7 @@ void kong::update(void)
 	}
 	else
 	{
-		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
 		if (playerX < ptX)
 		{
@@ -120,8 +120,10 @@ void kong::render(void)
 		break;
 	case eATK:atkSpt->frameRender(frameCnt, 0);
 		break;
+	default:spt->frameRender(frameCnt, 0);
+		break;
 	}
 
-	RECTMANAGER->render(rcName);
+	//RECTMANAGER->render(rcName);
 	
 }

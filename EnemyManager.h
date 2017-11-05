@@ -4,6 +4,7 @@
 #include "monkkey.h"
 #include "Ent.h"
 #include "Turtle.h"
+#include "Turtle_crash.h"
 #include "mush.h"
 #include "kong.h"
 #include "Bullet.h"
@@ -33,9 +34,11 @@ private:
 	int entNum;
 	int turtleNum;
 	int turtlecNum;
+
 	int kongNum;
 
 	int bulletNum;
+
 
 private:
 	PlayerManager* _pm;

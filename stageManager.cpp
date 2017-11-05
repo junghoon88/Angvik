@@ -62,9 +62,11 @@ void stageManager::init(void)
 
 		PBGMANAGER->addRect(i, _treeTrap[i].rc, RGB(0, 0, 0));
 		PBGMANAGER->setRectColor(L"Stage1-PBG", _treeTrap[i].num, RGB(0, 0, 0));
-
 	}
 
+	_rcHidden[0] = RectMake(5308, 880, 93, 150);
+	_rcHidden[1] = RectMake(5401, 679, 594, 351);
+	_hiddenShow = false;
 }
 
 void stageManager::release(void)
@@ -81,15 +83,17 @@ void stageManager::update(void)
 		return;
 
 	frameUpdate();
-	PBGUpdate();
-
+	hiddenCheck();
 }
 
 void stageManager::render(void)
 {
 	IMAGEMANAGER->findImage(L"Stage1-BG2")->render();
 	_imgBackground->render();
-	IMAGEMANAGER->findImage(L"Stage1-Hidden")->render();
+	
+	//히든지역을 안보여줄때 위에 히든이미지를 그린다.(헷갈림주의)
+	if(!_hiddenShow)
+		IMAGEMANAGER->findImage(L"Stage1-Hidden")->render();
 
 	for (int i = 0; i < TREETRAP_MAX; i++)
 	{
@@ -152,7 +156,20 @@ void stageManager::frameUpdate(void)
 	}
 }
 
-void stageManager::PBGUpdate(void)
+void stageManager::hiddenCheck(void)
 {
-	
+	POINT pt;
+	pt.x = _pm->getPlayer()->getX();
+	pt.y = _pm->getPlayer()->getY();
+
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (PtInRect(&_rcHidden[i], pt))
+		{
+			_hiddenShow = true;
+			return;
+		}
+	}
+	_hiddenShow = false;
 }

@@ -16,7 +16,6 @@ private:
 
 private:
 	vItems _vItems;
-	viItems _viItems;
 
 	int itemNum;
 
