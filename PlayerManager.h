@@ -43,7 +43,7 @@ public:
 	void render(void);
 
 
-
+	void playerItemCollision(void);
 
 	//getter, setter
 	inline void setLinkAdressEnemyManager(EnemyManager*   em) { _em = em; }
