@@ -66,7 +66,7 @@ void PlayerManager::Collision(void)
 
 		RECT temp;
 
-		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect()) && _player->getIsJump())	  //플레이어가 적밟음
+		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect())&&!_em->getvEnemy()[i]->getImmune() && _player->getIsJump())	  //플레이어가 적밟음
 		{
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
 
@@ -84,7 +84,7 @@ void PlayerManager::Collision(void)
 			{
 				if (_im->getVItem()[j]->getState() == ITEM_STATE_ATTACK)
 				{
-					if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()))
+					if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()) && !_em->getvEnemy()[i]->getImmune())
 					{    //플레이어가 무기씀
 						_im->getVItem()[j]->setdurability(_im->getVItem()[j]->getdurability() - 1);
 						_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
@@ -101,8 +101,7 @@ void PlayerManager::Collision(void)
 						}
 						if (_em->getvEnemy()[i]->getLife() <= 0)
 						{
-							_im->setItem(_em->getvEnemy()[i]->getX(), _em->getvEnemy()[i]->getY() - 30);
-							_em->deleteEnemy(i);
+							_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);
 							break;
 						}
 					}
