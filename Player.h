@@ -153,6 +153,8 @@ private:
 	bool _isJumpAttack;		//	점프공격중인지
 	bool _isHit;			//	피격상태인지
 	bool _isImmortal;		//	무적상태인지
+	bool _isUP;
+
 
 	float _handX, _handY;
 	float _armLen0, _armLen1, _armLen2;

@@ -76,7 +76,10 @@ void Player::init(void)
 	_isInven = FALSE;
 	_isJumpAttack = FALSE;
 	_isHit = FALSE;
+
+	_isUP = TRUE;
 	_isImmortal = FALSE;
+
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -320,9 +323,22 @@ void Player::update(void)
 	//무적시간
 	if (_isImmortal == TRUE)
 	{
+		if (_isUP)
+		{
+			_alpha += 50;
+			if (_alpha >= 255)
+				_isUP = FALSE;
+		}
+		if (!_isUP)
+		{
+			_alpha -= 50;
+			if (_alpha <= 0)
+				_isUP = TRUE;
+		}
 		_elapsedImmortalTime += TIMEMANAGER->getElapsedTime();
 		if (_elapsedImmortalTime > _maxImmortalTime)
-		{
+		{	
+			_alpha = 255;
 			_elapsedImmortalTime = 0.f;
 			_isImmortal = FALSE;
 		}
