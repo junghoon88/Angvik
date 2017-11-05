@@ -96,6 +96,11 @@ void Player::release(void)
 void Player::update(void)
 {
 	if (_isInven == FALSE) keyInputSettings();		//	KEY INPUT: 인벤토리가 활성화 되면, 캐릭터에 대한 Key Input을 방지함
+	else
+	{
+		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
+		else _bodyState = PLAYER_LEFT_STOP;
+	}
 
 	if (_isRight == TRUE)
 	{
@@ -779,9 +784,9 @@ void Player::keyInputSettings(void)
 		}
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))	//	INVENTORY
+	if (KEYMANAGER->isToggleKey(VK_SPACE))	//	INVENTORY
 	{
-
+		
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('W'))			//	BIRD BOMB
