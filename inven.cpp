@@ -82,6 +82,13 @@ void inven::render(void)
 	}
 	else if (_isItem)
 	{
+		for (int i = 0; i < _vItems.size(); i++)
+		{
+			if (_vItems[i]->getType() != ITEM_TYPE_OIL || _vItems[i]->getType() != ITEM_TYPE_OIL)
+			{
+				_vItems[i]->render();
+			}
+		}
 		IMAGEMANAGER->findImage(L"back")->render();
 	}
 	else if (_isOils)
@@ -200,6 +207,9 @@ void inven::itemBoxUpdate(float x, float y)
 	{
 		if (_vItems[i]->getType() != ITEM_TYPE_OIL || _vItems[i]->getType() != ITEM_TYPE_OIL)
 		{
+			Sprite* image = _vItems[i]->getImage();
+			image->setCoord(_selectPoint[_inventoryNum]);
+
 			_inventoryNum++;
 			if (_inventoryNum >= _inventoryMax)
 			{
