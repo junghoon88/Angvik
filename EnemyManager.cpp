@@ -47,7 +47,6 @@ void EnemyManager::update(void)
 
 	}
 
-
 	enemyFire();
 	kongTan->update();
 	sBmr->update();
@@ -118,7 +117,7 @@ void EnemyManager::setEnemy1(void)
 	/////////////////////////////////////
 	mush* mush1;
 	mush1 = new mush;
-	mush1->init(mushNum++, 1000, 50, L"mushRc1");
+	mush1->init(mushNum++, 3790, 200, L"mushRc1");
 	_vEnemy.push_back(mush1);
 
 
@@ -138,7 +137,7 @@ void EnemyManager::setEnemy1(void)
 
 
 	//////////////////////////////Äá¼¼ÆÃ
-	kong* kong1,*kong2;
+	kong* kong1, *kong2, *kong3;
 	kong1 = new kong;
 	kong1->init(kongNum++, 2975, 553, L"kongRc1");
 	_vEnemy.push_back(kong1);
@@ -146,6 +145,10 @@ void EnemyManager::setEnemy1(void)
 	kong2 = new kong;
 	kong2->init(kongNum++, 1995, 327, L"kongRc2");
 	_vEnemy.push_back(kong2);
+
+	kong3 = new kong;
+	kong3->init(kongNum++, 4895, 790, L"kongRc3");
+	_vEnemy.push_back(kong3);
 	//////////////////////////////////
 
 

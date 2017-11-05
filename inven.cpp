@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "inven.h"
 #include "itemManager.h"
+#include "invenBird.h"
 
 inven::inven()
+	: _im(NULL), _ib(NULL)
 {
 }
 
@@ -17,12 +19,17 @@ void inven::init(void)
 	_isItem = false;
 	_isOils = false;
 	_isInven = false;
+	_isCompose = false;
+	_isEquip = false;
 
 	_goldOils = _blackOils = _whiteOils = 0;
 
 	_timeCount = 0;
 	_selectNum = 0;
 	_frameX = 0;
+
+	_inventoryMax = 4;
+	_inventoryNum = 0;
 }
 
 void inven::release(void)
@@ -57,14 +64,16 @@ void inven::update(float x, float y)
 	menewBoxUpdate(x, y);
 	itemBoxUpdate(x, y);
 	oilsBoxUpdate(x, y);
+	equipBoxUpdate(x, y);
+	composeBoxUpdate(x, y);
 }
 
 void inven::render(void)
 {
-	if (_isMenew)	IMAGEMANAGER->findImage(L"inventory")->render(200);
+	if (_isMenew || _isEquip)	IMAGEMANAGER->findImage(L"inventory")->render(200);
 	if (_isItem)	IMAGEMANAGER->findImage(L"itemBox")->render(200);
 	if (_isOils)	IMAGEMANAGER->findImage(L"oilsBox")->render(200);
-	if (_isMenew || _isItem || _isOils) IMAGEMANAGER->findImage(L"아이템선택")->frameRender(_frameX, 0, 255);
+	if (_isInven)	IMAGEMANAGER->findImage(L"아이템선택")->frameRender(_frameX, 0, 255);
 	if (_isMenew)
 	{
 		IMAGEMANAGER->findImage(L"item")->render();
@@ -84,18 +93,24 @@ void inven::render(void)
 			{
 				if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
 				{
-					_whiteOils++;
+					_vItems[i]->render();
 				}
 				if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
 				{
-					_whiteOils++;
+					_vItems[i]->render();
 				}
 				if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
 				{
-					_whiteOils++;
+					_vItems[i]->render();
 				}
 			}
 		}
+	}
+	else if (_isEquip)
+	{
+		IMAGEMANAGER->findImage(L"equip")->render();
+		IMAGEMANAGER->findImage(L"drop")->render();
+		IMAGEMANAGER->findImage(L"back")->render();
 	}
 }
 
@@ -111,7 +126,10 @@ void inven::itemUpdate(void)
 			{
 				if (_vItems[j]->getNum() == item[i]->getNum()) break;
 				
-				if (j == _vItems.size() - 1)	_vItems.push_back(item[i]);
+				if (j == _vItems.size() - 1)
+				{
+					_vItems.push_back(item[i]);
+				}
 			}
 		}
 	}
@@ -171,10 +189,32 @@ void inven::menewBoxUpdate(float x, float y)
 
 void inven::itemBoxUpdate(float x, float y)
 {
+	_inventoryNum = 0;
+
 	//상시 아이템박스 위치 업데이트
 	IMAGEMANAGER->findImage(L"itemBox")->setCoord({ x + 40,  y - IMAGEMANAGER->findImage(L"itemBox")->getRealSize().y - 20 });
 	if (IMAGEMANAGER->findImage(L"itemBox")->getCoord().y < 0) IMAGEMANAGER->findImage(L"itemBox")->setCoord({ IMAGEMANAGER->findImage(L"itemBox")->getCoord().x, 0 });
 	IMAGEMANAGER->findImage(L"back")->setCoord({ IMAGEMANAGER->findImage(L"itemBox")->getCoord().x + 40, IMAGEMANAGER->findImage(L"itemBox")->getCoord().y + 215 });
+	
+	for (int i = 0; i < _vItems.size(); i++)
+	{
+		if (_vItems[i]->getType() != ITEM_TYPE_OIL || _vItems[i]->getType() != ITEM_TYPE_OIL)
+		{
+			_inventoryNum++;
+			if (_inventoryNum >= _inventoryMax)
+			{
+				for (int j = 0; j < _im->getVItem().size(); j++)
+				{
+					if (_vItems[i]->getNum() == _im->getVItem()[j]->getNum())
+					{
+						_im->getVItem()[j]->setState(ITEM_STATE_IDLE);
+						Sprite* img = _im->getVItem()[j]->getImage();
+						img->setCoord(_ib->getBirdCoord());						
+					}
+				}
+			}
+		}
+	}
 
 	if (_isItem)
 	{
@@ -197,6 +237,13 @@ void inven::itemBoxUpdate(float x, float y)
 		if (_selectNum > 4) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 4;
 
+		if ((_selectNum >= 0 && _selectNum < 4) && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		{
+			_selectNum = 0;
+			_isItem = false;
+			_isEquip = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+		}
 		if ((_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
 			_selectNum = 0;
@@ -251,31 +298,70 @@ void inven::oilsBoxUpdate(float x, float y)
 				if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
 				{
 					_whiteOils++;
+					Sprite* img = _vItems[i]->getImage();
+					img->setCoord({ IMAGEMANAGER->findImage(L"oilsbox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsbox")->getCoord().y + 45 });
 				}
 				if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
 				{
-					_whiteOils++;
+					_blackOils++;
+					Sprite* img = _vItems[i]->getImage();
+					img->setCoord({ IMAGEMANAGER->findImage(L"oilsbox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsbox")->getCoord().y + 90 });
 				}	
 				if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
 				{
-					_whiteOils++;
+					_goldOils++;
+					Sprite* img = _vItems[i]->getImage();
+					img->setCoord({ IMAGEMANAGER->findImage(L"oilsbox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsbox")->getCoord().y + 135 });
 				}
 			}
 		}
+	}
+}
 
-		TCHAR text[128];
+void inven::equipBoxUpdate(float x, float y)
+{
+	//상시 인벤 위치 업데이트
+	IMAGEMANAGER->findImage(L"equip")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 45 });
+	IMAGEMANAGER->findImage(L"drop")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 90 });
+	IMAGEMANAGER->findImage(L"back")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 132 });
 
-		for (int i = 0; i < _goldOils; i++)
+	if (_isEquip)
+	{
+		_selectPoint[0] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 35 };
+		_selectPoint[1] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 80 };
+		_selectPoint[2] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 122 };
+
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
 		{
-			IMAGEMANAGER->findImage(L"골드오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 40 });
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum++;
 		}
-		for (int i = 0; i < _blackOils; i++)
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP))
 		{
-			IMAGEMANAGER->findImage(L"블랙오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 85 });
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum--;
 		}
-		for (int i = 0; i < _whiteOils; i++)
+		if (_selectNum > 2) _selectNum = 0;
+		if (_selectNum < 0) _selectNum = 2;
+
+		if (_selectNum == 0 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
-			IMAGEMANAGER->findImage(L"흰색오일")->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + 20,  IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 130 });
+			
+		}
+		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		{
+		
+		}
+		if ((_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
+		{
+			_selectNum = 0;
+			_isEquip = false;
+			_isItem = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 	}
+}
+
+void inven::composeBoxUpdate(float x, float y)
+{
 }
