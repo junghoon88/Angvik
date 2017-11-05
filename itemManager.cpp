@@ -56,7 +56,8 @@ void itemManager::update(void)
 					switch (_vItems[i]->getType())
 					{
 					case ITEM_TYPE_HEAD:
-						_vItems[i]->targetPlayer(x, y - 30);
+							if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 7, y - 14);
+							else _vItems[i]->targetPlayer(x + 2, y - 28);
 						break;
 					case ITEM_TYPE_SWORD:
 						_vItems[i]->targetPlayer(hx, hy);
@@ -76,7 +77,8 @@ void itemManager::update(void)
 					switch (_vItems[i]->getType())
 					{
 					case ITEM_TYPE_HEAD:
-						_vItems[i]->targetPlayer(x+30, y - 30);
+						if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 23, y - 14);
+						else _vItems[i]->targetPlayer(x + 28, y - 28);
 						break;
 					case ITEM_TYPE_SWORD:
 						_vItems[i]->targetPlayer(hx-50, hy);

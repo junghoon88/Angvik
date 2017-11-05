@@ -34,19 +34,20 @@ void PlayerManager::Collision(void)
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 몬스터충돌처리
 	{	
 		RECT temp2;
+<<<<<<< HEAD
 		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && !_player->getIsJump()) {     //플레이어 피해받음
 	
+=======
+		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) {     //플레이어 피해받음
+			
+>>>>>>> d6290db2400c0d17fe3f0b066faf826cc3612453
 
 		}
 		RECT temp;
 		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect()) && _player->getIsJump()) {    //플레이어가 적밟음
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
-
-			if (_em->getvEnemy()[i]->getLife() <= 0) {
-				_im->setItem(_em->getvEnemy()[i]->getX(), _em->getvEnemy()[i]->getY()-30);
-				_em->deleteEnemy(i);
-				break;
-			}
+	
+			
 		}
 	}
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 무기 몬스터
@@ -59,6 +60,7 @@ void PlayerManager::Collision(void)
 				if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()))
 				{    //플레이어가 무기씀
 					_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
+<<<<<<< HEAD
 					if (_im->getVItem()[j]->getType() == ITEM_TYPE_LANCE) _im->getVItem()[j]->setState(ITEM_STATE_IDLE);
 					if (_em->getvEnemy()[i]->getLife() <= 0)
 					{
@@ -66,6 +68,10 @@ void PlayerManager::Collision(void)
 						_em->deleteEnemy(i);
 						break;
 					}
+=======
+
+				
+>>>>>>> d6290db2400c0d17fe3f0b066faf826cc3612453
 				}
 			}
 			
