@@ -18,7 +18,7 @@ itemManager::~itemManager()
 void itemManager::init(void)
 {
 	_x = 350;
-	_y = 200;
+	_y = 350;
 	i = j = 0;
 
 	itemNum = 0;

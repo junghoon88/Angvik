@@ -73,7 +73,7 @@ void PlayerManager::playerItemCollision(void)
 			{
 			case ITEM_TYPE_SWORD:
 
-				item[i]->setState(ITEM_STATE_INPLAYER);
+				//item[i]->setState(ITEM_STATE_INPLAYER);
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
 					//switch (item[i]->getKind())
@@ -94,7 +94,7 @@ void PlayerManager::playerItemCollision(void)
 					//}
 					//item[i]->setState(ITEM_STATE_INPLAYER);
 
-
+					item[i]->setState(ITEM_STATE_INPLAYER);
 					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
 						switch (item[i]->getKind())
