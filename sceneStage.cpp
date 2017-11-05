@@ -38,8 +38,6 @@ void sceneStage::init(void)
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
 
-
-	_em->setEnemy1();
 }
 
 void sceneStage::release(void)
@@ -60,7 +58,7 @@ void sceneStage::update(void)
 void sceneStage::render(void)
 {
 	_sm->render();
-	_im->render();
 	_em->render();
 	_pm->render();
+	_im->render();
 }
