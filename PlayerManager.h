@@ -42,7 +42,7 @@ public:
 	void update(void);
 	void render(void);
 
-
+	void Collision(void);
 
 
 	//getter, setter

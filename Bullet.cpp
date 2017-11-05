@@ -17,8 +17,6 @@ void sBMR::update(void)//Çì´õ¿¡ ÁÖ¼®ÀÖÀ½. ºÎ¸Þ¶û µ¹¾Æ¿Ã¶§ ¸Ó½¬·ëÂÊÀ¸·Î °¡¾ßÇØ¼­ 
 {
 	move();
 
-	
-
 }
 void sBMR::render(void)
 {
@@ -32,15 +30,6 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 	tagBullet bullet;
 	ZeroMemory(&bullet, sizeof(tagBullet));
 	TCHAR strKey[100];
-
-	_stprintf(strKey, L"ÄáÅº%d", num);
-	bullet.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"ÄáÅº")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
-		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameX() + 1,
-		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameY() + 1);
-
-	bullet.angle = ang;
-	bullet.speed = 2.3;// ºÎ¸Þ¶û ¼Óµµ
-	backPower = 0.15;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
 
 	_stprintf(strKey, L"¹ö¼¸ºÎ¸Þ¶û%d", num);
 	bullet.spt = IMAGEMANAGER->addImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸ºÎ¸Þ¶û")->getFileName());

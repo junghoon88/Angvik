@@ -17,7 +17,6 @@ void PlayerManager::init(void)
 {
 	_player = new Player;
 	_player->init();
-
 	_bird = new invenBird;
 	_bird->init(_player->getX(), _player->getY());
 
@@ -270,7 +269,7 @@ void PlayerManager::update(void)
 	//	}
 	//}
 
-
+Collision();
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 	_inven->update(_player->getX(), _player->getY());

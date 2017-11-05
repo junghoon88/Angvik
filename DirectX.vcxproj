@@ -171,6 +171,7 @@
     <ClCompile Include="PBGManager.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerManager-Collision.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />

@@ -47,7 +47,7 @@ void EnemyManager::update(void)
 	}
 	enemyFire();
 	kongTan->update();
-	//sBmr->update();
+	sBmr->update();
 }
 void EnemyManager::enemyFire(void)
 {
@@ -93,6 +93,7 @@ void EnemyManager::setEnemy1(void)
 	Turtle* turtle1;
 	mush* mush1;
 
+	
 
 	monkey2 = new monkkey;
 	monkey2->init(monkkeyNum++, 200, 100,L"monkkeyRc2");
