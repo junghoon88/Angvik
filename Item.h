@@ -65,9 +65,15 @@ private:
 	
 	float targetX;
 	float targetY;
-
+	float movingX;
+	float movingY;
 	bool isAttack;
 	bool isPlayerRIGHT;
+	bool itemMoveFirst;
+
+	bool firstAttack;
+	int firstDirection; //1: 오른쪽, -1:왼쪽
+
 public:
 	Item();
 	~Item();

@@ -14,12 +14,19 @@ void Item::init(void)
 {
 	_img = NULL;
 	
-	//_rcImg = RectMake(_pt.x, _pt.y, _img->getRealSize().x, _img->getRealSize().y);
+	
 	itemCollision = new pixelCollision;
 	itemCollision->init();
 
 	targetX = 0.0f;
 	targetY = 0.0f;
+
+	movingX = 0;
+	movingY = 0;
+
+
+	firstAttack = true;
+	firstDirection = 1;
 }
 
 void Item::release(void)
@@ -29,168 +36,197 @@ void Item::release(void)
 
 void Item::update(void)
 {
-
 	//////////////////¾ÆÀÌÅÛ ÁöÇü ÇÈ¼¿Ãæµ¹///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
 
-		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y) == false)
-
+		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight()))
 		{
-			_pt.y += 5;
+//			_pt.y -= 2;
 		}
-		_rcImg = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
-		_rcHit = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+		else
+		{
+			_pt.y += 4;
+		}
+
+		if (isPlayerRIGHT)
+		{
+			_rcImg = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+			_rcHit = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+		}
+		else
+		{
+			_rcImg = RectMake(_pt.x - _img->getTexture()->getFrameWidth(), _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+			_rcHit = RectMake(_pt.x - _img->getTexture()->getFrameWidth(), _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+		}
 	}
-	
+
 	if (_state == ITEM_STATE_INPLAYER)
 	{
-
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
-			{
-				_img->setCenterPer(0, 0);
-				if (isPlayerRIGHT)	_img->setRotate(80.0f);
-				else _img->setRotate(100.0f);
-			}
-			if (_type == ITEM_TYPE_HEAD)
-			{
-				if (isPlayerRIGHT) _img->setScale(1, 1);
-				else _img->setScale(-1, 1);
-			}
+		{
+			_img->setCenterPer(0, 0);
+			if (isPlayerRIGHT)	_img->setRotate(80.0f);
+			else _img->setRotate(100.0f);
+		}
+		if (_type == ITEM_TYPE_HEAD)
+		{
+			if (isPlayerRIGHT) _img->setScale(1, 1);
+			else _img->setScale(-1, 1);
+		}
 
-		
+
 		if (isAttack)
 		{
 			switch (_type)
-
+			{
+			case  ITEM_TYPE_SWORD:
+			{
+				if (isPlayerRIGHT)
 				{
-				case  ITEM_TYPE_SWORD:
-				{
-					if (isPlayerRIGHT)
-					{
-						_img->setRotate(120.0f);
-						_img->setCenterPer(0, 0);
-						_img->setCoord(targetX, targetY);
-					}
-					else
-					{
-						_img->setRotate(80.0f);
-						_img->setCenterPer(0, 1);
-						_img->setCoord(targetX, targetY);
-						
-					}
-					_state = ITEM_STATE_ATTACK;
-				}
-				break;
-				case  ITEM_TYPE_LANCE:
-					if (isPlayerRIGHT)
-					{
-						_img->setCoord(targetX, targetY);
-						_img->setRotate(0.0f);
-					}
-					else
-					{
-						_img->setCoord(targetX, targetY);
-						_img->setRotate(180.0f);
-					}
-					_state = ITEM_STATE_ATTACK;
-					break;
-				case  ITEM_TYPE_STAFF:
-					if (isPlayerRIGHT)
-					{
-						_img->setCoord(targetX, targetY);
-						_img->setRotate(100.0f);
-						_img->setCenterPer(0, 0);
-					}
-					else
-					{
-						_img->setCoord(targetX, targetY);
-						_img->setCenterPer(0, 1);
-						_img->setRotate(80.0f);
-					}
-					_state = ITEM_STATE_ATTACK;
-					break;
-				case  ITEM_TYPE_BOOMERANG:
+					_img->setRotate(120.0f);
+					_img->setCenterPer(0, 0);
 					_img->setCoord(targetX, targetY);
-					_img->setRotate(0.0f);
-					_state = ITEM_STATE_ATTACK;
-
-					break;
 				}
+				else
+				{
+					_img->setRotate(80.0f);
+					_img->setCenterPer(0, 1);
+					_img->setCoord(targetX, targetY);
+
+				}
+				_state = ITEM_STATE_ATTACK;
 			}
+			break;
+			case  ITEM_TYPE_LANCE:
+				if (isPlayerRIGHT)
+				{
+					_img->setCoord(targetX, targetY);
+					//_img->setScale(1, 1);
+					_img->setRotate(0.0f);
+				}
+				else
+				{
+					_img->setCoord(targetX, targetY);
+					//_img->setScale(-1, 1);
+					//_img->setScaleOffset(_img->getTexture()->getFrameWidth(), 0);
+					//_img->setRotate(0.0f);
+					_img->setRotate(180.0f);
+				}
+				_state = ITEM_STATE_ATTACK;
+				break;
+			case  ITEM_TYPE_STAFF:
+				if (isPlayerRIGHT)
+				{
+					_img->setCoord(targetX, targetY);
+					_img->setRotate(100.0f);
+					_img->setCenterPer(0, 0);
+				}
+				else
+				{
+					_img->setCoord(targetX, targetY);
+					_img->setCenterPer(0, 1);
+					_img->setRotate(80.0f);
+				}
+				_state = ITEM_STATE_ATTACK;
+				break;
+			case  ITEM_TYPE_BOOMERANG:
+				_img->setCoord(targetX, targetY);
+				_img->setRotate(0.0f);
+				_state = ITEM_STATE_ATTACK;
+
+				break;
+			}
+		}
 	}
-	
-	
+
+
 	if (_state == ITEM_STATE_ATTACK)
 	{
 		switch (_type)
 		{
 		case  ITEM_TYPE_SWORD:
-			{	
-			switch (_kind)	
-				{
-				case ITEM_KIND_WHITE:
-					_img->setCoord(targetX, targetY);
-					_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
-					
-				break;
-				case ITEM_KIND_BLACK:
-					_img->setCoord(targetX, targetY);
-					_rcHit = RectMake(targetX, targetY,  IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
-				break;
-				case ITEM_KIND_GOLD : 
-					_img->setCoord(targetX, targetY);
-					_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
-				break;
-				}
-				
-				if (isPlayerRIGHT)
-				{
-					_img->setRotate(_img->getAngle() - 7.0f);
-					if (_img->getAngle() <= 0.0f)
-					{
-						_state = ITEM_STATE_INPLAYER;
-						
-					}
-				}
-				else
-				{
-					_img->setRotate(_img->getAngle() + 7.0f);
-					if (_img->getAngle() >= 180.0f)
-					{
-						_state = ITEM_STATE_INPLAYER;
-						
-					}
-				}
-			}
-			break;
-		case  ITEM_TYPE_LANCE:
+		{
 			switch (_kind)
 			{
 			case ITEM_KIND_WHITE:
 				_img->setCoord(targetX, targetY);
-				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
+
 				break;
 			case ITEM_KIND_BLACK:
 				_img->setCoord(targetX, targetY);
-				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
 				break;
 			case ITEM_KIND_GOLD:
 				_img->setCoord(targetX, targetY);
-				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
 				break;
 			}
+
 			if (isPlayerRIGHT)
 			{
-				targetX += 10;
-				_pt.x += 10;
+				_img->setRotate(_img->getAngle() - 7.0f);
+				if (_img->getAngle() <= 0.0f)
+				{
+					_state = ITEM_STATE_INPLAYER;
+
+				}
 			}
 			else
 			{
-				targetX -= 10;
-				_pt.x -= 10;
+				_img->setRotate(_img->getAngle() + 7.0f);
+				if (_img->getAngle() >= 180.0f)
+				{
+					_state = ITEM_STATE_INPLAYER;
+
+				}
 			}
-				
+		}
+		break;
+		case ITEM_TYPE_LANCE:
+			switch (_kind)
+			{
+			case ITEM_KIND_WHITE:
+				_img->setCoord(targetX, targetY);
+				_rcHit = RectMake(targetX, targetY - 20, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
+				break;
+			case ITEM_KIND_BLACK:
+				_img->setCoord(targetX, targetY);
+				_rcHit = RectMake(targetX, targetY - 20, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
+				break;
+			case ITEM_KIND_GOLD:
+				_img->setCoord(targetX, targetY);
+				_rcHit = RectMake(targetX, targetY - 20, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
+				break;
+			}
+
+			if (firstAttack)
+			{
+				if (isPlayerRIGHT)
+				{
+					firstDirection = 1;
+				}
+				else
+				{
+					firstDirection = -1;
+				}
+				firstAttack = false;
+			}
+
+			if (itemCollision->getPixelWall(&targetX, &targetY, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight(), firstDirection))
+			{
+				_state = ITEM_STATE_IDLE;
+				targetX -= 10 * firstDirection;
+
+				_pt.x = targetX;
+				_pt.y = targetY;
+			}
+			else
+			{
+				targetX += 10 * firstDirection;
+				//_pt.x += 10 * firstDirection;
+			}
 			break;
 		case  ITEM_TYPE_STAFF:
 			switch (_kind)
@@ -225,7 +261,7 @@ void Item::update(void)
 					_state = ITEM_STATE_INPLAYER;
 				}
 			}
-			
+
 			break;
 		case  ITEM_TYPE_BOOMERANG:
 			switch (_kind)
@@ -244,37 +280,50 @@ void Item::update(void)
 				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			}
-				
-				
-				_img->setCenterPer(0.5,0.5);
 
-				_img->setRotate(_img->getAngle() - 15.0f);
-				if (isPlayerRIGHT)
+
+			_img->setCenterPer(0.5, 0.5);
+
+			_img->setRotate(_img->getAngle() - 15.0f);
+			if (isPlayerRIGHT)
+			{
+				if (itemCollision->getPixelWall(&_pt.x, &_pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight(), isPlayerRIGHT) == true)
 				{
-					targetX += 10;
-
-					_pt.x += 10;
+					_state = ITEM_STATE_INPLAYER;
 				}
-				else
+				targetX += 10;
+				_pt.x += 10;
+
+			}
+			else
+			{
+				if (itemCollision->getPixelWall(&_pt.x, &_pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight(), isPlayerRIGHT) == false)
 				{
-					targetX -= 10;
-
-					_pt.x -= 10;
+					_state = ITEM_STATE_INPLAYER;
 				}
-			
+				targetX -= 10;
+
+				_pt.x -= 10;
+			}
+
 			break;
 		}
+
+		firstAttack = false;
 	}
+	else
+	{
+		firstAttack = true;
+	}
+
 	if (_state == ITEM_STATE_IDLE)
 	{
 		_img->setCoord(_pt.x, _pt.y);
-		
-		
 	}
-	else if (_state == ITEM_STATE_INPLAYER || _state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
-
-	
-
+	else if (_state == ITEM_STATE_INPLAYER || _state == ITEM_STATE_ATTACK)
+	{
+		_img->setCoord(targetX, targetY);
+	}
 }
 
 void Item::render(void)	
@@ -309,7 +358,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -317,7 +366,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -325,7 +374,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		break;
 	case ITEM_TYPE_LANCE:		//¹«±â-Ã¢
@@ -335,7 +384,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -343,7 +392,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -351,7 +400,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		break;
 	case ITEM_TYPE_BOOMERANG:	//¹«±â-ºÎ¸Þ¶û
@@ -361,7 +410,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -369,7 +418,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 3;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -377,7 +426,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
-			_durabilityMax = _durability = 4;
+			_durabilityMax = _durability = 3;
 		}
 		break;
 	case ITEM_TYPE_STAFF:		//¹«±â-ÁöÆÎÀÌ
@@ -387,7 +436,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 4;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -395,7 +444,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 4;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -403,7 +452,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
-			_durabilityMax = _durability = 6;
+			_durabilityMax = _durability = 4;
 		}
 		break;
 	case ITEM_TYPE_HEAD:			//¹æ¾î±¸-¸Ó¸®
@@ -413,6 +462,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¹éÅõ")->getRealSize().x, IMAGEMANAGER->findImage(L"¹éÅõ")->getRealSize().y);
+
 			_durabilityMax = _durability = 1;
 		}
 		else if (_kind == ITEM_KIND_BLACK)

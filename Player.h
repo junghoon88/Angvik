@@ -17,7 +17,7 @@
 #define ATTACKJUMPPOWER	 5.0f
 #define GRAVITY			 0.5f
 #define IMMORTALTIME	 1.5f
-#define ATTACKTIME		 0.5f
+#define ATTACKTIME		 0.2f
 
 //아이템 상태
 enum PLAYERHEADSTATE
