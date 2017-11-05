@@ -37,24 +37,21 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 	amountTime = 0; //Y축 감소용 시간
 
 	rcName = rcKey;
-	rc = RectMakeCenter(x, y, 100, 60);
+	rc = RectMakeCenter(x, y, 100, 58);
 	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
 	sptrc = RectMakeCenter(x, y, 110, 58);
 	probeY = rc.bottom;
 }
 void Turtle_crash::update(void)
 {	
-	rc = RectMakeCenter(ptX, ptY, 100, 60);
-
+	rc = RectMakeCenter(ptX, ptY, 100, 58);
+	sptrc = RectMakeCenter(ptX, ptY, 110, 58);
 	if (life <= 0)
 	{
 		RIP();
 	}
 	else
-<<<<<<< HEAD
-	{
-		sptrc = RectMakeCenter(ptX, ptY + 10, 110, 58);
-=======
+
 	{	
 		if (isImmune) {
 			immuneTime += TIMEMANAGER->getElapsedTime();
@@ -63,8 +60,6 @@ void Turtle_crash::update(void)
 			}
 		}
 
-		sptrc = RectMakeCenter(ptX, ptY, 110, 70);
->>>>>>> ec80ca537487e23d48decf7ecf492248cbbc98d6
 		probeY = sptrc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
 	//	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
@@ -110,7 +105,7 @@ void Turtle_crash::move(void)
 
 		if ((r == 0 && g == 0 && b == 0))
 		{
-			ptY = i - 30;
+			ptY = i - 28;
 			state = eIDLE;
 			break;
 		}

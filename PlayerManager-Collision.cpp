@@ -44,29 +44,9 @@ void PlayerManager::Collision(void)
 
 		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _player->getIsImmortal() == FALSE && _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음
 		{
-<<<<<<< HEAD
+
 			_player->hitFeedback(_em->getvEnemy()[i]->getX());
-=======
-			if (_player->getHeadItem() != UNARMEDARMOR)
-			{
-				_player->setHeadItem(UNARMEDARMOR);
-				_player->setIsImmortal(TRUE);
-			}
-			else if (_player->getBodyItem() != UNARMEDARMOR)
-			{
-				_player->setBodyItem(UNARMEDARMOR);
-				_player->setIsImmortal(TRUE);
-			}
-			else if (_player->getFootItem() != UNARMEDARMOR)
-			{
-				_player->setFootItem(UNARMEDARMOR);
-				_player->setIsImmortal(TRUE);
-			}
-			else
-			{
-				_player->setIsLive(FALSE);
-			}
->>>>>>> ec80ca537487e23d48decf7ecf492248cbbc98d6
+
 		}
 
 		RECT temp;
