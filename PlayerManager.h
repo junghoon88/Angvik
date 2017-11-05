@@ -54,5 +54,6 @@ public:
 
 
 	inline Player* getPlayer(void) { return _player; }
+	inline inven* getInven(void) { return _inven; }
 };
 

@@ -18,12 +18,14 @@ void PlayerManager::init(void)
 {
 	_player = new Player;
 	_player->init();
+
 	_bird = new invenBird;
 	_bird->init(_player->getX(), _player->getY());
 
 	_inven = new inven;
 	_inven->init();
-	_inven->setLinkAdressItemManager(_im);
+	//_inven->setLinkAdressItemManager(_im);
+	_inven->setLinkAdressInvenBird(_bird);
 
 	_playerRcHead = _player->getRectHead();
 	_playerRcBody = _player->getRectBody();
