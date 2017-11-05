@@ -120,7 +120,7 @@ void EnemyManager::setEnemy1(void)
 	////////////////////////////몽키세팅
 	monkkey* monkey1, *monkey2, *monkey3, *monkey4, *monkey5;
 	//monkey1 = new monkkey;
-	//monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
+	//monkey1->init(monkkeyNum++, 4300, 600, L"monkeyRc1");
 	//_vEnemy.push_back(monkey1);
 
 	monkey2 = new monkkey;
@@ -135,16 +135,15 @@ void EnemyManager::setEnemy1(void)
 	monkey4->init(monkkeyNum++, 2540, 90, L"monkkeyRc4");
 	_vEnemy.push_back(monkey4);
 
-	//monkey5 = new monkkey;
-	//monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
-	//_vEnemy.push_back(monkey5);
+	monkey5 = new monkkey;
+	monkey5->init(monkkeyNum++, 6150, 200, L"monkkeyRc5");
+	_vEnemy.push_back(monkey5);
 
 	/////////////////////////////////////
 	mush* mush1;
 	mush1 = new mush;
 	mush1->init(mushNum++, 3790, 200, L"mushRc1");
 	_vEnemy.push_back(mush1);
-
 
 
 	///////////////////////////////엔트세팅
@@ -157,12 +156,17 @@ void EnemyManager::setEnemy1(void)
 	ent2 = new Ent;
 	ent2->init(entNum++, 3240, 250, L"EntRc2");
 	_vEnemy.push_back(ent2);
+
+	Ent* ent3;
+	ent3 = new Ent;
+	ent3->init(entNum++, 855, 320, L"EntRc3");
+	_vEnemy.push_back(ent3);
 	////////////////////////////////////////////
 
 
 
 	//////////////////////////////콩세팅
-	kong* kong1, *kong2, *kong3, *kong4;
+	kong* kong1, *kong2, *kong3, *kong4, *kong5;
 	kong1 = new kong;
 	kong1->init(kongNum++, 2975, 553, L"kongRc1");
 	_vEnemy.push_back(kong1);
@@ -175,9 +179,13 @@ void EnemyManager::setEnemy1(void)
 	kong3->init(kongNum++, 4895, 790, L"kongRc3");
 	_vEnemy.push_back(kong3);
 
-	//kong4 = new kong;
-	//kong4->init(kongNum++, 5869, 245, L"kongRc3");
-	//_vEnemy.push_back(kong4);
+	kong4 = new kong;
+	kong4->init(kongNum++, 5865, 240, L"kongRc4");
+	_vEnemy.push_back(kong4);
+
+	kong5 = new kong;
+	kong5->init(kongNum++, 5995, 140, L"kongRc5");
+	_vEnemy.push_back(kong5);
 	//////////////////////////////////
 
 

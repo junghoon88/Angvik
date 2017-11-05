@@ -49,19 +49,20 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 void sBMR::move(void)
 
 {
-	if (!_em->getvEnemy().empty()) {
-		for (int i = 0; i < _em->getvEnemy().size(); i++) {
-			if (_em->getvEnemy()[i]->getIndex() == 1) {      //버섯찾음
-				backX = _em->getvEnemy()[i]->getX();
-				backY = _em->getvEnemy()[i]->getY();
-				break;
-    		}
-			else {
-				//void
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); _viBullet++) {
+		if (!_em->getvEnemy().empty()) {
+			for (int i = 0; i < _em->getvEnemy().size(); i++) {
+				if (_em->getvEnemy()[i]->getIndex() == 1) {      //버섯찾음
+					backX = _em->getvEnemy()[i]->getX();
+					backY = _em->getvEnemy()[i]->getY();
+					break;
+				}
+				else {
+					//void
+				}
 			}
 		}
 	}
-
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
 		if (_viBullet->speed > 0) // 앞으로 나가는 동안은 처음 받은 플레이어 방향으로만 날라감.

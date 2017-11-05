@@ -28,7 +28,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	//spt = IMAGEMANAGER->findImage(L"³ª¹«¸Ç");
 	index = 4;
 	spt->setCoord({ 0,0 });
-	dir = eRIGHT;
+	dir = eLEFT;
 	state = eIDLE;
 	life = 2;
 	ptX = x;
