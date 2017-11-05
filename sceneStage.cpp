@@ -37,9 +37,6 @@ void sceneStage::init(void)
 	_im->setLinkAdressPlayerManager(_pm);
 	_im->setLinkAdressEnemyManager(_em);
 	_im->setLinkAdressStageManager(_sm);
-
-
-	_em->setEnemy1();
 }
 
 void sceneStage::release(void)

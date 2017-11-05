@@ -26,12 +26,12 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"¼¿·º¾À", new sceneSelect);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
-	scene->init();
+	//scene = SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
+	//scene->init();
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneStage);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
-	scene->init();
+	//scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
+	//scene->init();
 
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
