@@ -28,6 +28,9 @@ void inven::init(void)
 
 	_inventoryMax = 4;
 	_inventoryNum = 0;
+
+	_swapItemNum = 0;
+	_swapInvenNum = 0;
 }
 
 void inven::release(void)
@@ -92,17 +95,15 @@ void inven::render(void)
 		{
 			_vInvenItems[i]->getImage()->render();
 		}
-
-
 		IMAGEMANAGER->findImage(L"back")->render();
 	}
 	else if (_isOils)
 	{
-		IMAGEMANAGER->findImage(L"back")->render();
 		for (int i = 0; i < _vInvenOils.size(); i++)
 		{
 			_vInvenOils[i]->getImage()->render();
 		}
+		IMAGEMANAGER->findImage(L"back")->render();
 	}
 	else if (_isEquip)
 	{
@@ -110,8 +111,6 @@ void inven::render(void)
 		IMAGEMANAGER->findImage(L"drop")->render();
 		IMAGEMANAGER->findImage(L"back")->render();
 	}
-
-
 }
 
 
@@ -248,12 +247,18 @@ void inven::itemBoxUpdate(float x, float y)
 		if (_selectNum > 4) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 4;
 
-		if ((_selectNum >= 0 && _selectNum < 4) && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		if ((_selectNum < 4) && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
-			_selectNum = 0;
-			_isItem = false;
-			_isEquip = true;
-			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+			if (_selectNum < _vInvenItems.size())
+			{
+				_swapInvenNum = _selectNum;
+				_swapItemNum = _vInvenItems[_selectNum]->getNum();
+
+				_selectNum = 0;
+				_isItem = false;
+				_isEquip = true;
+				SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+			}
 		}
 		if ((_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
@@ -310,45 +315,23 @@ void inven::oilsBoxUpdate(float x, float y)
 			img->setRotate(0.0f);
 		}
 
-		//for (int i = 0; i < _vItems.size(); i++)
-		//{
-		//	if (_vItems[i]->getType() == ITEM_TYPE_OIL)
-		//	{
-		//		if (_vItems[i]->getKind() == ITEM_KIND_WHITE)
-		//		{
-		//			_whiteOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 45 });
-		//		}
-		//		if (_vItems[i]->getKind() == ITEM_KIND_BLACK)
-		//		{
-		//			_blackOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 90 });
-		//		}	
-		//		if (_vItems[i]->getKind() == ITEM_KIND_GOLD)
-		//		{
-		//			_goldOils++;
-		//			Sprite* img = _vItems[i]->getImage();
-		//			img->setCoord({ IMAGEMANAGER->findImage(L"oilsBox")->getCoord().x + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _whiteOils, IMAGEMANAGER->findImage(L"oilsBox")->getCoord().y + 135 });
-		//		}
-		//	}
-		//}
 	}
 }
 
 void inven::equipBoxUpdate(float x, float y)
 {
 	//상시 인벤 위치 업데이트
-	IMAGEMANAGER->findImage(L"equip")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 45 });
-	IMAGEMANAGER->findImage(L"drop")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 90 });
-	IMAGEMANAGER->findImage(L"back")->setCoord({ IMAGEMANAGER->findImage(L"inventory")->getCoord().x + 45, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 132 });
+	D3DXVECTOR2 inventoryCoord = IMAGEMANAGER->findImage(L"inventory")->getCoord();
+
+	IMAGEMANAGER->findImage(L"equip")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 45 });
+	IMAGEMANAGER->findImage(L"drop")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 90 });
+	IMAGEMANAGER->findImage(L"back")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 132 });
 
 	if (_isEquip)
 	{
-		_selectPoint[0] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 35 };
-		_selectPoint[1] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 80 };
-		_selectPoint[2] = { IMAGEMANAGER->findImage(L"inventory")->getCoord().x, IMAGEMANAGER->findImage(L"inventory")->getCoord().y + 122 };
+		_selectPoint[0] = { inventoryCoord.x, inventoryCoord.y + 35 };
+		_selectPoint[1] = { inventoryCoord.x, inventoryCoord.y + 80 };
+		_selectPoint[2] = { inventoryCoord.x, inventoryCoord.y + 122 };
 
 		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
 		{
@@ -365,11 +348,79 @@ void inven::equipBoxUpdate(float x, float y)
 
 		if (_selectNum == 0 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
-			
+			//장착
+			//1. 장착할 아이템의 타입을 찾는다.
+			ITEM_TYPE swapItemType;	//
+			int swapItemVectorNum;	//스왑할 아이템의 아이템매니저 벡터번호
+			vector<Item*> items = _im->getVItem();
+			for (int i = 0; i < items.size(); i++)
+			{
+				if (_swapItemNum == items[i]->getNum())
+				{
+					swapItemType = items[i]->getType();
+					swapItemVectorNum = i;
+					break;
+				}
+			}
+
+			//2. 장착할 아이템 타입이 현재 플레이어가 장착중인지 확인하고 스왑한다.
+			bool swap = false;
+			for (int i = 0; i < items.size(); i++)
+			{
+				if (items[i]->getState() != ITEM_STATE_INPLAYER) continue;
+				if ((int)items[i]->getType() <= ITEM_TYPE_STAFF && (int)swapItemType <= ITEM_TYPE_STAFF)
+				{
+					swap = true;
+					items[swapItemVectorNum]->setState(ITEM_STATE_INPLAYER);
+					_vInvenItems[_swapInvenNum] = items[i];
+
+					items[i]->setState(ITEM_STATE_ININVEN);
+
+					break;
+				}
+				else if (items[i]->getType() == swapItemType)
+				{
+					swap = true;
+					items[swapItemVectorNum]->setState(ITEM_STATE_INPLAYER);
+					_vInvenItems[_swapInvenNum] = items[i];
+
+					items[i]->setState(ITEM_STATE_ININVEN);
+
+					break;
+				}
+			}
+
+			//3. 스왑이 안되면 장착한다.
+			if (!swap)
+			{
+				items[swapItemVectorNum]->setState(ITEM_STATE_INPLAYER);
+				_vInvenItems.erase(_vInvenItems.begin() + _swapInvenNum);
+			}
+
+			_selectNum = 0;
+			_isEquip = false;
+			_isItem = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 		if (_selectNum == 1 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
 		{
-		
+			//드랍
+			vector<Item*> items = _im->getVItem();
+			for (int i = 0; i < items.size(); i++)
+			{
+				if (_swapItemNum == items[i]->getNum())
+				{
+					items[i]->setPoint(x, y);
+					items[i]->setState(ITEM_STATE_IDLE);
+					_vInvenItems.erase(_vInvenItems.begin() + _swapInvenNum);
+					break;
+				}
+			}
+
+			_selectNum = 0;
+			_isEquip = false;
+			_isItem = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 		if ((_selectNum == 2 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{

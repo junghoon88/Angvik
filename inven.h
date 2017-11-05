@@ -35,6 +35,9 @@ private:
 	bool _isEquip;
 	bool _isCompose;
 
+	int _swapItemNum;
+	int _swapInvenNum;
+
 public:
 	inven();
 	~inven();
