@@ -66,6 +66,7 @@ private:
 	float targetX;
 	float targetY;
 
+	bool isarm;
 	bool isPlayerRIGHT;
 public:
 	Item();
@@ -77,7 +78,7 @@ public:
 	void render(void);
 
 	inline void targetPlayer(float x, float y) { targetX = x; targetY = y; }
-	
+	inline void setPt(MYPOINT pt) { _pt = pt; }
 
 	//아이템타입 겟셋
 	inline Sprite* getImage(void) { return _img; }
@@ -88,7 +89,7 @@ public:
 	inline ITEM_TYPE getType(void) { return _type; }
 	
 	inline void setisPlayerRIGHT(bool right) { isPlayerRIGHT = right; }
-
+	inline void setisPlayerARM(bool arm) { isarm = arm; }
 	//종류 겟셋
 	inline void setKind(ITEM_KIND kind) { _kind = kind; }
 	inline ITEM_KIND getKind(void) { return _kind; }
@@ -99,6 +100,8 @@ public:
 
 	//아이템생성
 	void createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state, float x, float y);
+	
+
 	
 	//앵글 겟셋
 	inline void setAngle(float angle) { angleDeg = angle; }

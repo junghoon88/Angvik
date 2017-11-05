@@ -32,7 +32,7 @@ void itemManager::release(void)
 
 void itemManager::update(void)
 {
-
+	
 	if (_pm != NULL)
 	{
 		float x = _pm->getPlayer()->getX();
@@ -49,10 +49,11 @@ void itemManager::update(void)
 				_vItems[i]->setisPlayerRIGHT(false);
 			}
 			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState()==ITEM_STATE_ATTACK)
 			{	
 				if (_pm->getPlayer()->getIsRight())
 				{
+					
 					switch (_vItems[i]->getType())
 					{
 					case ITEM_TYPE_HEAD:
@@ -60,16 +61,26 @@ void itemManager::update(void)
 							else _vItems[i]->targetPlayer(x + 2, y - 28);
 						break;
 					case ITEM_TYPE_SWORD:
-						_vItems[i]->targetPlayer(hx, hy);
+						_vItems[i]->targetPlayer(hx, hy+5);
 						break;
 					case ITEM_TYPE_STAFF:
 						_vItems[i]->targetPlayer(hx, hy);
 						break;
 					case ITEM_TYPE_LANCE:
-						_vItems[i]->targetPlayer(hx, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx, hy+5);
+						}
+						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
+						{
+							_pm->getPlayer()->setFrontItem(UNARMEDWEAPON);
+						}
 						break;
 					case ITEM_TYPE_BOOMERANG:
-						_vItems[i]->targetPlayer(hx, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx-15, hy+5);
+						}
 						break;
 					}
 				}
@@ -81,16 +92,42 @@ void itemManager::update(void)
 						else _vItems[i]->targetPlayer(x + 28, y - 28);
 						break;
 					case ITEM_TYPE_SWORD:
-						_vItems[i]->targetPlayer(hx-50, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx - 40, hy+10);
+						}
+						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
+						{
+							_vItems[i]->targetPlayer(hx - 30, hy-13);
+						}
 						break;
 					case ITEM_TYPE_STAFF:
-						_vItems[i]->targetPlayer(hx-50, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx - 40, hy + 10);
+						}
+						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
+						{
+							_vItems[i]->targetPlayer(hx - 30, hy - 13);
+						}
 						break;
 					case ITEM_TYPE_LANCE:
-						_vItems[i]->targetPlayer(hx-50, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx-45, hy+3);
+						}
+						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
+						{
+							_pm->getPlayer()->setFrontItem(UNARMEDWEAPON);
+						}
+						
 						break;
 					case ITEM_TYPE_BOOMERANG:
-						_vItems[i]->targetPlayer(hx-50, hy);
+						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+						{
+							_vItems[i]->targetPlayer(hx-60, hy);
+						}
+						
 						break;
 					}
 			}
@@ -106,13 +143,13 @@ void itemManager::update(void)
 		{
 			for (int j = 0; j < 8; j++)
 			{
-				_x += 50;
+				_x += 80;
 				setFieldItem(i, j);
 			}
-			_x += 50;
+			_x += 80;
 			setFieldItem(1, 7);
 		}
-		_x += 50;
+		_x += 80;
 		setFieldItem(2, 7);
 		issetting = false;
 	}

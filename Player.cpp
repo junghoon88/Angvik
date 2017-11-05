@@ -238,6 +238,10 @@ void Player::update(void)
 				_x = res.offset.x - 5 - BODY_WIDTH / 2;
 				_y = res.offset.y;
 			}
+			if (res.trap)
+			{
+				_isHit = true;
+			}
 		}
 		else
 		{
