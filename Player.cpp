@@ -46,6 +46,16 @@ void Player::init(void)
 	_blackFootRightImage = IMAGEMANAGER->findImage(L"blackFootRight");
 	_blackFootLeftImage = IMAGEMANAGER->findImage(L"blackFootLeft");
 
+	_goldBodyRightImage = IMAGEMANAGER->findImage(L"goldBodyRight");
+	_goldBodyLeftImage = IMAGEMANAGER->findImage(L"goldBodyLeft");
+	_goldFootRightImage = IMAGEMANAGER->findImage(L"goldFootRight");
+	_goldFootLeftImage = IMAGEMANAGER->findImage(L"goldFootLeft");
+
+	_whiteBodyRightImage = IMAGEMANAGER->findImage(L"whiteBodyRight");
+	_whiteBodyLeftImage = IMAGEMANAGER->findImage(L"whiteBodyLeft");
+	_whiteFootRightImage = IMAGEMANAGER->findImage(L"whiteFootRight");
+	_whiteFootLeftImage = IMAGEMANAGER->findImage(L"whiteFootLeft");
+
 	_frontArmRightImage = IMAGEMANAGER->findImage(L"frontArmRight");
 	_backArmRightImage = IMAGEMANAGER->findImage(L"backArmRight");
 	_frontArmLeftImage = IMAGEMANAGER->findImage(L"frontArmLeft");
@@ -408,23 +418,37 @@ void Player::render(void)
 		_bodyLeftImage->aniRender(_bodyMotion);
 	}
 
-	//	¹ß ¾Æ¸Ó
-	if (_isRight == TRUE)
+	//	¹ß ¾Æ¸Ó ¾Ö´Ï·»´õ
+	switch (_footItem)
 	{
-		_blackFootRightImage->aniRender(_bodyMotion);
+		case WHITE:
+			if (_isRight == TRUE)	_whiteFootRightImage->aniRender(_bodyMotion);
+			else					_whiteFootLeftImage->aniRender(_bodyMotion);
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion);
+			else					_goldFootLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackFootRightImage->aniRender(_bodyMotion);
+			else					_blackFootLeftImage->aniRender(_bodyMotion);
+		break;
 	}
-	else
+	//	¸ö ¾Æ¸Ó ¾Ö´Ï·»´õ
+	switch (_bodyItem)
 	{
-		_blackFootLeftImage->aniRender(_bodyMotion);
-	}
-	//	¸ö ¾Æ¸Ó
-	if (_isRight == TRUE)
-	{
-		_blackBodyRightImage->aniRender(_bodyMotion);
-	}
-	else
-	{
-		_blackBodyLeftImage->aniRender(_bodyMotion);
+		case WHITE:
+			if (_isRight == TRUE)	_whiteBodyRightImage->aniRender(_bodyMotion);
+			else					_whiteBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldBodyRightImage->aniRender(_bodyMotion);
+			else					_goldBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackBodyRightImage->aniRender(_bodyMotion);
+			else					_blackBodyLeftImage->aniRender(_bodyMotion);
+		break;
 	}
 
 	//	¸Ó ¸®
@@ -439,7 +463,6 @@ void Player::render(void)
 	RECT rcHandCoord = RectMake(0, 30, 100, 100);
 	TEXTMANAGER->render(L"¼ÕÁÂÇ¥", rcHandCoord);
 
-	//	¸Ó¸® ¾Æ¸Ó
 	
 	//	F R O N T ÆÈ
 	if (_isFrontAttack == TRUE)
@@ -536,6 +559,23 @@ void Player::imageReverse(void)
 
 	IMAGEMANAGER->findImage(L"frontArmLeft")->setScaleOffset(offsetVal, 0.0f);
 	IMAGEMANAGER->findImage(L"backArmLeft")->setScaleOffset(offsetVal, 0.0f);
+
+	//	¾ÆÀÌÅÛ
+	//	ºí·¢
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	±Ý
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	È­ÀÌÆ®
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScaleOffset(offsetVal, 0.0f);
 }
 
 void Player::imagePosUpdate(void)
@@ -566,10 +606,21 @@ void Player::imagePosUpdate(void)
 
 	_bodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_bodyLeftImage->setCoord({ _x + correction, _y - 22 });
+
 	_blackBodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackBodyLeftImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_goldBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_whiteBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootLeftImage->setCoord({ _x + correction, _y - 22 });
 
 	if (_isSit == TRUE)
 	{
