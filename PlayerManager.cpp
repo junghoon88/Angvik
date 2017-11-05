@@ -276,7 +276,7 @@ void PlayerManager::update(void)
 		}
 	}
 
-Collision();
+  Collision();
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 	_inven->update(_player->getX(), _player->getY());

@@ -37,6 +37,7 @@ void EnemyManager::release(void)
 void EnemyManager::update(void)	
 {
 	
+
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
@@ -44,7 +45,10 @@ void EnemyManager::update(void)
 			(*_viEnemy)->setPlayerX(_pm->getPlayer()->getX());
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
+
 	}
+
+
 	enemyFire();
 	kongTan->update();
 	sBmr->update();
@@ -129,12 +133,11 @@ void EnemyManager::setEnemy1(void)
 	turtle1->init(turtleNum++,580, 415, L"TurRc1");
 	_vEnemy.push_back(turtle1);
 
-	_vEnemy.push_back(monkey1);
-//	_vEnemy.push_back(monkey2);
+
+
 	
 }
-void EnemyManager::deleteEnemy(void) {
-
-
-
+void EnemyManager::deleteEnemy(int arrNum) {
+	SAFE_DELETE(_vEnemy[arrNum]);
+	_vEnemy.erase(_vEnemy.begin() + arrNum);
 }
