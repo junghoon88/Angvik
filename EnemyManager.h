@@ -27,6 +27,7 @@ private:
 
 	sBMR* sBmr;
 	Kongtan* kongTan;
+	//Entbeam* entBeam;
 
 	int monkkeyNum;
 	int mushNum;
@@ -70,6 +71,7 @@ public:
 	
 	Kongtan* getKongtan() { return kongTan; }
 	sBMR* getSbmr() { return sBmr; }
+//	Entbeam* entBeam() { return entBeam; }
 
 };
 

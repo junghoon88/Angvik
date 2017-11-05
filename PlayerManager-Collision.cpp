@@ -13,6 +13,7 @@ void PlayerManager::Collision(void)
 		{
 			_player->setIsHit(true);    //피해신호
 			_em->getKongtan()->remove(i);
+			_player->hitFeedback(_em->getKongtan()->getVBullet()[i].ptX);
 			//아이템에 신호 넘겨줘야함
 			break;
 		}
@@ -27,7 +28,7 @@ void PlayerManager::Collision(void)
 		if (isCollision(_em->getSbmr()->getVBullet()[i].rc,
 			_player->getRectBody()))
 		{
-			_player->setIsHit(true);
+			_player->hitFeedback(_em->getSbmr()->getVBullet()[i].ptX);
 			_em->getSbmr()->remove(i);
 			//아이템에 신호 넘겨줘야함
 
@@ -44,8 +45,7 @@ void PlayerManager::Collision(void)
 
 		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _player->getIsImmortal() == FALSE)    //플레이어 피해받음
 		{
-			_player->setIsHit(TRUE);
-			_player->setIsImmortal(TRUE);
+			_player->hitFeedback(_em->getvEnemy()[i]->getX());
 		}
 
 		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음

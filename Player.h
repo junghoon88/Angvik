@@ -260,6 +260,9 @@ public:
 	void setFrontItem(EQUIPWEAPONSTATE item) { _frontItem = item; }
 	void setBackItem(EQUIPWEAPONSTATE item) { _backItem = item; }
 
+	void hitFeedback(float x);
+
+
 	float getHandX(void) { return _handX; }
 	float getHandY(void) { return _handY; }
 

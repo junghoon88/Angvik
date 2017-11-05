@@ -3,8 +3,8 @@
 class Ent : public EnemyMother
 {
 private:
-
-
+	float atkCnt;
+	Sprite* atkSpt;
 public:
 	Ent();
 	~Ent();

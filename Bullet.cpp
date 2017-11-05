@@ -210,3 +210,181 @@ void Kongtan::remove(int arrNum)
 	_vBullet.erase(_vBullet.begin() + arrNum);
 }
 
+//==========================================================ÄáÅº³¡======================================================
+
+
+Entbeam::Entbeam() {}
+Entbeam::~Entbeam() {}
+
+void Entbeam::init(void)
+{
+	range = 200;
+}
+void Entbeam::release(void)
+{
+
+}
+void Entbeam::update(void)
+{
+	move();
+}
+void Entbeam::render(void)
+{
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
+	{
+		_viBullet->spt->render();
+	}
+}
+void Entbeam::fire(int num, float ptx, float pty, int dir)
+{
+	tagBullet EntBeam;
+	ZeroMemory(&EntBeam, sizeof(tagBullet));
+
+	EntBeam.ptX = EntBeam.fireX = ptx;
+	EntBeam.ptY = EntBeam.fireY = pty;
+	EntBeam.spt->setCoord(EntBeam.ptX, EntBeam.ptY);
+
+	if (dir == 0)//¿ÞÂÊ
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			float rndang;
+			rndang = RND->getFromFloatTo(170, 190);
+			EntBeam.angle = Deg2Rad(rndang);
+
+			float rspd;
+			rspd = RND->getFromFloatTo(2.0, 3.0);
+			EntBeam.speed = rspd;
+			
+			switch (i)
+			{
+			case 1:
+				TCHAR strKey[100];
+				_stprintf(strKey, L"ÀÙ1%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"ÀÙ1")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ1")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ1")->getMaxFrameY() + 1);
+				break;
+			case 2:
+				TCHAR strKey2[100];
+				_stprintf(strKey2, L"ÀÙ2%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey2, IMAGEMANAGER->findImage(L"ÀÙ2")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ2")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ2")->getMaxFrameY() + 1);
+				break;
+			case 3:
+				TCHAR strKey3[100];
+				_stprintf(strKey3, L"ÀÙ3%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey3, IMAGEMANAGER->findImage(L"ÀÙ3")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ3")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ3")->getMaxFrameY() + 1);
+				break;
+			case 4:
+				TCHAR strKey4[100];
+				_stprintf(strKey4, L"ÀÙ4%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey4, IMAGEMANAGER->findImage(L"ÀÙ4")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ4")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ4")->getMaxFrameY() + 1);
+				break;
+			default:break;
+			}
+			EntBeam.spt->setRotate(Rad2Deg(EntBeam.angle));
+			EntBeam.rc = RectMakeCenter(EntBeam.ptX, EntBeam.ptY, 15, 15);
+
+			EntBeam.valid = true;
+
+			probeY = EntBeam.ptY;
+
+			_vBullet.push_back(EntBeam);
+		}
+	}
+	if (dir == 1)//¿ÞÂÊ
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			float rndang;
+			rndang = RND->getFromFloatTo(-10, 10);
+			EntBeam.angle = Deg2Rad(rndang);
+
+			float rspd;
+			rspd = RND->getFromFloatTo(2.0, 3.0);
+			EntBeam.speed = rspd;
+
+			switch (i)
+			{
+			case 1:
+				TCHAR strKey[100];
+				_stprintf(strKey, L"ÀÙ1%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"ÀÙ1")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ1")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ1")->getMaxFrameY() + 1);
+				break;
+			case 2:
+				TCHAR strKey2[100];
+				_stprintf(strKey2, L"ÀÙ2%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey2, IMAGEMANAGER->findImage(L"ÀÙ2")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ2")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ2")->getMaxFrameY() + 1);
+				break;
+			case 3:
+				TCHAR strKey3[100];
+				_stprintf(strKey3, L"ÀÙ3%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey3, IMAGEMANAGER->findImage(L"ÀÙ3")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ3")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ3")->getMaxFrameY() + 1);
+				break;
+			case 4:
+				TCHAR strKey4[100];
+				_stprintf(strKey4, L"ÀÙ4%d", num);
+				EntBeam.spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey4, IMAGEMANAGER->findImage(L"ÀÙ4")->getFileName(), //ÀÌ¹ÌÁö´Â ÀÓ½Ã ÄáÅº
+					IMAGEMANAGER->findImage(L"ÀÙ4")->getMaxFrameX() + 1,
+					IMAGEMANAGER->findImage(L"ÀÙ4")->getMaxFrameY() + 1);
+				break;
+			default:break;
+			}
+			EntBeam.spt->setRotate(Rad2Deg(EntBeam.angle));
+			EntBeam.rc = RectMakeCenter(EntBeam.ptX, EntBeam.ptY, 15, 15);
+
+			EntBeam.valid = true;
+
+			probeY = EntBeam.ptY;
+
+			_vBullet.push_back(EntBeam);
+		}
+	}
+
+
+
+
+}
+void Entbeam::move(void)
+{
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
+	{
+		_viBullet->ptX += cos(_viBullet->angle) * _viBullet->speed;
+		_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
+		_viBullet->probeY = _viBullet->ptY;
+		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
+		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 15, 15);
+
+
+		if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
+		{
+			_viBullet->valid = false;
+		}
+
+		if (_viBullet->valid == false)
+		{
+			_viBullet = _vBullet.erase(_viBullet);
+
+		}
+		else ++_viBullet;
+	}
+
+
+}
+
+void Entbeam::remove(int arrNum)
+{
+	_vBullet.erase(_vBullet.begin() + arrNum);
+}

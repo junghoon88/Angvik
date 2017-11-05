@@ -65,6 +65,7 @@ public:
 	inline void setLife(int lf) { life = lf; } 
 	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
+	inline enemyDirection getDir(void) { return dir; }
 	inline RECT getRect(void) { return rc; }
 	inline int getIndex(void) { return index; }
 	inline bool getAtk(void) { return isAtk; }
