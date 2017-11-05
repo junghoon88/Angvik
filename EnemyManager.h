@@ -65,5 +65,8 @@ public:
 	inline vEnemy getvEnemy(void) { return _vEnemy; }
 	inline viEnemy getviEnemy(void) { return _viEnemy; }
 	
+	Kongtan* getKongtan() { return kongTan; }
+	sBMR* getSbmr() { return sBmr; }
+
 };
 

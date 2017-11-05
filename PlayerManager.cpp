@@ -18,7 +18,6 @@ void PlayerManager::init(void)
 {
 	_player = new Player;
 	_player->init();
-
 	_bird = new invenBird;
 	_bird->init(_player->getX(), _player->getY());
 

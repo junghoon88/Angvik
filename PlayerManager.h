@@ -42,8 +42,10 @@ public:
 	void update(void);
 	void render(void);
 
-
 	void playerItemCollision(void);
+
+	void Collision(void);
+
 
 	//getter, setter
 	inline void setLinkAdressEnemyManager(EnemyManager*   em) { _em = em; }

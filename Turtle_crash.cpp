@@ -12,7 +12,7 @@ Turtle_crash::~Turtle_crash()
 }
 
 
-void Turtle_crash::init(int num, float x, float y)
+void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 {
 	TCHAR strKey[100];
 	_stprintf(strKey, L"°ÅºÏÀÌ%d", num);
@@ -29,7 +29,9 @@ void Turtle_crash::init(int num, float x, float y)
 	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 100, 60);
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
 	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
@@ -39,7 +41,7 @@ void Turtle_crash::update(void)
 	sptrc = RectMakeCenter(ptX, ptY, 110, 70);
 	probeY = sptrc.bottom;
 	spt->setCoord(sptrc.left, sptrc.top);
-
+	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
@@ -53,6 +55,7 @@ void Turtle_crash::update(void)
 void Turtle_crash::render(void)
 {
 	spt->frameRender(frameCnt, 0, 255);
+	RECTMANAGER->render(rcName);
 }
 void Turtle_crash::move(void)
 {
