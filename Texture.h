@@ -44,6 +44,8 @@ public:
 	inline int getMaxFrameX(void) { return maxFrameX; }
 	inline int getMaxFrameY(void) { return maxFrameY; }
 
+	inline void setFrame(int x, int y) { curFrameX = x; curFrameY = y; }
+
 	LPDIRECT3DTEXTURE9 getTexture() { return texture; }
 
 

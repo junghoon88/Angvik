@@ -14,7 +14,9 @@
 
 #define PLAYERSPEED		 4.0f
 #define JUMPPOWER		10.0f
+#define ATTACKJUMPPOWER	 5.0f
 #define GRAVITY			 0.5f
+
 //아이템 상태
 enum PLAYERHEADSTATE
 {
@@ -103,6 +105,11 @@ private:
 	Sprite* _frontArmLeftImage;
 	Sprite* _backArmLeftImage;
 
+	Sprite* _blackBodyRightImage;
+	Sprite* _blackBodyLeftImage;
+	Sprite* _blackFootRightImage;
+	Sprite* _blackFootLeftImage;
+
 	Sprite* _boneHead;
 	Sprite* _boneBody;
 	Sprite* _bone[4];
@@ -112,7 +119,6 @@ private:
 	RECT _rcFoot;
 
 	jump* _playerJump;
-	jump* _attackJump;
 	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
@@ -125,6 +131,7 @@ private:
 	bool _isLive;
 	bool _isDead;
 	bool _isInven;
+	bool _isJumpAttack;
 
 	float _handX, _handY;
 	float _armLen0, _armLen1, _armLen2;
@@ -231,4 +238,6 @@ public:
 
 	float getHandX(void) { return _handX; }
 	float getHandY(void) { return _handY; }
+
+	void setIsJumpAttack(bool isJumpAttack) { _isJumpAttack = isJumpAttack; }
 };
