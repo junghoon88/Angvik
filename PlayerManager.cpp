@@ -307,6 +307,7 @@ void PlayerManager::playerItemCollision(void)
 
 	Collision();
 
+
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 

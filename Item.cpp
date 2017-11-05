@@ -42,7 +42,7 @@ void Item::update(void)
 	//////////////////아이템 지형 픽셀충돌///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
-		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
+		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y) == false)
 		{
 			_pt.y += 5;
 		}
