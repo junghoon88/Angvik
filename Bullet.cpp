@@ -35,7 +35,7 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 	bullet.spt = IMAGEMANAGER->addImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸ºÎ¸Þ¶û")->getFileName());
 	
 	bullet.angle = ang;
-	bullet.speed = 11;// ºÎ¸Þ¶û ¼Óµµ
+	bullet.speed = 9;// ºÎ¸Þ¶û ¼Óµµ
 	backPower = 0.3;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
 	bullet.ptX = bullet.fireX = ptx;
 	bullet.ptY = bullet.fireY = pty;

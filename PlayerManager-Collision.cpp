@@ -41,16 +41,17 @@ void PlayerManager::Collision(void)
 
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 몬스터충돌처리
 	{
-		if (isCollision(_player->getRectBody(), _em->getvEnemy()[i]->getRect())&& _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음
-		{
-			_player->hitFeedback(_em->getvEnemy()[i]->getX());
-		}
-		if (isCollision(_player->getRectFoot(), _em->getvEnemy()[i]->getRect())&&!_em->getvEnemy()[i]->getImmune() && _player->getIsJump())	  //플레이어가 적밟음
+		if (isCollision(_player->getRectFoot(), _em->getvEnemy()[i]->getRect()) && !_em->getvEnemy()[i]->getImmune() && _player->getIsJump())	  //플레이어가 적밟음
 		{
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
 
 			_player->setIsJumpAttack(TRUE);
 		}
+		else if (isCollision(_player->getRectBody(), _em->getvEnemy()[i]->getRect())&& _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음
+		{
+			_player->hitFeedback(_em->getvEnemy()[i]->getX());
+		}
+		
 	}
 
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 무기 몬스터
@@ -59,11 +60,9 @@ void PlayerManager::Collision(void)
 		{
 			RECT temp;
 
-			if (_im->getVItem()[j]->getState() == ITEM_STATE_ATTACK)
-			{
 				if (_im->getVItem()[j]->getState() == ITEM_STATE_ATTACK)
 				{
-					if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()) && !_em->getvEnemy()[i]->getImmune())
+					if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()) && !_em->getvEnemy()[i]->getImmune()&&_em->getvEnemy()[i]->getState()!=toDeath)
 					{    //플레이어가 무기씀
 						_im->getVItem()[j]->setdurability(_im->getVItem()[j]->getdurability() - 1);
 						_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
@@ -88,4 +87,3 @@ void PlayerManager::Collision(void)
 			}
 		}
 	}
-}
