@@ -27,6 +27,7 @@ void EnemyManager::init(void)
 	kongTan->init();
 	sBmr = new sBMR;
 	sBmr->init();
+	sBmr->setLinkAdressEnemyManager(this);
 }
 void EnemyManager::release(void)
 {
@@ -35,6 +36,7 @@ void EnemyManager::release(void)
 
 void EnemyManager::update(void)	
 {
+	
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
@@ -62,7 +64,10 @@ void EnemyManager::enemyFire(void)
 
 			if (type == 1)
 			{
-				
+				sBmr->fire(bulletNum++, emX, emY, angle);
+				(*_viEnemy)->setAtk(false);
+				(*_viEnemy)->setState(eIDLE);
+
 			}
 			else if (type == 2)
 			{
@@ -100,7 +105,8 @@ void EnemyManager::setEnemy1(void)
 
 
 	monkey1 = new monkkey;
-	//monkey2 = new monkkey;
+	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
+	_vEnemy.push_back(monkey1);
 
 	Ent* ent1;
 	ent1 = new Ent;
@@ -118,15 +124,13 @@ void EnemyManager::setEnemy1(void)
 	_vEnemy.push_back(kong1);
 	//350,860 Äá³ª¹° À§Ä¡
 	
-	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
-
-//	monkey2->init(192, 400);
-
 	turtle1 = new Turtle;
 	turtle1->init(turtleNum++,580, 415);
-
-	_vEnemy.push_back(monkey1);
-//	_vEnemy.push_back(monkey2);
 	_vEnemy.push_back(turtle1);
+
+}
+void EnemyManager::deleteEnemy(void) {
+
+
 
 }

@@ -8,6 +8,7 @@ struct tagBullet
 {
 	RECT rc;
 	Sprite* spt;
+	
 	float speed;
 	float ptX, ptY;//투사체 좌표
 	float fireX, fireY;//투사체 시작지점
@@ -25,7 +26,7 @@ private:
 	vector<tagBullet>::iterator _viBullet;
 
 	float backPower;//부메랑 감속도
-
+	int budegree;
 	float backX;
 	float backY;
 
@@ -44,7 +45,7 @@ public:
 	vector<tagBullet> getVBullet(void) { return _vBullet; }
 	vector<tagBullet>::iterator getVIBullet(void) { return _viBullet; }
 
-	inline void setLinkAdressEnemyManager(EnemyManager *em) { _em = em; }
+	inline void setLinkAdressEnemyManager(EnemyManager* em) { _em = em; }
 
 	sBMR();
 	~sBMR();

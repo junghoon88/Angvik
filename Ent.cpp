@@ -26,6 +26,7 @@ void Ent::init(int num, float x, float y)
 	life = 2;
 	ptX = x;
 	ptY = y;
+	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 40, 70);

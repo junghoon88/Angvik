@@ -19,6 +19,6 @@ public:
 	void render(void);
 	
 
-	void setPlayerX();
+	
 };
 

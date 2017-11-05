@@ -47,7 +47,8 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	frameTime = 0;
 	atkFrameTime = 0;
 	jumpFrameTime = 0;
-	
+	atkCnt = 0;
+	isAtk = false;
 
 	rc = RectMakeCenter(ptX, ptY, 20, 20);  
 	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 20, 20 });
@@ -99,7 +100,13 @@ void mush::update(void) {
 
 	move();
 
-
+	atkCnt += TIMEMANAGER->getElapsedTime();
+	if (atkCnt >= 3.0f)
+	{
+		atkCnt = 0;
+		isAtk = true;
+		state = eATK;
+	}
 }
 void mush::render(void) {
 
@@ -214,13 +221,4 @@ void mush::move(void) {
 		}
 	}
 	// xÃà Å½Áö
-
-}
-bool mush::attack(void) {
-
-
-
-
-
-	return false;
 }
