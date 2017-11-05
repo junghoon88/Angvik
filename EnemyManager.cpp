@@ -94,9 +94,9 @@ void EnemyManager::setEnemy1(void)
 
 	////////////////////////////¸ùÅ°¼¼ÆÃ
 	monkkey* monkey1, *monkey2, *monkey3, *monkey4, *monkey5;
-	monkey1 = new monkkey;
-	monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
-	_vEnemy.push_back(monkey1);
+	//monkey1 = new monkkey;
+	//monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
+	//_vEnemy.push_back(monkey1);
 
 	monkey2 = new monkkey;
 	monkey2->init(monkkeyNum++, 1260, 420,L"monkkeyRc2");
@@ -110,9 +110,9 @@ void EnemyManager::setEnemy1(void)
 	monkey4->init(monkkeyNum++, 2540, 90, L"monkkeyRc4");
 	_vEnemy.push_back(monkey4);
 
-	monkey5 = new monkkey;
-	monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
-	_vEnemy.push_back(monkey5);
+	//monkey5 = new monkkey;
+	//monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
+	//_vEnemy.push_back(monkey5);
 
 	/////////////////////////////////////
 	mush* mush1;
