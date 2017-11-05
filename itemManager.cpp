@@ -42,10 +42,11 @@ void itemManager::update(void)
 		{
 			
 			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState() == ITEM_STATE_ATTACK)
 			{
 				_vItems[i]->targetPlayer(x, y);
 			}
+
 
 		}
 	}
