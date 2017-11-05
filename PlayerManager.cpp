@@ -23,6 +23,7 @@ void PlayerManager::init(void)
 
 	_inven = new inven;
 	_inven->init();
+	_inven->setLinkAdressItemManager(_im);
 
 	_playerRcHead = _player->getRectHead();
 	_playerRcBody = _player->getRectBody();
@@ -42,6 +43,7 @@ void PlayerManager::update(void)
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 	_inven->update(_player->getX(), _player->getY());
+	_player->setIsInven(_inven->getInven());
 }
 
 void PlayerManager::render(void) 
@@ -67,7 +69,7 @@ void PlayerManager::playerItemCollision(void)
 
 		//_inven->
 	}
-	
+
 
 	for (_viItems = item.begin(); _viItems != item.end(); ++_viItems)
 	{
@@ -301,6 +303,7 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
+<<<<<<< HEAD
 
 Collision();
 	_player->update();
@@ -311,3 +314,6 @@ Collision();
 	_inven->update(_player->getX(), _player->getY());
 
 }
+=======
+}
+>>>>>>> bb1d05eb61b4b9811865182f2c60dfd24de44d4a

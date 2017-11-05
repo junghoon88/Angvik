@@ -81,6 +81,7 @@ public:
 
 	//아이템타입 겟셋
 	inline void setNum(int num) { _num = num; }
+	inline int getNum(void) { return _num; }
 	inline void setType(ITEM_TYPE type) { _type = type; }
 	inline ITEM_TYPE getType(void) { return _type; }
 	
