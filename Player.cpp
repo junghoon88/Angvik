@@ -23,6 +23,16 @@ void Player::init(void)
 	_x = WINSIZEX / 2;
 	_y = WINSIZEY / 2;
 
+	_handX = _handY = 0;
+	
+	_frameAngle = 22.5;
+				
+
+	//																	검	
+	_armLen0 = pow(16.f, 2.f) + pow(5.f, 2.f);		//  0 ~ 15의 축부터 손까지의 거리		135도
+	_armLen1 = pow(10.f, 2.f) + pow(12.f, 2.f);		// 16 ~ 31의 축부터 손까지의 거리		180도
+	_armLen2 = pow(2.f, 2.f) + pow(12.f, 2.f);		// 32 ~ 47의 축부터 손까지의 거리		215도
+
 	//========== 렉트 초기화 ==========
 	rectUpdate();
 
@@ -30,6 +40,11 @@ void Player::init(void)
 
 	_bodyRightImage = IMAGEMANAGER->findImage(L"unarmedBodyRight");
 	_bodyLeftImage = IMAGEMANAGER->findImage(L"unarmedBodyLeft");
+
+	_blackBodyRightImage = IMAGEMANAGER->findImage(L"blackBodyRight");
+	_blackBodyLeftImage = IMAGEMANAGER->findImage(L"blackBodyLeft");
+	_blackFootRightImage = IMAGEMANAGER->findImage(L"blackFootRight");
+	_blackFootLeftImage = IMAGEMANAGER->findImage(L"blackFootLeft");
 
 	_frontArmRightImage = IMAGEMANAGER->findImage(L"frontArmRight");
 	_backArmRightImage = IMAGEMANAGER->findImage(L"backArmRight");
@@ -40,9 +55,10 @@ void Player::init(void)
 	_isBackAttack = FALSE;
 	_isRight = TRUE;
 	_isLive = TRUE;
+	_isDead = FALSE;
 	_isSit = FALSE;
 	_isInven = FALSE;
-
+	_isJumpAttack = FALSE;
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -87,6 +103,7 @@ void Player::init(void)
 	TEXTMANAGER->init(DEVICE, L"플레이어상태");
 	TEXTMANAGER->init(DEVICE, L"앞공격");
 	TEXTMANAGER->init(DEVICE, L"뒷공격");
+	TEXTMANAGER->init(DEVICE, L"손좌표");
 
 
 	//debug
@@ -109,7 +126,7 @@ void Player::update(void)
 		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
 		else _bodyState = PLAYER_LEFT_STOP;
 	}
-
+	itemPosUpdate();
 	if (_isRight == TRUE)
 	{
 		switch (_headState)
@@ -218,6 +235,13 @@ void Player::update(void)
 		}
 	}
 
+	if (_isJumpAttack)
+	{
+		_playerJump->setJumpPower(ATTACKJUMPPOWER);
+		_playerJump->jumping(&_x, &_y, ATTACKJUMPPOWER, GRAVITY);
+
+		_isJumpAttack = FALSE;
+	}
 
 	//jhkim 점프 수정
 	if (_playerJump->getIsJumping() == false)
@@ -248,8 +272,8 @@ void Player::update(void)
 		}
 	}
 
-	imagePosUpdate();	//	
-	rectUpdate();		//	렉트 업데이트
+	imagePosUpdate();	//	손 좌표 업데이트
+	rectUpdate();		//	머리, 몸통, 발 렉트 업데이트
 
 	KEYANIMANAGER->update();
 
@@ -258,7 +282,7 @@ void Player::update(void)
 		DATABASE->setGameStart(_isLive);
 	}
 
-	if (!_isFrontAttack && !_isBackAttack)
+	if (!_isFrontAttack && !_isBackAttack)	// 공격중이 아닐때 최근 행동에 대한 모션으로 바꿈
 	{
 		if (_isRight)
 		{
@@ -310,10 +334,19 @@ void Player::update(void)
 	TEXTMANAGER->addText(L"앞공격", strfa);
 	TEXTMANAGER->addText(L"뒷공격", strba);
 
+	TCHAR strHandCoord[100];
+	_stprintf(strHandCoord, L"HandX: %.f, HandY: %.f, frameX: %d, frameY: %d", _handX, _handY, _frontArmRightImage->getCurFrameX(), _frontArmLeftImage->getCurFrameY());
+	TEXTMANAGER->addText(L"손좌표", strHandCoord);
+
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	MAINCAMERA->update();
 
-	if (KEYMANAGER->isOnceKeyDown('P')) _isLive = false;
+	if (KEYMANAGER->isOnceKeyDown('P')) _isDead == TRUE;
+
+	if (_isDead == TRUE)
+	{
+		playerDeadMotion();
+	}
 }
 
 void Player::render(void) 
@@ -363,15 +396,38 @@ void Player::render(void)
 		_bodyLeftImage->aniRender(_bodyMotion);
 	}
 
+	//	발 아머
+	if (_isRight == TRUE)
+	{
+		_blackFootRightImage->aniRender(_bodyMotion);
+	}
+	else
+	{
+		_blackFootLeftImage->aniRender(_bodyMotion);
+	}
+	//	몸 아머
+	if (_isRight == TRUE)
+	{
+		_blackBodyRightImage->aniRender(_bodyMotion);
+	}
+	else
+	{
+		_blackBodyLeftImage->aniRender(_bodyMotion);
+	}
+
 	//	머 리
 	_headImage->render();
 	
 	RECT rcText = RectMake(0, 0, 100, 100);
 	TEXTMANAGER->render(L"플레이어상태", rcText);
-	RECT rcFAText = RectMake(0, 100, 100, 100);
+	RECT rcFAText = RectMake(0, 10, 100, 100);
 	TEXTMANAGER->render(L"앞공격", rcFAText);
-	RECT rcBAText = RectMake(0, 200, 100, 100);
+	RECT rcBAText = RectMake(0, 20, 100, 100);
 	TEXTMANAGER->render(L"뒷공격", rcBAText);
+	RECT rcHandCoord = RectMake(0, 30, 100, 100);
+	TEXTMANAGER->render(L"손좌표", rcHandCoord);
+
+	//	머리 아머
 	
 	//	F R O N T 팔
 	if (_isFrontAttack == TRUE)
@@ -428,6 +484,20 @@ void Player::render(void)
 
 void Player::playerDeadMotion(void)
 {
+	//_boneHead->setCoord({ _x + 5, _y - 26 });
+	//_boneHead->setRotate();
+	//_boneBody->setCoord({ _x + 7, _y - 6 });
+	//_boneBody->setRotate();
+	//_bone[0]->setCoord({ _x, _y + 15 });
+	//_bone[0]->setRotate(10);
+	//_bone[1]->setCoord({ _x + 20, _y + 15 });
+	//_bone[1]->setRotate(-10);
+	//_bone[2]->setCoord({ _x + 8, _y + 27 });
+	//_bone[2]->setRotate();
+	//_bone[3]->setCoord({ _x + 14, _y + 27 });
+	//_bone[3]->setRotate();
+
+	_isLive = FALSE;
 }
 
 void Player::imageReverse(void)
@@ -484,6 +554,10 @@ void Player::imagePosUpdate(void)
 
 	_bodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_bodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_blackBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_blackBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_blackFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_blackFootLeftImage->setCoord({ _x + correction, _y - 22 });
 
 	if (_isSit == TRUE)
 	{
@@ -500,17 +574,17 @@ void Player::imagePosUpdate(void)
 		_backArmLeftImage->setCoord({ _x - 7 + correction, _y - 20 });
 	}
 
-	_bone[0]->setRotate(90);
-	_bone[1]->setRotate(90);
-	_bone[2]->setRotate(90);
-	_bone[3]->setRotate(90);
-
-	_boneHead->setCoord({_x + 5, _y - 26});
-	_boneBody->setCoord({ _x + 7, _y - 6 });
-	_bone[0]->setCoord({ _x, _y + 15 });
-	_bone[1]->setCoord({ _x + 20, _y + 15 });
-	_bone[2]->setCoord({ _x + 8, _y + 27 });
-	_bone[3]->setCoord({ _x + 14, _y + 27 });
+	//_bone[0]->setRotate(90);
+	//_bone[1]->setRotate(90);
+	//_bone[2]->setRotate(90);
+	//_bone[3]->setRotate(90);
+	//
+	//_boneHead->setCoord({_x + 5, _y - 26});
+	//_boneBody->setCoord({ _x + 7, _y - 6 });
+	//_bone[0]->setCoord({ _x, _y + 15 });
+	//_bone[1]->setCoord({ _x + 20, _y + 15 });
+	//_bone[2]->setCoord({ _x + 8, _y + 27 });
+	//_bone[3]->setCoord({ _x + 14, _y + 27 });
 }
 
 void Player::keyAnimationInit(void)
@@ -756,7 +830,7 @@ void Player::keyInputSettings(void)
 		_backArmMotion->start();
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_DOWN))		//	Sit 키, 충돌 렉트 변화 필요
+	if (KEYMANAGER->isOnceKeyDown(VK_DOWN) && !_playerJump->getIsJumping())		//	Sit 키, 충돌 렉트 변화 필요
 	{
 		_isSit = TRUE;
 
@@ -825,7 +899,7 @@ void Player::keyInputSettings(void)
 
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('A'))			//	FRONT_WEAPON_ATTACK
+	if (KEYMANAGER->isOnceKeyDown('D'))			//	FRONT_WEAPON_ATTACK
 	{
 		//	공격용 충돌 렉트 생성
 
@@ -1077,4 +1151,56 @@ void Player::rectUpdate(void)
 	_rcHead = RectMake(_x + 2, _y - 24, HEAD_WIDTH, HEAD_HEIGHT);
 	_rcBody = RectMake(_x, _y - 6, BODY_WIDTH, BODY_HEIGHT);
 	_rcFoot = RectMake(_x, _y + 20, FOOT_WIDTH, FOOT_HEIGHT);
+}
+
+void Player::itemPosUpdate(void)
+{
+	int index;
+
+	if (_isRight)
+	{
+		index = _frontArmRightImage->getCurFrameX() + _frontArmRightImage->getCurFrameY() * 16;
+
+		switch (index / 16)
+		{
+			case 0:
+				//축 좌표			나누기			나머지
+				_handX = _x + 7 + sqrt(_armLen0) * cosf(_frameAngle * (index % 16)) ;
+				_handY = _y + 8 + sqrt(_armLen0) * -sinf(_frameAngle * (index % 16));
+			break;
+			case 1:
+				//축 좌표			나누기			나머지
+				_handX = _x + 7 + sqrt(_armLen1) * cosf(_frameAngle * (index % 16));
+				_handY = _y + 8 + sqrt(_armLen1) * -sinf(_frameAngle * (index % 16));
+			break;
+			case 2:
+				//축 좌표			나누기			나머지
+				_handX = _x + 7 + sqrt(_armLen2) * cosf(_frameAngle * (index % 16));
+				_handY = _y + 8 + sqrt(_armLen2) * -sinf(_frameAngle * (index % 16));
+			break;
+		}
+	}
+	else
+	{
+		index = _frontArmLeftImage->getCurFrameX() + _frontArmLeftImage->getCurFrameY() * 16;
+
+		switch (index / 16)
+		{
+			case 0:
+				//축 좌표			나누기			나머지
+				_handX = _x + 21 + sqrt(_armLen0) * cosf(_frameAngle * (index % 16));
+				_handY = _y + 8 + sqrt(_armLen0) * -sinf(_frameAngle * (index % 16));
+			break;
+			case 1:
+				//축 좌표			나누기			나머지
+				_handX = _x + 21 + sqrt(_armLen1) * cosf(_frameAngle * (index % 16));
+				_handY = _y + 8 + sqrt(_armLen1) * -sinf(_frameAngle * (index % 16));
+			break;
+			case 2:
+				//축 좌표			나누기			나머지
+				_handX = _x + 21 + sqrt(_armLen2) * cosf(_frameAngle * (index % 16));
+				_handY = _y + 8 + sqrt(_armLen2) * -sinf(_frameAngle * (index % 16));
+			break;
+		}
+	}
 }

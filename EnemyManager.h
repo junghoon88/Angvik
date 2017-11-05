@@ -53,7 +53,7 @@ public:
 
 	void setEnemy1(void);
 	void enemyFire(void);
-	void deleteEnemy(void);
+	void deleteEnemy(int arrNum);
 
 	
 	//getter, setter

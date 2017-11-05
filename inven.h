@@ -45,7 +45,7 @@ public:
 	void render(void);
 	bool close(void) { return false; }
 
-	inline void itemUpdate(void);
+	void itemUpdate(void);
 
 	void menewBoxUpdate(float x, float y);
 	void itemBoxUpdate(float x, float y);

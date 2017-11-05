@@ -30,11 +30,7 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneStage);
 	scene->init();
-	scene = SCENEMANAGER->addScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À", new itemManager);
-	scene->init();
 	scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
-	scene->init();
-	scene = SCENEMANAGER->addScene(L"ÀÎº¥Å×½ºÆ®", new invenBird);
 	scene->init();
 
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
@@ -55,15 +51,6 @@ void mainGame::update(void)
 	{
 		SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
 	}
-
-	if (KEYMANAGER->isOnceKeyDown(VK_F3))
-	{
-		SCENEMANAGER->changeScene(L"¾ÆÀÌÅÛÅ×½ºÆ®¾À");
-	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F4))
-	{
-		SCENEMANAGER->changeScene(L"¿¡³Ê¹ÌÅ×½ºÆ®");
-	}
 	if (KEYMANAGER->isOnceKeyDown(VK_F6))
 	{
 		SCENEMANAGER->changeScene(L"¼¿·º¾À");
@@ -71,7 +58,7 @@ void mainGame::update(void)
 
 	SCENEMANAGER->update();
 
-	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
 	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 

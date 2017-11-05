@@ -16,7 +16,7 @@ class EnemyMother : public DxWindow
 {
 protected:
 	Sprite* spt;
-	Rect* rct;
+
 	wstring rcName;     //렉트 키네임
 	RECT rc;
 	RECT sptrc;//안쓰셔도 됨. 저는 이미지 그릴려고 추가합니다.
@@ -27,6 +27,7 @@ protected:
 	float speed;
 	float jumpPower;
 	float gravity;
+	//float amountY;
 	int life;
 
 	int probeY;
@@ -47,6 +48,7 @@ public:
 	void release(void);
 	virtual void update(void);
 	virtual void render(void);
+	//virtual void RIP(void);
 
 	virtual void move(void);
 	virtual bool attack(void);
@@ -54,7 +56,7 @@ public:
 	inline float getX(void) { return ptX; }
 	inline float getY(void) { return ptY; }
 	inline int getLife(void) { return life; }
-	void setLife(int hit) { life -= hit; } //라이프 셋팅용.피해량 만큼 라이프 감소
+	inline void setLife(int lf) { life = lf; } 
 	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
 	inline RECT getRect(void) { return rc; }

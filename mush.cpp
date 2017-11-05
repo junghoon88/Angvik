@@ -168,7 +168,7 @@ void mush::move(void) {
 	}
 	for (int i = probeY - 10; i < probeY + 15; ++i)//YÃà Å½Áö
 	{
-		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-TEST", ptX, i);
+		COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", ptX, i);
 
 
 		int r = GetRValue(color);

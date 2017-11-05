@@ -86,23 +86,7 @@ void Ent::move(void)
 			state = eIDLE;
 			break;
 		}
-		else if ((r == 0 && g == 255 && b == 255))
-		{
-			if (i >= ptX)
-			{
-				ptY = i - 40;
-				dir = eLEFT;
-				spt->setScale(-1, 1);
-				spt->setScaleOffset(68, 0);
-			}
-			else if (i < ptX)
-			{
-				ptY = i - 40;
-				dir = eRIGHT;
-				spt->setScale(1, 1);
-			}
-			break;
-		}
+
 		else
 		{
 			state = eFALL;
@@ -118,7 +102,7 @@ void Ent::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255))
+		if ((r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
 		{
 			if (i >= ptX)
 			{

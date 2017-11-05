@@ -4,6 +4,7 @@
 #include "invenBird.h"
 
 inven::inven()
+	: _im(NULL), _ib(NULL)
 {
 }
 
