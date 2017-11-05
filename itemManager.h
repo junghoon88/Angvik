@@ -23,6 +23,7 @@ private:
 	int _x, _y;
 	int i, j;
 	bool issetting;
+
 	
 private:
 	PlayerManager* _pm;

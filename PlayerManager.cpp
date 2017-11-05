@@ -279,11 +279,11 @@ void PlayerManager::update(void)
 Collision();
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
-<<<<<<< HEAD
 
-=======
+
+
 	_inven->update(_player->getX(), _player->getY());
->>>>>>> d74795c54cc6e25c20aadcbf8847363d7c8201c8
+
 }
 
 void PlayerManager::render(void) 

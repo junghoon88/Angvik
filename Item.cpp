@@ -17,6 +17,9 @@ void Item::init(void)
 	//_rcImg = RectMake(_pt.x, _pt.y, _img->getRealSize().x, _img->getRealSize().y);
 	itemCollision = new pixelCollision;
 	itemCollision->init();
+
+	targetX = 0.0f;
+	targetY = 0.0f;
 }
 
 void Item::release(void)
@@ -26,16 +29,16 @@ void Item::release(void)
 
 void Item::update(void)
 {
-	if (_type == ITEM_TYPE_SWORD)
-	{
-		//if (_kind == ITEM_KIND_WHITE)
-		//{
-			if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
-			if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
-			if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
-			if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
-		//}
-	}
+	//if (_type == ITEM_TYPE_SWORD)
+	//{
+	//	//if (_kind == ITEM_KIND_WHITE)
+	//	//{
+	//		if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
+	//	//}
+	//}
 	//////////////////¾ÆÀÌÅÛ ÁöÇü ÇÈ¼¿Ãæµ¹///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
@@ -50,10 +53,13 @@ void Item::update(void)
 	{
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
 			_img->setRotate(80.0f);
-			//_img->setCoord(ÇÃ·¹ÀÌ¾î x. ÇÃ·¹ÀÌ¾îy)
+
+			_img->setCoord(targetX, targetY);
+
 		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			switch (_type)
+
 				{
 				case  ITEM_TYPE_SWORD:
 				{
@@ -125,10 +131,10 @@ void Item::update(void)
 			switch (_kind)
 			{
 			case ITEM_KIND_WHITE:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®ÁöÆÎÀÌ")->getRealSize().y);
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			case ITEM_KIND_BLACK:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®ÁöÆÎÀÌ")->getRealSize().y);
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			case ITEM_KIND_GOLD:
 				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
@@ -143,6 +149,7 @@ void Item::update(void)
 		case  ITEM_TYPE_BOOMERANG:
 			switch (_kind)
 			{
+
 			case ITEM_KIND_WHITE:
 				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
 				break;
@@ -153,8 +160,10 @@ void Item::update(void)
 				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			}
+			_img->setCenterPer(0.5,0.5);
 			_img->setRotate(_img->getAngle() - 15.0f);
-			_img->move(10, 0);
+			_pt.x += 10;
+			
 			
 			break;
 		}

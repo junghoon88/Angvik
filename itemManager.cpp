@@ -5,6 +5,7 @@
 #include "stageManager.h"
 
 itemManager::itemManager()
+	: _pm(NULL)
 {
 }
 
@@ -21,6 +22,7 @@ void itemManager::init(void)
 	i = j = 0;
 
 	itemNum = 0;
+
 }
 
 void itemManager::release(void)
@@ -30,11 +32,16 @@ void itemManager::release(void)
 
 void itemManager::update(void)
 {
+
 	if (_pm != NULL)
 	{
 		float x = _pm->getPlayer()->getX();
 		float y = _pm->getPlayer()->getY();
 
+		for (int i = 0; i < _vItems.size(); i++)
+		{
+			_vItems[i]->targetPlayer(x, y);
+		}
 	}
 	
 	
@@ -56,15 +63,14 @@ void itemManager::update(void)
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		_vItems[i]->update();
-
-		if (KEYMANAGER->isOnceKeyDown('P'))
-		{
-			removeItem(i);
-		}
+		
 	}
-	
-
-
+	//내구도 0되면 아이템 삭제
+	for (int i = 0; i < _vItems.size(); i++)
+	{
+		if (_vItems[i]->getdurability() == 0)
+			removeItem(i);
+	}
 }
 
 void itemManager::render(void)
@@ -93,7 +99,7 @@ void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
-	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
+	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
 
 	_vItems.push_back(field);
 }

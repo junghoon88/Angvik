@@ -1,7 +1,9 @@
 #pragma once
 #include "DxWindow.h"
 #include "pixelCollision.h"
-#include "Bullet.h"
+
+
+
 
 enum ITEM_TYPE
 {
@@ -60,7 +62,9 @@ private:
 	MYPOINT	_pt;
 	RECT _rcImg;
 	RECT _rcHit;
-
+	
+	float targetX;
+	float targetY;
 
 	
 public:
@@ -71,7 +75,10 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-	
+
+	inline void targetPlayer(float x, float y) { targetX = x; targetY = y; }
+
+
 	//아이템타입 겟셋
 	inline void setNum(int num) { _num = num; }
 	inline void setType(ITEM_TYPE type) { _type = type; }
