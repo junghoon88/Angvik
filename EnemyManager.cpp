@@ -40,11 +40,17 @@ void EnemyManager::update(void)
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
+		
 		if ((*_viEnemy)->getIndex() == 1 || (*_viEnemy)->getIndex() == 2) {
 			(*_viEnemy)->setPlayerX(_pm->getPlayer()->getX());
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
+		if ((*_viEnemy)->getState() == Death) {
 
+			_im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+			deleteEnemy(_viEnemy);
+			break;
+		}
 	}
 
 	enemyFire();

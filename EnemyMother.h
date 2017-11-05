@@ -9,7 +9,9 @@ enum enemyState
 	eIDLE,
 	eATK,
 	eJUMP,
-	eFALL
+	eFALL,
+	toDeath,
+	Death
 };
 
 class EnemyMother : public DxWindow
@@ -27,7 +29,11 @@ protected:
 	float speed;
 	float jumpPower;
 	float gravity;
-	//float amountY;
+	float amountX;
+	float amountY;
+	float amountTime;
+	float rcHeight;
+	int amountHeight;
 	int life;
 
 	int probeY;
@@ -48,7 +54,7 @@ public:
 	void release(void);
 	virtual void update(void);
 	virtual void render(void);
-	//virtual void RIP(void);
+	virtual void RIP(void);
 
 	virtual void move(void);
 	virtual bool attack(void);

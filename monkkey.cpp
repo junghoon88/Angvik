@@ -33,28 +33,41 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	frameCnt = 0;
 	frameTime = 0;
 
-	rc = RectMakeCenter(ptX, ptY, 45, 45);   //100,60 의미x
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, 45 });
+	rcHeight = amountHeight = 45; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountX = 1;
+	amountTime = 0; //Y축 감소용 시간
+
+	rc = RectMakeCenter(ptX, ptY, 45, rcHeight);   //100,60 의미x
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, rcHeight });
 	probeY = rc.bottom;
 
 }
 void monkkey::update(void) {
-	rc = RectMakeCenter(ptX, ptY, 45, 45);
-	probeY = rc.bottom;
-	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
-	spt->setCoord({(float)rc.left,(float)rc.top });
-	
-	frameTime += TIMEMANAGER->getElapsedTime();
-	if (frameTime >= 0.1f)
-	{
-		frameTime = 0;
+	rc = RectMakeCenter(ptX, ptY, 45, rcHeight);
 
-		frameCnt++;
-		if (frameCnt >= 8) frameCnt = 0;
+	if (life <= 0)
+	{
+		RIP();
+	}
+	else
+	{
+		probeY = rc.bottom;
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		spt->setCoord({ (float)rc.left,(float)rc.top });
+
+		frameTime += TIMEMANAGER->getElapsedTime();
+		if (frameTime >= 0.1f)
+		{
+			frameTime = 0;
+
+			frameCnt++;
+			if (frameCnt >= 8) frameCnt = 0;
+		}
+		move();
 	}
 
-	move();
-	
+
 
 }
 void monkkey::render(void) {
@@ -118,6 +131,7 @@ void monkkey::move(void) {
 				ptX = i - 20;
 				dir = eLEFT;
 				spt->setScale({ -1,1 });
+				amountX = -1;
 				spt->setScaleOffset(45, 0);
 			}
 			else if (i < ptX)
@@ -125,6 +139,7 @@ void monkkey::move(void) {
 				ptX = i + 20;
 				dir = eRIGHT;
 				spt->setScale({ 1,1 });
+				amountX = 1;
 			}
 			break;
 		}

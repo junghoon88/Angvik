@@ -237,6 +237,7 @@ public:
 	bool getIsInven(void)		{ return _isInven; }
 	void setIsInven(bool isInven) { _isInven = isInven; }
 
+	bool getIsRight(void) { return _isRight; }
 	EQUIPARMORSTATE getHeadItem(void) { return _headItem; }	
 	EQUIPARMORSTATE getBodyItem(void) { return _bodyItem; }	
 	EQUIPARMORSTATE getFootItem(void) { return _footItem; }

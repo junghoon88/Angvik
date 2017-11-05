@@ -114,6 +114,7 @@ void Player::init(void)
 	TEXTMANAGER->init(DEVICE, L"앞공격");
 	TEXTMANAGER->init(DEVICE, L"뒷공격");
 	TEXTMANAGER->init(DEVICE, L"손좌표");
+	TEXTMANAGER->init(DEVICE, L"장비상태");
 
 
 	//debug
@@ -359,6 +360,33 @@ void Player::update(void)
 	_stprintf(strHandCoord, L"HandX: %.f, HandY: %.f, frameX: %d, frameY: %d", _handX, _handY, _frontArmRightImage->getCurFrameX(), _frontArmLeftImage->getCurFrameY());
 	TEXTMANAGER->addText(L"손좌표", strHandCoord);
 
+	TCHAR strBodyState[100];
+	switch (_bodyItem)
+	{
+	case UNARMEDARMOR:_stprintf(strBodyState, L"Body: UNARMED");
+		break;
+	case WHITE:_stprintf(strBodyState, L"Body: WHITE");
+		break;
+	case GOLD:_stprintf(strBodyState, L"Body: GOLD");
+		break;
+	case BLACK:_stprintf(strBodyState, L"Body: BLACK");
+		break;
+	}
+	TCHAR strFootState[100];
+	switch (_bodyItem)
+	{
+	case UNARMEDARMOR:_stprintf(strFootState, L"Foot: UNARMED");
+		break;
+	case WHITE:_stprintf(strFootState, L"Foot: WHITE");
+		break;
+	case GOLD:_stprintf(strFootState, L"Foot: GOLD");
+		break;
+	case BLACK:_stprintf(strFootState, L"Foot: BLACK");
+		break;
+	}
+	_tcscat(strBodyState, strFootState);
+	TEXTMANAGER->addText(L"장비상태", strBodyState);
+
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	//_mainCamera = { 3500, 100 };
 	MAINCAMERA->update();
@@ -462,6 +490,9 @@ void Player::render(void)
 	TEXTMANAGER->render(L"뒷공격", rcBAText);
 	RECT rcHandCoord = RectMake(0, 30, 100, 100);
 	TEXTMANAGER->render(L"손좌표", rcHandCoord);
+	RECT rcArmorState = RectMake(0, 50, 100, 100);
+	TEXTMANAGER->render(L"장비상태", rcArmorState);
+
 
 	
 	//	F R O N T 팔
