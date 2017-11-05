@@ -46,6 +46,16 @@ void Player::init(void)
 	_blackFootRightImage = IMAGEMANAGER->findImage(L"blackFootRight");
 	_blackFootLeftImage = IMAGEMANAGER->findImage(L"blackFootLeft");
 
+	_goldBodyRightImage = IMAGEMANAGER->findImage(L"goldBodyRight");
+	_goldBodyLeftImage = IMAGEMANAGER->findImage(L"goldBodyLeft");
+	_goldFootRightImage = IMAGEMANAGER->findImage(L"goldFootRight");
+	_goldFootLeftImage = IMAGEMANAGER->findImage(L"goldFootLeft");
+
+	_whiteBodyRightImage = IMAGEMANAGER->findImage(L"whiteBodyRight");
+	_whiteBodyLeftImage = IMAGEMANAGER->findImage(L"whiteBodyLeft");
+	_whiteFootRightImage = IMAGEMANAGER->findImage(L"whiteFootRight");
+	_whiteFootLeftImage = IMAGEMANAGER->findImage(L"whiteFootLeft");
+
 	_frontArmRightImage = IMAGEMANAGER->findImage(L"frontArmRight");
 	_backArmRightImage = IMAGEMANAGER->findImage(L"backArmRight");
 	_frontArmLeftImage = IMAGEMANAGER->findImage(L"frontArmLeft");
@@ -104,6 +114,7 @@ void Player::init(void)
 	TEXTMANAGER->init(DEVICE, L"앞공격");
 	TEXTMANAGER->init(DEVICE, L"뒷공격");
 	TEXTMANAGER->init(DEVICE, L"손좌표");
+	TEXTMANAGER->init(DEVICE, L"장비상태");
 
 
 	//debug
@@ -349,6 +360,33 @@ void Player::update(void)
 	_stprintf(strHandCoord, L"HandX: %.f, HandY: %.f, frameX: %d, frameY: %d", _handX, _handY, _frontArmRightImage->getCurFrameX(), _frontArmLeftImage->getCurFrameY());
 	TEXTMANAGER->addText(L"손좌표", strHandCoord);
 
+	TCHAR strBodyState[100];
+	switch (_bodyItem)
+	{
+	case UNARMEDARMOR:_stprintf(strBodyState, L"Body: UNARMED");
+		break;
+	case WHITE:_stprintf(strBodyState, L"Body: WHITE");
+		break;
+	case GOLD:_stprintf(strBodyState, L"Body: GOLD");
+		break;
+	case BLACK:_stprintf(strBodyState, L"Body: BLACK");
+		break;
+	}
+	TCHAR strFootState[100];
+	switch (_bodyItem)
+	{
+	case UNARMEDARMOR:_stprintf(strFootState, L"Foot: UNARMED");
+		break;
+	case WHITE:_stprintf(strFootState, L"Foot: WHITE");
+		break;
+	case GOLD:_stprintf(strFootState, L"Foot: GOLD");
+		break;
+	case BLACK:_stprintf(strFootState, L"Foot: BLACK");
+		break;
+	}
+	_tcscat(strBodyState, strFootState);
+	TEXTMANAGER->addText(L"장비상태", strBodyState);
+
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	//_mainCamera = { 3500, 100 };
 	MAINCAMERA->update();
@@ -408,23 +446,37 @@ void Player::render(void)
 		_bodyLeftImage->aniRender(_bodyMotion);
 	}
 
-	//	발 아머
-	if (_isRight == TRUE)
+	//	발 아머 애니렌더
+	switch (_footItem)
 	{
-		_blackFootRightImage->aniRender(_bodyMotion);
+		case WHITE:
+			if (_isRight == TRUE)	_whiteFootRightImage->aniRender(_bodyMotion);
+			else					_whiteFootLeftImage->aniRender(_bodyMotion);
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion);
+			else					_goldFootLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackFootRightImage->aniRender(_bodyMotion);
+			else					_blackFootLeftImage->aniRender(_bodyMotion);
+		break;
 	}
-	else
+	//	몸 아머 애니렌더
+	switch (_bodyItem)
 	{
-		_blackFootLeftImage->aniRender(_bodyMotion);
-	}
-	//	몸 아머
-	if (_isRight == TRUE)
-	{
-		_blackBodyRightImage->aniRender(_bodyMotion);
-	}
-	else
-	{
-		_blackBodyLeftImage->aniRender(_bodyMotion);
+		case WHITE:
+			if (_isRight == TRUE)	_whiteBodyRightImage->aniRender(_bodyMotion);
+			else					_whiteBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldBodyRightImage->aniRender(_bodyMotion);
+			else					_goldBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackBodyRightImage->aniRender(_bodyMotion);
+			else					_blackBodyLeftImage->aniRender(_bodyMotion);
+		break;
 	}
 
 	//	머 리
@@ -438,8 +490,10 @@ void Player::render(void)
 	TEXTMANAGER->render(L"뒷공격", rcBAText);
 	RECT rcHandCoord = RectMake(0, 30, 100, 100);
 	TEXTMANAGER->render(L"손좌표", rcHandCoord);
+	RECT rcArmorState = RectMake(0, 50, 100, 100);
+	TEXTMANAGER->render(L"장비상태", rcArmorState);
 
-	//	머리 아머
+
 	
 	//	F R O N T 팔
 	if (_isFrontAttack == TRUE)
@@ -536,6 +590,23 @@ void Player::imageReverse(void)
 
 	IMAGEMANAGER->findImage(L"frontArmLeft")->setScaleOffset(offsetVal, 0.0f);
 	IMAGEMANAGER->findImage(L"backArmLeft")->setScaleOffset(offsetVal, 0.0f);
+
+	//	아이템
+	//	블랙
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	금
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"goldFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	화이트
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScaleOffset(offsetVal, 0.0f);
 }
 
 void Player::imagePosUpdate(void)
@@ -566,10 +637,21 @@ void Player::imagePosUpdate(void)
 
 	_bodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_bodyLeftImage->setCoord({ _x + correction, _y - 22 });
+
 	_blackBodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackBodyLeftImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_goldBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_whiteBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootLeftImage->setCoord({ _x + correction, _y - 22 });
 
 	if (_isSit == TRUE)
 	{
