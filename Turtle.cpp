@@ -21,7 +21,7 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 
 	isAtk = false;
 	spt->setCoord({ 0,0 });
-	index = 0;
+	index = 3;
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 1;
@@ -43,7 +43,7 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 }
 void Turtle::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY + 10, 100, rcHeight);
+	rc = RectMakeCenter(ptX, ptY, 100, rcHeight);
 	if (life <= 0)
 	{
 		RIP();

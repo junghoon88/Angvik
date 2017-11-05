@@ -55,7 +55,7 @@ void kong::update(void)
 	}
 	else
 	{
-	//	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
 		if (playerX < ptX)
 		{
