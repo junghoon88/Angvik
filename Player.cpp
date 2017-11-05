@@ -126,7 +126,7 @@ void Player::update(void)
 		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
 		else _bodyState = PLAYER_LEFT_STOP;
 	}
-
+	itemPosUpdate();
 	if (_isRight == TRUE)
 	{
 		switch (_headState)

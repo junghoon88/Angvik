@@ -39,7 +39,7 @@ void PlayerManager::update(void)
 {
 	if(_player->getIsSit()) playerItemCollision();		//	앉기 키를 눌렀을 때, 아이템매니저에서 아이템벡터를 불러온 뒤, 아이템의 렉트와 플레이어의 렉트를 비교해서 해당 아이템의 정보로 플레이어 상태를 변경
 
-
+	Collision();
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 	_inven->update(_player->getX(), _player->getY());
@@ -72,12 +72,14 @@ void PlayerManager::playerItemCollision(void)
 			switch (item[i]->getState() == ITEM_STATE_IDLE)
 			{
 			case ITEM_TYPE_SWORD:
+				
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
 					switch (item[i]->getKind())
 					{
 						case ITEM_KIND_WHITE:
 							_player->setBackItem(WHITE_SWORD);	//흰색
+							//item[i]->setState(ITEM_STATE_INPLAYER);
 						break;
 						case ITEM_KIND_GOLD:
 							_player->setBackItem(GOLD_SWORD);	//황금색
@@ -85,7 +87,7 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_SWORD);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
+						
 					}
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
@@ -309,6 +311,3 @@ void PlayerManager::playerItemCollision(void)
 		}
 	}
 }
-
-
-

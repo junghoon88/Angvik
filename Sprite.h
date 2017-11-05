@@ -22,7 +22,7 @@ private:
 
 	bool _bCameraOffset;
 
-	void AdjustTransform();
+	bool AdjustTransform();
 
 public:
 	Sprite(LPDIRECT3DDEVICE9 device, const TCHAR* fileName,
@@ -72,6 +72,7 @@ public:
 	void setCurFrameY(int frameY);
 	int getMaxFrameX(void);
 	int getMaxFrameY(void);
+
 
 
 	inline Texture* getTexture(void) { return _texture; }

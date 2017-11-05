@@ -24,7 +24,7 @@ void kong::init(int num, float x, float y, wstring rcKey)
 	index = 2;
 	dir = eRIGHT;
 	state = eIDLE;
-	life = 2;
+	life = 1;
 	ptX = x;
 	ptY = y;
 	atkCnt = 0;
@@ -35,8 +35,8 @@ void kong::init(int num, float x, float y, wstring rcKey)
 	sptrc = RectMakeCenter(x, y, 32, 50);
 	spt->setCoord(sptrc.left,rc.bottom - 54);
 	atkSpt->setCoord(sptrc.left, rc.bottom - 40);
-	playerX = 0;
-	playerY = 0;
+	spt->setScaleOffset(32, 0); //조정해야함
+	atkSpt->setScaleOffset(34, 0); //조정해야함
 	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 32, 50 });
 	isAtk = false;
 }
@@ -49,8 +49,7 @@ void kong::update(void)
 		dir = eLEFT;
 		spt->setScale(-1, 1);
 		atkSpt->setScale(-1, 1);
-		spt->setScaleOffset(32, 0); //조정해야함
-		atkSpt->setScaleOffset(34, 0); //조정해야함
+	
 	}
 	else if (playerX > ptX)
 	{

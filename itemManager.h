@@ -37,8 +37,8 @@ public:
 	void init(void);
 	void release(void);
 	void update(void);
-	void render(void)
-		;
+	void render(void);
+
 	//¸÷´Ôµé °¡Á®°¡¼À 
 	void setItem(float x, float y);
 	////////////////////////
