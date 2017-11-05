@@ -31,9 +31,11 @@ protected:
 
 	int probeY;
 	int probeX;//딱히 필요는 없을지도?
-	int index;
+	int index;//1번 부메랑,2번 콩알탄
 	int frameCnt;
 	float frameTime;
+
+	bool isAtk;
 
 	enemyDirection dir;
 	enemyState state;
@@ -53,12 +55,14 @@ public:
 	inline float getY(void) { return ptY; }
 	inline int getLife(void) { return life; }
 	void setLife(int hit) { life -= hit; } //라이프 셋팅용.피해량 만큼 라이프 감소
+	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
 	inline RECT getRect(void) { return rc; }
 	inline int getIndex(void) { return index; }
+	inline bool getAtk(void) { return isAtk; }
+	inline void setAtk(bool isatk) { isAtk = isatk; }
 	inline void setPlayerX(float x) { playerX = x; }
 	inline void setPlayerY(float y) { playerY = y; }
 	EnemyMother();
 	~EnemyMother();
 };
-

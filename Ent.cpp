@@ -19,12 +19,14 @@ void Ent::init(int num, float x, float y)
 														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameX() + 1, 
 														IMAGEMANAGER->findImage(L"나무맨")->getMaxFrameY() + 1);
 	//spt = IMAGEMANAGER->findImage(L"나무맨");
+	index = 0;
 	spt->setCoord({ 0,0 });
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
 	ptX = x;
 	ptY = y;
+	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 40, 70);

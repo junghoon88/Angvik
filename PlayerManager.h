@@ -12,13 +12,22 @@ class itemManager;
 class PlayerManager : public DxWindow
 {
 private:
-	Player* _player;
-	invenBird* _bird;
-	inven* _inven;
+	typedef vector<Item*> vItems;
+	typedef vector<Item*>::iterator viItems;
 
-	EnemyManager* _em;
-	stageManager* _sm;
-	itemManager* _im;
+private:
+	vItems _vItems;
+	viItems _viItems;
+
+private:
+	Player*			_player;
+	invenBird*		_bird;
+	inven* _inven;
+	
+	EnemyManager*	_em;
+	stageManager*	_sm;
+	itemManager*	_im;
+
 
 	RECT _playerRcHead;
 	RECT _playerRcBody;

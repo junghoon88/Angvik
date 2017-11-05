@@ -20,12 +20,13 @@ void Turtle_crash::init(int num, float x, float y)
 		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameY() + 1);
 	spt->setCoord({ 0,0 });
-
+	index = 0;
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 2;
 	ptX = x;
 	ptY = y;
+	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	rc = RectMakeCenter(x, y, 100, 60);

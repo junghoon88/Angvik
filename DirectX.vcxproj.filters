@@ -215,12 +215,17 @@
     <ClCompile Include="mush.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
-
     <ClCompile Include="Bullet.cpp">
       <Filter>mainGame\Bullet</Filter>
     </ClCompile>
+<<<<<<< HEAD
 
 >>>>>>> 91848ad9514e54753094dd580fa33796b6acf9a5
+=======
+    <ClCompile Include="inven.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
+>>>>>>> 961ddea5d4639733124aabf08619f7ee66780d68
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
@@ -347,11 +352,12 @@
     <ClInclude Include="mush.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
-
     <ClInclude Include="Bullet.h">
       <Filter>mainGame\Bullet</Filter>
     </ClInclude>
-
+    <ClInclude Include="inven.h">
+      <Filter>mainGame\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="mainGame">

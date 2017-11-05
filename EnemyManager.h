@@ -13,6 +13,7 @@
 class PlayerManager;
 class stageManager;
 class itemManager;
+class sBMR;
 
 class EnemyManager : public DxWindow
 {
@@ -23,15 +24,18 @@ private:
 	vEnemy _vEnemy;
 	viEnemy _viEnemy;
 
-	int entNum;
+	sBMR* sBmr;
+	Kongtan* kongTan;
 
 	int monkkeyNum;
 	int mushNum;
 
+	int entNum;
 	int turtleNum;
 	int turtlecNum;
 	int kongNum;
 
+	int bulletNum;
 
 private:
 	PlayerManager* _pm;
@@ -56,6 +60,7 @@ public:
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
+	inline void setLinkAdresssBMR(sBMR* sBMR) { sBmr = sBMR; }
 
 	inline vEnemy getvEnemy(void) { return _vEnemy; }
 	inline viEnemy getviEnemy(void) { return _viEnemy; }
