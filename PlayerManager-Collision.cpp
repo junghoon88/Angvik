@@ -34,14 +34,8 @@ void PlayerManager::Collision(void)
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 몬스터충돌처리
 	{	
 		RECT temp2;
-<<<<<<< HEAD
 		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) {     //플레이어 피해받음
-				
-=======
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) { //플레이어 피해받음
 			
-
->>>>>>> bbeb63271bdf79d348f48e443c033fa1d4b29388
 
 		}
 	
