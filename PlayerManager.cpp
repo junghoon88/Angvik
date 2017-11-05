@@ -64,7 +64,7 @@ void PlayerManager::playerItemCollision(void)
 	for (int i = 0; i < item.size(); i++)
 	{
 		RECT rc;
-		if (IntersectRect(&rc, &(item[i]->getrcImg()), &(_player->getRectFoot())))
+		if (IntersectRect(&rc, &(item[i]->getrcImg()), &(_player->getRectBody())))
 		{
 			//아이템의 타입에 따라
 			//플레이어의 부위별 아이템 상태 변경
