@@ -26,6 +26,8 @@ void sceneStage::init(void)
 	_pm->setLinkAdressStageManager(_sm);
 	_pm->setLinkAdressItemManager(_im);
 
+	_pm->getInven()->setLinkAdressItemManager(_im);
+
 	_em->setLinkAdressPlayerManager(_pm);
 	_em->setLinkAdressStageManager(_sm);
 	_em->setLinkAdressItemManager(_im);
@@ -50,6 +52,16 @@ void sceneStage::update(void)
 	_em->update();
 	_sm->update();
 	_im->update();
+
+	if (!SOUNDMANAGER->isPlaySound(L"stage1bgm"))
+	{
+		if (SOUNDMANAGER->isPlaySound(L"메뉴브금"))
+		{
+			SOUNDMANAGER->stop(L"메뉴브금");
+		}
+		SOUNDMANAGER->play(L"stage1bgm", DATABASE->getVolume());
+		SOUNDMANAGER->setMuteAll(DATABASE->getMute());
+	}
 
 	MAINCAMERA->update();
 }

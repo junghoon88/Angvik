@@ -59,7 +59,7 @@ void Item::update(void)
 			_img->setRotate(80.0f);
 
 		
-		if (KEYMANAGER->isOnceKeyDown('A'))
+		if (KEYMANAGER->isOnceKeyDown('D'))
 		{
 			switch (_type)
 
@@ -148,7 +148,7 @@ void Item::update(void)
 				break;
 			}
 			_img->setRotate(_img->getAngle() - 5.0f);
-			if (_img->getAngle() <= 70.0f)
+			if (_img->getAngle() <= 0.0f)
 			{
 				_state = ITEM_STATE_INPLAYER;
 			}
@@ -167,16 +167,16 @@ void Item::update(void)
 				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			}
-			_img->setCenterPer(0.5,0.5);
-			_img->setRotate(_img->getAngle() - 15.0f);
-			_pt.x += 10;
+				_img->setCenterPer(0.5,0.5);
+				_img->setRotate(_img->getAngle() - 15.0f);
+				_pt.x += 10;
 			
 			
 			break;
 		}
 	}
-	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
-	else if (_state == ITEM_STATE_INPLAYER||_state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
+	if(_state == ITEM_STATE_IDLE || _state == ITEM_STATE_ATTACK)_img->setCoord(_pt.x, _pt.y);
+	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX , targetY);
 
 	
 
