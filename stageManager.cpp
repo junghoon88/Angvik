@@ -185,6 +185,6 @@ void stageManager::endCheck(void)
 {
 	if (isCollision(_pm->getPlayer()->getRectBody(), endPoint) && !isEnd)
 	{
-		SCENEMANAGER->changeScene(L"¼¿·º¾À");
+		DATABASE->setGameEnd(true);
 	}
 }

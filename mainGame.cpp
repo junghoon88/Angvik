@@ -32,7 +32,8 @@ void mainGame::initScene(void)
 	scene->init();
 	//scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
 	//scene->init();
-
+	scene = SCENEMANAGER->addScene(L"¿£µù", new sceneED);
+	scene->init();
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 
@@ -57,8 +58,8 @@ void mainGame::update(void)
 	}
 
 	SCENEMANAGER->update();
-
-	if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+	if (DATABASE->getGameEnd()) SCENEMANAGER->changeScene(L"¿£µù");
+	else if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
 	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
 }
 

@@ -189,7 +189,7 @@ tagPixelCollision pixelCollision::getPlayerPixelGround(int cx, int cy, int width
 			{
 				res.trap = true;
 			}
-			if (color == RGB(0, 0, 0))// || color == RGB(0, 255, 255))
+			else if (color == RGB(0, 0, 0))// || color == RGB(0, 255, 255))
 			{
 				res.detect = true;
 				res.offset.x = cx;

@@ -107,10 +107,11 @@ void sceneInit::stageInitImage()	//스테이지 이미지(배경)
 	PBGMANAGER->addImage(L"Stage1-TEST", L"image/stage/Stage1-test.bmp", 6709, 1290);
 
 	//엔딩
-	IMAGEMANAGER->addImage(DEVICE, L"엔딩크레딧", L"image/Stage/Stage1-test.bmp");
-	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경1", L"image/Stage/Stage1-test.bmp");
-	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경2", L"image/Stage/Stage1-test.bmp");
-	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경3", L"image/Stage/Stage1-test.bmp");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩크레딧", L"image/Stage/End_front.png");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경1", L"image/Stage/End_back1.png");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경2", L"image/Stage/End_back2.png");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경3", L"image/Stage/End_back3.png");
+
 	
 }
 
