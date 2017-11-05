@@ -111,7 +111,10 @@ void sceneInit::playerInitImage(void)
 	//	BONE
 	IMAGEMANAGER->addImage(DEVICE, L"boneHead", L"image/player/bone_head.png");
 	IMAGEMANAGER->addImage(DEVICE, L"boneBody", L"image/player/bone_body.png");
-	IMAGEMANAGER->addImage(DEVICE, L"boneEtc", L"image/player/bone_etc.png");
+	IMAGEMANAGER->addImage(DEVICE, L"bone0", L"image/player/bone_etc.png");
+	IMAGEMANAGER->addImage(DEVICE, L"bone1", L"image/player/bone_etc.png");
+	IMAGEMANAGER->addImage(DEVICE, L"bone2", L"image/player/bone_etc.png");
+	IMAGEMANAGER->addImage(DEVICE, L"bone3", L"image/player/bone_etc.png");
 
 	//	UNARMED
 	//	RIGHTSIDE
