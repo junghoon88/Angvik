@@ -112,6 +112,7 @@ private:
 	RECT _rcFoot;
 
 	jump* _playerJump;
+	jump* _attackJump;
 	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
