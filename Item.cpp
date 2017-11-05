@@ -42,12 +42,20 @@ void Item::update(void)
 		_rcImg = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
 
 	}
-
-
+	
 	if (_state == ITEM_STATE_INPLAYER)
 	{
+
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
-			_img->setRotate(80.0f);
+			{
+				if (isPlayerRIGHT)	_img->setRotate(80.0f);
+				else _img->setRotate(100.0f);
+			}
+			if (_type == ITEM_TYPE_HEAD)
+			{
+				if (isPlayerRIGHT) _img->setScale(1, 1);
+				else _img->setScale(-1, 1);
+			}
 
 		
 		if (KEYMANAGER->isOnceKeyDown('D'))
@@ -57,20 +65,44 @@ void Item::update(void)
 				{
 				case  ITEM_TYPE_SWORD:
 				{
-					_img->setRotate(120.0f);
-					_img->setCoord(targetX, targetY);
+					if (isPlayerRIGHT)
+					{
+						_img->setRotate(120.0f);
+						_img->setCoord(targetX, targetY);
+					}
+					else
+					{
+						_img->setRotate(80.0f);
+						_img->setCoord(targetX, targetY);
+						
+					}
 					_state = ITEM_STATE_ATTACK;
-					
 				}
 				break;
 				case  ITEM_TYPE_LANCE:
-					_img->setCoord(targetX, targetY);
-					_img->setRotate(0.0f);
+					if (isPlayerRIGHT)
+					{
+						_img->setCoord(targetX, targetY);
+						_img->setRotate(0.0f);
+					}
+					else
+					{
+						_img->setCoord(targetX, targetY);
+						_img->setRotate(180.0f);
+					}
 					_state = ITEM_STATE_ATTACK;
 					break;
 				case  ITEM_TYPE_STAFF:
-					_img->setCoord(targetX, targetY);
-					_img->setRotate(100.0f);
+					if (isPlayerRIGHT)
+					{
+						_img->setCoord(targetX, targetY);
+						_img->setRotate(100.0f);
+					}
+					else
+					{
+						_img->setCoord(targetX, targetY);
+						_img->setRotate(80.0f);
+					}
 					_state = ITEM_STATE_ATTACK;
 					break;
 				case  ITEM_TYPE_BOOMERANG:
@@ -103,10 +135,22 @@ void Item::update(void)
 					_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
 				break;
 				}
-				_img->setRotate(_img->getAngle() - 7.0f);
-				if (_img->getAngle() <= 0.0f)
+				
+				if (isPlayerRIGHT)
 				{
-					_state = ITEM_STATE_INPLAYER;
+					_img->setRotate(_img->getAngle() - 7.0f);
+					if (_img->getAngle() <= 0.0f)
+					{
+						_state = ITEM_STATE_INPLAYER;
+					}
+				}
+				else
+				{
+					_img->setRotate(_img->getAngle() + 7.0f);
+					if (_img->getAngle() >= 180.0f)
+					{
+						_state = ITEM_STATE_INPLAYER;
+					}
 				}
 			}
 			break;
@@ -123,8 +167,16 @@ void Item::update(void)
 				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
 				break;
 			}
+			if (isPlayerRIGHT)
+			{
 				targetX += 10;
 				_pt.x += 10;
+			}
+			else
+			{
+				targetX -= 10;
+				_pt.x -= 10;
+			}
 				
 			break;
 		case  ITEM_TYPE_STAFF:
@@ -140,11 +192,23 @@ void Item::update(void)
 				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			}
-			_img->setRotate(_img->getAngle() - 5.0f);
-			if (_img->getAngle() <= 0.0f)
+			if (isPlayerRIGHT)
 			{
-				_state = ITEM_STATE_INPLAYER;
+				_img->setRotate(_img->getAngle() - 5.0f);
+				if (_img->getAngle() <= 0.0f)
+				{
+					_state = ITEM_STATE_INPLAYER;
+				}
 			}
+			else
+			{
+				_img->setRotate(_img->getAngle() + 5.0f);
+				if (_img->getAngle() >= 180.0f)
+				{
+					_state = ITEM_STATE_INPLAYER;
+				}
+			}
+			
 			break;
 		case  ITEM_TYPE_BOOMERANG:
 			switch (_kind)
@@ -161,11 +225,22 @@ void Item::update(void)
 				break;
 			}
 				
+				
 				_img->setCenterPer(0.5,0.5);
+
 				_img->setRotate(_img->getAngle() - 15.0f);
-				targetX += 10;
-				_pt.x += 10;
-			
+				if (isPlayerRIGHT)
+				{
+					targetX += 10;
+
+					_pt.x += 10;
+				}
+				else
+				{
+					targetX -= 10;
+
+					_pt.x -= 10;
+				}
 			
 			break;
 		}
@@ -446,3 +521,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 	
 }
 
+inline void itemattack(float angle)
+{
+
+}
