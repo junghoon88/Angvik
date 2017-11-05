@@ -178,6 +178,8 @@ void sceneInit::uiInitImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"item", L"image/etc/item.png");
 	IMAGEMANAGER->addImage(DEVICE, L"oils", L"image/etc/oils.png");
 	IMAGEMANAGER->addImage(DEVICE, L"close", L"image/etc/close.png");
+	IMAGEMANAGER->addImage(DEVICE, L"equip", L"image/etc/equip.png");
+	IMAGEMANAGER->addImage(DEVICE, L"drop", L"image/etc/drop.png");
 
 	//메뉴
 	IMAGEMANAGER->addFrameImage(DEVICE, L"선택", L"image/etc/선택.png", 8, 1);
