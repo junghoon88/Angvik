@@ -181,3 +181,4 @@ void Kongtan::remove(int arrNum)
 {
 	_vBullet.erase(_vBullet.begin() + arrNum);
 }
+

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyManager.h"
 #include "PlayerManager.h"
+#include "itemManager.h"
 
 EnemyManager::EnemyManager()
 {
@@ -13,6 +14,8 @@ EnemyManager::EnemyManager()
 	kongNum = 0;
 
 	bulletNum = 0;
+	
+	
 }
 
 
@@ -43,7 +46,10 @@ void EnemyManager::update(void)
 			(*_viEnemy)->setPlayerX(_pm->getPlayer()->getX());
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
+
 	}
+
+
 	enemyFire();
 	kongTan->update();
 	sBmr->update();
@@ -128,11 +134,10 @@ void EnemyManager::setEnemy1(void)
 	turtle1->init(turtleNum++,580, 415, L"TurRc1");
 	_vEnemy.push_back(turtle1);
 
-
-	
 }
-void EnemyManager::deleteEnemy(void) {
+void EnemyManager::deleteEnemy(int arrNum) {
 
-
+	SAFE_DELETE(_vEnemy[arrNum]);
+	_vEnemy.erase(_vEnemy.begin() + arrNum);
 
 }
