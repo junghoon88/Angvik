@@ -26,6 +26,7 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 	life = 2;
 	ptX = x;
 	ptY = y;
+	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	rcName = rcKey;

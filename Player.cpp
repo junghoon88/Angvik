@@ -59,7 +59,14 @@ void Player::init(void)
 
 	_headState = PLAYER_YOUNGEST;
 	_bodyState = PLAYER_RIGHT_STOP;
-	_weaponType = ITEM_TYPE_SWORD;
+
+	_headItem = UNARMEDARMOR;
+	_bodyItem = UNARMEDARMOR;
+	_footItem =	UNARMEDARMOR;
+
+	_frontItem = UNARMEDWEAPON;
+	_backItem = UNARMEDWEAPON;
+
 
 	_bodyMotion = KEYANIMANAGER->findAnimation(L"playerBodyRightStop");
 	_frontArmMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightStop");
@@ -793,27 +800,27 @@ void Player::keyInputSettings(void)
 		//_frontArmFrontAttackMotion->start();
 		//_backArmFrontAttackMotion->start();
 
-		switch (_weaponType)
+		switch (_frontItem)
 		{
-			case ITEM_TYPE_SWORD:
+			case UNARMEDWEAPON:
+				_frontArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightUnarmedFrontAttack");
+				_backArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightUnarmedFrontAttack");
+			break;
+			case WHITE_SWORD: case GOLD_SWORD: case BLACK_SWORD:
 				_frontArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightSwordFrontAttack");
 				_backArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightSwordFrontAttack");
 			break;
-			case ITEM_TYPE_LANCE:
+			case WHITE_LANCE: case GOLD_LANCE: case BLACK_LANCE:
 				_frontArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightLanceFrontAttack");
 				_backArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightLanceFrontAttack");
 			break;
-			case ITEM_TYPE_BOOMERANG:
+			case WHITE_BOOMERANG: case GOLD_BOOMERANG: case BLACK_BOOMERANG:
 				_frontArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightBoomerangFrontAttack");
 				_backArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightBoomerangFrontAttack");
 			break;
-			case ITEM_TYPE_STAFF:
+			case WHITE_STAFF: case GOLD_STAFF: case BLACK_STAFF:
 				_frontArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightStaffFrontAttack");
 				_backArmFrontAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightStaffFrontAttack");
-			break;
-			default:
-				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightUnarmedBackAttack");
-				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightUnarmedBackAttack");
 			break;
 		}
 		
@@ -887,27 +894,27 @@ void Player::keyInputSettings(void)
 		//_frontArmBackAttackMotion->start();
 		//_backArmBackAttackMotion->start();
 
-		switch (_weaponType)
+		switch (_backItem)
 		{
-			case ITEM_TYPE_SWORD:
+			case UNARMEDWEAPON:
+				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightUnarmedBackAttack");
+				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightUnarmedBackAttack");
+			break;
+			case WHITE_SWORD: case GOLD_SWORD: case BLACK_SWORD:
 				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightSwordBackAttack");
 				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightSwordBackAttack");
 			break;
-			case ITEM_TYPE_LANCE:
+			case WHITE_LANCE: case GOLD_LANCE: case BLACK_LANCE:
 				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightLanceBackAttack");
 				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightLanceBackAttack");
 			break;
-			case ITEM_TYPE_BOOMERANG:
+			case WHITE_BOOMERANG: case GOLD_BOOMERANG: case BLACK_BOOMERANG:
 				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightBoomerangBackAttack");
 				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightBoomerangBackAttack");
 			break;
-			case ITEM_TYPE_STAFF:
+			case WHITE_STAFF: case GOLD_STAFF: case BLACK_STAFF:
 				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightStaffBackAttack");
 				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightStaffBackAttack");
-			break;
-			default:
-				_frontArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerFrontArmRightUnarmedBackAttack");
-				_backArmBackAttackMotion = KEYANIMANAGER->findAnimation(L"playerBackArmRightUnarmedBackAttack");
 			break;
 		}
 		
