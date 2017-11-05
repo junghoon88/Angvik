@@ -27,6 +27,10 @@ void Player::init(void)
 	
 	_frameAngle = 22.5;
 				
+	_elapsedTime = 0.f;
+	_immortalTime = 3.f;
+
+	_alpha = 255;
 
 	//																	검	
 	_armLen0 = pow(16.f, 2.f) + pow(5.f, 2.f);		//  0 ~ 15의 축부터 손까지의 거리		135도
@@ -69,6 +73,8 @@ void Player::init(void)
 	_isSit = FALSE;
 	_isInven = FALSE;
 	_isJumpAttack = FALSE;
+	_isHit = FALSE;
+	_isImmortal = FALSE;
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -230,6 +236,10 @@ void Player::update(void)
 				_x = res.offset.x - 5 - BODY_WIDTH / 2;
 				_y = res.offset.y;
 			}
+			if (res.trap)
+			{
+				_isHit = true;
+			}
 		}
 		else
 		{
@@ -303,6 +313,17 @@ void Player::update(void)
 	if (!_isLive)
 	{
 		DATABASE->setGameStart(_isLive);
+	}
+
+	//무적시간
+	if (_isImmortal == TRUE)
+	{
+		_elapsedTime += TIMEMANAGER->getElapsedTime();
+		if (_elapsedTime > _immortalTime)
+		{
+			_elapsedTime = 0.f;
+			_isImmortal == FALSE;
+		}
 	}
 
 	if (!_isFrontAttack && !_isBackAttack)	// 공격중이 아닐때 최근 행동에 대한 모션으로 바꿈
@@ -407,81 +428,81 @@ void Player::render(void)
 	{
 		if (_isRight == TRUE)
 		{
-			_backArmRightImage->aniRender(_backArmFrontAttackMotion);
+			_backArmRightImage->aniRender(_backArmFrontAttackMotion, _alpha);
 		}
 		else
 		{
-			_backArmLeftImage->aniRender(_backArmFrontAttackMotion);
+			_backArmLeftImage->aniRender(_backArmFrontAttackMotion, _alpha);
 		}
 	}
 	else if (_isBackAttack == TRUE)
 	{
 		if (_isRight == TRUE)
 		{
-			_backArmRightImage->aniRender(_backArmBackAttackMotion);
+			_backArmRightImage->aniRender(_backArmBackAttackMotion, _alpha);
 		}
 		else
 		{
-			_backArmLeftImage->aniRender(_backArmBackAttackMotion);
+			_backArmLeftImage->aniRender(_backArmBackAttackMotion, _alpha);
 		}
 	}
 	else
 	{
 		if (_isRight == TRUE)
 		{
-			_backArmRightImage->aniRender(_backArmMotion);
+			_backArmRightImage->aniRender(_backArmMotion, _alpha);
 		}
 		else
 		{
-			_backArmLeftImage->aniRender(_backArmMotion);
+			_backArmLeftImage->aniRender(_backArmMotion, _alpha);
 		}
 	}
 
 	//	 몸
 	if (_isRight == TRUE)
 	{
-		_bodyRightImage->aniRender(_bodyMotion);
+		_bodyRightImage->aniRender(_bodyMotion, _alpha);
 	}
 	else
 	{
-		_bodyLeftImage->aniRender(_bodyMotion);
+		_bodyLeftImage->aniRender(_bodyMotion, _alpha);
 	}
 
 	//	발 아머 애니렌더
 	switch (_footItem)
 	{
 		case WHITE:
-			if (_isRight == TRUE)	_whiteFootRightImage->aniRender(_bodyMotion);
-			else					_whiteFootLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_whiteFootRightImage->aniRender(_bodyMotion, _alpha);
+			else					_whiteFootLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 		case GOLD:
-			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion);
-			else					_goldFootLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion, _alpha);
+			else					_goldFootLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 		case BLACK:
-			if (_isRight == TRUE)	_blackFootRightImage->aniRender(_bodyMotion);
-			else					_blackFootLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_blackFootRightImage->aniRender(_bodyMotion, _alpha);
+			else					_blackFootLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 	}
 	//	몸 아머 애니렌더
 	switch (_bodyItem)
 	{
 		case WHITE:
-			if (_isRight == TRUE)	_whiteBodyRightImage->aniRender(_bodyMotion);
-			else					_whiteBodyLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_whiteBodyRightImage->aniRender(_bodyMotion, _alpha);
+			else					_whiteBodyLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 		case GOLD:
-			if (_isRight == TRUE)	_goldBodyRightImage->aniRender(_bodyMotion);
-			else					_goldBodyLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_goldBodyRightImage->aniRender(_bodyMotion, _alpha);
+			else					_goldBodyLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 		case BLACK:
-			if (_isRight == TRUE)	_blackBodyRightImage->aniRender(_bodyMotion);
-			else					_blackBodyLeftImage->aniRender(_bodyMotion);
+			if (_isRight == TRUE)	_blackBodyRightImage->aniRender(_bodyMotion, _alpha);
+			else					_blackBodyLeftImage->aniRender(_bodyMotion, _alpha);
 		break;
 	}
 
 	//	머 리
-	_headImage->render();
+	_headImage->render(_alpha);
 	
 	RECT rcText = RectMake(0, 0, 100, 100);
 	TEXTMANAGER->render(L"플레이어상태", rcText);
@@ -501,33 +522,33 @@ void Player::render(void)
 	{
 		if (_isRight == TRUE)
 		{
-			_frontArmRightImage->aniRender(_frontArmFrontAttackMotion);
+			_frontArmRightImage->aniRender(_frontArmFrontAttackMotion, _alpha);
 		}
 		else
 		{
-			_frontArmLeftImage->aniRender(_frontArmFrontAttackMotion);
+			_frontArmLeftImage->aniRender(_frontArmFrontAttackMotion, _alpha);
 		}
 	}
 	else if (_isBackAttack == TRUE)
 	{
 		if (_isRight == TRUE)
 		{
-			_frontArmRightImage->aniRender(_frontArmBackAttackMotion);
+			_frontArmRightImage->aniRender(_frontArmBackAttackMotion, _alpha);
 		}
 		else
 		{
-			_frontArmLeftImage->aniRender(_frontArmBackAttackMotion);
+			_frontArmLeftImage->aniRender(_frontArmBackAttackMotion, _alpha);
 		}
 	}
 	else
 	{
 		if (_isRight == TRUE)
 		{
-			_frontArmRightImage->aniRender(_frontArmMotion);
+			_frontArmRightImage->aniRender(_frontArmMotion, _alpha);
 		}
 		else
 		{
-			_frontArmLeftImage->aniRender(_frontArmMotion);
+			_frontArmLeftImage->aniRender(_frontArmMotion, _alpha);
 		}
 	}
 
@@ -1087,7 +1108,7 @@ void Player::keyInputSettings(void)
 			_backArmMotion->start();
 		}
 	}
-	if (KEYMANAGER->isOnceKeyDown('D'))			//	BACK_WEAPON_ATTACK
+	/*if (KEYMANAGER->isOnceKeyDown('D'))			//	BACK_WEAPON_ATTACK
 	{
 		//	공격용 충돌 렉트 생성
 
@@ -1126,7 +1147,7 @@ void Player::keyInputSettings(void)
 		
 		_frontArmBackAttackMotion->start();
 		_backArmBackAttackMotion->start();
-	}
+	}*/
 }
 
 void Player::attackMotions(void)

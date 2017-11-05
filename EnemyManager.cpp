@@ -46,9 +46,22 @@ void EnemyManager::update(void)
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
 		if ((*_viEnemy)->getState() == Death) {
+
+			if ((*_viEnemy)->getIndex() == 3) {
+				Turtle_crash* cturtle;
+				cturtle = new Turtle_crash;
+				cturtle->init(turtleNum++, (*_viEnemy)->getX()-10, (*_viEnemy)->getY()-30,L"cturtlerc");
+				_vEnemy.push_back(cturtle);
+				mush* cmush;
+				cmush = new mush;
+				cmush->init(mushNum++, (*_viEnemy)->getX()+10, (*_viEnemy)->getY()-30, L"cmushrc");
+				_vEnemy.push_back(cmush);
+			}
+
 			int droptable = 0;
 			droptable = RND->getInt(10);//µå¶øÈ®·ü
 			if(droptable <= 3) _im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+
 			deleteEnemy(_viEnemy);
 			break;
 		}
@@ -170,7 +183,6 @@ void EnemyManager::setEnemy1(void)
 	turtle2->init(turtleNum++, 4160, 385, L"TurRc2");
 	_vEnemy.push_back(turtle2);
 	/////////////////////////////////
-	
 
 }
 void EnemyManager::deleteEnemy(int arrNum) {
