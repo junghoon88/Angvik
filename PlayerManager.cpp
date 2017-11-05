@@ -304,23 +304,11 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
-<<<<<<< HEAD
-
 
 Collision();
 	_player->update();
 	_bird->update(_player->getX(), _player->getY());
 
-=======
-}
->>>>>>> b9bf23a20d2863467f5af213bfb32475c9efe019
 
-
-
-<<<<<<< HEAD
 }
 
-
-
-=======
->>>>>>> b9bf23a20d2863467f5af213bfb32475c9efe019
