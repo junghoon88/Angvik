@@ -96,6 +96,7 @@ void EnemyManager::setEnemy1(void)
 	Turtle* turtle1;
 	mush* mush1;
 
+	
 
 	monkey2 = new monkkey;
 	monkey2->init(monkkeyNum++, 200, 100,L"monkkeyRc2");
@@ -113,24 +114,27 @@ void EnemyManager::setEnemy1(void)
 
 	Ent* ent1;
 	ent1 = new Ent;
-	ent1->init(entNum++, 192, 415);//테스트용 좌표임
+	ent1->init(entNum++, 192, 415, L"EntRc1");//테스트용 좌표임
 	_vEnemy.push_back(ent1);
 
 	Ent* ent2;
 	ent2 = new Ent;
-	ent2->init(entNum++, 192, 200);//테스트용 좌표임
+	ent2->init(entNum++, 192, 200, L"EntRc2");//테스트용 좌표임
 	_vEnemy.push_back(ent2);
 
 	kong* kong1;
 	kong1 = new kong;
-	kong1->init(kongNum++, 860, 350);
+	kong1->init(kongNum++, 860, 350, L"kongRc1");
 	_vEnemy.push_back(kong1);
 	//350,860 콩나물 위치
 	
 	turtle1 = new Turtle;
-	turtle1->init(turtleNum++,580, 415);
+	turtle1->init(turtleNum++,580, 415, L"TurRc1");
 	_vEnemy.push_back(turtle1);
 
+	_vEnemy.push_back(monkey1);
+//	_vEnemy.push_back(monkey2);
+	
 }
 void EnemyManager::deleteEnemy(void) {
 

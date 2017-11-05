@@ -1,6 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
+    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="database.cpp" />
+    <ClCompile Include="DxWindow.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Ent.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="EnemyMother.cpp" />
+    <ClCompile Include="imageManager.cpp" />
+    <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="inven.cpp" />
+    <ClCompile Include="invenBird.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="itemManager.cpp" />
+    <ClCompile Include="jump.cpp" />
+    <ClCompile Include="keyAniManager.cpp" />
+    <ClCompile Include="keyManager.cpp" />
+    <ClCompile Include="kong.cpp" />
+    <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="monkkey.cpp" />
+    <ClCompile Include="mush.cpp" />
+    <ClCompile Include="PBGManager.cpp" />
+    <ClCompile Include="pixelCollision.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="PrintText.cpp" />
+    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="rectManager.cpp" />
+    <ClCompile Include="sceneET.cpp" />
+    <ClCompile Include="sceneGame.cpp" />
+    <ClCompile Include="sceneInit.cpp" />
+    <ClCompile Include="sceneitemTest.cpp" />
+    <ClCompile Include="sceneManager.cpp" />
+    <ClCompile Include="sceneSelect.cpp" />
+    <ClCompile Include="sceneStage.cpp" />
+    <ClCompile Include="sceneTest.cpp" />
+    <ClCompile Include="soundManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="stageManager.cpp" />
+    <ClCompile Include="test2.cpp" />
+    <ClCompile Include="textManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="timeManager.cpp" />
+    <ClCompile Include="timer.cpp" />
+    <ClCompile Include="Turtle.cpp" />
+    <ClCompile Include="Turtle_crash.cpp" />
+    <ClCompile Include="utils.cpp" />
+=======
     <Filter Include="mainGame">
       <UniqueIdentifier>{f64753bf-5ff2-43bd-9a2d-d1a9330be2ff}</UniqueIdentifier>
     </Filter>
@@ -167,99 +218,71 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>mainGame\Bullet</Filter>
     </ClCompile>
+<<<<<<< HEAD
+
+>>>>>>> 91848ad9514e54753094dd580fa33796b6acf9a5
+=======
     <ClCompile Include="inven.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+>>>>>>> 961ddea5d4639733124aabf08619f7ee66780d68
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="animation.h">
-      <Filter>DxWindow\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyMother.h">
-      <Filter>mainGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>mainGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="imageManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="keyAniManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="keyManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="PBGManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="timeManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="textManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="rectManager.h">
-      <Filter>DxWindow\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="DxWindow.h">
-      <Filter>DxWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>DxWindow\camera</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>DxWindow\UTIL</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>DxWindow\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>DxWindow\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect.h">
-      <Filter>DxWindow\Rect</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>DxWindow\timer</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>DxWindow\UTIL</Filter>
-    </ClInclude>
-    <ClInclude Include="commonMacroFunction.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="globalMacroVariables.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="randomFunction.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="mainGame.h">
-      <Filter>mainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>mainGame\item</Filter>
-    </ClInclude>
-    <ClInclude Include="itemManager.h">
-      <Filter>mainGame\item</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>mainGame\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="stageManager.h">
-      <Filter>mainGame\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="image.h">
-      <Filter>DxWindow\image</Filter>
-    </ClInclude>
-    <ClInclude Include="PrintText.h">
-      <Filter>DxWindow\PrintText</Filter>
-    </ClInclude>
+    <ClInclude Include="animation.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="commonMacroFunction.h" />
+    <ClInclude Include="database.h" />
+    <ClInclude Include="DxWindow.h" />
+    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="EnemyMother.h" />
+    <ClInclude Include="Ent.h" />
+    <ClInclude Include="globalMacroVariables.h" />
+    <ClInclude Include="image.h" />
+    <ClInclude Include="imageManager.h" />
+    <ClInclude Include="Interface.h" />
+    <ClInclude Include="inven.h" />
+    <ClInclude Include="invenBird.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="itemManager.h" />
+<<<<<<< HEAD
+    <ClInclude Include="jump.h" />
+    <ClInclude Include="keyAniManager.h" />
+    <ClInclude Include="keyManager.h" />
+    <ClInclude Include="kong.h" />
+    <ClInclude Include="mainGame.h" />
+    <ClInclude Include="monkkey.h" />
+    <ClInclude Include="mush.h" />
+    <ClInclude Include="PBGManager.h" />
+    <ClInclude Include="pixelCollision.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="PrintText.h" />
+    <ClInclude Include="randomFunction.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="rectManager.h" />
+    <ClInclude Include="sceneET.h" />
+    <ClInclude Include="sceneGame.h" />
+    <ClInclude Include="sceneInit.h" />
+    <ClInclude Include="sceneitemTest.h" />
+    <ClInclude Include="sceneManager.h" />
+    <ClInclude Include="sceneSelect.h" />
+    <ClInclude Include="sceneStage.h" />
+    <ClInclude Include="sceneTest.h" />
+    <ClInclude Include="soundManager.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="stageManager.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="test2.h" />
+    <ClInclude Include="textManager.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="timeManager.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="Turtle.h" />
+    <ClInclude Include="Turtle_crash.h" />
+    <ClInclude Include="utils.h" />
+=======
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="invenBird.h">
       <Filter>mainGame\Player</Filter>
@@ -388,5 +411,6 @@
     <Filter Include="DxWindow\PrintText">
       <UniqueIdentifier>{c8476652-8ba7-478e-9c5f-6233ecd0b258}</UniqueIdentifier>
     </Filter>
+>>>>>>> 91848ad9514e54753094dd580fa33796b6acf9a5
   </ItemGroup>
 </Project>

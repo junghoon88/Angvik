@@ -7,7 +7,7 @@ public:
 	Turtle();
 	~Turtle();
 
-	void init(int num, float x, float y);
+	void init(int num, float x, float y, wstring rcKey);
 	void update(void);
 	void render(void);
 	void move(void);

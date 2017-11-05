@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "itemManager.h"
-
+#include "PlayerManager.h"
+#include "EnemyManager.h"
+#include "stageManager.h"
 
 itemManager::itemManager()
 {
@@ -28,7 +30,12 @@ void itemManager::release(void)
 
 void itemManager::update(void)
 {
-	
+	if (_pm != NULL)
+	{
+		float x = _pm->getPlayer()->getX();
+		float y = _pm->getPlayer()->getY();
+
+	}
 	
 	
 	if (issetting)
@@ -80,10 +87,6 @@ void itemManager::setItem(float x , float y)
 	_vItems.push_back(it);
 }
 
-void itemManager::dropItem(int type, int kind, int state, int x, int y)
-{
-
-}
 
 
 void itemManager::setFieldItem(int i , int j)

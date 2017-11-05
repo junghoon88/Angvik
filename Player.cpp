@@ -41,6 +41,7 @@ void Player::init(void)
 	_isRight = TRUE;
 	_isLive = TRUE;
 	_isSit = FALSE;
+	_isInven = FALSE;
 
 
 	//========== 이미지 왼쪽 보게 바꾸기 ==========
@@ -94,7 +95,12 @@ void Player::release(void)
 
 void Player::update(void)
 {
-	keyInputSettings();		//	KEY INPUT
+	if (_isInven == FALSE) keyInputSettings();		//	KEY INPUT: 인벤토리가 활성화 되면, 캐릭터에 대한 Key Input을 방지함
+	else
+	{
+		if (_isRight == TRUE) _bodyState = PLAYER_RIGHT_STOP;
+		else _bodyState = PLAYER_LEFT_STOP;
+	}
 
 	if (_isRight == TRUE)
 	{
@@ -449,7 +455,7 @@ void Player::imagePosUpdate(void)
 	{
 		if (_isSit == TRUE)
 		{
-			_headImage->setCoord({ _x + 5 + correction, _y - 18 });
+			_headImage->setCoord({ _x - 5 + correction, _y - 18 });
 		}
 		else
 		{
@@ -639,9 +645,9 @@ void Player::keyAnimationInit(void)
 
 	//		BACK ATTACK - UNARMED
 	int backArmRightUnarmedBackAttack[] = { 29,28,42,41 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightUnarmedBackAttack", L"backArmRight", backArmRightUnarmedBackAttack,4,20, true);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightUnarmedBackAttack", L"backArmRight", backArmRightUnarmedBackAttack,4,20, false, attackIsEnd, this);
 	int backArmLeftUnarmedBackAttack[] = { 29,28,42,41 };
-	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmLeftUnarmedBackAttack", L"backArmLeft", backArmLeftUnarmedBackAttack, 4,20, true);
+	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmLeftUnarmedBackAttack", L"backArmLeft", backArmLeftUnarmedBackAttack, 4,20, false, attackIsEnd, this);
 	//		BACK ATTACK - SWORD
 	int backArmRightSwordBackAttack[] = { 12, 13, 29, 45, 46, 47, 32, 33, 34, 18, 2, 1, 0, 15, 14, 13 };
 	KEYANIMANAGER->addArrayFrameAnimation(L"playerBackArmRightSwordBackAttack", L"backArmRight", backArmRightSwordBackAttack, 16, 40, false, attackIsEnd, this);
@@ -778,9 +784,9 @@ void Player::keyInputSettings(void)
 		}
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))	//	INVENTORY
+	if (KEYMANAGER->isToggleKey(VK_SPACE))	//	INVENTORY
 	{
-
+		
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('W'))			//	BIRD BOMB

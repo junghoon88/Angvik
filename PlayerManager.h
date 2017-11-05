@@ -22,6 +22,7 @@ private:
 private:
 	Player*			_player;
 	invenBird*		_bird;
+	inven*			_inven;
 	
 	EnemyManager*	_em;
 	stageManager*	_sm;
@@ -41,7 +42,7 @@ public:
 	void update(void);
 	void render(void);
 
-
+	void Collision(void);
 
 
 	//getter, setter
