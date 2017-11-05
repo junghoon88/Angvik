@@ -23,6 +23,15 @@ void Player::init(void)
 	_x = WINSIZEX / 2;
 	_y = WINSIZEY / 2;
 
+
+	_frameAngle = 22.5;
+				
+
+	//																	검	
+	_armLen0 = pow(16.f, 2.f) + pow(5.f, 2.f);		//  0 ~ 15의 축부터 손까지의 거리		135도
+	_armLen1 = pow(10.f, 2.f) + pow(12.f, 2.f);		// 16 ~ 31의 축부터 손까지의 거리		180도
+	_armLen2 = pow(2.f, 2.f) + pow(12.f, 2.f);		// 32 ~ 47의 축부터 손까지의 거리		215도
+
 	//========== 렉트 초기화 ==========
 	rectUpdate();
 
@@ -40,6 +49,7 @@ void Player::init(void)
 	_isBackAttack = FALSE;
 	_isRight = TRUE;
 	_isLive = TRUE;
+	_isDead = FALSE;
 	_isSit = FALSE;
 	_isInven = FALSE;
 
@@ -248,8 +258,8 @@ void Player::update(void)
 		}
 	}
 
-	imagePosUpdate();	//	
-	rectUpdate();		//	렉트 업데이트
+	imagePosUpdate();	//	손 좌표 업데이트
+	rectUpdate();		//	머리, 몸통, 발 렉트 업데이트
 
 	KEYANIMANAGER->update();
 
@@ -313,7 +323,12 @@ void Player::update(void)
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
 	MAINCAMERA->update();
 
-	if (KEYMANAGER->isOnceKeyDown('P')) _isLive = false;
+	if (KEYMANAGER->isOnceKeyDown('P')) _isDead == TRUE;
+
+	if (_isDead == TRUE)
+	{
+		playerDeadMotion();
+	}
 }
 
 void Player::render(void) 
@@ -428,6 +443,20 @@ void Player::render(void)
 
 void Player::playerDeadMotion(void)
 {
+	//_boneHead->setCoord({ _x + 5, _y - 26 });
+	//_boneHead->setRotate();
+	//_boneBody->setCoord({ _x + 7, _y - 6 });
+	//_boneBody->setRotate();
+	//_bone[0]->setCoord({ _x, _y + 15 });
+	//_bone[0]->setRotate(10);
+	//_bone[1]->setCoord({ _x + 20, _y + 15 });
+	//_bone[1]->setRotate(-10);
+	//_bone[2]->setCoord({ _x + 8, _y + 27 });
+	//_bone[2]->setRotate();
+	//_bone[3]->setCoord({ _x + 14, _y + 27 });
+	//_bone[3]->setRotate();
+
+	_isLive = FALSE;
 }
 
 void Player::imageReverse(void)
@@ -1077,4 +1106,28 @@ void Player::rectUpdate(void)
 	_rcHead = RectMake(_x + 2, _y - 24, HEAD_WIDTH, HEAD_HEIGHT);
 	_rcBody = RectMake(_x, _y - 6, BODY_WIDTH, BODY_HEIGHT);
 	_rcFoot = RectMake(_x, _y + 20, FOOT_WIDTH, FOOT_HEIGHT);
+}
+
+void Player::itemPosUpdate(void)
+{
+	int index = _frontArmRightImage->getCurFrameX() + _frontArmRightImage->getCurFrameY() * 16;
+	
+	switch (index / 16)
+	{
+		case 0:
+			//축 좌표			나누기			나머지
+			_handX = _x + 7 + sqrt(_armLen0) * cosf(_frameAngle * (index % 16)) ;
+			_handY = _y + 8 + sqrt(_armLen0) * -sinf(_frameAngle * (index % 16));
+		break;
+		case 1:
+			//축 좌표			나누기			나머지
+			_handX = _x + 7 + sqrt(_armLen1) * cosf(_frameAngle * (index % 16));
+			_handY = _y + 8 + sqrt(_armLen1) * -sinf(_frameAngle * (index % 16));
+		break;
+		case 2:
+			//축 좌표			나누기			나머지
+			_handX = _x + 7 + sqrt(_armLen2) * cosf(_frameAngle * (index % 16));
+			_handY = _y + 8 + sqrt(_armLen2) * -sinf(_frameAngle * (index % 16));
+		break;
+	}
 }
