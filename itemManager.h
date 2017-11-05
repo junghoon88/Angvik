@@ -41,7 +41,7 @@ public:
 	////////////////////////
 	void setFieldItem(int i, int j);
 	void removeItem(int arrNum);
-	void Itemcompose(int arrNum);
+	void Itemcompose(int itemNum, int oilNum);
 
 	//getter, setter
 	inline void setLinkAdressPlayerManager(PlayerManager* pm) { _pm = pm; }

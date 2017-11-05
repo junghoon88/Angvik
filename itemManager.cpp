@@ -96,15 +96,22 @@ void itemManager::removeItem(int arrNum)
 	_vItems[arrNum]->release();
 	_vItems.erase(_vItems.begin() + arrNum);
 }
-void itemManager::Itemcompose(int arrNum)//아이템합성
+void itemManager::Itemcompose(int itemNum, int oilNum)//아이템합성
 {
-	//if(OilUse)
-	//{
-	//	if (_vItems[arrNum] == ITEM_TYPE_SWORD)
-	//	{
-	//		remove item, remove oil
-	//			and create item oil + item;
-	//		OilUse = false;
-	//	}
-	//}
+	//아이템 타입 에러 체크(오일, 알이면 리턴)
+	int itemtype = (int)_vItems[itemNum]->getType();
+	if (itemtype >= ITEM_TYPE_OIL)
+		return;
+
+	//오일번호 아이템이 오일이 아니면 리턴
+	if (_vItems[oilNum]->getType() != ITEM_TYPE_OIL)
+		return;
+
+	//아이템의 kind를 오일의 kind로 바꿔준다.
+	_vItems[itemNum]->setKind(_vItems[oilNum]->getKind());
+	//아이템의 내구도를 최대치로 바꿔준다.
+	_vItems[itemNum]->setdurabilityMax();
+
+	//오일을 벡터에서 삭제한다.
+	_vItems.erase(_vItems.begin() + oilNum);
 }

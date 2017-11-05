@@ -45,6 +45,7 @@ private:
 	ITEM_STATE _state;
 
 	int _durability; // 내구도
+	int _durabilityMax;
 
 	//debug
 	int frameCnt;
@@ -88,6 +89,8 @@ public:
 	//내구도 겟셋
 	inline void setdurability(int durability) { _durability = durability; }
 	inline int getdurability(void) { return _durability; }
+	inline void setdurabilityMax(void) { _durability = _durabilityMax; }
+
 	
 
 };
