@@ -9,7 +9,8 @@ void PlayerManager::Collision(void)
 	{
 		if (isCollision(_em->getKongtan()->getVBullet()[i].rc,
 			_player->getRectBody()))    //플레이어피해받음
-		{
+		{	
+			_player->setIsHit(true);    //피해신호
 			_em->getKongtan()->remove(i);
 			//아이템에 신호 넘겨줘야함
 			break;
@@ -23,6 +24,7 @@ void PlayerManager::Collision(void)
 		if (isCollision(_em->getSbmr()->getVBullet()[i].rc,
 			_player->getRectBody())) //플레이어피해받음
 		{
+			_player->setIsHit(true);
 			_em->getSbmr()->remove(i);
 			//아이템에 신호 넘겨줘야함
 
@@ -34,8 +36,10 @@ void PlayerManager::Collision(void)
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 몬스터충돌처리
 	{	
 		RECT temp2;
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) {     //플레이어 피해받음
-			
+
+
+		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())&&_em->getvEnemy()[i]->getState()!=toDeath) {     //플레이어 피해받음
+			_player->setIsHit(true);
 
 		}
 		RECT temp;
