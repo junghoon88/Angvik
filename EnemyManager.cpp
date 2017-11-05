@@ -94,12 +94,9 @@ void EnemyManager::render(void)
 
 void EnemyManager::setEnemy1(void)
 {
-	monkkey* monkey1, *monkey2,*monkey3,*monkey4,*monkey5;
-	Turtle* turtle1, *turtle2;
-	mush* mush1;
-
 
 	////////////////////////////根虐技泼
+	monkkey* monkey1, *monkey2, *monkey3, *monkey4, *monkey5;
 	monkey1 = new monkkey;
 	monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
 	_vEnemy.push_back(monkey1);
@@ -121,6 +118,7 @@ void EnemyManager::setEnemy1(void)
 	_vEnemy.push_back(monkey5);
 
 	/////////////////////////////////////
+	mush* mush1;
 	mush1 = new mush;
 	mush1->init(mushNum++, 1000, 50, L"mushRc1");
 	_vEnemy.push_back(mush1);
@@ -155,6 +153,7 @@ void EnemyManager::setEnemy1(void)
 
 
 	///////////////////////////////芭合捞技泼
+	Turtle* turtle1, *turtle2;
 	turtle1 = new Turtle;  
 	turtle1->init(turtleNum++,4150, 800, L"TurRc1");
 	_vEnemy.push_back(turtle1);

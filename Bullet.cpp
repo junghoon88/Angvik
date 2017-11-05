@@ -170,19 +170,19 @@ void Kongtan::move(void)
 			_viBullet->frameX++;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
-		for (int i = _viBullet->probeY - 10; i < _viBullet->probeY + 10; ++i)//YÃà Å½Áö
-		{
-			COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", _viBullet->ptX, i);
-
-			int r = GetRValue(color);
-			int g = GetGValue(color);
-			int b = GetBValue(color);
-
-			if ((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0) || (r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
-			{
-				_viBullet = _vBullet.erase(_viBullet);
-			}
-		}
+		//for (int i = _viBullet->probeY - 10; i < _viBullet->probeY + 10; ++i)//YÃà Å½Áö
+		//{
+		//	COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", _viBullet->ptX, i);
+		//
+		//	int r = GetRValue(color);
+		//	int g = GetGValue(color);
+		//	int b = GetBValue(color);
+		//
+		//	if ((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0) || (r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
+		//	{
+		//		_viBullet = _vBullet.erase(_viBullet);
+		//	}
+		//}
 	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
 	{
 		_viBullet = _vBullet.erase(_viBullet);
