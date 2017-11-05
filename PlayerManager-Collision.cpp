@@ -51,4 +51,26 @@ void PlayerManager::Collision(void)
 			}
 		}
 	}
+	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 무기 몬스터
+	{
+		for(int j = 0; j<_im->getVItem().size(); j++)
+		{	RECT temp;
+			
+			if (_im->getVItem()[j]->getState() == ITEM_STATE_ATTACK)
+			{
+				if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()))
+				{    //플레이어가 무기씀
+					_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
+
+					if (_em->getvEnemy()[i]->getLife() <= 0)
+					{
+						_im->setItem(_em->getvEnemy()[i]->getX(), _em->getvEnemy()[i]->getY() - 30);
+						_em->deleteEnemy(i);
+						break;
+					}
+				}
+			}
+			
+		}
+	}
 }
