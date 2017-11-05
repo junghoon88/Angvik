@@ -37,7 +37,7 @@ void PlayerManager::release(void)
 
 void PlayerManager::update(void) 
 {
-	playerItemCollision();		//	아이템매니저에서 아이템벡터를 불러온 뒤, 아이템의 렉트와 플레이어의 렉트를 비교해서 해당 아이템의 정보로 플레이어 상태를 변경
+	if(_player->getIsSit()) playerItemCollision();		//	앉기 키를 눌렀을 때, 아이템매니저에서 아이템벡터를 불러온 뒤, 아이템의 렉트와 플레이어의 렉트를 비교해서 해당 아이템의 정보로 플레이어 상태를 변경
 
 	Collision();
 	_player->update();
@@ -64,7 +64,7 @@ void PlayerManager::playerItemCollision(void)
 	for (int i = 0; i < item.size(); i++)
 	{
 		RECT rc;
-		if (IntersectRect(&rc, &(item[i]->getrcImg()), &(_player->getRectFoot())))
+		if (IntersectRect(&rc, &(item[i]->getrcImg()), &(_player->getRectBody())))
 		{
 			//아이템의 타입에 따라
 			//플레이어의 부위별 아이템 상태 변경
@@ -87,8 +87,12 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_SWORD);	//검은색
 						break;
+<<<<<<< HEAD
 						item[i]->setState(ITEM_STATE_INPLAYER);
+=======
+>>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 				{
@@ -103,13 +107,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setFrontItem(BLACK_SWORD);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_LANCE:
@@ -126,8 +130,8 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_LANCE);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 				{
@@ -142,13 +146,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setFrontItem(BLACK_LANCE);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_BOOMERANG:
@@ -165,8 +169,8 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_BOOMERANG);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 				{
@@ -181,13 +185,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setFrontItem(BLACK_BOOMERANG);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_STAFF:
@@ -204,8 +208,8 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_STAFF);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 				{
@@ -220,13 +224,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setFrontItem(BLACK_STAFF);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 
@@ -244,13 +248,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setHeadItem(BLACK);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_BODY:
@@ -267,13 +271,13 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBodyItem(BLACK);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_FOOT:
@@ -290,22 +294,27 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setFootItem(BLACK);	//검은색
 						break;
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 
 			case ITEM_TYPE_OIL:
+				_inven->itemUpdate();
+				item[i]->setState(ITEM_STATE_ININVEN);
 			case ITEM_TYPE_EGG:		//	기타
+				_inven->itemUpdate();
+				item[i]->setState(ITEM_STATE_ININVEN);
 				break;
 			}
 		}
 	}
+<<<<<<< HEAD
 
 
 
@@ -316,8 +325,6 @@ void PlayerManager::playerItemCollision(void)
 	//_bird->update(_player->getX(), _player->getY());
 
 
+=======
+>>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
 }
-
-
-
-

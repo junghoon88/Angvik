@@ -55,7 +55,7 @@ public:
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	
 	vector<Item*> getVItem(void) { return _vItems; }
-	vector<Item*>::iterator getViItem(void) { return _viItems; }
+
 	
 };
 

@@ -60,7 +60,7 @@ void sceneStage::update(void)
 void sceneStage::render(void)
 {
 	_sm->render();
-	_im->render();
 	_em->render();
 	_pm->render();
+	_im->render();
 }

@@ -170,6 +170,9 @@
     <ClCompile Include="inven.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerManager-Collision.cpp">
+      <Filter>mainGame\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
