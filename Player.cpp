@@ -69,6 +69,8 @@ void Player::init(void)
 	_isSit = FALSE;
 	_isInven = FALSE;
 	_isJumpAttack = FALSE;
+	_isHit = FALSE;
+	_isImmortal = FALSE;
 
 	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
 	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
@@ -302,6 +304,11 @@ void Player::update(void)
 	if (!_isLive)
 	{
 		DATABASE->setGameStart(_isLive);
+	}
+
+	if (_isImmortal == TRUE)
+	{
+		
 	}
 
 	if (!_isFrontAttack && !_isBackAttack)	// 공격중이 아닐때 최근 행동에 대한 모션으로 바꿈
@@ -1086,7 +1093,7 @@ void Player::keyInputSettings(void)
 			_backArmMotion->start();
 		}
 	}
-	if (KEYMANAGER->isOnceKeyDown('D'))			//	BACK_WEAPON_ATTACK
+	/*if (KEYMANAGER->isOnceKeyDown('D'))			//	BACK_WEAPON_ATTACK
 	{
 		//	공격용 충돌 렉트 생성
 
@@ -1125,7 +1132,7 @@ void Player::keyInputSettings(void)
 		
 		_frontArmBackAttackMotion->start();
 		_backArmBackAttackMotion->start();
-	}
+	}*/
 }
 
 void Player::attackMotions(void)

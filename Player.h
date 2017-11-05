@@ -234,6 +234,9 @@ public:
 	bool getIsHit(void)			{ return _isHit; }
 	void setIsHit(bool isHit)	{ _isHit = isHit; }
 
+	bool getIsImmortal(void) { return _isImmortal; }
+	void setIsImmortal(bool isImmortal) { _isImmortal = isImmortal; }
+
 	bool getIsInven(void)		{ return _isInven; }
 	void setIsInven(bool isInven) { _isInven = isInven; }
 

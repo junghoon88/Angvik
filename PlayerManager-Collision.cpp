@@ -34,16 +34,17 @@ void PlayerManager::Collision(void)
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 몬스터충돌처리
 	{	
 		RECT temp2;
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect())) {     //플레이어 피해받음
+		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _player->getIsImmortal() == FALSE) {     //플레이어 피해받음
 			
-
+			_player->setIsHit(TRUE);
+			_player->setIsImmortal(TRUE);
 		}
 	
 		RECT temp;
 		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect()) && _player->getIsJump()) {    //플레이어가 적밟음
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
 	
-			
+			_player->setIsJumpAttack(TRUE);
 		}
 	}
 	for (int i = 0; i < _em->getvEnemy().size(); i++)   //플레이어 무기 몬스터
