@@ -44,8 +44,8 @@ void PlayerManager::Collision(void)
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
 
 			if (_em->getvEnemy()[i]->getLife() <= 0) {
+				_im->setItem(_em->getvEnemy()[i]->getX(), _em->getvEnemy()[i]->getY()-30);
 				_em->deleteEnemy(i);
-				//_im->setItem(_em->getvEnemy()[i]->getX(), _em->getvEnemy()[i]->getY()-100);
 				break;
 			}
 		}
