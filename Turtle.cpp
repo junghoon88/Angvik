@@ -29,7 +29,8 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-
+	isImmune = false;
+	immuneTime = 0;
 	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
 	amountX = 1;
