@@ -33,6 +33,7 @@ void kong::init(int num, float x, float y, wstring rcKey)
 
 	rcHeight = amountHeight = 40; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
+	amountX = 1;
 	amountTime = 0; //Y축 감소용 시간
 
 	rcName = rcKey;
@@ -47,60 +48,69 @@ void kong::init(int num, float x, float y, wstring rcKey)
 }
 void kong::update(void)
 {
-	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+	rc = RectMakeCenter(ptX, ptY, 26, rcHeight);
+	if (life <= 0)
+	{
+		RIP();
+	}
+	else
+	{
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
-	if (playerX < ptX)
-	{
-		dir = eLEFT;
-		spt->setScale(-1, 1);
-		atkSpt->setScale(-1, 1);
-	
-	}
-	else if (playerX > ptX)
-	{
-		dir = eRIGHT;
-		atkSpt->setScale(1, 1);
-		spt->setScale(1, 1);
-	}
-	//====
-	frameTime += TIMEMANAGER->getElapsedTime();
-	if (state == eIDLE)
-	{
-		if (frameTime >= 0.2f)
+		if (playerX < ptX)
 		{
-			frameTime = 0;
-			frameCnt--;
-			
-			if (frameCnt <= 0)
+			dir = eLEFT;
+			amountX = -1;
+			spt->setScale(-1, 1);
+			atkSpt->setScale(-1, 1);
+
+		}
+		else if (playerX > ptX)
+		{
+			dir = eRIGHT;
+			amountX = 1;
+			atkSpt->setScale(1, 1);
+			spt->setScale(1, 1);
+		}
+		//====
+		frameTime += TIMEMANAGER->getElapsedTime();
+		if (state == eIDLE)
+		{
+			if (frameTime >= 0.2f)
 			{
-				frameCnt = spt->getMaxFrameX();
-				atkCnt++;
-				if (atkCnt >= 2)
+				frameTime = 0;
+				frameCnt--;
+
+				if (frameCnt <= 0)
 				{
-					atkCnt = 0;
-					frameCnt = 0;
-					state = eATK;
+					frameCnt = spt->getMaxFrameX();
+					atkCnt++;
+					if (atkCnt >= 2)
+					{
+						atkCnt = 0;
+						frameCnt = 0;
+						state = eATK;
+					}
+				}
+			}
+		}
+		else if (state == eATK)
+		{
+			if (frameTime >= 0.2f)
+			{
+				frameTime = 0;
+				frameCnt++;
+
+				if (frameCnt == 4) isAtk = true;
+				if (frameCnt >= atkSpt->getMaxFrameX())
+				{
+					frameCnt = spt->getMaxFrameX();
+					state = eIDLE;
 				}
 			}
 		}
 	}
-	else if (state == eATK)
-	{
-		if (frameTime >= 0.2f)
-		{
-			frameTime = 0;
-			frameCnt++;
 
-			if (frameCnt == 4) isAtk = true;
-			if (frameCnt >= atkSpt->getMaxFrameX())
-			{
-				frameCnt = spt->getMaxFrameX();
-				state = eIDLE;
-			}
-		}
-	}
-
-	RIP();
 }
 void kong::render(void)
 {

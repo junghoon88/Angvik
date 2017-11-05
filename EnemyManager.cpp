@@ -40,18 +40,18 @@ void EnemyManager::update(void)
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
-		if ((*_viEnemy)->getState() == toDeath) {
-
-			_im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
-			
-		}
+		
 		if ((*_viEnemy)->getIndex() == 1 || (*_viEnemy)->getIndex() == 2) {
 			(*_viEnemy)->setPlayerX(_pm->getPlayer()->getX());
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
+		if ((*_viEnemy)->getState() == Death) {
 
+			_im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+			deleteEnemy(_viEnemy);
+			break;
+		}
 	}
-
 
 	enemyFire();
 	kongTan->update();
@@ -100,9 +100,9 @@ void EnemyManager::setEnemy1(void)
 
 	////////////////////////////¸ùÅ°¼¼ÆÃ
 	monkkey* monkey1, *monkey2, *monkey3, *monkey4, *monkey5;
-	monkey1 = new monkkey;
-	monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
-	_vEnemy.push_back(monkey1);
+	//monkey1 = new monkkey;
+	//monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
+	//_vEnemy.push_back(monkey1);
 
 	monkey2 = new monkkey;
 	monkey2->init(monkkeyNum++, 1260, 420,L"monkkeyRc2");
@@ -116,14 +116,14 @@ void EnemyManager::setEnemy1(void)
 	monkey4->init(monkkeyNum++, 2540, 90, L"monkkeyRc4");
 	_vEnemy.push_back(monkey4);
 
-	monkey5 = new monkkey;
-	monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
-	_vEnemy.push_back(monkey5);
+	//monkey5 = new monkkey;
+	//monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
+	//_vEnemy.push_back(monkey5);
 
 	/////////////////////////////////////
 	mush* mush1;
 	mush1 = new mush;
-	mush1->init(mushNum++, 1000, 50, L"mushRc1");
+	mush1->init(mushNum++, 3790, 200, L"mushRc1");
 	_vEnemy.push_back(mush1);
 
 
@@ -143,7 +143,7 @@ void EnemyManager::setEnemy1(void)
 
 
 	//////////////////////////////Äá¼¼ÆÃ
-	kong* kong1,*kong2;
+	kong* kong1, *kong2, *kong3;
 	kong1 = new kong;
 	kong1->init(kongNum++, 2975, 553, L"kongRc1");
 	_vEnemy.push_back(kong1);
@@ -151,6 +151,10 @@ void EnemyManager::setEnemy1(void)
 	kong2 = new kong;
 	kong2->init(kongNum++, 1995, 327, L"kongRc2");
 	_vEnemy.push_back(kong2);
+
+	kong3 = new kong;
+	kong3->init(kongNum++, 4895, 790, L"kongRc3");
+	_vEnemy.push_back(kong3);
 	//////////////////////////////////
 
 
@@ -170,7 +174,10 @@ void EnemyManager::setEnemy1(void)
 }
 void EnemyManager::deleteEnemy(int arrNum) {
 
-	SAFE_DELETE(_vEnemy[arrNum]);
+	//SAFE_DELETE(_vEnemy[arrNum]);
 	_vEnemy.erase(_vEnemy.begin() + arrNum);
 
+}
+void EnemyManager::deleteEnemy(viEnemy viE) {
+	_vEnemy.erase(viE);
 }

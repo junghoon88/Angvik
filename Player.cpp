@@ -219,6 +219,17 @@ void Player::update(void)
 				_y = res.offset.y;
 			}
 		}
+		else
+		{
+			//천장충돌
+			tagPixelCollision res = _playerPixelCollision->getPlayerPixelCeiling(_x + 5 + BODY_WIDTH / 2, _y, BODY_WIDTH, BODY_HEIGHT);
+			if (res.detect)
+			{
+				_playerJump->setJumpPower(_playerJump->getJumpPower() * -1);
+				_x = res.offset.x - 5 - BODY_WIDTH / 2;
+				_y = res.offset.y;
+			}
+		}
 	}
 	else
 	{
@@ -339,6 +350,7 @@ void Player::update(void)
 	TEXTMANAGER->addText(L"손좌표", strHandCoord);
 
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
+	//_mainCamera = { 3500, 100 };
 	MAINCAMERA->update();
 
 	if (KEYMANAGER->isOnceKeyDown('P')) _isDead == TRUE;

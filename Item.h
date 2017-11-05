@@ -80,6 +80,8 @@ public:
 
 
 	//아이템타입 겟셋
+	inline Sprite* getImage(void) { return _img; }
+
 	inline void setNum(int num) { _num = num; }
 	inline int getNum(void) { return _num; }
 	inline void setType(ITEM_TYPE type) { _type = type; }
@@ -98,7 +100,7 @@ public:
 	
 	//아이템 충돌렉트
 	inline RECT getrcImg(void) { return _rcImg; }
-	inline RECT HitImg(void) { return _rcHit; }
+	inline RECT getHitImg(void) { return _rcHit; }
 	//내구도 겟셋
 	inline void setdurability(int durability) { _durability = durability; }
 	inline int getdurability(void) { return _durability; }

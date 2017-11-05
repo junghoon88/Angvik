@@ -10,7 +10,8 @@ enum enemyState
 	eATK,
 	eJUMP,
 	eFALL,
-	toDeath
+	toDeath,
+	Death
 };
 
 class EnemyMother : public DxWindow
@@ -28,6 +29,7 @@ protected:
 	float speed;
 	float jumpPower;
 	float gravity;
+	float amountX;
 	float amountY;
 	float amountTime;
 	float rcHeight;

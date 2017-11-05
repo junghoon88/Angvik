@@ -35,15 +35,20 @@ bool EnemyMother::attack(void)
 }
 void EnemyMother::RIP(void)
 {
-	if (life <= 0 && state != toDeath)
+	if (life <= 0 && state != Death)
 	{
+		state = toDeath;
 		amountTime += TIMEMANAGER->getElapsedTime();
-		if (amountTime >= 0.2f)
+		if (amountTime >= 0.075f)
 		{
-			amountY -= 0.1;
-			rcHeight -= amountHeight / 10;
-			spt->setScale(1, amountY);
-			if (amountY < 0)state == toDeath;
+			amountTime = 0;
+			amountY -= 0.2;
+			rcHeight -= amountHeight / 20;
+			ptY += amountHeight / 5;
+			spt->setScale(amountX, amountY);
+			spt->setCoord((float)rc.left,(float)rc.top);
+			if (amountY <= 0)state = Death;
+			
 		}
 
 	}

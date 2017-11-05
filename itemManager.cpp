@@ -18,7 +18,7 @@ itemManager::~itemManager()
 void itemManager::init(void)
 {
 	_x = 350;
-	_y = 200;
+	_y = 350;
 	i = j = 0;
 
 	itemNum = 0;
@@ -44,7 +44,7 @@ void itemManager::update(void)
 		{
 			
 			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState() == ITEM_STATE_ATTACK)
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 			{
 				switch (_vItems[i]->getType())
 				{
@@ -73,14 +73,20 @@ void itemManager::update(void)
 	
 	if (issetting)
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			for (int j = 0; j < 8; j++)
 			{
+				_x += 50;
 				setFieldItem(i, j);
+				
 			}
-			_x += 150;
+			_x += 50;
+			setFieldItem(1, 7);
+			
 		}
+		_x += 50;
+		setFieldItem(2, 7);
 		issetting = false;
 	}
 	
@@ -101,8 +107,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	//IMAGEMANAGER->findImage(L"Stage1-BG")->render();
-	
+
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		_vItems[i]->render();

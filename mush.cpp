@@ -50,6 +50,7 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 
 	rcHeight = amountHeight = 20; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
+	amountX = 1;
 	amountTime = 0; //Y축 감소용 시간
 
 	atkCnt = 0;
@@ -62,56 +63,68 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 }
 void mush::update(void) {
 	rc = RectMakeCenter(ptX, ptY, 20, rcHeight);
-	probeY = rc.bottom;
-	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
-
-	spt->setCoord({ (float)rc.left,(float)rc.top });
-	atkspt->setCoord({ (float)rc.left,(float)rc.top });
-	jmpspt->setCoord({ (float)rc.left,(float)rc.top });
-
-	if (state == eIDLE) {
-		frameTime += TIMEMANAGER->getElapsedTime();
-		if (frameTime >= 0.1f)
-		{
-			frameTime = 0;
-
-			frameCnt++;
-			if (frameCnt >= 7) frameCnt = 0;
-		}
-	}
-	else if (state == eATK) {
-		atkFrameTime += TIMEMANAGER->getElapsedTime();
-		if (atkFrameTime >= 0.1f)
-		{
-			atkFrameTime = 0;
-
-			atkFrameCnt++;
-			if (atkFrameCnt >= 6)atkFrameCnt = 0;
-		}
-
-	}
-	else if (state == eJUMP||state == eFALL) {
 	
-		jumpFrameTime += TIMEMANAGER->getElapsedTime();
-		if (jumpFrameTime >= 0.1f)
-		{
-			jumpFrameTime =0;
-
-			jumpFrameCnt++;
-			if (jumpFrameCnt >= 2)jumpFrameCnt = 0;
-		}
-		
-	}
-
-	atkCnt += TIMEMANAGER->getElapsedTime();
-	if (atkCnt >= 3.0f)
+	if (life <= 0)
 	{
-		atkCnt = 0;
-		isAtk = true;
-		state = eATK;
+		RIP();
 	}
-	move();
-	RIP();
+	else
+	{
+		probeY = rc.bottom;
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+
+		spt->setCoord({ (float)rc.left,(float)rc.top });
+		atkspt->setCoord({ (float)rc.left,(float)rc.top });
+		jmpspt->setCoord({ (float)rc.left,(float)rc.top });
+
+		if (state == eIDLE) {
+			frameTime += TIMEMANAGER->getElapsedTime();
+			if (frameTime >= 0.1f)
+			{
+				frameTime = 0;
+
+				frameCnt++;
+				if (frameCnt >= 7) frameCnt = 0;
+			}
+		}
+		else if (state == eATK) {
+			atkFrameTime += TIMEMANAGER->getElapsedTime();
+			if (atkFrameTime >= 0.1f)
+			{
+				atkFrameTime = 0;
+				atkFrameCnt++;
+				if (atkFrameCnt >= 6) {
+					isAtk = true;
+					atkFrameCnt = 0;
+					state = eIDLE;
+				}
+			}
+
+		}
+		else if (state == eJUMP || state == eFALL) {
+
+			jumpFrameTime += TIMEMANAGER->getElapsedTime();
+			if (jumpFrameTime >= 0.1f)
+			{
+				jumpFrameTime = 0;
+
+				jumpFrameCnt++;
+				if (jumpFrameCnt >= 2)jumpFrameCnt = 0;
+			}
+
+		}
+
+		if (state == eIDLE) {
+			atkCnt += TIMEMANAGER->getElapsedTime();
+			if (atkCnt >= 1.0f)
+			{
+				atkCnt = 0;
+				state = eATK;
+			}
+		}
+		move();
+	}
+	
 }
 void mush::render(void) {
 
@@ -182,14 +195,15 @@ void mush::move(void) {
 
 		if ((r == 255 && g == 255 && b == 0) && state!=eJUMP)
 		{	
-			jumpPower = 6;
+			jumpPower = 7;
 			state = eJUMP;
 			break;
 		}
 		else if ((r == 0 && g == 0 && b == 0)&& (state!=eJUMP||gravity>=5))
 		{
 			ptY = i - 15;
-			state = eIDLE;
+			if (state != eATK)
+				state = eIDLE;
 			break;
 		}
 		else if(state!=eJUMP)
@@ -213,6 +227,9 @@ void mush::move(void) {
 			{
 				ptX = i - 20;
 				dir = eLEFT;
+				jmpspt->setScale({ -1,1 });
+				amountX = -1;
+				jmpspt->setScaleOffset(25, 0);
 				spt->setScale({ -1,1 });
 				spt->setScaleOffset(25, 0);
 			}
@@ -220,6 +237,8 @@ void mush::move(void) {
 			{
 				ptX = i + 20;
 				dir = eRIGHT;
+				jmpspt->setScale({ 1,1 });
+				amountX = 1;
 				spt->setScale({ 1,1 });
 			}
 			break;
