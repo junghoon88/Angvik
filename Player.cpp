@@ -350,6 +350,7 @@ void Player::update(void)
 	TEXTMANAGER->addText(L"¼ÕÁÂÇ¥", strHandCoord);
 
 	MAINCAMERA->setTargetPos(_x - WINSIZEX / 2, _y - WINSIZEY / 2);
+	//_mainCamera = { 3500, 100 };
 	MAINCAMERA->update();
 
 	if (KEYMANAGER->isOnceKeyDown('P')) _isDead == TRUE;

@@ -172,3 +172,6 @@ void EnemyManager::deleteEnemy(int arrNum) {
 	_vEnemy.erase(_vEnemy.begin() + arrNum);
 
 }
+void EnemyManager::deleteEnemy(viEnemy viE) {
+	_vEnemy.erase(viE);
+}
