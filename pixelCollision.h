@@ -46,6 +46,7 @@ public:
 
 	tagPixelCollision getPlayerPixelGround(int cx, int cy, int width, int height);
 	tagPixelCollision getPlayerPixelWall(int cx, int cy, int width, int height, int dir);	//dir = 1 -> 오른쪽, -1 일때 왼쪽
+	tagPixelCollision getPlayerPixelCeiling(int cx, int cy, int width, int height);
 
 	
 

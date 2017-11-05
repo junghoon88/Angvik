@@ -177,7 +177,7 @@ void mush::move(void) {
 
 		if ((r == 255 && g == 255 && b == 0) && state!=eJUMP)
 		{	
-			jumpPower = 6;
+			jumpPower = 7;
 			state = eJUMP;
 			break;
 		}

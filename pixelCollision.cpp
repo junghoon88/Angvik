@@ -260,3 +260,43 @@ tagPixelCollision pixelCollision::getPlayerPixelWall(int cx, int cy, int width, 
 	}
 	return res;
 }
+
+
+tagPixelCollision pixelCollision::getPlayerPixelCeiling(int cx, int cy, int width, int height)
+{
+	int pixelGapP = 2;
+	int pixelGapM = 10;
+
+	tagPixelCollision res;
+	res.detect = false;
+	res.offset = { 0, 0 };
+
+	int probeX = cx;
+	int probeY = cy - height / 2;
+
+	for (int i = probeY + pixelGapP; i > probeY - pixelGapM; --i)
+	{
+		//int j = probeX;
+		for (int j = 0; abs(j) < width / 2;)
+		{
+			//COLORREF color = PBGMANAGER->getPixelColor(strPBG, j, i);
+			COLORREF color = PBGMANAGER->getPixelColor(strPBG, j + probeX, i);
+
+			if (/*color == RGB(0, 0, 0) || */color == RGB(0, 255, 255))
+			{
+				res.detect = true;
+				res.offset.x = cx;
+				res.offset.y = i + height / 2;
+
+				return res;
+			}
+
+			//중앙을 기준으로 검색하도록 함
+			if (j == 0)			j = 1;
+			else if (j > 0)		j = -j;
+			else if (j < 0)		j = -j + 1;
+		}
+	}
+	return res;
+}
+
