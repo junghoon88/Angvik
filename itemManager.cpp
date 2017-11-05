@@ -44,7 +44,7 @@ void itemManager::update(void)
 		{
 			
 			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState() == ITEM_STATE_ATTACK)
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 			{
 				switch (_vItems[i]->getType())
 				{
@@ -101,7 +101,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
+
 	
 	for (int i = 0; i < _vItems.size(); i++)
 	{

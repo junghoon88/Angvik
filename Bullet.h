@@ -17,6 +17,8 @@ struct tagBullet
 
 	int frameX;
 	float frameTime;
+
+	bool valid;
 };
 
 class sBMR : public DxWindow
