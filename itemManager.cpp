@@ -40,7 +40,13 @@ void itemManager::update(void)
 
 		for (int i = 0; i < _vItems.size(); i++)
 		{
-			_vItems[i]->targetPlayer(x, y);
+			
+			
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
+			{
+				_vItems[i]->targetPlayer(x, y);
+			}
+
 		}
 	}
 	

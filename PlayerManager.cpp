@@ -63,7 +63,7 @@ void PlayerManager::playerItemCollision(void)
 	for (int i = 0; i < item.size(); i++)
 	{
 		item[i]->getState();
-		item[i]->setState(ITEM_STATE_INPLAYER);
+//		item[i]->setState(ITEM_STATE_INPLAYER);
 
 		//_inven->
 	}
@@ -301,7 +301,6 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
-<<<<<<< HEAD
 
 Collision();
 	_player->update();
@@ -312,14 +311,3 @@ Collision();
 	_inven->update(_player->getX(), _player->getY());
 
 }
-
-void PlayerManager::render(void) 
-{
-	_player->render();
-	_bird->render();
-	_inven->render();
-}
-
-=======
-}
->>>>>>> b741292506ec0381226c358f2bbd70dadb97870f

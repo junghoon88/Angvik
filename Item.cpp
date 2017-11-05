@@ -54,7 +54,7 @@ void Item::update(void)
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
 			_img->setRotate(80.0f);
 
-			_img->setCoord(targetX, targetY);
+			_img->setCoord(targetX+10, targetY+20);
 
 		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
@@ -168,8 +168,10 @@ void Item::update(void)
 			break;
 		}
 	}
+	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
+	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX + 10, targetY + 20);
 
-	_img->setCoord(_pt.x, _pt.y);
+	
 
 }
 
