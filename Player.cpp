@@ -240,7 +240,7 @@ void Player::update(void)
 			}
 			if (res.trap)
 			{
-				_isHit = true;
+				hitFeedback(_x);
 			}
 		}
 		else
