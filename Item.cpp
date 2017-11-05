@@ -29,27 +29,18 @@ void Item::release(void)
 
 void Item::update(void)
 {
-	//if (_type == ITEM_TYPE_SWORD)
-	//{
-	//	//if (_kind == ITEM_KIND_WHITE)
-	//	//{
-	//		if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
-	//		if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
-	//		if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
-	//		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
-	//	//}
-	//}
+
 	//////////////////¾ÆÀÌÅÛ ÁöÇü ÇÈ¼¿Ãæµ¹///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
-
-		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y ) == false)
 
 		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y) == false)
 
 		{
 			_pt.y += 5;
 		}
+		_rcImg = RectMake(_pt.x, _pt.y, _img->getTexture()->getFrameWidth(), _img->getTexture()->getFrameHeight());
+
 	}
 
 
@@ -102,13 +93,14 @@ void Item::update(void)
 			switch (_kind)	
 				{
 				case ITEM_KIND_WHITE:
-					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
+					_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
+					
 				break;
 				case ITEM_KIND_BLACK:
-					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
+					_rcHit = RectMake(targetX, targetY,  IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
 				break;
 				case ITEM_KIND_GOLD : 
-					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
+					_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
 				break;
 				}
 				_img->setRotate(_img->getAngle() - 7.0f);
@@ -122,15 +114,16 @@ void Item::update(void)
 			switch (_kind)
 			{
 			case ITEM_KIND_WHITE:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
 				break;
 			case ITEM_KIND_BLACK:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
 				break;
 			case ITEM_KIND_GOLD:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY-20, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
 				break;
 			}
+				targetX += 10;
 				_pt.x += 10;
 				
 			break;
@@ -138,13 +131,13 @@ void Item::update(void)
 			switch (_kind)
 			{
 			case ITEM_KIND_WHITE:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			case ITEM_KIND_BLACK:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			case ITEM_KIND_GOLD:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
 				break;
 			}
 			_img->setRotate(_img->getAngle() - 5.0f);
@@ -158,25 +151,32 @@ void Item::update(void)
 			{
 
 			case ITEM_KIND_WHITE:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			case ITEM_KIND_BLACK:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			case ITEM_KIND_GOLD:
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
+				_rcHit = RectMake(targetX, targetY, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
 				break;
 			}
+				
 				_img->setCenterPer(0.5,0.5);
 				_img->setRotate(_img->getAngle() - 15.0f);
+				targetX += 10;
 				_pt.x += 10;
 			
 			
 			break;
 		}
 	}
-	if(_state == ITEM_STATE_IDLE || _state == ITEM_STATE_ATTACK)_img->setCoord(_pt.x, _pt.y);
-	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX , targetY);
+	if (_state == ITEM_STATE_IDLE)
+	{
+		_img->setCoord(_pt.x, _pt.y);
+		
+		
+	}
+	else if (_state == ITEM_STATE_INPLAYER || _state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
 
 	
 

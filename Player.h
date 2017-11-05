@@ -110,6 +110,16 @@ private:
 	Sprite* _blackFootRightImage;
 	Sprite* _blackFootLeftImage;
 
+	Sprite* _goldBodyRightImage;
+	Sprite* _goldBodyLeftImage;
+	Sprite* _goldFootRightImage;
+	Sprite* _goldFootLeftImage;
+
+	Sprite* _whiteBodyRightImage;
+	Sprite* _whiteBodyLeftImage;
+	Sprite* _whiteFootRightImage;
+	Sprite* _whiteFootLeftImage;
+
 	Sprite* _boneHead;
 	Sprite* _boneBody;
 	Sprite* _bone[4];
@@ -124,14 +134,16 @@ private:
 	float _x, _y;
 	float _probeY;
 
-	bool _isFrontAttack;
-	bool _isBackAttack;
-	bool _isRight;
-	bool _isSit;
-	bool _isLive;
-	bool _isDead;
-	bool _isInven;
-	bool _isJumpAttack;
+	bool _isFrontAttack;	//	front로 공격했는지
+	bool _isBackAttack;		//	back으로 공격했는지
+	bool _isRight;			//	오른쪽으로 보고 있는지
+	bool _isSit;			//	앉아있는지
+	bool _isLive;			//	살아있는지
+	bool _isDead;			//	
+	bool _isInven;			//	인벤토리를 활성화했는지
+	bool _isJumpAttack;		//	점프공격중인지
+	bool _isHit;			//	피격상태인지
+	bool _isImmortal;		//	무적상태인지
 
 	float _handX, _handY;
 	float _armLen0, _armLen1, _armLen2;
@@ -218,6 +230,9 @@ public:
 	bool getIsSit(void)			{ return _isSit; }
 	bool getIsJump(void)		{ return _playerJump->getIsJumping(); }
 	bool getIsLive(void)		{ return _isLive; }
+	
+	bool getIsHit(void)			{ return _isHit; }
+	void setIsHit(bool isHit)	{ _isHit = isHit; }
 
 	bool getIsInven(void)		{ return _isInven; }
 	void setIsInven(bool isInven) { _isInven = isInven; }
