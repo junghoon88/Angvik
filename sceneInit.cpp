@@ -105,6 +105,13 @@ void sceneInit::stageInitImage()	//스테이지 이미지(배경)
 	//에너미 테스트용 배드
 	IMAGEMANAGER->addImage(DEVICE, L"Stage1-TEST", L"image/Stage/Stage1-test.bmp");
 	PBGMANAGER->addImage(L"Stage1-TEST", L"image/stage/Stage1-test.bmp", 6709, 1290);
+
+	//엔딩
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩크레딧", L"image/Stage/Stage1-test.bmp");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경1", L"image/Stage/Stage1-test.bmp");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경2", L"image/Stage/Stage1-test.bmp");
+	IMAGEMANAGER->addImage(DEVICE, L"엔딩배경3", L"image/Stage/Stage1-test.bmp");
+	
 }
 
 
@@ -234,5 +241,4 @@ void sceneInit::enemyInitImage(void)	//몬스터
 	IMAGEMANAGER->addFrameImage(DEVICE, L"콩탄", L"image/monster/kongtan.png", 6, 1);
 	PBGMANAGER->addImage(L"충돌테스트", L"image/stage/test_bmp.bmp",768,305);
 	IMAGEMANAGER->addImage(DEVICE,L"충돌테스트보여줘요", L"image/stage/test_collision.png");
-
 }
