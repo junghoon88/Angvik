@@ -168,7 +168,7 @@ void EnemyManager::setEnemy1(void)
 }
 void EnemyManager::deleteEnemy(int arrNum) {
 
-	SAFE_DELETE(_vEnemy[arrNum]);
+	//SAFE_DELETE(_vEnemy[arrNum]);
 	_vEnemy.erase(_vEnemy.begin() + arrNum);
 
 }
