@@ -15,10 +15,10 @@ Turtle_crash::~Turtle_crash()
 void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 {
 	TCHAR strKey[100];
-	_stprintf(strKey, L"°ÅºÏÀÌ%d", num);
-	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getFileName(),
-		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameX() + 1,
-		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ")->getMaxFrameY() + 1);
+	_stprintf(strKey, L"°ÅºÏÀÌ´©µå%d", num);
+	spt = IMAGEMANAGER->addFrameImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"°ÅºÏÀÌ´©µå")->getFileName(),
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ´©µå")->getMaxFrameX() + 1,
+		IMAGEMANAGER->findImage(L"°ÅºÏÀÌ´©µå")->getMaxFrameY() + 1);
 	spt->setCoord({ 0,0 });
 	index = 0;
 	dir = eRIGHT;
@@ -37,7 +37,7 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 100, 60);
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
+	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
 	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
@@ -54,7 +54,7 @@ void Turtle_crash::update(void)
 		sptrc = RectMakeCenter(ptX, ptY, 110, 70);
 		probeY = sptrc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
-		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (frameTime >= 0.1f)
 		{
@@ -71,7 +71,7 @@ void Turtle_crash::update(void)
 void Turtle_crash::render(void)
 {
 	spt->frameRender(frameCnt, 0, 255);
-	RECTMANAGER->render(rcName);
+	//RECTMANAGER->render(rcName);
 }
 void Turtle_crash::move(void)
 {

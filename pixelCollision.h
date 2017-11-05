@@ -4,6 +4,7 @@
 struct tagPixelCollision
 {
 	bool detect;
+	bool trap;
 	POINT offset;
 };
 

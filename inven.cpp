@@ -26,6 +26,8 @@ void inven::init(void)
 	_selectNum = 0;
 	_frameX = 0;
 
+	_goldOils = _blackOils = _whiteOils = 0;
+
 	_inventoryMax = 4;
 	_inventoryNum = 0;
 
@@ -118,6 +120,8 @@ bool inven::insertInven(int num)
 {
 	vector<Item*> items = _im->getVItem();
 
+	_whiteOils = _goldOils = _blackOils = 0;
+
 	for (int i = 0; i < items.size(); i++)
 	{
 		if (num != items[i]->getNum()) continue;
@@ -137,12 +141,24 @@ bool inven::insertInven(int num)
 		}
 		else if (it->getType() == ITEM_TYPE_OIL)
 		{
-			if (_vInvenOils.size() >= _inventoryMax)
+			if (it->getKind() == ITEM_KIND_WHITE)
 			{
-				return false;
+				_whiteOils++;
+				if (_whiteOils == _inventoryMax) return false;
+				_vInvenOils.push_back(it);
+				return true;
 			}
-			else
+			if (it->getKind() == ITEM_KIND_GOLD)
 			{
+				_goldOils++;
+				if (_goldOils == _inventoryMax) return false;
+				_vInvenOils.push_back(it);
+				return true;
+			}
+			if (it->getKind() == ITEM_KIND_BLACK)
+			{
+				_blackOils++;
+				if (_blackOils == _inventoryMax) return false;
 				_vInvenOils.push_back(it);
 				return true;
 			}
@@ -230,7 +246,7 @@ void inven::itemBoxUpdate(float x, float y)
 		for (int i = 0; i < _vInvenItems.size(); i++)
 		{
 			Sprite* img = _vInvenItems[i]->getImage();
-			img->setCoord(_selectPoint[i]);
+			img->setCoord({ _selectPoint[i].x + IMAGEMANAGER->findImage(L"itemBox")->getSize().x / 2 - img->getSize().x / 2, _selectPoint[i].y + IMAGEMANAGER->findImage(L"아이템선택")->getSize().y / 2 - img->getSize().y / 2 });
 			img->setRotate(0.0f);
 		}
 
@@ -308,13 +324,30 @@ void inven::oilsBoxUpdate(float x, float y)
 			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
 		}
 
+		_goldNum = _blackNum = _whiteNum = 0;
+
 		for (int i = 0; i < _vInvenOils.size(); i++)
 		{
 			Sprite* img = _vInvenOils[i]->getImage();
-			img->setCoord(_selectPoint[i].x, _selectPoint[i].y);
-			img->setRotate(0.0f);
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_WHITE)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"흰색오일")->getSize().x * _whiteNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_whiteNum++;
+			}
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_GOLD)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _goldNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_goldNum++;
+			}
+			if (_vInvenOils[i]->getKind() == ITEM_KIND_BLACK)
+			{
+				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 35 + IMAGEMANAGER->findImage(L"블랙오일")->getSize().x * _blackNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+				img->setRotate(0.0f);
+				_blackNum++;
+			}
 		}
-
 	}
 }
 

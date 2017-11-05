@@ -16,6 +16,8 @@
 #define JUMPPOWER		10.0f
 #define ATTACKJUMPPOWER	 5.0f
 #define GRAVITY			 0.5f
+#define IMMORTALTIME	 1.5f
+#define ATTACKTIME		 0.5f
 
 //아이템 상태
 enum PLAYERHEADSTATE
@@ -128,11 +130,18 @@ private:
 	RECT _rcBody;
 	RECT _rcFoot;
 
+	BYTE _alpha;
+
 	jump* _playerJump;
 	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
 	float _probeY;
+
+	float _elapsedImmortalTime;
+	float _maxImmortalTime;
+	float _elapsedAttackTime;
+	float _maxAttackTime;
 
 	bool _isFrontAttack;	//	front로 공격했는지
 	bool _isBackAttack;		//	back으로 공격했는지
@@ -230,9 +239,13 @@ public:
 	bool getIsSit(void)			{ return _isSit; }
 	bool getIsJump(void)		{ return _playerJump->getIsJumping(); }
 	bool getIsLive(void)		{ return _isLive; }
+	void setIsLive(bool isLive) { _isLive = isLive; }
 	
 	bool getIsHit(void)			{ return _isHit; }
 	void setIsHit(bool isHit)	{ _isHit = isHit; }
+
+	bool getIsImmortal(void) { return _isImmortal; }
+	void setIsImmortal(bool isImmortal) { _isImmortal = isImmortal; }
 
 	bool getIsInven(void)		{ return _isInven; }
 	void setIsInven(bool isInven) { _isInven = isInven; }
