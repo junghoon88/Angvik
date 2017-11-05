@@ -520,8 +520,3 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 	////////////////////ÇÈ¼¿Ãæµ¹
 	
 }
-
-inline void itemattack(float angle)
-{
-
-}
