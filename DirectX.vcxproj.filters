@@ -173,6 +173,9 @@
     <ClCompile Include="PlayerManager-Collision.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
+    <ClCompile Include="sceneED.cpp">
+      <Filter>mainGame\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="inven.h">
       <Filter>mainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneED.h">
+      <Filter>mainGame\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

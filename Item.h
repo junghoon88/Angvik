@@ -65,9 +65,15 @@ private:
 	
 	float targetX;
 	float targetY;
-
-	bool isarm;
+	float movingX;
+	float movingY;
+	bool isAttack;
 	bool isPlayerRIGHT;
+	bool itemMoveFirst;
+
+	bool firstAttack;
+	int firstDirection; //1: ¿À¸¥ÂÊ, -1:¿ÞÂÊ
+
 public:
 	Item();
 	~Item();
@@ -90,7 +96,8 @@ public:
 	inline ITEM_TYPE getType(void) { return _type; }
 	
 	inline void setisPlayerRIGHT(bool right) { isPlayerRIGHT = right; }
-	inline void setisPlayerARM(bool arm) { isarm = arm; }
+	
+	inline void setisPlayerAttack(bool attack) { isAttack = attack; }
 	//Á¾·ù °Ù¼Â
 	void setKind(ITEM_KIND kind);
 	inline ITEM_KIND getKind(void) { return _kind; }

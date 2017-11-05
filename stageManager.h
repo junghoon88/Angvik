@@ -26,6 +26,11 @@ struct tagTreeTrap
 
 class stageManager : public DxWindow
 {
+private: //엔딩지점 달성용
+	RECT endPoint;
+	bool isEnd;
+
+
 private:
 	Sprite* _imgBackground;
 	image* _imgPBG;
@@ -44,7 +49,7 @@ private:
 private:
 	void frameUpdate(void);
 	void hiddenCheck(void);
-
+	void endCheck(void);
 public:
 	stageManager();
 	~stageManager();

@@ -28,7 +28,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	//spt = IMAGEMANAGER->findImage(L"³ª¹«¸Ç");
 	index = 4;
 	spt->setCoord({ 0,0 });
-	dir = eRIGHT;
+	dir = eLEFT;
 	state = eIDLE;
 	life = 2;
 	ptX = x;
@@ -49,7 +49,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 }
 void Ent::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY + 10, 30, 60);
+	rc = RectMakeCenter(ptX, ptY + 10, 30, 80);
 	sptrc = RectMakeCenter(ptX - 15, ptY - 10, 40, 70);
 	if (life <= 0)
 	{

@@ -56,6 +56,21 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµåºÎ¸Þ¶û", L"image/item/°ñµåºÎ¸Þ¶û.png");
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµåÁöÆÎÀÌ", L"image/item/°ñµåÁöÆÎÀÌ.png");
 	IMAGEMANAGER->addImage(DEVICE, L"°ñµå¿ÀÀÏ", L"image/item/°ñµå¿ÀÀÏ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈò»öÄ®", L"image/item/Èò»öÄ®.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈò»ö·£½º", L"image/item/Èò»ö·£½º.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈò»öºÎ¸Þ¶û", L"image/item/Èò»öºÎ¸Þ¶û.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈò»öÁöÆÎÀÌ", L"image/item/Èò»öÁöÆÎÀÌ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈò»ö¿ÀÀÏ", L"image/item/Èò»ö¿ÀÀÏ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"Lºí·¢Ä®", L"image/item/ºí·¢Ä®.png");
+	IMAGEMANAGER->addImage(DEVICE, L"Lºí·¢·£½º", L"image/item/ºí·¢·£½º.png");
+	IMAGEMANAGER->addImage(DEVICE, L"Lºí·¢ºÎ¸Þ¶û", L"image/item/ºí·¢ºÎ¸Þ¶û.png");
+	IMAGEMANAGER->addImage(DEVICE, L"Lºí·¢ÁöÆÎÀÌ", L"image/item/ºí·¢ÁöÆÎÀÌ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"Lºí·¢¿ÀÀÏ", L"image/item/ºí·¢¿ÀÀÏ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L°ñµåÄ®", L"image/item/°ñµåÄ®.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L°ñµå·£½º", L"image/item/°ñµå·£½º.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L°ñµåºÎ¸Þ¶û", L"image/item/°ñµåºÎ¸Þ¶û.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L°ñµåÁöÆÎÀÌ", L"image/item/°ñµåÁöÆÎÀÌ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L°ñµå¿ÀÀÏ", L"image/item/°ñµå¿ÀÀÏ.png");
 	
 	//¹æ¾î±¸
 	IMAGEMANAGER->addImage(DEVICE, L"¹é°©", L"image/item/¹é°©.png");
@@ -67,6 +82,15 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"È²°©", L"image/item/È²°©.png");
 	IMAGEMANAGER->addImage(DEVICE, L"È²Åõ", L"image/item/È²Åõ.png");
 	IMAGEMANAGER->addImage(DEVICE, L"È²½Å", L"image/item/È²½Å.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L¹é°©", L"image/item/¹é°©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L¹éÅõ", L"image/item/¹éÅõ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L¹é½Å", L"image/item/¹é½Å.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈæ°©", L"image/item/Èæ°©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈæÅõ", L"image/item/ÈæÅõ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈæ½Å", L"image/item/Èæ½Å.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈ²°©", L"image/item/È²°©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈ²Åõ", L"image/item/È²Åõ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LÈ²½Å", L"image/item/È²½Å.png");
 	//¾Ë
 	IMAGEMANAGER->addImage(DEVICE, L"´Þ°¿", L"image/item/¾Ë.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ËÀº»õ", L"image/item/°ËÀº»õ.png", 8, 1);
@@ -105,6 +129,14 @@ void sceneInit::stageInitImage()	//½ºÅ×ÀÌÁö ÀÌ¹ÌÁö(¹è°æ)
 	//¿¡³Ê¹Ì Å×½ºÆ®¿ë ¹èµå
 	IMAGEMANAGER->addImage(DEVICE, L"Stage1-TEST", L"image/Stage/Stage1-test.bmp");
 	PBGMANAGER->addImage(L"Stage1-TEST", L"image/stage/Stage1-test.bmp", 6709, 1290);
+
+	//¿£µù
+	IMAGEMANAGER->addImage(DEVICE, L"¿£µùÅ©·¹µ÷", L"image/Stage/End_front.png");
+	IMAGEMANAGER->addImage(DEVICE, L"¿£µù¹è°æ1", L"image/Stage/End_back1.png");
+	IMAGEMANAGER->addImage(DEVICE, L"¿£µù¹è°æ2", L"image/Stage/End_back2.png");
+	IMAGEMANAGER->addImage(DEVICE, L"¿£µù¹è°æ3", L"image/Stage/End_back3.png");
+
+	
 }
 
 
@@ -234,5 +266,4 @@ void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 	IMAGEMANAGER->addFrameImage(DEVICE, L"ÄáÅº", L"image/monster/kongtan.png", 6, 1);
 	PBGMANAGER->addImage(L"Ãæµ¹Å×½ºÆ®", L"image/stage/test_bmp.bmp",768,305);
 	IMAGEMANAGER->addImage(DEVICE,L"Ãæµ¹Å×½ºÆ®º¸¿©Áà¿ä", L"image/stage/test_collision.png");
-
 }

@@ -35,7 +35,7 @@ void pixelCollision::render(void)
 
 bool pixelCollision::getPixelGroundLT(float* lx, float* ty, int width, int height)
 {
-	int pixelGap = 5;
+	int pixelGap = 2;
 
 	_x = lx;
 	_y = ty;
@@ -101,7 +101,8 @@ bool pixelCollision::getPixelWall(float* x, float* y, int width, int height, int
 
 	if (dir < 0)
 	{
-		_probeX = *_x - width / 2;
+//		_probeX = *_x - width / 2;
+		_probeX = *_x;
 		_probeY = *_y;
 
 		//for (int i = _probeY - pixelGap; i < _probeY + pixelGap; ++i)
@@ -113,7 +114,7 @@ bool pixelCollision::getPixelWall(float* x, float* y, int width, int height, int
 
 				if (color == RGB(0, 255, 255) || color == RGB(0, 0, 0))
 				{
-					*_x = j +width / 2;
+					*_x = j;// +width / 2;
 
 					return true;
 				}
@@ -122,7 +123,8 @@ bool pixelCollision::getPixelWall(float* x, float* y, int width, int height, int
 	}
 	else if (dir > 0)
 	{
-		_probeX = *_x + width / 2;
+//		_probeX = *_x + width / 2;
+		_probeX = *_x + width;
 		_probeY = *_y;
 
 		//for (int i = _probeY - pixelGap; i < _probeY + pixelGap; ++i)
@@ -132,34 +134,15 @@ bool pixelCollision::getPixelWall(float* x, float* y, int width, int height, int
 			{
 				COLORREF color = PBGMANAGER->getPixelColor(strPBG, j, i);
 
-				if (color == RGB(0, 255, 255))
+				if (color == RGB(0, 255, 255) || color == RGB(0, 0, 0))
 				{
-					*_x = j -width / 2;
+					*_x = j - width;// -width / 2;
 
 					return true;
 				}
 			}
 		}
 	}
-
-	//_probeX = *_x + dir * width / 2;
-	//_probeY = *_y;
-
-	////for (int i = _probeY - pixelGap; i < _probeY + pixelGap; ++i)
-	//int i = _probeY;
-	//{
-	//	for (int j = _probeX - dir * width / 2; j < _probeY + dir * width / 2; j += dir)
-	//	{
-	//		COLORREF color = PBGMANAGER->getPixelColor(strPBG, j, i);
-
-	//		if (color == RGB(0, 255, 255))
-	//		{
-	//			*_x = j - width / 2;
-
-	//			return true;
-	//		}
-	//	}
-	//}
 
 	return false;
 
@@ -189,7 +172,7 @@ tagPixelCollision pixelCollision::getPlayerPixelGround(int cx, int cy, int width
 			{
 				res.trap = true;
 			}
-			if (color == RGB(0, 0, 0))// || color == RGB(0, 255, 255))
+			else if (color == RGB(0, 0, 0))// || color == RGB(0, 255, 255))
 			{
 				res.detect = true;
 				res.offset.x = cx;

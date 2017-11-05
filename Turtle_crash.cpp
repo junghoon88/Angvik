@@ -30,6 +30,8 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
 	isImmune = true;
+	isUP = true;
+	alpha = 255;
 	immuneTime = 0;
 	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
 	amountY = 1; //Y축 비율
@@ -53,9 +55,22 @@ void Turtle_crash::update(void)
 	else
 
 	{	
-		if (isImmune) {
+		if (isImmune) { //무적시간
+			if (isUP)
+			{
+				alpha += 50;
+				if (alpha >= 255)
+					isUP = false;
+			}
+			if (!isUP)
+			{
+				alpha -= 50;
+				if (alpha <= 0)
+					isUP = true;
+			}
 			immuneTime += TIMEMANAGER->getElapsedTime();
 			if (immuneTime >= 1.5f) {
+				alpha = 255;
 				isImmune = false;
 			}
 		}
@@ -78,7 +93,7 @@ void Turtle_crash::update(void)
 }
 void Turtle_crash::render(void)
 {
-	spt->frameRender(frameCnt, 0, 255);
+	spt->frameRender(frameCnt, 0, alpha);
 	//RECTMANAGER->render(rcName);
 }
 void Turtle_crash::move(void)

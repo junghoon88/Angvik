@@ -35,7 +35,7 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 	bullet.spt = IMAGEMANAGER->addImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"버섯부메랑")->getFileName());
 	
 	bullet.angle = ang;
-	bullet.speed = 11;// 부메랑 속도
+	bullet.speed = 9;// 부메랑 속도
 	backPower = 0.3;//부메랑 감속도 조절
 	bullet.ptX = bullet.fireX = ptx;
 	bullet.ptY = bullet.fireY = pty;
@@ -49,19 +49,20 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 void sBMR::move(void)
 
 {
-	if (!_em->getvEnemy().empty()) {
-		for (int i = 0; i < _em->getvEnemy().size(); i++) {
-			if (_em->getvEnemy()[i]->getIndex() == 1) {      //버섯찾음
-				backX = _em->getvEnemy()[i]->getX();
-				backY = _em->getvEnemy()[i]->getY();
-				break;
-    		}
-			else {
-				//void
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); _viBullet++) {
+		if (!_em->getvEnemy().empty()) {
+			for (int i = 0; i < _em->getvEnemy().size(); i++) {
+				if (_em->getvEnemy()[i]->getIndex() == 1) {      //버섯찾음
+					backX = _em->getvEnemy()[i]->getX();
+					backY = _em->getvEnemy()[i]->getY();
+					break;
+				}
+				else {
+					//void
+				}
 			}
 		}
 	}
-
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
 		if (_viBullet->speed > 0) // 앞으로 나가는 동안은 처음 받은 플레이어 방향으로만 날라감.
