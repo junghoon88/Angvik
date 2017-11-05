@@ -830,7 +830,7 @@ void Player::keyInputSettings(void)
 		_backArmMotion->start();
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_DOWN))		//	Sit 키, 충돌 렉트 변화 필요
+	if (KEYMANAGER->isOnceKeyDown(VK_DOWN) && !_playerJump->getIsJumping())		//	Sit 키, 충돌 렉트 변화 필요
 	{
 		_isSit = TRUE;
 
@@ -859,7 +859,7 @@ void Player::keyInputSettings(void)
 			_backArmMotion->start();
 		}
 	}
-	else if (KEYMANAGER->isOnceKeyUp(VK_DOWN) && !_playerJump->getIsJumping())
+	else if (KEYMANAGER->isOnceKeyUp(VK_DOWN))
 	{
 		_isSit = FALSE;
 
