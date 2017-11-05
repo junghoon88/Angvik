@@ -57,7 +57,7 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	isAtk = false;
 
 	rc = RectMakeCenter(ptX, ptY, 20, rcHeight);
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 20, rcHeight });
+	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 20, rcHeight });
 	probeY = rc.bottom;
 
 }
@@ -71,7 +71,7 @@ void mush::update(void) {
 	else
 	{
 		probeY = rc.bottom;
-		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
 		spt->setCoord({ (float)rc.left,(float)rc.top });
 		atkspt->setCoord({ (float)rc.left,(float)rc.top });
@@ -141,7 +141,7 @@ void mush::render(void) {
 		default: break;
 	}
 	
-	RECTMANAGER->render(rcName);
+	//RECTMANAGER->render(rcName);
 
 }
 void mush::move(void) {

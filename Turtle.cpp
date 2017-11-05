@@ -21,7 +21,7 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 
 	isAtk = false;
 	spt->setCoord({ 0,0 });
-	index = 0;
+	index = 3;
 	dir = eRIGHT;
 	state = eIDLE;
 	life = 1;
@@ -37,7 +37,7 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 100, rcHeight);
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, rcHeight });
+	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, rcHeight });
 	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
@@ -53,7 +53,7 @@ void Turtle::update(void)
 		sptrc = RectMakeCenter(ptX, ptY, 110, 70);
 		probeY = sptrc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
-		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (frameTime >= 0.1f)
 		{
@@ -70,7 +70,7 @@ void Turtle::update(void)
 void Turtle::render(void)
 {
 	spt->frameRender(frameCnt, 0, 255);
-	RECTMANAGER->render(rcName);
+	//RECTMANAGER->render(rcName);
 }
 void Turtle::move(void)
 {

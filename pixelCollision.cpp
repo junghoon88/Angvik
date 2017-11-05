@@ -172,6 +172,7 @@ tagPixelCollision pixelCollision::getPlayerPixelGround(int cx, int cy, int width
 
 	tagPixelCollision res;
 	res.detect = false;
+	res.trap = false;
 	res.offset = { 0, 0 };
 
 	int probeX = cx;
@@ -184,7 +185,10 @@ tagPixelCollision pixelCollision::getPlayerPixelGround(int cx, int cy, int width
 		{
 			//COLORREF color = PBGMANAGER->getPixelColor(strPBG, j, i);
 			COLORREF color = PBGMANAGER->getPixelColor(strPBG, j + probeX, i);
-
+			if (color == RGB(255, 0, 0))  //가시검사
+			{
+				res.trap = true;
+			}
 			if (color == RGB(0, 0, 0))// || color == RGB(0, 255, 255))
 			{
 				res.detect = true;
@@ -193,7 +197,7 @@ tagPixelCollision pixelCollision::getPlayerPixelGround(int cx, int cy, int width
 
 				return res;
 			}
-
+			
 			//중앙을 기준으로 검색하도록 함
 			if (j == 0)			j = 1;
 			else if (j > 0)		j = -j;
