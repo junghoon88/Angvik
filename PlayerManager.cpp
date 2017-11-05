@@ -71,39 +71,19 @@ void PlayerManager::playerItemCollision(void)
 			//아이템의 타입에 따라
 			//플레이어의 부위별 아이템 상태 변경
 
-			switch (item[i]->getState() == ITEM_STATE_IDLE)
+			//switch (item[i]->getState() == ITEM_STATE_IDLE)
+			if (item[i]->getState() == ITEM_STATE_IDLE)
 			{
-			case ITEM_TYPE_SWORD:
-
-				//item[i]->setState(ITEM_STATE_INPLAYER);
-				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+				switch (item[i]->getType())
 				{
-					//switch (item[i]->getKind())
-					//{
-					//	case ITEM_KIND_WHITE:
-					//		_player->setBackItem(WHITE_SWORD);	//흰색
-					//		//item[i]->setState(ITEM_STATE_INPLAYER);
-					//	break;
-					//	case ITEM_KIND_GOLD:
-					//		_player->setBackItem(GOLD_SWORD);	//황금색
-					//	break;
-					//	case ITEM_KIND_BLACK:
-					//		_player->setBackItem(BLACK_SWORD);	//검은색
-					//	break;
-					//
-					//	
-					//
-					//}
-					//item[i]->setState(ITEM_STATE_INPLAYER);
-
-					item[i]->setState(ITEM_STATE_INPLAYER);
+				case ITEM_TYPE_SWORD:
 					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
 						{
 						case ITEM_KIND_WHITE:
 							_player->setBackItem(WHITE_SWORD);	//흰색
-							//item[i]->setState(ITEM_STATE_INPLAYER);
 							break;
 						case ITEM_KIND_GOLD:
 							_player->setBackItem(GOLD_SWORD);	//황금색
@@ -113,11 +93,11 @@ void PlayerManager::playerItemCollision(void)
 							break;
 
 						}
-						item[i]->setState(ITEM_STATE_INPLAYER);
 
 					}
 					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
 						{
 						case ITEM_KIND_WHITE:
@@ -130,8 +110,31 @@ void PlayerManager::playerItemCollision(void)
 							_player->setFrontItem(BLACK_SWORD);	//검은색
 							break;
 						}
-						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
+					else
+					{
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
+					}
+					break;
+				case ITEM_TYPE_LANCE:
+					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setBackItem(WHITE_LANCE);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setBackItem(GOLD_LANCE);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setBackItem(BLACK_LANCE);	//검은색
+							break;
+						}
+					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -148,33 +151,30 @@ void PlayerManager::playerItemCollision(void)
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
 					switch (item[i]->getKind())
+=======
+					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
-					case ITEM_KIND_WHITE:
-						_player->setBackItem(WHITE_LANCE);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setBackItem(GOLD_LANCE);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setBackItem(BLACK_LANCE);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setFrontItem(WHITE_LANCE);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setFrontItem(GOLD_LANCE);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setFrontItem(BLACK_LANCE);	//검은색
+							break;
+						}
 					}
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
-				{
-					switch (item[i]->getKind())
+					else
 					{
-					case ITEM_KIND_WHITE:
-						_player->setFrontItem(WHITE_LANCE);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setFrontItem(GOLD_LANCE);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setFrontItem(BLACK_LANCE);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
 					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -191,33 +191,43 @@ void PlayerManager::playerItemCollision(void)
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
 					switch (item[i]->getKind())
+=======
+					break;
+				case ITEM_TYPE_BOOMERANG:
+					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
-					case ITEM_KIND_WHITE:
-						_player->setBackItem(WHITE_BOOMERANG);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setBackItem(GOLD_BOOMERANG);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setBackItem(BLACK_BOOMERANG);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setBackItem(WHITE_BOOMERANG);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setBackItem(GOLD_BOOMERANG);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setBackItem(BLACK_BOOMERANG);	//검은색
+							break;
+						}
 					}
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
-				{
-					switch (item[i]->getKind())
+					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
 					{
-					case ITEM_KIND_WHITE:
-						_player->setFrontItem(WHITE_BOOMERANG);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setFrontItem(GOLD_BOOMERANG);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setFrontItem(BLACK_BOOMERANG);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setFrontItem(WHITE_BOOMERANG);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setFrontItem(GOLD_BOOMERANG);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setFrontItem(BLACK_BOOMERANG);	//검은색
+							break;
+						}
 					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -234,33 +244,48 @@ void PlayerManager::playerItemCollision(void)
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
 					switch (item[i]->getKind())
+=======
+					else
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
-					case ITEM_KIND_WHITE:
-						_player->setBackItem(WHITE_STAFF);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setBackItem(GOLD_STAFF);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setBackItem(BLACK_STAFF);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
 					}
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
-				{
-					switch (item[i]->getKind())
+					break;
+				case ITEM_TYPE_STAFF:
+					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 					{
-					case ITEM_KIND_WHITE:
-						_player->setFrontItem(WHITE_STAFF);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setFrontItem(GOLD_STAFF);	//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setFrontItem(BLACK_STAFF);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setBackItem(WHITE_STAFF);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setBackItem(GOLD_STAFF);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setBackItem(BLACK_STAFF);	//검은색
+							break;
+						}
 					}
+					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
+					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setFrontItem(WHITE_STAFF);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setFrontItem(GOLD_STAFF);	//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setFrontItem(BLACK_STAFF);	//검은색
+							break;
+						}
+					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -273,22 +298,33 @@ void PlayerManager::playerItemCollision(void)
 					}
 				}
 				break;
-
-			case ITEM_TYPE_HEAD:
-				if (_player->getHeadItem() == UNARMEDARMOR)
-				{
-					switch (item[i]->getKind())
+=======
+					else
 					{
-					case ITEM_KIND_WHITE:
-						_player->setHeadItem(WHITE);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setHeadItem(GOLD);		//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setHeadItem(BLACK);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
 					}
+					break;
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
+
+				case ITEM_TYPE_HEAD:
+					if (_player->getHeadItem() == UNARMEDARMOR)
+					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setHeadItem(WHITE);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setHeadItem(GOLD);		//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setHeadItem(BLACK);	//검은색
+							break;
+						}
+					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -305,17 +341,14 @@ void PlayerManager::playerItemCollision(void)
 				if (_player->getHeadItem() == UNARMEDARMOR)
 				{
 					switch (item[i]->getKind())
+=======
+					else
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
-					case ITEM_KIND_WHITE:
-						_player->setBodyItem(WHITE);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setBodyItem(GOLD);		//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setBodyItem(BLACK);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
 					}
+<<<<<<< HEAD
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
 				else
@@ -332,22 +365,60 @@ void PlayerManager::playerItemCollision(void)
 				if (_player->getHeadItem() == UNARMEDARMOR)
 				{
 					switch (item[i]->getKind())
+=======
+					break;
+				case ITEM_TYPE_BODY:
+					if (_player->getBodyItem() == UNARMEDARMOR)
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
-					case ITEM_KIND_WHITE:
-						_player->setFootItem(WHITE);	//흰색
-						break;
-					case ITEM_KIND_GOLD:
-						_player->setFootItem(GOLD);		//황금색
-						break;
-					case ITEM_KIND_BLACK:
-						_player->setFootItem(BLACK);	//검은색
-						break;
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setBodyItem(WHITE);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setBodyItem(GOLD);		//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setBodyItem(BLACK);	//검은색
+							break;
+						}
 					}
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
+					else
+					{
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
+					}
+					break;
+				case ITEM_TYPE_FOOT:
+					if (_player->getFootItem() == UNARMEDARMOR)
+					{
+						item[i]->setState(ITEM_STATE_INPLAYER);
+						switch (item[i]->getKind())
+						{
+						case ITEM_KIND_WHITE:
+							_player->setFootItem(WHITE);	//흰색
+							break;
+						case ITEM_KIND_GOLD:
+							_player->setFootItem(GOLD);		//황금색
+							break;
+						case ITEM_KIND_BLACK:
+							_player->setFootItem(BLACK);	//검은색
+							break;
+						}
+					}
+					else
+					{
+						item[i]->setState(ITEM_STATE_ININVEN);
+						_inven->itemUpdate();
+					}
+					break;
+
+				case ITEM_TYPE_OIL:
+				case ITEM_TYPE_EGG:		//	기타
 					item[i]->setState(ITEM_STATE_ININVEN);
+<<<<<<< HEAD
 					//_inven->itemUpdate();
 					if (_inven->insertInven(item[i]->getNum()) == false)
 					{
@@ -371,8 +442,13 @@ void PlayerManager::playerItemCollision(void)
 					item[i]->setState(ITEM_STATE_IDLE);
 				}
 				break;
+=======
+					_inven->itemUpdate();
+					break;
+>>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 				}
 			}
+		}
 		}
 
 

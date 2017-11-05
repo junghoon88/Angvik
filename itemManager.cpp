@@ -42,28 +42,57 @@ void itemManager::update(void)
 
 		for (int i = 0; i < _vItems.size(); i++)
 		{
-			
+			if (_pm->getPlayer()->getIsRight()) {
+				_vItems[i]->setisPlayerRIGHT(true);
+			}
+			else {
+				_vItems[i]->setisPlayerRIGHT(false);
+			}
 			
 			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
-			{
-				switch (_vItems[i]->getType())
+			{	
+				if (_pm->getPlayer()->getIsRight())
 				{
-				case ITEM_TYPE_HEAD :
-						_vItems[i]->targetPlayer(x, y-30);
-					break;
-				case ITEM_TYPE_SWORD:
+					switch (_vItems[i]->getType())
+					{
+					case ITEM_TYPE_HEAD:
+							if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 7, y - 14);
+							else _vItems[i]->targetPlayer(x + 2, y - 28);
+						break;
+					case ITEM_TYPE_SWORD:
 						_vItems[i]->targetPlayer(hx, hy);
-					break;
-				case ITEM_TYPE_STAFF:
+						break;
+					case ITEM_TYPE_STAFF:
 						_vItems[i]->targetPlayer(hx, hy);
-					break;
-				case ITEM_TYPE_LANCE:
+						break;
+					case ITEM_TYPE_LANCE:
 						_vItems[i]->targetPlayer(hx, hy);
-					break;
-				case ITEM_TYPE_BOOMERANG:
+						break;
+					case ITEM_TYPE_BOOMERANG:
 						_vItems[i]->targetPlayer(hx, hy);
-					break;
+						break;
+					}
 				}
+				else
+					switch (_vItems[i]->getType())
+					{
+					case ITEM_TYPE_HEAD:
+						if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 23, y - 14);
+						else _vItems[i]->targetPlayer(x + 28, y - 28);
+						break;
+					case ITEM_TYPE_SWORD:
+						_vItems[i]->targetPlayer(hx-50, hy);
+						break;
+					case ITEM_TYPE_STAFF:
+						_vItems[i]->targetPlayer(hx-50, hy);
+						break;
+					case ITEM_TYPE_LANCE:
+						_vItems[i]->targetPlayer(hx-50, hy);
+						break;
+					case ITEM_TYPE_BOOMERANG:
+						_vItems[i]->targetPlayer(hx-50, hy);
+						break;
+					}
 			}
 
 
@@ -79,11 +108,9 @@ void itemManager::update(void)
 			{
 				_x += 50;
 				setFieldItem(i, j);
-				
 			}
 			_x += 50;
 			setFieldItem(1, 7);
-			
 		}
 		_x += 50;
 		setFieldItem(2, 7);
