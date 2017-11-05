@@ -32,7 +32,6 @@ void itemManager::release(void)
 
 void itemManager::update(void)
 {
-	
 	if (_pm != NULL)
 	{
 		float x = _pm->getPlayer()->getX();
@@ -48,20 +47,28 @@ void itemManager::update(void)
 			else {
 				_vItems[i]->setisPlayerRIGHT(false);
 			}
-			
-			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER|| _vItems[i]->getState()==ITEM_STATE_ATTACK)
-			{	
+			if (_pm->getPlayer()->getIsfrontAttack())
+			{
+				_vItems[i]->setisPlayerAttack(true);
+			}
+			else
+			{
+				_vItems[i]->setisPlayerAttack(false);
+			}
+
+			if (_vItems[i]->getState() == ITEM_STATE_INPLAYER || _vItems[i]->getState() == ITEM_STATE_ATTACK)
+			{
 				if (_pm->getPlayer()->getIsRight())
 				{
-					
+
 					switch (_vItems[i]->getType())
 					{
 					case ITEM_TYPE_HEAD:
-							if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 7, y - 14);
-							else _vItems[i]->targetPlayer(x + 2, y - 28);
+						if (_pm->getPlayer()->getIsSit() == TRUE) _vItems[i]->targetPlayer(x + 7, y - 14);
+						else _vItems[i]->targetPlayer(x + 2, y - 28);
 						break;
 					case ITEM_TYPE_SWORD:
-						_vItems[i]->targetPlayer(hx, hy+5);
+						_vItems[i]->targetPlayer(hx, hy + 5);
 						break;
 					case ITEM_TYPE_STAFF:
 						_vItems[i]->targetPlayer(hx, hy);
@@ -69,7 +76,7 @@ void itemManager::update(void)
 					case ITEM_TYPE_LANCE:
 						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 						{
-							_vItems[i]->targetPlayer(hx, hy+5);
+							_vItems[i]->targetPlayer(hx, hy + 5);
 						}
 						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
 						{
@@ -79,12 +86,13 @@ void itemManager::update(void)
 					case ITEM_TYPE_BOOMERANG:
 						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 						{
-							_vItems[i]->targetPlayer(hx-15, hy+5);
+							_vItems[i]->targetPlayer(hx - 15, hy + 5);
 						}
 						break;
 					}
 				}
 				else
+				{
 					switch (_vItems[i]->getType())
 					{
 					case ITEM_TYPE_HEAD:
@@ -94,11 +102,11 @@ void itemManager::update(void)
 					case ITEM_TYPE_SWORD:
 						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 						{
-							_vItems[i]->targetPlayer(hx - 40, hy+10);
+							_vItems[i]->targetPlayer(hx - 40, hy + 10);
 						}
 						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
 						{
-							_vItems[i]->targetPlayer(hx - 30, hy-13);
+							_vItems[i]->targetPlayer(hx - 30, hy - 13);
 						}
 						break;
 					case ITEM_TYPE_STAFF:
@@ -114,29 +122,30 @@ void itemManager::update(void)
 					case ITEM_TYPE_LANCE:
 						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 						{
-							_vItems[i]->targetPlayer(hx-45, hy+3);
+							_vItems[i]->targetPlayer(hx - 45, hy + 3);
 						}
 						else if (_vItems[i]->getState() == ITEM_STATE_ATTACK)
 						{
 							_pm->getPlayer()->setFrontItem(UNARMEDWEAPON);
 						}
-						
+
 						break;
 					case ITEM_TYPE_BOOMERANG:
 						if (_vItems[i]->getState() == ITEM_STATE_INPLAYER)
 						{
-							_vItems[i]->targetPlayer(hx-60, hy);
+							_vItems[i]->targetPlayer(hx - 60, hy);
 						}
-						
+
 						break;
 					}
+				}
 			}
 
 
 		}
 	}
-	
-	
+
+
 	if (issetting)
 	{
 		for (int i = 0; i < 1; i++)
@@ -153,27 +162,32 @@ void itemManager::update(void)
 		setFieldItem(2, 7);
 		issetting = false;
 	}
-	
-	
+
+
 	//벡터업데이트
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		_vItems[i]->update();
-		
+
 	}
 	//내구도 0되면 아이템 삭제
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		if (_vItems[i]->getdurability() == 0)
+		{
 			removeItem(i);
+			_pm->getPlayer()->setFrontItem(UNARMEDWEAPON);
+		}
 	}
 }
 
 void itemManager::render(void)
 {
-
 	for (int i = 0; i < _vItems.size(); i++)
 	{
+		//이미지랜더에서 인플레이어 상태인것만 따로 랜더한다.
+		if (_vItems[i]->getState() == ITEM_STATE_INPLAYER) continue;
+
 		_vItems[i]->render();
 	}
 }
