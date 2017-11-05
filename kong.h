@@ -6,7 +6,6 @@ class kong : public EnemyMother
 private:
 	float atkCnt;
 	Sprite* atkSpt;
-	float playerX, playerY;
 
 public:
 	kong();

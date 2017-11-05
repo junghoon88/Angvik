@@ -143,11 +143,15 @@ void Kongtan::fire(int num,float ptx, float pty, float ang)
 	Kongtan.ptX = Kongtan.fireX = ptx;
 	Kongtan.ptY = Kongtan.fireY = pty;
 	Kongtan.spt->setCoord(Kongtan.ptX, Kongtan.ptY);
+	
 	Kongtan.angle = ang;
 	Kongtan.frameTime = 0;
 	Kongtan.frameX = 0;
 	Kongtan.spt->setRotate(Kongtan.angle*(180 / PI));
 	Kongtan.rc = RectMakeCenter(Kongtan.ptX, Kongtan.ptY,18,16);
+
+	probeY = Kongtan.ptY;
+
 	_vBullet.push_back(Kongtan);
 }
 void Kongtan::move(void)
@@ -156,10 +160,9 @@ void Kongtan::move(void)
 	{
 		_viBullet->ptX += cos(_viBullet->angle) * _viBullet->speed;
 		_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
-
+		_viBullet->probeY = _viBullet->ptY;
 		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
-
 		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
 		if (_viBullet->frameTime >= 0.2f)
 		{
@@ -167,7 +170,19 @@ void Kongtan::move(void)
 			_viBullet->frameX++;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
-
+		//for (int i = _viBullet->probeY - 10; i < _viBullet->probeY + 10; ++i)//YÃà Å½Áö
+		//{
+		//	COLORREF color = PBGMANAGER->getPixelColor(L"Stage1-PBG", _viBullet->ptX, i);
+		//
+		//	int r = GetRValue(color);
+		//	int g = GetGValue(color);
+		//	int b = GetBValue(color);
+		//
+		//	if ((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0) || (r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
+		//	{
+		//		_viBullet = _vBullet.erase(_viBullet);
+		//	}
+		//}
 	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
 	{
 		_viBullet = _vBullet.erase(_viBullet);

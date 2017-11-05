@@ -133,7 +133,6 @@ void itemManager::setFieldItem(int i , int j)
 	field->init();
 	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
 
-
 	_vItems.push_back(field);
 }
 void itemManager::removeItem(int arrNum)//아이템제거
