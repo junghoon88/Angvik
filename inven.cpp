@@ -220,10 +220,10 @@ void inven::itemUpdate(void)
 		{
 			for (int j = 0; j < _vItems.size(); j++)
 			{
-				//if (_vItems[j])
-				_vItems.push_back(item[i]);
+				if (_vItems[j]->getNum() == item[i]->getNum()) break;
+				
+				if (j == _vItems.size() - 1)	_vItems.push_back(item[i]);
 			}
 		}
 	}
-
 }
