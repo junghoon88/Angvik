@@ -41,8 +41,10 @@ protected:
 	int index;//1¹ø ºÎ¸Þ¶û,2¹ø Äá¾ËÅº
 	int frameCnt;
 	float frameTime;
+	float immuneTime;
 
 	bool isAtk;
+	bool isImmune;
 
 	enemyDirection dir;
 	enemyState state;
@@ -65,12 +67,14 @@ public:
 	inline void setLife(int lf) { life = lf; } 
 	inline void setState(enemyState estate) { state = estate; }
 	inline enemyState getState(void) { return state; }
+	inline enemyDirection getDir(void) { return dir; }
 	inline RECT getRect(void) { return rc; }
 	inline int getIndex(void) { return index; }
 	inline bool getAtk(void) { return isAtk; }
 	inline void setAtk(bool isatk) { isAtk = isatk; }
 	inline void setPlayerX(float x) { playerX = x; }
 	inline void setPlayerY(float y) { playerY = y; }
+	inline bool getImmune(void) { return isImmune; }
 	EnemyMother();
 	~EnemyMother();
 };

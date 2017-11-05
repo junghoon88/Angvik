@@ -224,6 +224,11 @@ void sceneInit::enemyInitImage(void)	//¸ó½ºÅÍ
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ", L"image/monster/Turtle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"°ÅºÏÀÌ´©µå", L"image/monster/Turtle_crash_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"³ª¹«¸Ç", L"image/monster/Ent_move_6f.png", 6, 1);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"³ª¹«¸Ç¾îÅÃ", L"image/monster/Ent_atk_6f.png", 6, 1);
+	IMAGEMANAGER->addImage(DEVICE, L"ÀÙ1", L"image/monster/leaf1.png");
+	IMAGEMANAGER->addImage(DEVICE, L"ÀÙ2", L"image/monster/leaf2.png");
+	IMAGEMANAGER->addImage(DEVICE, L"ÀÙ3", L"image/monster/leaf3.png");
+	IMAGEMANAGER->addImage(DEVICE, L"ÀÙ4", L"image/monster/leaf4.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°", L"image/monster/kong_idle_6f.png", 6, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"Äá³ª¹°¾îÅÃ", L"image/monster/kong_atk_8f.png", 8, 1);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"ÄáÅº", L"image/monster/kongtan.png", 6, 1);

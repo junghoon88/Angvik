@@ -39,7 +39,8 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 
 	dir = eRIGHT;
 	state = eIDLE;
-
+	isImmune = true;
+	immuneTime = 0;
 	frameCnt = 0;
 	atkFrameCnt = 0;
 	jumpFrameCnt = 0;
@@ -70,6 +71,12 @@ void mush::update(void) {
 	}
 	else
 	{
+		if (isImmune) {
+			immuneTime += TIMEMANAGER->getElapsedTime();
+			if (immuneTime >= 1.5f) {
+				isImmune = false;
+			}
+		}
 		probeY = rc.bottom;
 		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 

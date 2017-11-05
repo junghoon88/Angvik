@@ -29,6 +29,7 @@ void EnemyManager::init(void)
 	sBmr = new sBMR;
 	sBmr->init();
 	sBmr->setLinkAdressEnemyManager(this);
+//	entBeam = new Entbeam;
 }
 void EnemyManager::release(void)
 {
@@ -95,6 +96,10 @@ void EnemyManager::enemyFire(void)
 			{
 				kongTan->fire(bulletNum++, emX, emY, angle);
 				(*_viEnemy)->setAtk(false);
+			}
+			else if (type == 4)
+			{
+
 			}
 		}
 	}
