@@ -32,6 +32,9 @@ private:
 
 	tagTreeTrap _treeTrap[TREETRAP_MAX]; //1스테이지 나뭇가지 트랩
 
+	RECT _rcHidden[2];
+	bool _hiddenShow;
+
 
 private:
 	PlayerManager* _pm;
@@ -40,7 +43,7 @@ private:
 
 private:
 	void frameUpdate(void);
-	void PBGUpdate(void);
+	void hiddenCheck(void);
 
 public:
 	stageManager();
