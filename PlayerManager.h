@@ -42,6 +42,8 @@ public:
 	void update(void);
 	void render(void);
 
+	void playerItemCollision(void);
+
 	void Collision(void);
 
 

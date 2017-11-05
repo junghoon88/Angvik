@@ -103,6 +103,10 @@ private:
 	Sprite* _frontArmLeftImage;
 	Sprite* _backArmLeftImage;
 
+	Sprite* _boneHead;
+	Sprite* _boneBody;
+	Sprite* _bone[4];
+
 	RECT _rcHead;
 	RECT _rcBody;
 	RECT _rcFoot;
@@ -129,6 +133,7 @@ public:
 	void update(void);
 	void render(void);
 	
+	void playerDeadMotion(void);
 
 	//========== CALL BACK ==========
 	static void bodyRightJump(void* obj);
@@ -159,6 +164,7 @@ public:
 	void keyInputSettings(void);
 	void attackMotions(void);
 	void rectUpdate(void);
+
 
 	//========== GETTER && SETTER =======
 	float getX(void) { return _x; }
