@@ -830,7 +830,7 @@ void Player::keyInputSettings(void)
 		_backArmMotion->start();
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_DOWN))		//	Sit 키, 충돌 렉트 변화 필요
+	if (KEYMANAGER->isOnceKeyDown(VK_DOWN) && !_playerJump->getIsJumping())		//	Sit 키, 충돌 렉트 변화 필요
 	{
 		_isSit = TRUE;
 
@@ -899,7 +899,7 @@ void Player::keyInputSettings(void)
 
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('A'))			//	FRONT_WEAPON_ATTACK
+	if (KEYMANAGER->isOnceKeyDown('D'))			//	FRONT_WEAPON_ATTACK
 	{
 		//	공격용 충돌 렉트 생성
 

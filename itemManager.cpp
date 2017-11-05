@@ -101,7 +101,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
+	
 	
 	for (int i = 0; i < _vItems.size(); i++)
 	{
