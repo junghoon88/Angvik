@@ -262,8 +262,6 @@ void inven::menewBoxUpdate(float x, float y)
 
 void inven::itemBoxUpdate(float x, float y)
 {
-	_inventoryNum = 0;
-
 	//상시 아이템박스 위치 업데이트
 	D3DXVECTOR2 itemBoxCoord = { x + 40, y - IMAGEMANAGER->findImage(L"itemBox")->getRealSize().y - 20 };
 	if (itemBoxCoord.y < 0) 

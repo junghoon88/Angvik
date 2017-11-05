@@ -114,7 +114,10 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_LANCE:
@@ -134,26 +137,7 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-			case ITEM_TYPE_LANCE:
-				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
-				{
-					switch (item[i]->getKind())
-=======
 					else if (_player->getFrontItem() == UNARMEDWEAPON)	//뒤 손이 있고, 앞 손이 비었으면,
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -172,30 +156,14 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-			case ITEM_TYPE_BOOMERANG:
-				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
-				{
-					switch (item[i]->getKind())
-=======
 					break;
 				case ITEM_TYPE_BOOMERANG:
 					if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -227,29 +195,13 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-			case ITEM_TYPE_STAFF:
-				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
-				{
-					switch (item[i]->getKind())
-=======
 					else
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_STAFF:
@@ -285,27 +237,15 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-=======
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 
 				case ITEM_TYPE_HEAD:
 					if (_player->getHeadItem() == UNARMEDARMOR)
@@ -324,52 +264,17 @@ void PlayerManager::playerItemCollision(void)
 							break;
 						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-			case ITEM_TYPE_BODY:
-				if (_player->getHeadItem() == UNARMEDARMOR)
-				{
-					switch (item[i]->getKind())
-=======
 					else
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
-<<<<<<< HEAD
-					item[i]->setState(ITEM_STATE_INPLAYER);
-				}
-				else
-				{
-					item[i]->setState(ITEM_STATE_ININVEN);
-					//_inven->itemUpdate();
-					if (_inven->insertInven(item[i]->getNum()) == false)
-					{
-						item[i]->setState(ITEM_STATE_IDLE);
-					}
-				}
-				break;
-			case ITEM_TYPE_FOOT:
-				if (_player->getHeadItem() == UNARMEDARMOR)
-				{
-					switch (item[i]->getKind())
-=======
 					break;
 				case ITEM_TYPE_BODY:
 					if (_player->getBodyItem() == UNARMEDARMOR)
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 					{
 						item[i]->setState(ITEM_STATE_INPLAYER);
 						switch (item[i]->getKind())
@@ -388,7 +293,10 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 				case ITEM_TYPE_FOOT:
@@ -411,45 +319,23 @@ void PlayerManager::playerItemCollision(void)
 					else
 					{
 						item[i]->setState(ITEM_STATE_ININVEN);
-						_inven->itemUpdate();
+						if (_inven->insertInven(item[i]->getNum()) == false)
+						{
+							item[i]->setState(ITEM_STATE_IDLE);
+						}
 					}
 					break;
 
 				case ITEM_TYPE_OIL:
 				case ITEM_TYPE_EGG:		//	기타
 					item[i]->setState(ITEM_STATE_ININVEN);
-<<<<<<< HEAD
-					//_inven->itemUpdate();
 					if (_inven->insertInven(item[i]->getNum()) == false)
 					{
 						item[i]->setState(ITEM_STATE_IDLE);
 					}
-				}
-				break;
-
-			case ITEM_TYPE_OIL:
-				item[i]->setState(ITEM_STATE_ININVEN);
-				//_inven->itemUpdate();
-				if (_inven->insertInven(item[i]->getNum()) == false)
-				{
-					item[i]->setState(ITEM_STATE_IDLE);
-				}
-			case ITEM_TYPE_EGG:		//	기타
-				item[i]->setState(ITEM_STATE_ININVEN);
-				//_inven->itemUpdate();
-				if (_inven->insertInven(item[i]->getNum()) == false)
-				{
-					item[i]->setState(ITEM_STATE_IDLE);
-				}
-				break;
-=======
-					_inven->itemUpdate();
 					break;
->>>>>>> b9764a05fc3577849a1588213ede02358606aa0a
 				}
 			}
 		}
-		}
-
-
 	}
+}
