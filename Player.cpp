@@ -44,6 +44,14 @@ void Player::init(void)
 	_isInven = FALSE;
 
 
+	_boneHead = IMAGEMANAGER->findImage(L"boneHead");
+	_boneBody = IMAGEMANAGER->findImage(L"boneBody");
+	_bone[0] = IMAGEMANAGER->findImage(L"bone0");
+	_bone[1] = IMAGEMANAGER->findImage(L"bone1");
+	_bone[2] = IMAGEMANAGER->findImage(L"bone2");
+	_bone[3] = IMAGEMANAGER->findImage(L"bone3");
+
+
 	//========== 이미지 왼쪽 보게 바꾸기 ==========
 
 	imageReverse();
@@ -82,9 +90,9 @@ void Player::init(void)
 
 
 	//debug
-	RECTMANAGER->addRect(DEVICE, L"플레이어헤드",		{ 0, 0 }, { HEAD_WIDTH, HEAD_HEIGHT }, RGB(255, 0, 0));
-	RECTMANAGER->addRect(DEVICE, L"플레이어바디",		{ 0, 0 }, { BODY_WIDTH, BODY_HEIGHT }, RGB(0, 255, 0));
-	RECTMANAGER->addRect(DEVICE, L"플레이어발",		{ 0, 0 }, { FOOT_WIDTH, FOOT_HEIGHT }, RGB(0, 0, 255));
+	RECTMANAGER->addRect(DEVICE, L"플레이어헤드", { 0, 0 }, { HEAD_WIDTH, HEAD_HEIGHT }, RGB(255, 0, 0));
+	RECTMANAGER->addRect(DEVICE, L"플레이어바디", { 0, 0 }, { BODY_WIDTH, BODY_HEIGHT }, RGB(0, 255, 0));
+	RECTMANAGER->addRect(DEVICE, L"플레이어발",	 { 0, 0 }, { FOOT_WIDTH, FOOT_HEIGHT }, RGB(0, 0, 255));
 
 }
 
@@ -409,6 +417,17 @@ void Player::render(void)
 	RECTMANAGER->render(L"플레이어헤드");
 	RECTMANAGER->render(L"플레이어바디");
 	RECTMANAGER->render(L"플레이어발");
+
+	_boneHead->render();
+	_boneBody->render();
+	for (int i = 0; i < 4; i++)
+	{
+		_bone[i]->render();
+	}
+}
+
+void Player::playerDeadMotion(void)
+{
 }
 
 void Player::imageReverse(void)
@@ -480,6 +499,18 @@ void Player::imagePosUpdate(void)
 		_backArmRightImage->setCoord({ _x + 7 + correction, _y - 20 });
 		_backArmLeftImage->setCoord({ _x - 7 + correction, _y - 20 });
 	}
+
+	_bone[0]->setRotate(90);
+	_bone[1]->setRotate(90);
+	_bone[2]->setRotate(90);
+	_bone[3]->setRotate(90);
+
+	_boneHead->setCoord({_x + 5, _y - 26});
+	_boneBody->setCoord({ _x + 7, _y - 6 });
+	_bone[0]->setCoord({ _x, _y + 15 });
+	_bone[1]->setCoord({ _x + 20, _y + 15 });
+	_bone[2]->setCoord({ _x + 8, _y + 27 });
+	_bone[3]->setCoord({ _x + 14, _y + 27 });
 }
 
 void Player::keyAnimationInit(void)

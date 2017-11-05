@@ -44,7 +44,7 @@ void inven::update(float x, float y)
 		_frameX++;
 		if (_frameX >= 8) _frameX = 0;
 	}
-	if (KEYMANAGER->isStayKeyDown(BTN_PLAYER_INVENTORY) && !_isMenew)
+	if (KEYMANAGER->isStayKeyDown(BTN_PLAYER_INVENTORY) && !_isInven)
 	{
 		_isInven = true;
 		_isMenew = true;

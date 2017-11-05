@@ -2,6 +2,9 @@
 #include "DxWindow.h"
 #include "pixelCollision.h"
 
+
+
+
 enum ITEM_TYPE
 {
 	ITEM_TYPE_SWORD,		//무기-검
@@ -39,6 +42,8 @@ class Item : public DxWindow
 {
 private:
 	Sprite* _img;
+
+	int _num;
 	
 	ITEM_TYPE _type;
 	ITEM_KIND _kind;
@@ -57,9 +62,11 @@ private:
 	MYPOINT	_pt;
 	RECT _rcImg;
 	RECT _rcHit;
+	
+	float targetX;
+	float targetY;
 
-
-
+	
 public:
 	Item();
 	~Item();
@@ -68,8 +75,12 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-	
+
+	inline void targetPlayer(float x, float y) { targetX = x; targetY = y; }
+
+
 	//아이템타입 겟셋
+	inline void setNum(int num) { _num = num; }
 	inline void setType(ITEM_TYPE type) { _type = type; }
 	inline ITEM_TYPE getType(void) { return _type; }
 	
@@ -86,6 +97,7 @@ public:
 	
 	//아이템 충돌렉트
 	inline RECT getrcImg(void) { return _rcImg; }
+	inline RECT HitImg(void) { return _rcHit; }
 	//내구도 겟셋
 	inline void setdurability(int durability) { _durability = durability; }
 	inline int getdurability(void) { return _durability; }

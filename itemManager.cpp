@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "itemManager.h"
-
+#include "PlayerManager.h"
+#include "EnemyManager.h"
+#include "stageManager.h"
 
 itemManager::itemManager()
+	: _pm(NULL)
 {
 }
 
@@ -17,7 +20,9 @@ void itemManager::init(void)
 	_x = 350;
 	_y = 200;
 	i = j = 0;
-	OilUse = false;
+
+	itemNum = 0;
+
 }
 
 void itemManager::release(void)
@@ -27,7 +32,17 @@ void itemManager::release(void)
 
 void itemManager::update(void)
 {
-	
+
+	if (_pm != NULL)
+	{
+		float x = _pm->getPlayer()->getX();
+		float y = _pm->getPlayer()->getY();
+
+		for (int i = 0; i < _vItems.size(); i++)
+		{
+			_vItems[i]->targetPlayer(x, y);
+		}
+	}
 	
 	
 	if (issetting)
@@ -48,15 +63,14 @@ void itemManager::update(void)
 	for (int i = 0; i < _vItems.size(); i++)
 	{
 		_vItems[i]->update();
-
-		if (KEYMANAGER->isOnceKeyDown('P'))
-		{
-			removeItem(i);
-		}
+		
 	}
-	
-
-
+	//내구도 0되면 아이템 삭제
+	for (int i = 0; i < _vItems.size(); i++)
+	{
+		if (_vItems[i]->getdurability() == 0)
+			removeItem(i);
+	}
 }
 
 void itemManager::render(void)
@@ -71,27 +85,25 @@ void itemManager::render(void)
 
 void itemManager::setItem(float x , float y)
 {
-	
-		Item* it = new Item;
-		it->init();
-		it->createItem((ITEM_TYPE)RND->getInt(ITEM_TYPE_MAX), (ITEM_KIND)RND->getInt(ITEM_KIND_MAX), ITEM_STATE_IDLE, x, y);
+	Item* it = new Item;
+	it->init();
+	it->createItem((ITEM_TYPE)RND->getInt(ITEM_TYPE_MAX), (ITEM_KIND)RND->getInt(ITEM_KIND_MAX), ITEM_STATE_IDLE, x, y);
+	it->setNum(itemNum++);
 		
-		
-		_vItems.push_back(it);
-	
-
+	_vItems.push_back(it);
 }
+
+
+
 void itemManager::setFieldItem(int i , int j)
 {
 	Item* field = new Item;
 	field->init();
 	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_INPLAYER, _x, _y);
 
-	
-
-		_vItems.push_back(field);
+	_vItems.push_back(field);
 }
-void itemManager::removeItem(int arrNum)
+void itemManager::removeItem(int arrNum)//아이템제거
 {
 	_vItems[arrNum]->release();
 	_vItems.erase(_vItems.begin() + arrNum);
@@ -113,5 +125,6 @@ void itemManager::Itemcompose(int itemNum, int oilNum)//아이템합성
 	_vItems[itemNum]->setdurabilityMax();
 
 	//오일을 벡터에서 삭제한다.
+	_vItems[oilNum]->release();
 	_vItems.erase(_vItems.begin() + oilNum);
 }
