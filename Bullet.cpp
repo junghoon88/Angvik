@@ -17,8 +17,6 @@ void sBMR::update(void)//Çì´õ¿¡ ÁÖ¼®ÀÖÀ½. ºÎ¸Þ¶û µ¹¾Æ¿Ã¶§ ¸Ó½¬·ëÂÊÀ¸·Î °¡¾ßÇØ¼­ 
 {
 	move();
 
-	
-
 }
 void sBMR::render(void)
 {
@@ -32,10 +30,10 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 	tagBullet bullet;
 	ZeroMemory(&bullet, sizeof(tagBullet));
 	TCHAR strKey[100];
+
 	_stprintf(strKey, L"¹ö¼¸ºÎ¸Þ¶û%d", num);
 	bullet.spt = IMAGEMANAGER->addImage(DEVICE, strKey, IMAGEMANAGER->findImage(L"¹ö¼¸ºÎ¸Þ¶û")->getFileName());
 	
-
 	bullet.angle = ang;
 	bullet.speed = 11;// ºÎ¸Þ¶û ¼Óµµ
 	backPower = 0.3;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
@@ -44,7 +42,7 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 	bullet.spt->setCoord(bullet.ptX, bullet.ptY);
 	bullet.spt->setScale(0.5,0.5);
 	bullet.rc = RectMakeCenter(bullet.ptX, bullet.ptY, 18, 16);//»çÀÌÁî´Â ³ªÁß¿¡ Á¶Àý
-	
+
 	_vBullet.push_back(bullet);
 }
 void sBMR::move(void)
@@ -85,6 +83,14 @@ void sBMR::move(void)
 		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
 
+		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
+		if (_viBullet->frameTime >= 0.1f)
+		{
+			_viBullet->frameTime = 0;
+			
+			_viBullet->frameX++;
+			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
+		}
 
 		if (getDistance(_viBullet->ptX, _viBullet->ptY, backX, backY) <= 10 && _viBullet->speed <= 0) {
 
@@ -106,7 +112,7 @@ Kongtan::~Kongtan(){}
 
 void Kongtan::init(void)
 {
-
+	range = 400;
 }
 void Kongtan::release(void)
 {
@@ -133,13 +139,14 @@ void Kongtan::fire(int num,float ptx, float pty, float ang)
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameY() + 1);
 
-	Kongtan.speed = 1.2f;
+	Kongtan.speed = 2.0f;
 	Kongtan.ptX = Kongtan.fireX = ptx;
 	Kongtan.ptY = Kongtan.fireY = pty;
 	Kongtan.spt->setCoord(Kongtan.ptX, Kongtan.ptY);
 	Kongtan.angle = ang;
 	Kongtan.frameTime = 0;
 	Kongtan.frameX = 0;
+	Kongtan.spt->setRotate(Kongtan.angle*(180 / PI));
 	Kongtan.rc = RectMakeCenter(Kongtan.ptX, Kongtan.ptY,18,16);
 	_vBullet.push_back(Kongtan);
 }
@@ -151,21 +158,20 @@ void Kongtan::move(void)
 		_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 
 		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
-
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
 
 		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
-		if (_viBullet->frameTime >= 0.1f)
+		if (_viBullet->frameTime >= 0.2f)
 		{
 			_viBullet->frameTime = 0;
-			_viBullet->frameX--;
+			_viBullet->frameX++;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
 
-	//	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
-	//	{
-	//		_viBullet = _vBullet.erase(_viBullet);
-	//	}
+	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
+	{
+		_viBullet = _vBullet.erase(_viBullet);
+	}
 		else ++_viBullet;
 	}
 }
@@ -174,3 +180,4 @@ void Kongtan::remove(int arrNum)
 {
 	_vBullet.erase(_vBullet.begin() + arrNum);
 }
+

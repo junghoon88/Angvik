@@ -31,5 +31,7 @@ public:
 
 	void move(float x, float y);
 	void birdFrame(float x, float y);
+
+	D3DXVECTOR2 getBirdCoord(void) { return IMAGEMANAGER->findImage(L"inventoryBird")->getCoord(); }
 };
 

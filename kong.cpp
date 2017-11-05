@@ -6,7 +6,7 @@ kong::kong(){}
 kong::~kong(){}
 
 
-void kong::init(int num, float x, float y)
+void kong::init(int num, float x, float y, wstring rcKey)
 {
 	TCHAR strKey[100];
 	_stprintf(strKey, L"콩나물%d", num);
@@ -27,56 +27,90 @@ void kong::init(int num, float x, float y)
 	life = 2;
 	ptX = x;
 	ptY = y;
-	spt->setCoord(ptX, ptY);
 	atkCnt = 0;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
-	rc = RectMakeCenter(x, y, 40, 70);
-	sptrc = RectMakeCenter(x, y, 50, 86);
+	rcName = rcKey;
+	rc = RectMakeCenter(x, y, 32, 50);
+	sptrc = RectMakeCenter(x, y, 32, 50);
+	spt->setCoord(sptrc.left,rc.bottom - 54);
+	atkSpt->setCoord(sptrc.left, rc.bottom - 40);
+	playerX = 0;
+	playerY = 0;
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 32, 50 });
 	isAtk = false;
 }
 void kong::update(void)
 {
-	frameTime += TIMEMANAGER->getElapsedTime();
-
-	if (frameTime >= 0.1f)
-	{
-		frameTime = 0;
-		frameCnt--;
-		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
-	}
+	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
 	if (playerX < ptX)
 	{
 		dir = eLEFT;
 		spt->setScale(-1, 1);
-		spt->setScaleOffset(68, 0); //조정해야함
+		atkSpt->setScale(-1, 1);
+		spt->setScaleOffset(32, 0); //조정해야함
+		atkSpt->setScaleOffset(34, 0); //조정해야함
 	}
-	else if (playerY > ptX)
+	else if (playerX > ptX)
 	{
 		dir = eRIGHT;
+		atkSpt->setScale(1, 1);
 		spt->setScale(1, 1);
 	}
+	//====
+	frameTime += TIMEMANAGER->getElapsedTime();
 	if (state == eIDLE)
 	{
-
+		if (frameTime >= 0.2f)
+		{
+			frameTime = 0;
+			frameCnt--;
+			
+			if (frameCnt <= 0)
+			{
+				frameCnt = spt->getMaxFrameX();
+				atkCnt++;
+				if (atkCnt >= 2)
+				{
+					atkCnt = 0;
+					frameCnt = 0;
+					state = eATK;
+				}
+			}
+		}
 	}
 	else if (state == eATK)
 	{
-		
+		if (frameTime >= 0.2f)
+		{
+			frameTime = 0;
+			frameCnt++;
+
+			if (frameCnt == 4) isAtk = true;
+			if (frameCnt >= atkSpt->getMaxFrameX())
+			{
+				frameCnt = spt->getMaxFrameX();
+				state = eIDLE;
+			}
+		}
+	
+
+
 	}
 
-	atkCnt += TIMEMANAGER->getElapsedTime();
-	if (atkCnt >= 1.2f)
-	{
-		atkCnt = 0;
-		isAtk = true;
-	}
 
 }
 void kong::render(void)
 {
-	if(state == eIDLE) spt->frameRender(frameCnt, 0);
-	else atkSpt->frameRender(frameCnt, 0);
+	switch (state)
+	{
+	case eIDLE:spt->frameRender(frameCnt, 0);
+		break;
+	case eATK:atkSpt->frameRender(frameCnt, 0);
+		break;
+	}
+
+	RECTMANAGER->render(rcName);
 	
 }

@@ -17,6 +17,9 @@ void Item::init(void)
 	//_rcImg = RectMake(_pt.x, _pt.y, _img->getRealSize().x, _img->getRealSize().y);
 	itemCollision = new pixelCollision;
 	itemCollision->init();
+
+	targetX = 0.0f;
+	targetY = 0.0f;
 }
 
 void Item::release(void)
@@ -26,16 +29,17 @@ void Item::release(void)
 
 void Item::update(void)
 {
-	if (_type == ITEM_TYPE_SWORD)
-	{
-		//if (_kind == ITEM_KIND_WHITE)
-		//{
-			if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
-			if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
-			if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
-			if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
-		//}
-	}
+	//if (_type == ITEM_TYPE_SWORD)
+	//{
+	//	//if (_kind == ITEM_KIND_WHITE)
+	//	//{
+	//		if (KEYMANAGER->isStayKeyDown(VK_UP)) _pt.y -= 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_DOWN))_pt.y += 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_LEFT))_pt.x -= 5;
+	//		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))_pt.x += 5;
+	//	//}
+	//}
+	//////////////////¾ÆÀÌÅÛ ÁöÇü ÇÈ¼¿Ãæµ¹///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
 		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
@@ -44,19 +48,24 @@ void Item::update(void)
 		}
 	}
 
+
 	if (_state == ITEM_STATE_INPLAYER)
 	{
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
 			_img->setRotate(80.0f);
-			//_img->setCoord(ÇÃ·¹ÀÌ¾î x. ÇÃ·¹ÀÌ¾îy)
+
+			_img->setCoord(targetX+10, targetY+20);
+
 		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			switch (_type)
+
 				{
 				case  ITEM_TYPE_SWORD:
 				{
 					_img->setRotate(120.0f);
 					_state = ITEM_STATE_ATTACK;
+					
 				}
 				break;
 				case  ITEM_TYPE_LANCE:
@@ -83,7 +92,18 @@ void Item::update(void)
 		{
 		case  ITEM_TYPE_SWORD:
 			{	
-				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
+			switch (_kind)	
+				{
+				case ITEM_KIND_WHITE:
+					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
+				break;
+				case ITEM_KIND_BLACK:
+					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
+				break;
+				case ITEM_KIND_GOLD : 
+					_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
+				break;
+				}
 				_img->setRotate(_img->getAngle() - 7.0f);
 				if (_img->getAngle() <= 0.0f)
 				{
@@ -92,11 +112,34 @@ void Item::update(void)
 			}
 			break;
 		case  ITEM_TYPE_LANCE:
-				
+			switch (_kind)
+			{
+			case ITEM_KIND_WHITE:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
+				break;
+			case ITEM_KIND_BLACK:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
+				break;
+			case ITEM_KIND_GOLD:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
+				break;
+			}
 				_pt.x += 10;
 				
 			break;
 		case  ITEM_TYPE_STAFF:
+			switch (_kind)
+			{
+			case ITEM_KIND_WHITE:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
+				break;
+			case ITEM_KIND_BLACK:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
+				break;
+			case ITEM_KIND_GOLD:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
+				break;
+			}
 			_img->setRotate(_img->getAngle() - 5.0f);
 			if (_img->getAngle() <= 70.0f)
 			{
@@ -104,13 +147,31 @@ void Item::update(void)
 			}
 			break;
 		case  ITEM_TYPE_BOOMERANG:
-			_img->move(10, 0);
+			switch (_kind)
+			{
+
+			case ITEM_KIND_WHITE:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
+				break;
+			case ITEM_KIND_BLACK:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().y);
+				break;
+			case ITEM_KIND_GOLD:
+				_rcHit = RectMake(_pt.x, _pt.y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
+				break;
+			}
+			_img->setCenterPer(0.5,0.5);
+			_img->setRotate(_img->getAngle() - 15.0f);
+			_pt.x += 10;
+			
 			
 			break;
 		}
 	}
+	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
+	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX + 10, targetY + 20);
 
-	_img->setCoord(_pt.x, _pt.y);
+	
 
 }
 
@@ -144,7 +205,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÄ®")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -152,7 +213,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢Ä®")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 6;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -160,7 +221,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÄ®")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		break;
 	case ITEM_TYPE_LANCE:		//¹«±â-Ã¢
@@ -170,7 +231,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»ö·£½º")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -178,7 +239,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢·£½º")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 6;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -186,7 +247,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµå·£½º")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		break;
 	case ITEM_TYPE_BOOMERANG:	//¹«±â-ºÎ¸Þ¶û
@@ -196,7 +257,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öºÎ¸Þ¶û")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -204,7 +265,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ºÎ¸Þ¶û")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 6;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -212,7 +273,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåºÎ¸Þ¶û")->getRealSize().y);
-			_durability = 4;
+			_durabilityMax = _durability = 4;
 		}
 		break;
 	case ITEM_TYPE_STAFF:		//¹«±â-ÁöÆÎÀÌ
@@ -222,7 +283,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"Èò»öÁöÆÎÀÌ")->getRealSize().y);
-			_durability = 6;
+			_durabilityMax = _durability = 6;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -230,7 +291,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"ºí·¢ÁöÆÎÀÌ")->getRealSize().y);
-			_durability = 6;
+			_durabilityMax = _durability = 6;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -238,7 +299,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().x, IMAGEMANAGER->findImage(L"°ñµåÁöÆÎÀÌ")->getRealSize().y);
-			_durability = 6;
+			_durabilityMax = _durability = 6;
 		}
 		break;
 	case ITEM_TYPE_HEAD:			//¹æ¾î±¸-¸Ó¸®
@@ -248,7 +309,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¹éÅõ")->getRealSize().x, IMAGEMANAGER->findImage(L"¹éÅõ")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -256,7 +317,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"ÈæÅõ")->getRealSize().x, IMAGEMANAGER->findImage(L"ÈæÅõ")->getRealSize().y);
-			_durability = 2;
+			_durabilityMax = _durability = 2;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -264,7 +325,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"È²Åõ")->getRealSize().x, IMAGEMANAGER->findImage(L"È²Åõ")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		break;
 	case ITEM_TYPE_BODY:			//¹æ¾î±¸-°©¿Ê
@@ -274,7 +335,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¹é°©")->getRealSize().x, IMAGEMANAGER->findImage(L"¹é°©")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -282,7 +343,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èæ°©")->getRealSize().x, IMAGEMANAGER->findImage(L"Èæ°©")->getRealSize().y);
-			_durability = 2;
+			_durabilityMax = _durability = 2;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -290,7 +351,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"È²°©")->getRealSize().x, IMAGEMANAGER->findImage(L"È²°©")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		break;
 	case ITEM_TYPE_FOOT:			//¹æ¾î±¸-½Å¹ß
@@ -300,7 +361,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¹é½Å")->getRealSize().x, IMAGEMANAGER->findImage(L"¹é½Å")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		else if (_kind == ITEM_KIND_BLACK)
 		{
@@ -308,7 +369,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"Èæ½Å")->getRealSize().x, IMAGEMANAGER->findImage(L"Èæ½Å")->getRealSize().y);
-			_durability = 2;
+			_durabilityMax = _durability = 2;
 		}
 		else if (_kind == ITEM_KIND_GOLD)
 		{
@@ -316,7 +377,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img->setCoord(x, y);
 			_img->init();
 			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"È²½Å")->getRealSize().x, IMAGEMANAGER->findImage(L"È²½Å")->getRealSize().y);
-			_durability = 1;
+			_durabilityMax = _durability = 1;
 		}
 		break;
 	case ITEM_TYPE_OIL:			//
@@ -351,7 +412,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
 			_img->setCoord(x, y);
 			_img->init();
-			//_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().x, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().y);
+			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().x, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().y);
 			
 		}
 		else if (_kind == ITEM_KIND_BLACK)
@@ -359,7 +420,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
 			_img->setCoord(x, y);
 			_img->init();
-			//_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().x, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().y);
+			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().x, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().y);
 			
 		}
 		else if (_kind == ITEM_KIND_GOLD)
@@ -367,7 +428,7 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
 			_img->setCoord(x, y);
 			_img->init();
-			//_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().x, IMAGEMANAGER->findImage(L"¾Ë")->getRealSize().y);
+			_rcImg = RectMake(x, y, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().x, IMAGEMANAGER->findImage(L"´Þ°¿")->getRealSize().y);
 			
 		}
 		break;

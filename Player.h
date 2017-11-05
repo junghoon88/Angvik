@@ -103,6 +103,10 @@ private:
 	Sprite* _frontArmLeftImage;
 	Sprite* _backArmLeftImage;
 
+	Sprite* _boneHead;
+	Sprite* _boneBody;
+	Sprite* _bone[4];
+
 	RECT _rcHead;
 	RECT _rcBody;
 	RECT _rcFoot;
@@ -118,6 +122,7 @@ private:
 	bool _isRight;
 	bool _isSit;
 	bool _isLive;
+	bool _isInven;
 
 public:
 	Player();
@@ -128,6 +133,7 @@ public:
 	void update(void);
 	void render(void);
 	
+	void playerDeadMotion(void);
 
 	//========== CALL BACK ==========
 	static void bodyRightJump(void* obj);
@@ -158,6 +164,7 @@ public:
 	void keyInputSettings(void);
 	void attackMotions(void);
 	void rectUpdate(void);
+
 
 	//========== GETTER && SETTER =======
 	float getX(void) { return _x; }
@@ -198,6 +205,9 @@ public:
 	bool getIsJump(void)		{ return _playerJump->getIsJumping(); }
 	bool getIsLive(void)		{ return _isLive; }
 
+	bool getIsInven(void)		{ return _isInven; }
+	void setIsInven(bool isInven) { _isInven = isInven; }
+
 	EQUIPARMORSTATE getHeadItem(void) { return _headItem; }	
 	EQUIPARMORSTATE getBodyItem(void) { return _bodyItem; }	
 	EQUIPARMORSTATE getFootItem(void) { return _footItem; }
@@ -205,5 +215,11 @@ public:
 	EQUIPWEAPONSTATE getFrontItem(void) { return _frontItem; }
 	EQUIPWEAPONSTATE getBackItem(void) { return _backItem; }
 
+	void setHeadItem(EQUIPARMORSTATE item) { _headItem = item; }
+	void setBodyItem(EQUIPARMORSTATE item) { _bodyItem = item; }
+	void setFootItem(EQUIPARMORSTATE item) { _footItem = item; }
+
+	void setFrontItem(EQUIPWEAPONSTATE item) { _frontItem = item; }
+	void setBackItem(EQUIPWEAPONSTATE item) { _backItem = item; }
 
 };
