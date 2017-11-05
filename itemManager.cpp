@@ -131,6 +131,7 @@ void itemManager::setFieldItem(int i , int j)
 	Item* field = new Item;
 	field->init();
 	field->createItem((ITEM_TYPE)j, (ITEM_KIND)i, ITEM_STATE_IDLE, _x, _y);
+	field->setNum(itemNum++);
 
 	_vItems.push_back(field);
 }

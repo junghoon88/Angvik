@@ -137,7 +137,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 			case ITEM_TYPE_LANCE:
@@ -176,7 +180,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 			case ITEM_TYPE_BOOMERANG:
@@ -215,7 +223,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 			case ITEM_TYPE_STAFF:
@@ -254,7 +266,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 
@@ -278,7 +294,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 			case ITEM_TYPE_BODY:
@@ -301,7 +321,11 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 			case ITEM_TYPE_FOOT:
@@ -324,16 +348,28 @@ void PlayerManager::playerItemCollision(void)
 				else
 				{
 					item[i]->setState(ITEM_STATE_ININVEN);
-					_inven->itemUpdate();
+					//_inven->itemUpdate();
+					if (_inven->insertInven(item[i]->getNum()) == false)
+					{
+						item[i]->setState(ITEM_STATE_IDLE);
+					}
 				}
 				break;
 
 			case ITEM_TYPE_OIL:
 				item[i]->setState(ITEM_STATE_ININVEN);
-				_inven->itemUpdate();
+				//_inven->itemUpdate();
+				if (_inven->insertInven(item[i]->getNum()) == false)
+				{
+					item[i]->setState(ITEM_STATE_IDLE);
+				}
 			case ITEM_TYPE_EGG:		//	±âÅ¸
 				item[i]->setState(ITEM_STATE_ININVEN);
-				_inven->itemUpdate();
+				//_inven->itemUpdate();
+				if (_inven->insertInven(item[i]->getNum()) == false)
+				{
+					item[i]->setState(ITEM_STATE_IDLE);
+				}
 				break;
 				}
 			}
