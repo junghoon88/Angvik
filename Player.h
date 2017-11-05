@@ -3,11 +3,13 @@
 #include "jump.h"
 #include "pixelCollision.h"
 
+class itemManager;
+
 #define HEAD_WIDTH		26
 #define HEAD_HEIGHT		25
 
 #define BODY_WIDTH		30
-#define BODY_HEIGHT		32
+#define BODY_HEIGHT		24
 
 #define FOOT_WIDTH		30
 #define FOOT_HEIGHT		10
@@ -17,7 +19,7 @@
 #define ATTACKJUMPPOWER	 5.0f
 #define GRAVITY			 0.5f
 #define IMMORTALTIME	 1.5f
-#define ATTACKTIME		 0.3f
+#define ATTACKTIME		 0.5f
 
 //아이템 상태
 enum PLAYERHEADSTATE
@@ -107,16 +109,22 @@ private:
 	Sprite* _frontArmLeftImage;
 	Sprite* _backArmLeftImage;
 
+	Sprite* _blackHeadRightImage;
+	Sprite* _blackHeadLeftImage;
 	Sprite* _blackBodyRightImage;
 	Sprite* _blackBodyLeftImage;
 	Sprite* _blackFootRightImage;
 	Sprite* _blackFootLeftImage;
 
+	Sprite* _goldHeadRightImage;
+	Sprite* _goldHeadLeftImage;
 	Sprite* _goldBodyRightImage;
 	Sprite* _goldBodyLeftImage;
 	Sprite* _goldFootRightImage;
 	Sprite* _goldFootLeftImage;
-
+	
+	Sprite* _whiteHeadRightImage;
+	Sprite* _whiteHeadLeftImage;
 	Sprite* _whiteBodyRightImage;
 	Sprite* _whiteBodyLeftImage;
 	Sprite* _whiteFootRightImage;
@@ -125,6 +133,37 @@ private:
 	Sprite* _boneHead;
 	Sprite* _boneBody;
 	Sprite* _bone[4];
+
+	Sprite* _whiteRightSword;
+	Sprite* _whiteRightLance;
+	Sprite* _whiteRightBoomerang;
+	Sprite* _whiteRightStaff;
+
+	Sprite* _blackRightSword;
+	Sprite* _blackRightLance;
+	Sprite* _blackRightBoomerang;
+	Sprite* _blackRightStaff;
+
+	Sprite* _goldRightSword;
+	Sprite* _goldRightLance;
+	Sprite* _goldRightBoomerang;
+	Sprite* _goldRightStaff;
+
+	Sprite* _whiteLeftSword;
+	Sprite* _whiteLeftLance;
+	Sprite* _whiteLeftBoomerang;
+	Sprite* _whiteLeftStaff;
+
+	Sprite* _blackLeftSword;
+	Sprite* _blackLeftLance;
+	Sprite* _blackLeftBoomerang;
+	Sprite* _blackLeftStaff;
+
+	Sprite* _goldLeftSword;
+	Sprite* _goldLeftLance;
+	Sprite* _goldLeftBoomerang;
+	Sprite* _goldLeftStaff;
+
 
 	RECT _rcHead;
 	RECT _rcBody;
@@ -158,6 +197,9 @@ private:
 	float _armLen0, _armLen1, _armLen2;
 	float _frameAngle;
 
+private:
+	itemManager* _im;
+
 public:
 	Player();
 	~Player();
@@ -166,6 +208,9 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	void drawWeapon(void);
+	void drawHeadArmor(void);
 	
 	void itemPosUpdate(void);
 	void playerDeadMotion(void);
@@ -269,4 +314,6 @@ public:
 	float getHandY(void) { return _handY; }
 
 	void setIsJumpAttack(bool isJumpAttack) { _isJumpAttack = isJumpAttack; }
+
+	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 };

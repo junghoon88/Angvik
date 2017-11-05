@@ -171,9 +171,11 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-
 	for (int i = 0; i < _vItems.size(); i++)
 	{
+		//이미지랜더에서 인플레이어 상태인것만 따로 랜더한다.
+		if (_vItems[i]->getState() == ITEM_STATE_INPLAYER) continue;
+
 		_vItems[i]->render();
 	}
 }

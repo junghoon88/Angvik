@@ -56,6 +56,21 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"∞ÒµÂ∫Œ∏ﬁ∂˚", L"image/item/∞ÒµÂ∫Œ∏ﬁ∂˚.png");
 	IMAGEMANAGER->addImage(DEVICE, L"∞ÒµÂ¡ˆ∆Œ¿Ã", L"image/item/∞ÒµÂ¡ˆ∆Œ¿Ã.png");
 	IMAGEMANAGER->addImage(DEVICE, L"∞ÒµÂø¿¿œ", L"image/item/∞ÒµÂø¿¿œ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»ÚªˆƒÆ", L"image/item/»ÚªˆƒÆ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Úªˆ∑£Ω∫", L"image/item/»Úªˆ∑£Ω∫.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Úªˆ∫Œ∏ﬁ∂˚", L"image/item/»Úªˆ∫Œ∏ﬁ∂˚.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Úªˆ¡ˆ∆Œ¿Ã", L"image/item/»Úªˆ¡ˆ∆Œ¿Ã.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Úªˆø¿¿œ", L"image/item/»Úªˆø¿¿œ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∫Ì∑¢ƒÆ", L"image/item/∫Ì∑¢ƒÆ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∫Ì∑¢∑£Ω∫", L"image/item/∫Ì∑¢∑£Ω∫.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∫Ì∑¢∫Œ∏ﬁ∂˚", L"image/item/∫Ì∑¢∫Œ∏ﬁ∂˚.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∫Ì∑¢¡ˆ∆Œ¿Ã", L"image/item/∫Ì∑¢¡ˆ∆Œ¿Ã.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∫Ì∑¢ø¿¿œ", L"image/item/∫Ì∑¢ø¿¿œ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∞ÒµÂƒÆ", L"image/item/∞ÒµÂƒÆ.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∞ÒµÂ∑£Ω∫", L"image/item/∞ÒµÂ∑£Ω∫.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∞ÒµÂ∫Œ∏ﬁ∂˚", L"image/item/∞ÒµÂ∫Œ∏ﬁ∂˚.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∞ÒµÂ¡ˆ∆Œ¿Ã", L"image/item/∞ÒµÂ¡ˆ∆Œ¿Ã.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L∞ÒµÂø¿¿œ", L"image/item/∞ÒµÂø¿¿œ.png");
 	
 	//πÊæÓ±∏
 	IMAGEMANAGER->addImage(DEVICE, L"πÈ∞©", L"image/item/πÈ∞©.png");
@@ -67,6 +82,15 @@ void sceneInit::initImage(void)
 	IMAGEMANAGER->addImage(DEVICE, L"»≤∞©", L"image/item/»≤∞©.png");
 	IMAGEMANAGER->addImage(DEVICE, L"»≤≈ı", L"image/item/»≤≈ı.png");
 	IMAGEMANAGER->addImage(DEVICE, L"»≤Ω≈", L"image/item/»≤Ω≈.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LπÈ∞©", L"image/item/πÈ∞©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LπÈ≈ı", L"image/item/πÈ≈ı.png");
+	IMAGEMANAGER->addImage(DEVICE, L"LπÈΩ≈", L"image/item/πÈΩ≈.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Ê∞©", L"image/item/»Ê∞©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»Ê≈ı", L"image/item/»Ê≈ı.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»ÊΩ≈", L"image/item/»ÊΩ≈.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»≤∞©", L"image/item/»≤∞©.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»≤≈ı", L"image/item/»≤≈ı.png");
+	IMAGEMANAGER->addImage(DEVICE, L"L»≤Ω≈", L"image/item/»≤Ω≈.png");
 	//æÀ
 	IMAGEMANAGER->addImage(DEVICE, L"¥ﬁ∞ø", L"image/item/æÀ.png");
 	IMAGEMANAGER->addFrameImage(DEVICE, L"∞À¿∫ªı", L"image/item/∞À¿∫ªı.png", 8, 1);
