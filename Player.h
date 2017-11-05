@@ -112,6 +112,7 @@ private:
 	RECT _rcFoot;
 
 	jump* _playerJump;
+	jump* _attackJump;
 	pixelCollision* _playerPixelCollision;
 
 	float _x, _y;
@@ -122,7 +123,12 @@ private:
 	bool _isRight;
 	bool _isSit;
 	bool _isLive;
+	bool _isDead;
 	bool _isInven;
+
+	float _handX, _handY;
+	float _armLen0, _armLen1, _armLen2;
+	float _frameAngle;
 
 public:
 	Player();
@@ -133,6 +139,7 @@ public:
 	void update(void);
 	void render(void);
 	
+	void itemPosUpdate(void);
 	void playerDeadMotion(void);
 
 	//========== CALL BACK ==========
@@ -222,4 +229,6 @@ public:
 	void setFrontItem(EQUIPWEAPONSTATE item) { _frontItem = item; }
 	void setBackItem(EQUIPWEAPONSTATE item) { _backItem = item; }
 
+	float getHandX(void) { return _handX; }
+	float getHandY(void) { return _handY; }
 };

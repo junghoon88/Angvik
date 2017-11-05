@@ -41,6 +41,10 @@ public:
 
 	void itemUpdate(void);
 
+	void menewBoxUpdate(float x, float y);
+	void itemBoxUpdate(float x, float y);
+	void oilsBoxUpdate(float x, float y);
+
 	inline bool getInven(void) { return _isInven; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 };
