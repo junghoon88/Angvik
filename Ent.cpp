@@ -31,7 +31,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	frameTime = 0;
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 40, 70);
-	sptrc = RectMakeCenter(x, y, 50, 86);
+	sptrc = RectMakeCenter(x, y, 40, 70);
 	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 40, 70 });
 	probeY = rc.bottom;
 }
