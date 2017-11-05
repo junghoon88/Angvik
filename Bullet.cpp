@@ -41,6 +41,7 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //발사지점 좌표,플레이�
 	bullet.ptY = bullet.fireY = pty;
 	bullet.spt->setCoord(bullet.ptX, bullet.ptY);
 	bullet.spt->setScale(0.5,0.5);
+	bullet.spt->setCenterPer(0.5, 0.5);
 	bullet.rc = RectMakeCenter(bullet.ptX, bullet.ptY, 18, 16);//사이즈는 나중에 조절
 
 	_vBullet.push_back(bullet);
