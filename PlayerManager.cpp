@@ -37,7 +37,7 @@ void PlayerManager::release(void)
 
 void PlayerManager::update(void) 
 {
-	playerItemCollision();		//	아이템매니저에서 아이템벡터를 불러온 뒤, 아이템의 렉트와 플레이어의 렉트를 비교해서 해당 아이템의 정보로 플레이어 상태를 변경
+	if(_player->getIsSit()) playerItemCollision();		//	앉기 키를 눌렀을 때, 아이템매니저에서 아이템벡터를 불러온 뒤, 아이템의 렉트와 플레이어의 렉트를 비교해서 해당 아이템의 정보로 플레이어 상태를 변경
 
 
 	_player->update();
@@ -106,8 +106,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_LANCE:
@@ -145,8 +145,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_BOOMERANG:
@@ -184,8 +184,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_STAFF:
@@ -223,8 +223,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 
@@ -247,8 +247,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_BODY:
@@ -270,8 +270,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 			case ITEM_TYPE_FOOT:
@@ -293,13 +293,17 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					//가방에 여분이 있을때
-					//가방에 여분이 없을때
+					_inven->itemUpdate();
+					item[i]->setState(ITEM_STATE_ININVEN);
 				}
 				break;
 
 			case ITEM_TYPE_OIL:
+				_inven->itemUpdate();
+				item[i]->setState(ITEM_STATE_ININVEN);
 			case ITEM_TYPE_EGG:		//	기타
+				_inven->itemUpdate();
+				item[i]->setState(ITEM_STATE_ININVEN);
 				break;
 			}
 		}
