@@ -138,6 +138,8 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"blackFootRight", L"image/player/black/foot.png", 12, 2);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"goldBodyRight", L"image/player/gold/body.png", 12, 2);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"goldFootRight", L"image/player/gold/foot.png", 12, 2);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"whiteBodyRight", L"image/player/white/body.png", 12, 2);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"whiteFootRight", L"image/player/white/foot.png", 12, 2);
 
 	IMAGEMANAGER->addFrameImage(DEVICE, L"frontArmRight", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"backArmRight", L"image/player/unarmed/arm_back.png", 16, 3);
@@ -160,6 +162,8 @@ void sceneInit::playerInitImage(void)
 	IMAGEMANAGER->addFrameImage(DEVICE, L"blackFootLeft", L"image/player/black/foot.png", 12, 2);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"goldBodyLeft", L"image/player/gold/body.png", 12, 2);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"goldFootLeft", L"image/player/gold/foot.png", 12, 2);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"whiteBodyLeft", L"image/player/white/body.png", 12, 2);
+	IMAGEMANAGER->addFrameImage(DEVICE, L"whiteFootLeft", L"image/player/white/foot.png", 12, 2);
 
 	IMAGEMANAGER->addFrameImage(DEVICE, L"frontArmLeft", L"image/player/unarmed/arm_front.png", 16, 3);
 	IMAGEMANAGER->addFrameImage(DEVICE, L"backArmLeft", L"image/player/unarmed/arm_back.png", 16, 3);

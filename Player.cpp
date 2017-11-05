@@ -51,6 +51,11 @@ void Player::init(void)
 	_goldFootRightImage = IMAGEMANAGER->findImage(L"goldFootRight");
 	_goldFootLeftImage = IMAGEMANAGER->findImage(L"goldFootLeft");
 
+	_whiteBodyRightImage = IMAGEMANAGER->findImage(L"whiteBodyRight");
+	_whiteBodyLeftImage = IMAGEMANAGER->findImage(L"whiteBodyLeft");
+	_whiteFootRightImage = IMAGEMANAGER->findImage(L"whiteFootRight");
+	_whiteFootLeftImage = IMAGEMANAGER->findImage(L"whiteFootLeft");
+
 	_frontArmRightImage = IMAGEMANAGER->findImage(L"frontArmRight");
 	_backArmRightImage = IMAGEMANAGER->findImage(L"backArmRight");
 	_frontArmLeftImage = IMAGEMANAGER->findImage(L"frontArmLeft");
@@ -91,8 +96,8 @@ void Player::init(void)
 	_bodyState = PLAYER_RIGHT_STOP;
 
 	_headItem = UNARMEDARMOR;
-	_bodyItem = GOLD;
-	_footItem =	GOLD;
+	_bodyItem = UNARMEDARMOR;
+	_footItem =	UNARMEDARMOR;
 
 	_frontItem = UNARMEDWEAPON;
 	_backItem = UNARMEDWEAPON;
@@ -412,10 +417,12 @@ void Player::render(void)
 		_bodyLeftImage->aniRender(_bodyMotion);
 	}
 
-	//	발 아머
+	//	발 아머 애니렌더
 	switch (_footItem)
 	{
 		case WHITE:
+			if (_isRight == TRUE)	_whiteFootRightImage->aniRender(_bodyMotion);
+			else					_whiteFootLeftImage->aniRender(_bodyMotion);
 		break;
 		case GOLD:
 			if (_isRight == TRUE)	_goldFootRightImage->aniRender(_bodyMotion);
@@ -426,14 +433,21 @@ void Player::render(void)
 			else					_blackFootLeftImage->aniRender(_bodyMotion);
 		break;
 	}
-	//	몸 아머
-	if (_isRight == TRUE)
+	//	몸 아머 애니렌더
+	switch (_bodyItem)
 	{
-		_blackBodyRightImage->aniRender(_bodyMotion);
-	}
-	else
-	{
-		_blackBodyLeftImage->aniRender(_bodyMotion);
+		case WHITE:
+			if (_isRight == TRUE)	_whiteBodyRightImage->aniRender(_bodyMotion);
+			else					_whiteBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case GOLD:
+			if (_isRight == TRUE)	_goldBodyRightImage->aniRender(_bodyMotion);
+			else					_goldBodyLeftImage->aniRender(_bodyMotion);
+		break;
+		case BLACK:
+			if (_isRight == TRUE)	_blackBodyRightImage->aniRender(_bodyMotion);
+			else					_blackBodyLeftImage->aniRender(_bodyMotion);
+		break;
 	}
 
 	//	머 리
@@ -448,7 +462,6 @@ void Player::render(void)
 	RECT rcHandCoord = RectMake(0, 30, 100, 100);
 	TEXTMANAGER->render(L"손좌표", rcHandCoord);
 
-	//	머리 아머
 	
 	//	F R O N T 팔
 	if (_isFrontAttack == TRUE)
@@ -557,6 +570,11 @@ void Player::imageReverse(void)
 	IMAGEMANAGER->findImage(L"goldFootLeft")->setScale({ -1,1 });
 	IMAGEMANAGER->findImage(L"goldBodyLeft")->setScaleOffset(offsetVal, 0.0f);
 	IMAGEMANAGER->findImage(L"goldFootLeft")->setScaleOffset(offsetVal, 0.0f);
+	//	화이트
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"whiteBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"whiteFootLeft")->setScaleOffset(offsetVal, 0.0f);
 }
 
 void Player::imagePosUpdate(void)
@@ -587,10 +605,21 @@ void Player::imagePosUpdate(void)
 
 	_bodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_bodyLeftImage->setCoord({ _x + correction, _y - 22 });
+
 	_blackBodyRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackBodyLeftImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootRightImage->setCoord({ _x + correction, _y - 22 });
 	_blackFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_goldBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_goldFootLeftImage->setCoord({ _x + correction, _y - 22 });
+
+	_whiteBodyRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteBodyLeftImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootRightImage->setCoord({ _x + correction, _y - 22 });
+	_whiteFootLeftImage->setCoord({ _x + correction, _y - 22 });
 
 	if (_isSit == TRUE)
 	{

@@ -115,6 +115,11 @@ private:
 	Sprite* _goldFootRightImage;
 	Sprite* _goldFootLeftImage;
 
+	Sprite* _whiteBodyRightImage;
+	Sprite* _whiteBodyLeftImage;
+	Sprite* _whiteFootRightImage;
+	Sprite* _whiteFootLeftImage;
+
 	Sprite* _boneHead;
 	Sprite* _boneBody;
 	Sprite* _bone[4];
