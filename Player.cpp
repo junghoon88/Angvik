@@ -188,6 +188,7 @@ void Player::update(void)
 					_x = res.offset.x /*- 5*/ - BODY_WIDTH / 2 - 10;
 					_y = res.offset.y;
 				}
+				
 				//imagePosUpdate();
 				//_rcHead = RectMakeCenter(_x - 9, _y - 52, 20, 20);
 				//_rcBody = RectMake(_x - 10, _y - 33, BODY_WIDTH, BODY_HEIGHT);

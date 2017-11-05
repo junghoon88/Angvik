@@ -138,7 +138,9 @@ void mush::render(void) {
 		case eFALL:
 			jmpspt->frameRender(jumpFrameCnt, 0);
 			break;
-		default: break;
+		default:
+			spt->frameRender(frameCnt, 0); 
+			break;
 	}
 	
 	RECTMANAGER->render(rcName);

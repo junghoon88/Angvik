@@ -46,8 +46,9 @@ void EnemyManager::update(void)
 			(*_viEnemy)->setPlayerY(_pm->getPlayer()->getY());
 		}
 		if ((*_viEnemy)->getState() == Death) {
-
-			_im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
+			int droptable = 0;
+			droptable = RND->getInt(10);//µå¶øÈ®·ü
+			if(droptable <= 3) _im->setItem((*_viEnemy)->getX(), (*_viEnemy)->getY() - 30);
 			deleteEnemy(_viEnemy);
 			break;
 		}
