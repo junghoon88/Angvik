@@ -101,7 +101,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	
+
 	
 	for (int i = 0; i < _vItems.size(); i++)
 	{

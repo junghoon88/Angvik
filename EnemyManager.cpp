@@ -14,8 +14,6 @@ EnemyManager::EnemyManager()
 	kongNum = 0;
 
 	bulletNum = 0;
-	
-	
 }
 
 
