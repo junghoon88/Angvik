@@ -39,6 +39,8 @@ public:
 	void render(void);
 	bool close(void) { return false; }
 
+	void itemUpdate(void);
+
 	inline bool getInven(void) { return _isInven; }
 	inline void setLinkAdressItemManager(itemManager*     im) { _im = im; }
 };

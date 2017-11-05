@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "inven.h"
-
+#include "itemManager.h"
 
 inven::inven()
 {
@@ -208,4 +208,22 @@ void inven::render(void)
 		IMAGEMANAGER->findImage(L"블랙오일")->render();
 		IMAGEMANAGER->findImage(L"흰색오일")->render();
 	}
+}
+
+void inven::itemUpdate(void)
+{
+	vItems item = _im->getVItem();
+
+	for (int i = 0; i < item.size(); i++)
+	{
+		if (item[i]->getState() == ITEM_STATE_ININVEN)
+		{
+			for (int j = 0; j < _vItems.size(); j++)
+			{
+				//if (_vItems[j])
+				_vItems.push_back(item[i]);
+			}
+		}
+	}
+
 }
