@@ -132,12 +132,14 @@ void PlayerManager::playerItemCollision(void)
 						}
 						item[i]->setState(ITEM_STATE_INPLAYER);
 					}
-					else
-					{
-						_inven->itemUpdate();
-						item[i]->setState(ITEM_STATE_ININVEN);
-					}
-					break;
+					item[i]->setState(ITEM_STATE_INPLAYER);
+				}
+				else
+				{
+					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
+				}
+				break;
 			case ITEM_TYPE_LANCE:
 				if (_player->getBackItem() == UNARMEDWEAPON)	//뒤 손이 비었으면,
 				{
@@ -173,8 +175,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_BOOMERANG:
@@ -212,8 +214,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_STAFF:
@@ -251,8 +253,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 
@@ -275,8 +277,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_BODY:
@@ -298,8 +300,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_FOOT:
@@ -321,17 +323,17 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 
 			case ITEM_TYPE_OIL:
-				_inven->itemUpdate();
 				item[i]->setState(ITEM_STATE_ININVEN);
+				_inven->itemUpdate();
 			case ITEM_TYPE_EGG:		//	기타
-				_inven->itemUpdate();
 				item[i]->setState(ITEM_STATE_ININVEN);
+				_inven->itemUpdate();
 				break;
 				}
 			}
@@ -339,14 +341,3 @@ void PlayerManager::playerItemCollision(void)
 
 
 	}
-
-
-
-
-	//_player->update();
-	//_bird->update(_player->getX(), _player->getY());
-
-
-
-
-}
