@@ -169,7 +169,7 @@ void Item::update(void)
 		}
 	}
 	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
-	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX + 10, targetY + 20);
+	else if (_state == ITEM_STATE_INPLAYER||_state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
 
 	
 

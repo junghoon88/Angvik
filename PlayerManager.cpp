@@ -303,7 +303,7 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
-<<<<<<< HEAD
+
 
 Collision();
 	_player->update();
@@ -314,6 +314,6 @@ Collision();
 	_inven->update(_player->getX(), _player->getY());
 
 }
-=======
-}
->>>>>>> bb1d05eb61b4b9811865182f2c60dfd24de44d4a
+
+
+
