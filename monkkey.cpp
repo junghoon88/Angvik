@@ -111,7 +111,7 @@ void monkkey::move(void) {
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 255 && b == 255)) // °üÅëÇü ¹Ù´Ú
+		if ((r == 0 && g == 255 && b == 255) || (r == 0 && g == 0 && b == 255))
 		{
 			if (i >= ptX)
 			{

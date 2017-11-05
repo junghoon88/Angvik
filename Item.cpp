@@ -42,7 +42,11 @@ void Item::update(void)
 	//////////////////아이템 지형 픽셀충돌///////////
 	if (_state == ITEM_STATE_IDLE)
 	{
-		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y + 10) == false)
+
+		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y ) == false)
+
+		if (itemCollision->getPixelGroundLT(&_pt.x, &_pt.y, _img->getRealSize().x, _img->getRealSize().y) == false)
+
 		{
 			_pt.y += 5;
 		}
@@ -54,8 +58,7 @@ void Item::update(void)
 		if (_type == ITEM_TYPE_SWORD || _type == ITEM_TYPE_LANCE || _type == ITEM_TYPE_STAFF || _type == ITEM_TYPE_BOOMERANG)
 			_img->setRotate(80.0f);
 
-			_img->setCoord(targetX+10, targetY+20);
-
+		
 		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			switch (_type)
@@ -64,19 +67,23 @@ void Item::update(void)
 				case  ITEM_TYPE_SWORD:
 				{
 					_img->setRotate(120.0f);
+					_img->setCoord(targetX, targetY);
 					_state = ITEM_STATE_ATTACK;
 					
 				}
 				break;
 				case  ITEM_TYPE_LANCE:
+					_img->setCoord(targetX, targetY);
 					_img->setRotate(0.0f);
 					_state = ITEM_STATE_ATTACK;
 					break;
 				case  ITEM_TYPE_STAFF:
+					_img->setCoord(targetX, targetY);
 					_img->setRotate(100.0f);
 					_state = ITEM_STATE_ATTACK;
 					break;
 				case  ITEM_TYPE_BOOMERANG:
+					_img->setCoord(targetX, targetY);
 					_img->setRotate(0.0f);
 					_state = ITEM_STATE_ATTACK;
 
@@ -169,7 +176,7 @@ void Item::update(void)
 		}
 	}
 	if(_state == ITEM_STATE_IDLE)_img->setCoord(_pt.x, _pt.y);
-	else if (_state == ITEM_STATE_INPLAYER)_img->setCoord(targetX + 10, targetY + 20);
+	else if (_state == ITEM_STATE_INPLAYER||_state == ITEM_STATE_ATTACK)_img->setCoord(targetX , targetY);
 
 	
 
@@ -178,8 +185,10 @@ void Item::update(void)
 void Item::render(void)	
 {
 	
-	
-	_img->render();
+	if (_state != ITEM_STATE_ININVEN)
+	{
+		_img->render();
+	}
 	
 }
 

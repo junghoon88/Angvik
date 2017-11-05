@@ -39,8 +39,6 @@ void EnemyManager::release(void)
 
 void EnemyManager::update(void)	
 {
-	
-
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
@@ -96,51 +94,80 @@ void EnemyManager::render(void)
 
 void EnemyManager::setEnemy1(void)
 {
-	monkkey* monkey1, *monkey2;
-	Turtle* turtle1;
-	mush* mush1;
 
-	
+	////////////////////////////몽키세팅
+	monkkey* monkey1, *monkey2, *monkey3, *monkey4, *monkey5;
+	monkey1 = new monkkey;
+	monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
+	_vEnemy.push_back(monkey1);
 
 	monkey2 = new monkkey;
-	monkey2->init(monkkeyNum++, 200, 100,L"monkkeyRc2");
+	monkey2->init(monkkeyNum++, 1260, 420,L"monkkeyRc2");
 	_vEnemy.push_back(monkey2);
 
+	monkey3 = new monkkey;
+	monkey3->init(monkkeyNum++, 1773, 212, L"monkkeyRc3");
+	_vEnemy.push_back(monkey3);
 
+	monkey4 = new monkkey;
+	monkey4->init(monkkeyNum++, 2540, 90, L"monkkeyRc4");
+	_vEnemy.push_back(monkey4);
+
+	monkey5 = new monkkey;
+	monkey5->init(monkkeyNum++, 5580, 885, L"monkkeyRc5");
+	_vEnemy.push_back(monkey5);
+
+	/////////////////////////////////////
+	mush* mush1;
 	mush1 = new mush;
 	mush1->init(mushNum++, 1000, 50, L"mushRc1");
 	_vEnemy.push_back(mush1);
 
 
-	monkey1 = new monkkey;
-	monkey1->init(monkkeyNum++, 590, 200, L"monkeyRc1");
-	_vEnemy.push_back(monkey1);
 
-	Ent* ent1;
+	///////////////////////////////엔트세팅
+	Ent* ent1;    
 	ent1 = new Ent;
-	ent1->init(entNum++, 192, 415, L"EntRc1");//테스트용 좌표임
+	ent1->init(entNum++, 3090, 700, L"EntRc1");
 	_vEnemy.push_back(ent1);
 
 	Ent* ent2;
 	ent2 = new Ent;
-	ent2->init(entNum++, 192, 200, L"EntRc2");//테스트용 좌표임
+	ent2->init(entNum++, 3240, 250, L"EntRc2");
 	_vEnemy.push_back(ent2);
+	////////////////////////////////////////////
 
-	kong* kong1;
+
+
+	//////////////////////////////콩세팅
+	kong* kong1,*kong2;
 	kong1 = new kong;
-	kong1->init(kongNum++, 860, 350, L"kongRc1");
+	kong1->init(kongNum++, 2975, 553, L"kongRc1");
 	_vEnemy.push_back(kong1);
-	//350,860 콩나물 위치
-	
-	turtle1 = new Turtle;
-	turtle1->init(turtleNum++,580, 415, L"TurRc1");
+
+	kong2 = new kong;
+	kong2->init(kongNum++, 1995, 327, L"kongRc2");
+	_vEnemy.push_back(kong2);
+	//////////////////////////////////
+
+
+
+	///////////////////////////////거북이세팅
+	Turtle* turtle1, *turtle2;
+	turtle1 = new Turtle;  
+	turtle1->init(turtleNum++,4150, 800, L"TurRc1");
 	_vEnemy.push_back(turtle1);
 
-
-
+	turtle2 = new Turtle;  
+	turtle2->init(turtleNum++, 4160, 385, L"TurRc2");
+	_vEnemy.push_back(turtle2);
+	/////////////////////////////////
 	
+
 }
 void EnemyManager::deleteEnemy(int arrNum) {
+
 	SAFE_DELETE(_vEnemy[arrNum]);
 	_vEnemy.erase(_vEnemy.begin() + arrNum);
+
 }
