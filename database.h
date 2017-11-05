@@ -22,6 +22,7 @@ private:
 	arrElement _mTotalElement;
 
 	bool _isStart;
+	bool _isEnd;
 	bool _isMute;
 	float _volume;
 
@@ -43,6 +44,9 @@ public:
 	//게터세터
 	bool getGameStart(void) { return _isStart; }
 	void setGameStart(bool isStart) { _isStart = isStart; }
+
+	bool getGameEnd(void) { return _isEnd; }
+	void setGameEnd(bool isEnd) { _isEnd = isEnd; }
 
 	float getVolume(void) { return _volume; }
 	void setVolume(float volume) { _volume = volume; }

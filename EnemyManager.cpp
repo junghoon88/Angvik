@@ -94,7 +94,7 @@ void EnemyManager::enemyFire(void)
 			}
 			else if (type == 2)
 			{
-				kongTan->fire(bulletNum++, emX, emY, angle);
+				kongTan->fire(bulletNum++, emX, emY - 10, angle);
 				(*_viEnemy)->setAtk(false);
 			}
 			else if (type == 4)

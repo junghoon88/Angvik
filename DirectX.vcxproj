@@ -177,6 +177,7 @@
     <ClCompile Include="PrintText.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rectManager.cpp" />
+    <ClCompile Include="sceneED.cpp" />
     <ClCompile Include="sceneET.cpp" />
     <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="rectManager.h" />
+    <ClInclude Include="sceneED.h" />
     <ClInclude Include="sceneET.h" />
     <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />

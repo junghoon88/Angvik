@@ -20,6 +20,12 @@ stageManager::~stageManager()
 
 void stageManager::init(void)
 {
+
+	endPoint = RectMakeCenter(6660, 168, 50, 90);//실제 엔딩 위치
+	//endPoint = RectMakeCenter(140, 390, 50, 90);//테스트용 엔딩 위치
+	isEnd = false;
+	//엔드 셋팅
+
 	_imgBackground = IMAGEMANAGER->findImage(L"Stage1-BG");
 	//_imgBackground = IMAGEMANAGER->findImage(L"Stage1-PBG");
 	_imgPBG = PBGMANAGER->findImage(L"Stage1-PBG");
@@ -84,6 +90,7 @@ void stageManager::update(void)
 
 	frameUpdate();
 	hiddenCheck();
+	endCheck();
 }
 
 void stageManager::render(void)
@@ -172,4 +179,12 @@ void stageManager::hiddenCheck(void)
 		}
 	}
 	_hiddenShow = false;
+}
+
+void stageManager::endCheck(void)
+{
+	if (isCollision(_pm->getPlayer()->getRectBody(), endPoint) && !isEnd)
+	{
+		DATABASE->setGameEnd(true);
+	}
 }

@@ -27,6 +27,7 @@ void sceneStage::init(void)
 	_pm->setLinkAdressItemManager(_im);
 
 	_pm->getInven()->setLinkAdressItemManager(_im);
+	_pm->getPlayer()->setLinkAdressItemManager(_im);
 
 	_em->setLinkAdressPlayerManager(_pm);
 	_em->setLinkAdressStageManager(_sm);
