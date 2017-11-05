@@ -39,8 +39,6 @@ void EnemyManager::release(void)
 
 void EnemyManager::update(void)	
 {
-	
-
 	for (_viEnemy = _vEnemy.begin(); _viEnemy != _vEnemy.end(); ++_viEnemy)
 	{
 		(*_viEnemy)->update();
@@ -100,6 +98,7 @@ void EnemyManager::setEnemy1(void)
 	Turtle* turtle1, *turtle2;
 	mush* mush1;
 
+
 	////////////////////////////몽키세팅
 	monkey1 = new monkkey;
 	monkey1->init(monkkeyNum++, 617, 390, L"monkeyRc1");
@@ -125,6 +124,7 @@ void EnemyManager::setEnemy1(void)
 	mush1 = new mush;
 	mush1->init(mushNum++, 1000, 50, L"mushRc1");
 	_vEnemy.push_back(mush1);
+
 
 
 	///////////////////////////////엔트세팅
@@ -153,6 +153,7 @@ void EnemyManager::setEnemy1(void)
 	//////////////////////////////////
 
 
+
 	///////////////////////////////거북이세팅
 	turtle1 = new Turtle;  
 	turtle1->init(turtleNum++,4150, 800, L"TurRc1");
@@ -163,8 +164,11 @@ void EnemyManager::setEnemy1(void)
 	_vEnemy.push_back(turtle2);
 	/////////////////////////////////
 	
+
 }
 void EnemyManager::deleteEnemy(int arrNum) {
+
 	SAFE_DELETE(_vEnemy[arrNum]);
 	_vEnemy.erase(_vEnemy.begin() + arrNum);
+
 }
