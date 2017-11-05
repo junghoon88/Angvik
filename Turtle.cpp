@@ -29,15 +29,20 @@ void Turtle::init(int num, float x, float y, wstring rcKey)
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+
+	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
+
 	rcName = rcKey;
-	rc = RectMakeCenter(x, y, 100, 60);
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
+	rc = RectMakeCenter(x, y, 100, rcHeight);
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, rcHeight });
 	sptrc = RectMakeCenter(x, y, 110, 70);
 	probeY = rc.bottom;
 }
 void Turtle::update(void)
 {
-	rc = RectMakeCenter(ptX, ptY, 100, 60);
+	rc = RectMakeCenter(ptX, ptY + 10, 100, rcHeight);
 	sptrc = RectMakeCenter(ptX, ptY , 110, 70);
 	probeY = sptrc.bottom;
 	spt->setCoord(sptrc.left, sptrc.top);
@@ -51,6 +56,7 @@ void Turtle::update(void)
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
 	move();
+	RIP();
 }
 void Turtle::render(void)
 {

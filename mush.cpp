@@ -47,16 +47,21 @@ void mush::init(int num, float x, float y, wstring rcKey) {
 	frameTime = 0;
 	atkFrameTime = 0;
 	jumpFrameTime = 0;
+
+	rcHeight = amountHeight = 20; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
+
 	atkCnt = 0;
 	isAtk = false;
 
-	rc = RectMakeCenter(ptX, ptY, 20, 20);  
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 20, 20 });
+	rc = RectMakeCenter(ptX, ptY, 20, rcHeight);
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 20, rcHeight });
 	probeY = rc.bottom;
 
 }
 void mush::update(void) {
-	rc = RectMakeCenter(ptX, ptY, 20, 20);
+	rc = RectMakeCenter(ptX, ptY, 20, rcHeight);
 	probeY = rc.bottom;
 	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 
@@ -98,8 +103,6 @@ void mush::update(void) {
 		
 	}
 
-	move();
-
 	atkCnt += TIMEMANAGER->getElapsedTime();
 	if (atkCnt >= 3.0f)
 	{
@@ -107,6 +110,8 @@ void mush::update(void) {
 		isAtk = true;
 		state = eATK;
 	}
+	move();
+	RIP();
 }
 void mush::render(void) {
 

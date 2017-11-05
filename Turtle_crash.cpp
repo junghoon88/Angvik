@@ -23,12 +23,17 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 	index = 0;
 	dir = eRIGHT;
 	state = eIDLE;
-	life = 2;
+	life = 1;
 	ptX = x;
 	ptY = y;
 	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+
+	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
+
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 100, 60);
 	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
@@ -51,6 +56,7 @@ void Turtle_crash::update(void)
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
 	move();
+	RIP();
 }
 void Turtle_crash::render(void)
 {

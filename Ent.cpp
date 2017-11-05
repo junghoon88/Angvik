@@ -29,16 +29,19 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	isAtk = false;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+	rcHeight = amountHeight = 60; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
 	rcName = rcKey;
-	rc = RectMakeCenter(x, y, 40, 70);
+	rc = RectMakeCenter(x, y, 40, rcHeight);
 	sptrc = RectMakeCenter(x, y, 40, 70);
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 40, 70 });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 30, rcHeight });
 	probeY = rc.bottom;
 }
 void Ent::update(void)
 {
-	rc = RectMakeCenter(ptX + 10, ptY, 40, 70);
-	sptrc = RectMakeCenter(ptX, ptY - 3, 50, 86);
+	rc = RectMakeCenter(ptX, ptY + 10, 30, 60);
+	sptrc = RectMakeCenter(ptX - 15, ptY - 10, 40, 70);
 	probeY = rc.bottom;
 	spt->setCoord(sptrc.left,sptrc.top);
 	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
@@ -51,6 +54,7 @@ void Ent::update(void)
 		if (frameCnt <= 0) frameCnt = spt->getMaxFrameX();
 	}
 	move();
+	RIP();
 }
 void Ent::render(void)
 {
@@ -80,7 +84,7 @@ void Ent::move(void)
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
-		if ((r == 0 && g == 0 && b == 0)&& (r == 255 && g == 255 && b == 0))
+		if ((r == 0 && g == 0 && b == 0) || (r == 255 && g == 255 && b == 0))
 		{
 			ptY = i - 40;
 			state = eIDLE;
@@ -109,7 +113,7 @@ void Ent::move(void)
 				ptX = i - 25;
 				dir = eLEFT;
 				spt->setScale( -1,1 );
-				spt->setScaleOffset(68,0);
+				spt->setScaleOffset(73,0);
 			}
 			else if (i < ptX)
 			{

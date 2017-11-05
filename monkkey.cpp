@@ -33,13 +33,17 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	frameCnt = 0;
 	frameTime = 0;
 
-	rc = RectMakeCenter(ptX, ptY, 45, 45);   //100,60 의미x
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, 45 });
+	rcHeight = amountHeight = 45; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
+
+	rc = RectMakeCenter(ptX, ptY, 45, rcHeight);   //100,60 의미x
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, rcHeight });
 	probeY = rc.bottom;
 
 }
 void monkkey::update(void) {
-	rc = RectMakeCenter(ptX, ptY, 45, 45);
+	rc = RectMakeCenter(ptX, ptY, 45, rcHeight);
 	probeY = rc.bottom;
 	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 	spt->setCoord({(float)rc.left,(float)rc.top });
@@ -54,7 +58,7 @@ void monkkey::update(void) {
 	}
 
 	move();
-	
+	RIP();
 
 }
 void monkkey::render(void) {

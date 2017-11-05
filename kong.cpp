@@ -30,14 +30,19 @@ void kong::init(int num, float x, float y, wstring rcKey)
 	atkCnt = 0;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+
+	rcHeight = amountHeight = 40; //렉트 높이! 감소율 적용하기 위함.
+	amountY = 1; //Y축 비율
+	amountTime = 0; //Y축 감소용 시간
+
 	rcName = rcKey;
-	rc = RectMakeCenter(x, y, 32, 50);
+	rc = RectMakeCenter(x, y, 26, rcHeight);
 	sptrc = RectMakeCenter(x, y, 32, 50);
 	spt->setCoord(sptrc.left,rc.bottom - 54);
 	atkSpt->setCoord(sptrc.left, rc.bottom - 40);
 	spt->setScaleOffset(32, 0); //조정해야함
 	atkSpt->setScaleOffset(34, 0); //조정해야함
-	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 32, 50 });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 26, rcHeight });
 	isAtk = false;
 }
 void kong::update(void)
@@ -93,12 +98,9 @@ void kong::update(void)
 				state = eIDLE;
 			}
 		}
-	
-
-
 	}
 
-
+	RIP();
 }
 void kong::render(void)
 {
