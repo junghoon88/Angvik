@@ -23,7 +23,6 @@ private:
 
 	int _selectNum;
 	int _frameX;
-	int _goldOils, _blackOils, _whiteOils;
 	int _inventoryMax;
 	int _inventoryNum;
 
