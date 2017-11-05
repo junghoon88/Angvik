@@ -26,6 +26,9 @@ private:
 	int _inventoryMax;
 	int _inventoryNum;
 
+	int _goldOils, _blackOils, _whiteOils;
+	int _goldNum, _blackNum, _whiteNum;
+
 	float _timeCount;
 
 	bool _isMenew;
@@ -34,6 +37,9 @@ private:
 	bool _isInven;
 	bool _isEquip;
 	bool _isCompose;
+
+	int _swapItemNum;
+	int _swapInvenNum;
 
 public:
 	inven();

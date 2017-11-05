@@ -27,8 +27,10 @@ void Player::init(void)
 	
 	_frameAngle = 22.5;
 				
-	_elapsedTime = 0.f;
-	_immortalTime = 3.f;
+	_elapsedImmortalTime = 0.f;
+	_maxImmortalTime = IMMORTALTIME;
+	_elapsedAttackTime = 0.f;
+	_maxAttackTime = ATTACKTIME;
 
 	_alpha = 255;
 
@@ -318,27 +320,39 @@ void Player::update(void)
 	//무적시간
 	if (_isImmortal == TRUE)
 	{
-		_elapsedTime += TIMEMANAGER->getElapsedTime();
-		if (_elapsedTime > _immortalTime)
+		_elapsedImmortalTime += TIMEMANAGER->getElapsedTime();
+		if (_elapsedImmortalTime > _maxImmortalTime)
 		{
-			_elapsedTime = 0.f;
+			_elapsedImmortalTime = 0.f;
 			_isImmortal == FALSE;
 		}
 	}
 
-	if (!_isFrontAttack && !_isBackAttack)	// 공격중이 아닐때 최근 행동에 대한 모션으로 바꿈
+	//공격 false로
+	if (_isFrontAttack == TRUE)
 	{
-		if (_isRight)
+		_elapsedAttackTime += TIMEMANAGER->getElapsedTime();
+
+		if (_elapsedAttackTime > _maxAttackTime)
 		{
-			_frontArmRightImage->aniRender(_frontArmMotion);
-			_backArmRightImage->aniRender(_backArmMotion);
-		}
-		else
-		{
-			_frontArmLeftImage->aniRender(_frontArmMotion);
-			_backArmLeftImage->aniRender(_backArmMotion);
+			_elapsedAttackTime = 0.f;
+			_isFrontAttack = FALSE;
 		}
 	}
+
+	//if (!_isFrontAttack && !_isBackAttack)	// 공격중이 아닐때 최근 행동에 대한 모션으로 바꿈
+	//{
+	//	if (_isRight)
+	//	{
+	//		_frontArmRightImage->aniRender(_frontArmMotion);
+	//		_backArmRightImage->aniRender(_backArmMotion);
+	//	}
+	//	else
+	//	{
+	//		_frontArmLeftImage->aniRender(_frontArmMotion);
+	//		_backArmLeftImage->aniRender(_backArmMotion);
+	//	}
+	//}
 	
 	//debug
 	TCHAR str[100];
@@ -554,13 +568,13 @@ void Player::render(void)
 
 
 	//debug
-	RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
-	RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
-	RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
-	
-	RECTMANAGER->render(L"플레이어헤드");
-	RECTMANAGER->render(L"플레이어바디");
-	RECTMANAGER->render(L"플레이어발");
+	//RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
+	//RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
+	//RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
+	//
+	//RECTMANAGER->render(L"플레이어헤드");
+	//RECTMANAGER->render(L"플레이어바디");
+	//RECTMANAGER->render(L"플레이어발");
 
 	_boneHead->render();
 	_boneBody->render();

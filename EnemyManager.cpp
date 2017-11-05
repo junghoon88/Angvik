@@ -87,7 +87,7 @@ void EnemyManager::enemyFire(void)
 
 			if (type == 1)
 			{
-				sBmr->fire(bulletNum++, emX, emY, (*_viEnemy)->getDir());
+				sBmr->fire(bulletNum++, emX, emY, angle);
 				(*_viEnemy)->setAtk(false);
 				(*_viEnemy)->setState(eIDLE);
 
