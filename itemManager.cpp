@@ -51,12 +51,6 @@ void itemManager::update(void)
 				case ITEM_TYPE_HEAD :
 						_vItems[i]->targetPlayer(x, y-30);
 					break;
-				case ITEM_TYPE_BODY:
-						_vItems[i]->targetPlayer(x+5, y-10);
-					break;
-				case ITEM_TYPE_FOOT:
-						_vItems[i]->targetPlayer(x+10, y+10);
-					break;
 				case ITEM_TYPE_SWORD:
 						_vItems[i]->targetPlayer(hx, hy);
 					break;
@@ -107,7 +101,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	//IMAGEMANAGER->findImage(L"Stage1-BG")->render();
+	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 	
 	for (int i = 0; i < _vItems.size(); i++)
 	{

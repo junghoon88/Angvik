@@ -87,6 +87,10 @@ void PlayerManager::playerItemCollision(void)
 						case ITEM_KIND_BLACK:
 							_player->setBackItem(BLACK_SWORD);	//°ËÀº»ö
 						break;
+<<<<<<< HEAD
+						item[i]->setState(ITEM_STATE_INPLAYER);
+=======
+>>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
 					}
 					item[i]->setState(ITEM_STATE_INPLAYER);
 				}
@@ -310,4 +314,17 @@ void PlayerManager::playerItemCollision(void)
 			}
 		}
 	}
+<<<<<<< HEAD
+
+
+
+
+
+
+	//_player->update();
+	//_bird->update(_player->getX(), _player->getY());
+
+
+=======
+>>>>>>> 465a3d17554ea97a86b9ae913c6d8941d787f3ae
 }

@@ -37,8 +37,8 @@ public:
 	void init(void);
 	void release(void);
 	void update(void);
-	void render(void);
-
+	void render(void)
+		;
 	//¸÷´Ôµé °¡Á®°¡¼À 
 	void setItem(float x, float y);
 	////////////////////////
@@ -55,7 +55,7 @@ public:
 	inline void setLinkAdressStageManager(stageManager*   sm) { _sm = sm; }
 	
 	vector<Item*> getVItem(void) { return _vItems; }
-	vector<Item*>::iterator getViItem(void) { return _viItems; }
+
 	
 };
 
