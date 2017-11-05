@@ -524,6 +524,13 @@ void Player::imageReverse(void)
 
 	IMAGEMANAGER->findImage(L"frontArmLeft")->setScaleOffset(offsetVal, 0.0f);
 	IMAGEMANAGER->findImage(L"backArmLeft")->setScaleOffset(offsetVal, 0.0f);
+
+	//	아이템
+	//	블랙
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScale({ -1,1 });
+	IMAGEMANAGER->findImage(L"blackBodyLeft")->setScaleOffset(offsetVal, 0.0f);
+	IMAGEMANAGER->findImage(L"blackFootLeft")->setScaleOffset(offsetVal, 0.0f);
 }
 
 void Player::imagePosUpdate(void)

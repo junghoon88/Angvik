@@ -109,8 +109,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_LANCE:
@@ -148,8 +148,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_BOOMERANG:
@@ -187,8 +187,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_STAFF:
@@ -226,8 +226,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 
@@ -250,8 +250,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_BODY:
@@ -273,8 +273,8 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 			case ITEM_TYPE_FOOT:
@@ -296,17 +296,17 @@ void PlayerManager::playerItemCollision(void)
 				}
 				else
 				{
-					_inven->itemUpdate();
 					item[i]->setState(ITEM_STATE_ININVEN);
+					_inven->itemUpdate();
 				}
 				break;
 
 			case ITEM_TYPE_OIL:
-				_inven->itemUpdate();
 				item[i]->setState(ITEM_STATE_ININVEN);
+				_inven->itemUpdate();
 			case ITEM_TYPE_EGG:		//	±âÅ¸
-				_inven->itemUpdate();
 				item[i]->setState(ITEM_STATE_ININVEN);
+				_inven->itemUpdate();
 				break;
 			}
 		}
