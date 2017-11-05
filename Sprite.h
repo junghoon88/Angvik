@@ -74,6 +74,7 @@ public:
 	int getMaxFrameY(void);
 
 
+
 	inline Texture* getTexture(void) { return _texture; }
 	inline TCHAR* getFileName(void) { return _fileName; }
 };

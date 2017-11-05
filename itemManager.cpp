@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "itemManager.h"
+#include "PlayerManager.h"
+#include "EnemyManager.h"
+#include "stageManager.h"
 
 
 itemManager::itemManager()
@@ -61,7 +64,7 @@ void itemManager::update(void)
 
 void itemManager::render(void)
 {
-	IMAGEMANAGER->findImage(L"Stage1-BG")->render();
+	//IMAGEMANAGER->findImage(L"Stage1-BG")->render();
 	
 	for (int i = 0; i < _vItems.size(); i++)
 	{
