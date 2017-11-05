@@ -33,6 +33,10 @@ void inven::init(void)
 
 	_swapItemNum = 0;
 	_swapInvenNum = 0;
+
+	_enchantItemNum = 0;
+	_enchantInvenNum = 0;
+
 }
 
 void inven::release(void)
@@ -79,7 +83,7 @@ void inven::render(void)
 		return;
 
 	if (_isMenew || _isEquip)	IMAGEMANAGER->findImage(L"inventory")->render(200);
-	if (_isItem)	IMAGEMANAGER->findImage(L"itemBox")->render(200);
+	if (_isItem || _isCompose)	IMAGEMANAGER->findImage(L"itemBox")->render(200);
 	if (_isOils)	IMAGEMANAGER->findImage(L"oilsBox")->render(200);
 
 	IMAGEMANAGER->findImage(L"아이템선택")->frameRender(_frameX, 0, 255);
@@ -111,6 +115,14 @@ void inven::render(void)
 	{
 		IMAGEMANAGER->findImage(L"equip")->render();
 		IMAGEMANAGER->findImage(L"drop")->render();
+		IMAGEMANAGER->findImage(L"back")->render();
+	}
+	else if (_isCompose)
+	{
+		for (int i = 0; i < _vInvenItems.size(); i++)
+		{
+			_vInvenItems[i]->getImage()->render();
+		}
 		IMAGEMANAGER->findImage(L"back")->render();
 	}
 }
@@ -303,6 +315,13 @@ void inven::oilsBoxUpdate(float x, float y)
 		_selectPoint[2] = { oilsBoxCoord.x, oilsBoxCoord.y + 125 };
 		_selectPoint[3] = { oilsBoxCoord.x, oilsBoxCoord.y + 165 };
 
+		for (int i = 0; i < _vInvenOils.size(); i++)
+		{
+			Sprite* img = _vInvenOils[i]->getImage();
+			img->setCoord(_selectPoint[i].x + 40, _selectPoint[i].y + 10);
+			img->setRotate(0.0f);
+		}
+
 		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
 		{
 			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
@@ -316,6 +335,20 @@ void inven::oilsBoxUpdate(float x, float y)
 		if (_selectNum > 3) _selectNum = 0;
 		if (_selectNum < 0) _selectNum = 3;
 
+		if (_selectNum < 3 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		{
+			if (_selectNum < _vInvenOils.size())
+			{
+				_enchantItemNum = _selectNum;
+				_enchantInvenNum = _vInvenOils[_selectNum]->getNum();
+
+				_selectNum = 0;
+				_isOils = false;
+				_isCompose = true;
+				SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+			}
+		}
+
 		if ((_selectNum == 3 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
 		{
 			_selectNum = 0;
@@ -326,28 +359,28 @@ void inven::oilsBoxUpdate(float x, float y)
 
 		_goldNum = _blackNum = _whiteNum = 0;
 
-		for (int i = 0; i < _vInvenOils.size(); i++)
-		{
-			Sprite* img = _vInvenOils[i]->getImage();
-			if (_vInvenOils[i]->getKind() == ITEM_KIND_WHITE)
-			{
-				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"흰색오일")->getSize().x * _whiteNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
-				img->setRotate(0.0f);
-				_whiteNum++;
-			}
-			if (_vInvenOils[i]->getKind() == ITEM_KIND_GOLD)
-			{
-				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _goldNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
-				img->setRotate(0.0f);
-				_goldNum++;
-			}
-			if (_vInvenOils[i]->getKind() == ITEM_KIND_BLACK)
-			{
-				img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 35 + IMAGEMANAGER->findImage(L"블랙오일")->getSize().x * _blackNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
-				img->setRotate(0.0f);
-				_blackNum++;
-			}
-		}
+		//for (int i = 0; i < _vInvenOils.size(); i++)
+		//{
+		//	Sprite* img = _vInvenOils[i]->getImage();
+		//	if (_vInvenOils[i]->getKind() == ITEM_KIND_WHITE)
+		//	{
+		//		img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"흰색오일")->getSize().x * _whiteNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+		//		img->setRotate(0.0f);
+		//		_whiteNum++;
+		//	}
+		//	if (_vInvenOils[i]->getKind() == ITEM_KIND_GOLD)
+		//	{
+		//		img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 40 + IMAGEMANAGER->findImage(L"골드오일")->getSize().x * _goldNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+		//		img->setRotate(0.0f);
+		//		_goldNum++;
+		//	}
+		//	if (_vInvenOils[i]->getKind() == ITEM_KIND_BLACK)
+		//	{
+		//		img->setCoord(_selectPoint[(int)_vInvenOils[i]->getKind()].x + 35 + IMAGEMANAGER->findImage(L"블랙오일")->getSize().x * _blackNum, _selectPoint[(int)_vInvenOils[i]->getKind()].y + 7);
+		//		img->setRotate(0.0f);
+		//		_blackNum++;
+		//	}
+		//}
 	}
 }
 
@@ -467,4 +500,61 @@ void inven::equipBoxUpdate(float x, float y)
 
 void inven::composeBoxUpdate(float x, float y)
 {
+	//상시 아이템박스 위치 업데이트
+	D3DXVECTOR2 itemBoxCoord = { x + 40, y - IMAGEMANAGER->findImage(L"itemBox")->getRealSize().y - 20 };
+	if (itemBoxCoord.y < 0)
+		itemBoxCoord.y = 0;
+
+	IMAGEMANAGER->findImage(L"itemBox")->setCoord(itemBoxCoord);
+	IMAGEMANAGER->findImage(L"back")->setCoord(itemBoxCoord.x + 40, itemBoxCoord.y + 215);
+
+	if (_isCompose)
+	{
+		_selectPoint[0] = { itemBoxCoord.x, itemBoxCoord.y + 35 };
+		_selectPoint[1] = { itemBoxCoord.x, itemBoxCoord.y + 80 };
+		_selectPoint[2] = { itemBoxCoord.x, itemBoxCoord.y + 125 };
+		_selectPoint[3] = { itemBoxCoord.x, itemBoxCoord.y + 170 };
+		_selectPoint[4] = { itemBoxCoord.x, itemBoxCoord.y + 205 };
+
+		for (int i = 0; i < _vInvenItems.size(); i++)
+		{
+			Sprite* img = _vInvenItems[i]->getImage();
+			img->setCoord({ _selectPoint[i].x + IMAGEMANAGER->findImage(L"itemBox")->getSize().x / 2 - img->getSize().x / 2, _selectPoint[i].y + IMAGEMANAGER->findImage(L"아이템선택")->getSize().y / 2 - img->getSize().y / 2 });
+			img->setRotate(0.0f);
+		}
+
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_DOWN))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum++;
+		}
+		if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_UP))
+		{
+			SOUNDMANAGER->play(L"메뉴이동", DATABASE->getVolume());
+			_selectNum--;
+		}
+		if (_selectNum > 4) _selectNum = 0;
+		if (_selectNum < 0) _selectNum = 4;
+
+		if ((_selectNum < 4) && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND))
+		{
+			if (_selectNum < _vInvenItems.size())
+			{
+				_im->Itemcompose(_vInvenItems[_selectNum]->getNum(), _enchantInvenNum);
+				_vInvenOils.erase(_vInvenOils.begin() + _enchantItemNum);
+
+				_selectNum = 0;
+				_isCompose = false;
+				_isMenew = true;
+				SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+			}
+		}
+		if ((_selectNum == 4 && KEYMANAGER->isOnceKeyDown(BTN_PLAYER_FRONT_HAND)) || KEYMANAGER->isOnceKeyDown(BTN_PLAYER_JUMP))
+		{
+			_selectNum = 0;
+			_isCompose = false;
+			_isOils = true;
+			SOUNDMANAGER->play(L"메뉴선택", DATABASE->getVolume());
+		}
+	}
 }

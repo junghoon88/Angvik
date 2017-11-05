@@ -41,6 +41,9 @@ private:
 	int _swapItemNum;
 	int _swapInvenNum;
 
+	int _enchantItemNum;
+	int _enchantInvenNum;
+
 public:
 	inven();
 	~inven();

@@ -538,3 +538,166 @@ void Item::createItem(ITEM_TYPE type, ITEM_KIND kind, ITEM_STATE state,float x, 
 	////////////////////ÇÈ¼¿Ãæµ¹
 	
 }
+
+void Item::setKind(ITEM_KIND kind)
+{
+	_kind = kind;
+	SAFE_RELEASE2(_img);
+	
+	switch (_type)
+	{
+	case ITEM_TYPE_SWORD:		//¹«±â-°Ë
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èò»öÄ®.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ºí·¢Ä®.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/°ñµåÄ®.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_LANCE:		//¹«±â-Ã¢
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èò»ö·£½º.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ºí·¢·£½º.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/°ñµå·£½º.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_BOOMERANG:	//¹«±â-ºÎ¸Ş¶û
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èò»öºÎ¸Ş¶û.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ºí·¢ºÎ¸Ş¶û.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/°ñµåºÎ¸Ş¶û.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_STAFF:		//¹«±â-ÁöÆÎÀÌ
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èò»öÁöÆÎÀÌ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ºí·¢ÁöÆÎÀÌ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/°ñµåÁöÆÎÀÌ.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_HEAD:			//¹æ¾î±¸-¸Ó¸®
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¹éÅõ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ÈæÅõ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/È²Åõ.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_BODY:			//¹æ¾î±¸-°©¿Ê
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¹é°©.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èæ°©.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/È²°©.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_FOOT:			//¹æ¾î±¸-½Å¹ß
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¹é½Å.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èæ½Å.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/È²½Å.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_OIL:			//
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/Èò»ö¿ÀÀÏ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/ºí·¢¿ÀÀÏ.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/°ñµå¿ÀÀÏ.png");
+			_img->init();
+		}
+		break;
+	case ITEM_TYPE_EGG:
+		if (_kind == ITEM_KIND_WHITE)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_BLACK)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
+			_img->init();
+		}
+		else if (_kind == ITEM_KIND_GOLD)
+		{
+			_img = new Sprite(DEVICE, L"image/item/¾Ë.png");
+			_img->init();
+		}
+		break;
+	}
+}
