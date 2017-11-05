@@ -37,19 +37,31 @@ void PlayerManager::Collision(void)
 	{
 		RECT temp2;
 
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _player->getIsImmortal() == FALSE)    //플레이어 피해받음
+		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _player->getIsImmortal() == FALSE && _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음
 		{
-			_player->setIsHit(TRUE);
-			_player->setIsImmortal(TRUE);
-		}
-
-		if (IntersectRect(&temp2, &_player->getRectBody(), &_em->getvEnemy()[i]->getRect()) && _em->getvEnemy()[i]->getState() != toDeath)    //플레이어 피해받음
-		{  
-			_player->setIsHit(true);
-
+			if (_player->getHeadItem() != UNARMEDARMOR)
+			{
+				_player->setHeadItem(UNARMEDARMOR);
+				_player->setIsImmortal(TRUE);
+			}
+			else if (_player->getBodyItem() != UNARMEDARMOR)
+			{
+				_player->setBodyItem(UNARMEDARMOR);
+				_player->setIsImmortal(TRUE);
+			}
+			else if (_player->getFootItem() != UNARMEDARMOR)
+			{
+				_player->setFootItem(UNARMEDARMOR);
+				_player->setIsImmortal(TRUE);
+			}
+			else
+			{
+				_player->setIsLive(FALSE);
+			}
 		}
 
 		RECT temp;
+
 		if (IntersectRect(&temp, &_player->getRectFoot(), &_em->getvEnemy()[i]->getRect()) && _player->getIsJump())	  //플레이어가 적밟음
 		{ 
 			_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
@@ -67,9 +79,10 @@ void PlayerManager::Collision(void)
 			{
 				if (IntersectRect(&temp, &_im->getVItem()[j]->getHitImg(), &_em->getvEnemy()[i]->getRect()))
 				{    //플레이어가 무기씀
+					_player->setIsFrontAttack(FALSE);
 					_em->getvEnemy()[i]->setLife((_em->getvEnemy()[i]->getLife()) - 1);   //life -1
 
-
+					
 				}
 			}
 
