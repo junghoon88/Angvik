@@ -7,7 +7,7 @@ sBMR::~sBMR() {}
 
 void sBMR::init(void)
 {
-
+	
 }
 void sBMR::release(void)
 {
@@ -34,14 +34,13 @@ void sBMR::fire(int num,float ptx, float pty ,float ang) //¹ß»çÁöÁ¡ ÁÂÇ¥,ÇÃ·¹ÀÌ¾
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameY() + 1);
 
-
+	
 	bullet.angle = ang;
-	bullet.speed = 2;// ºÎ¸Þ¶û ¼Óµµ
+	bullet.speed = 2.3;// ºÎ¸Þ¶û ¼Óµµ
 	backPower = 0.15;//ºÎ¸Þ¶û °¨¼Óµµ Á¶Àý
 	bullet.ptX = bullet.fireX = ptx;
 	bullet.ptY = bullet.fireY = pty;
 	bullet.rc = RectMakeCenter(bullet.ptX, bullet.ptY, 18, 16);//»çÀÌÁî´Â ³ªÁß¿¡ Á¶Àý
-
 	_vBullet.push_back(bullet);
 }
 void sBMR::move(void)
@@ -82,8 +81,8 @@ void sBMR::move(void)
 		if (_viBullet->frameTime >= 0.1f)
 		{
 			_viBullet->frameTime = 0;
-
-			_viBullet->frameX--;
+			
+			_viBullet->frameX++;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
 
@@ -103,7 +102,7 @@ Kongtan::~Kongtan(){}
 
 void Kongtan::init(void)
 {
-
+	range = 400;
 }
 void Kongtan::release(void)
 {
@@ -130,13 +129,14 @@ void Kongtan::fire(int num,float ptx, float pty, float ang)
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameX() + 1,
 		IMAGEMANAGER->findImage(L"ÄáÅº")->getMaxFrameY() + 1);
 
-	Kongtan.speed = 1.2f;
+	Kongtan.speed = 2.0f;
 	Kongtan.ptX = Kongtan.fireX = ptx;
 	Kongtan.ptY = Kongtan.fireY = pty;
 	Kongtan.spt->setCoord(Kongtan.ptX, Kongtan.ptY);
 	Kongtan.angle = ang;
 	Kongtan.frameTime = 0;
 	Kongtan.frameX = 0;
+	Kongtan.spt->setRotate(Kongtan.angle*(180 / PI));
 	Kongtan.rc = RectMakeCenter(Kongtan.ptX, Kongtan.ptY,18,16);
 	_vBullet.push_back(Kongtan);
 }
@@ -148,21 +148,20 @@ void Kongtan::move(void)
 		_viBullet->ptY += -sin(_viBullet->angle) * _viBullet->speed;
 
 		_viBullet->spt->setCoord(_viBullet->ptX, _viBullet->ptY);
-
 		_viBullet->rc = RectMakeCenter(_viBullet->ptX, _viBullet->ptY, 18, 16);
 
 		_viBullet->frameTime += TIMEMANAGER->getElapsedTime();
-		if (_viBullet->frameTime >= 0.1f)
+		if (_viBullet->frameTime >= 0.2f)
 		{
 			_viBullet->frameTime = 0;
-			_viBullet->frameX--;
+			_viBullet->frameX++;
 			if (_viBullet->frameX >= _viBullet->spt->getMaxFrameX()) _viBullet->frameX = 0;
 		}
 
-	//	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
-	//	{
-	//		_viBullet = _vBullet.erase(_viBullet);
-	//	}
+	if (range < getDistance(_viBullet->ptX, _viBullet->ptY, _viBullet->fireX, _viBullet->fireY))
+	{
+		_viBullet = _vBullet.erase(_viBullet);
+	}
 		else ++_viBullet;
 	}
 }

@@ -11,7 +11,7 @@ Ent::~Ent()
 }
 
 
-void Ent::init(int num, float x, float y)
+void Ent::init(int num, float x, float y, wstring rcKey)
 {
 	TCHAR strKey[100];
 	_stprintf(strKey, L"나무맨%d", num);
@@ -28,9 +28,10 @@ void Ent::init(int num, float x, float y)
 	ptY = y;
 	frameCnt = spt->getMaxFrameX();
 	frameTime = 0;
+	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 40, 70);
 	sptrc = RectMakeCenter(x, y, 50, 86);
-	//RECTMANAGER->addRect(DEVICE, L"나무맨렉트", { (float)rc.left,(float)rc.top }, { 40, 70 });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 40, 70 });
 	probeY = rc.bottom;
 }
 void Ent::update(void)
@@ -39,7 +40,7 @@ void Ent::update(void)
 	sptrc = RectMakeCenter(ptX, ptY - 3, 50, 86);
 	probeY = rc.bottom;
 	spt->setCoord(sptrc.left,sptrc.top);
-//	RECTMANAGER->findRect(L"나무맨렉트")->setCoord({ (float)rc.left,(float)rc.top });
+	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 	frameTime += TIMEMANAGER->getElapsedTime();
 	if (frameTime >= 0.1f)
 	{
@@ -54,6 +55,7 @@ void Ent::render(void)
 {
 	//RECTMANAGER->render(L"나무맨렉트");
 	spt->frameRender(frameCnt, 0);
+	RECTMANAGER->render(rcName);
 }
 void Ent::move(void)  
 {
