@@ -41,7 +41,7 @@ void inven::update(float x, float y)
 		_frameX++;
 		if (_frameX >= 8) _frameX = 0;
 	}
-	if (KEYMANAGER->isOnceKeyDown(BTN_PLAYER_INVENTORY)) _isMenew = true;
+	if (KEYMANAGER->isStayKeyDown(BTN_PLAYER_INVENTORY) && !_isMenew) _isMenew = true;
 
 	//상시 인벤 위치 업데이트
 	IMAGEMANAGER->findImage(L"inventory")->setCoord({ x + 40, y - IMAGEMANAGER->findImage(L"inventory")->getRealSize().y - 20 });

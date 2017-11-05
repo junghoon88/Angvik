@@ -22,7 +22,7 @@ private:
 private:
 	Player*			_player;
 	invenBird*		_bird;
-	inven* _inven;
+	inven*			_inven;
 	
 	EnemyManager*	_em;
 	stageManager*	_sm;
