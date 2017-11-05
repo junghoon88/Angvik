@@ -89,6 +89,7 @@ void stageManager::render(void)
 {
 	IMAGEMANAGER->findImage(L"Stage1-BG2")->render();
 	_imgBackground->render();
+	IMAGEMANAGER->findImage(L"Stage1-Hidden")->render();
 	//PBGMANAGER->render(L"Stage1-PBG");
 
 	for (int i = 0; i < TREETRAP_MAX; i++)
