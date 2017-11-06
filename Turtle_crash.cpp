@@ -40,7 +40,7 @@ void Turtle_crash::init(int num, float x, float y, wstring rcKey)
 
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 100, 58);
-	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 100, 60 });
 	sptrc = RectMakeCenter(x, y, 110, 58);
 	probeY = rc.bottom;
 }
@@ -77,7 +77,7 @@ void Turtle_crash::update(void)
 
 		probeY = sptrc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
-	//	RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (frameTime >= 0.1f)
 		{
@@ -94,7 +94,7 @@ void Turtle_crash::update(void)
 void Turtle_crash::render(void)
 {
 	spt->frameRender(frameCnt, 0, alpha);
-	//RECTMANAGER->render(rcName);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(rcName);
 }
 void Turtle_crash::move(void)
 {

@@ -389,12 +389,11 @@ void inven::equipBoxUpdate(float x, float y)
 	//상시 인벤 위치 업데이트
 	D3DXVECTOR2 inventoryCoord = IMAGEMANAGER->findImage(L"inventory")->getCoord();
 
-	IMAGEMANAGER->findImage(L"equip")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 45 });
-	IMAGEMANAGER->findImage(L"drop")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 90 });
-	IMAGEMANAGER->findImage(L"back")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 132 });
-
 	if (_isEquip)
 	{
+		IMAGEMANAGER->findImage(L"equip")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 45 });
+		IMAGEMANAGER->findImage(L"drop")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 90 });
+		IMAGEMANAGER->findImage(L"back")->setCoord({ inventoryCoord.x + 45, inventoryCoord.y + 132 });
 		_selectPoint[0] = { inventoryCoord.x, inventoryCoord.y + 35 };
 		_selectPoint[1] = { inventoryCoord.x, inventoryCoord.y + 80 };
 		_selectPoint[2] = { inventoryCoord.x, inventoryCoord.y + 122 };
@@ -505,11 +504,11 @@ void inven::composeBoxUpdate(float x, float y)
 	if (itemBoxCoord.y < 0)
 		itemBoxCoord.y = 0;
 
-	IMAGEMANAGER->findImage(L"itemBox")->setCoord(itemBoxCoord);
-	IMAGEMANAGER->findImage(L"back")->setCoord(itemBoxCoord.x + 40, itemBoxCoord.y + 215);
-
 	if (_isCompose)
 	{
+		IMAGEMANAGER->findImage(L"itemBox")->setCoord(itemBoxCoord);
+		IMAGEMANAGER->findImage(L"back")->setCoord(itemBoxCoord.x + 40, itemBoxCoord.y + 215);
+
 		_selectPoint[0] = { itemBoxCoord.x, itemBoxCoord.y + 35 };
 		_selectPoint[1] = { itemBoxCoord.x, itemBoxCoord.y + 80 };
 		_selectPoint[2] = { itemBoxCoord.x, itemBoxCoord.y + 125 };

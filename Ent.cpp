@@ -44,7 +44,7 @@ void Ent::init(int num, float x, float y, wstring rcKey)
 	rcName = rcKey;
 	rc = RectMakeCenter(x, y, 40, rcHeight);
 	sptrc = RectMakeCenter(x, y, 40, 70);
-	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 30, rcHeight });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 30, rcHeight });
 	probeY = rc.bottom;
 }
 void Ent::update(void)
@@ -59,7 +59,7 @@ void Ent::update(void)
 	{
 		probeY = rc.bottom;
 		spt->setCoord(sptrc.left, sptrc.top);
-		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		frameTime += TIMEMANAGER->getElapsedTime();
 		if (state == eIDLE)
 		{
@@ -103,7 +103,7 @@ void Ent::update(void)
 void Ent::render(void)
 {
 	spt->frameRender(frameCnt, 0);
-	//RECTMANAGER->render(rcName);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(rcName);
 }
 void Ent::move(void)  
 {

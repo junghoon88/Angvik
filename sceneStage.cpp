@@ -70,6 +70,7 @@ void sceneStage::update(void)
 void sceneStage::render(void)
 {
 	_sm->render();
+	if (KEYMANAGER->isStayKeyDown(VK_F2)) IMAGEMANAGER->findImage(L"Stage1-PBG")->render();
 	_em->render();
 	_pm->render();
 	_im->render();

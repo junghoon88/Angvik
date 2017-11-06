@@ -39,7 +39,7 @@ void monkkey::init(int num, float x, float y, wstring rcKey) {
 	amountTime = 0; //Y축 감소용 시간
 
 	rc = RectMakeCenter(ptX, ptY, 45, rcHeight);   //100,60 의미x
-	//RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, rcHeight });
+	RECTMANAGER->addRect(DEVICE, rcName, { (float)rc.left,(float)rc.top }, { 45, rcHeight });
 	probeY = rc.bottom;
 
 }
@@ -53,7 +53,7 @@ void monkkey::update(void) {
 	else
 	{
 		probeY = rc.bottom;
-		//RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
+		RECTMANAGER->findRect(rcName)->setCoord({ (float)rc.left,(float)rc.top });
 		spt->setCoord({ (float)rc.left,(float)rc.top });
 
 		frameTime += TIMEMANAGER->getElapsedTime();
@@ -74,7 +74,7 @@ void monkkey::render(void) {
 
 	spt->frameRender(frameCnt, 0);
 	
-	//RECTMANAGER->render(rcName);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(rcName);
 
 }
 void monkkey::move(void) {

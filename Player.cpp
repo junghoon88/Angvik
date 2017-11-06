@@ -637,13 +637,13 @@ void Player::render(void)
 
 
 	//debug
-	//RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
-	//RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
-	//RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
-	//
-	//RECTMANAGER->render(L"플레이어헤드");
-	//RECTMANAGER->render(L"플레이어바디");
-	//RECTMANAGER->render(L"플레이어발");
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->setCoord(L"플레이어헤드", _rcHead.left, _rcHead.top);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->setCoord(L"플레이어바디", _rcBody.left, _rcBody.top);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->setCoord(L"플레이어발",	  _rcFoot.left, _rcFoot.top);
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) 
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(L"플레이어헤드");
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(L"플레이어바디");
+	if (KEYMANAGER->isStayKeyDown(VK_F1)) RECTMANAGER->render(L"플레이어발");
 
 	_boneHead->render();
 	_boneBody->render();

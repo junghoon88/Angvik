@@ -44,18 +44,20 @@ void mainGame::release(void)
 
 void mainGame::update(void)	
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_F1))
-	{
-		SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
-	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F2))
-	{
-		SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
-	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F6))
-	{
-		SCENEMANAGER->changeScene(L"¼¿·º¾À");
-	}
+	//if (KEYMANAGER->isOnceKeyDown(VK_F1))
+	//{
+	//	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
+	//}
+	//if (KEYMANAGER->isOnceKeyDown(VK_F2))
+	//{
+	//	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
+	//}
+	//if (KEYMANAGER->isOnceKeyDown(VK_F6))
+	//{
+	//	SCENEMANAGER->changeScene(L"¼¿·º¾À");
+	//}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F3)) DATABASE->setGameStart(false);
 
 	SCENEMANAGER->update();
 	if (DATABASE->getGameEnd()) SCENEMANAGER->changeScene(L"¿£µù");
