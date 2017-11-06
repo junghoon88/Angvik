@@ -178,20 +178,15 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rectManager.cpp" />
     <ClCompile Include="sceneED.cpp" />
-    <ClCompile Include="sceneET.cpp" />
-    <ClCompile Include="sceneGame.cpp" />
     <ClCompile Include="sceneInit.cpp" />
-    <ClCompile Include="sceneitemTest.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="sceneSelect.cpp" />
     <ClCompile Include="sceneStage.cpp" />
-    <ClCompile Include="sceneTest.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Sprite.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stageManager.cpp" />
-    <ClCompile Include="test2.cpp" />
     <ClCompile Include="textManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="timeManager.cpp" />
@@ -237,19 +232,14 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="rectManager.h" />
     <ClInclude Include="sceneED.h" />
-    <ClInclude Include="sceneET.h" />
-    <ClInclude Include="sceneGame.h" />
     <ClInclude Include="sceneInit.h" />
-    <ClInclude Include="sceneitemTest.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="sceneSelect.h" />
     <ClInclude Include="sceneStage.h" />
-    <ClInclude Include="sceneTest.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stageManager.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="test2.h" />
     <ClInclude Include="textManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="timeManager.h" />

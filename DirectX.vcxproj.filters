@@ -111,16 +111,10 @@
     <ClCompile Include="database.cpp">
       <Filter>mainGame\database</Filter>
     </ClCompile>
-    <ClCompile Include="sceneGame.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
     <ClCompile Include="sceneInit.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
     <ClCompile Include="sceneSelect.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneTest.cpp">
       <Filter>mainGame\scene</Filter>
     </ClCompile>
     <ClCompile Include="sceneManager.cpp">
@@ -132,20 +126,13 @@
     <ClCompile Include="Ent.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
-    <ClCompile Include="sceneET.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
     <ClCompile Include="soundManager.cpp">
       <Filter>DxWindow\Manager</Filter>
     </ClCompile>
     <ClCompile Include="PlayerManager.cpp">
       <Filter>mainGame\Player</Filter>
     </ClCompile>
-    <ClCompile Include="sceneitemTest.cpp">
-      <Filter>mainGame\scene</Filter>
-    </ClCompile>
     <ClCompile Include="sceneStage.cpp" />
-    <ClCompile Include="test2.cpp" />
     <ClCompile Include="Turtle.cpp">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClCompile>
@@ -276,16 +263,10 @@
     <ClInclude Include="database.h">
       <Filter>mainGame\database</Filter>
     </ClInclude>
-    <ClInclude Include="sceneGame.h">
-      <Filter>mainGame\scene</Filter>
-    </ClInclude>
     <ClInclude Include="sceneInit.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
     <ClInclude Include="sceneSelect.h">
-      <Filter>mainGame\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneTest.h">
       <Filter>mainGame\scene</Filter>
     </ClInclude>
     <ClInclude Include="sceneManager.h">
@@ -297,17 +278,11 @@
     <ClInclude Include="Ent.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>
-    <ClInclude Include="sceneET.h">
-      <Filter>mainGame\scene</Filter>
-    </ClInclude>
     <ClInclude Include="soundManager.h">
       <Filter>DxWindow\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PlayerManager.h">
       <Filter>mainGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneitemTest.h">
-      <Filter>mainGame\scene</Filter>
     </ClInclude>
     <ClInclude Include="sceneSelect.h">
       <Filter>mainGame\scene</Filter>
@@ -316,7 +291,6 @@
       <Filter>mainGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="sceneStage.h" />
-    <ClInclude Include="test2.h" />
     <ClInclude Include="Turtle.h">
       <Filter>mainGame\Enemy\st1</Filter>
     </ClInclude>

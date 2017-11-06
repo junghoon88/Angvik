@@ -26,12 +26,8 @@ void mainGame::initScene(void)
 	scene->init();
 	scene = SCENEMANAGER->addScene(L"¼¿·º¾À", new sceneSelect);
 	scene->init();
-	//scene = SCENEMANAGER->addScene(L"°ÔÀÓ¾À", new sceneGame);
-	//scene->init();
 	scene = SCENEMANAGER->addScene(L"Å×½ºÆ®¾À", new sceneStage);
 	scene->init();
-	//scene = SCENEMANAGER->addScene(L"¿¡³Ê¹ÌÅ×½ºÆ®", new sceneET);
-	//scene->init();
 	scene = SCENEMANAGER->addScene(L"¿£µù", new sceneED);
 	scene->init();
 	SCENEMANAGER->changeScene(L"¼¿·º¾À");
@@ -44,22 +40,10 @@ void mainGame::release(void)
 
 void mainGame::update(void)	
 {
-	//if (KEYMANAGER->isOnceKeyDown(VK_F1))
-	//{
-	//	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
-	//}
-	//if (KEYMANAGER->isOnceKeyDown(VK_F2))
-	//{
-	//	SCENEMANAGER->changeScene(L"°ÔÀÓ¾À");
-	//}
-	//if (KEYMANAGER->isOnceKeyDown(VK_F6))
-	//{
-	//	SCENEMANAGER->changeScene(L"¼¿·º¾À");
-	//}
-
 	if (KEYMANAGER->isOnceKeyDown(VK_F3)) DATABASE->setGameStart(false);
 
 	SCENEMANAGER->update();
+
 	if (DATABASE->getGameEnd()) SCENEMANAGER->changeScene(L"¿£µù");
 	else if (DATABASE->getGameStart()) 	SCENEMANAGER->changeScene(L"Å×½ºÆ®¾À");
 	else							SCENEMANAGER->changeScene(L"¼¿·º¾À");
